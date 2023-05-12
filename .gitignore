@@ -15,6 +15,7 @@ pcmanfm-qt/default/recent-files.conf
 zsh/.zcompdump
 zsh/.zsh_history
 
+/QtProject.conf
 /skanpagerc
 /user-dirs.locale
 /user-dirs.dirs

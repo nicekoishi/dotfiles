@@ -44,6 +44,10 @@
     pkgs.xdg-user-dirs
     pkgs.polkit_gnome
 
+    pkgs.libsForQt5.qt5ct
+    pkgs.papirus-icon-theme
+    pkgs.catppuccin-gtk
+
     inputs.anyrun.packages.x86_64-linux.anyrun
   ];
 
