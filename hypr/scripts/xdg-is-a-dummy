@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+sleep 1
+killall xdg-desktop-portal-hyprland
+killall xdg-desktop-portal-wlr
+killall xdg-desktop-portal
+/etc/hypr/xdg-is-a-dummy-hypr &
+sleep 2
+/etc/hypr/xdg-is-a-dummy

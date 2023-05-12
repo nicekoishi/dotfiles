@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+/etc/hypr/swww-daemon
+
+while true
+do
+  /etc/hypr/swww img $(find ~/Imagens/Wallpapers | shuf -n 1)
+  sleep 300
+done
