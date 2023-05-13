@@ -4,6 +4,7 @@ dconf/
 doom/
 fontconfig/
 gtk-3.0/
+gtk-4.0/
 libfm/
 libreoffice/
 lxqt/
@@ -13,7 +14,6 @@ systemd/
 pcmanfm-qt/
 Mozilla/
 environment.d/
-gtk-4.0/
 
 zsh/.zcompdump
 zsh/.zsh_history
