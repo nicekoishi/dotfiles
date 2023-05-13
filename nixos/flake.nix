@@ -26,13 +26,14 @@
         modules = [
           ./configuration.nix
 
-	  hosts.nixosModule
-	  {
+	        hosts.nixosModule
+	        {
             networking.stevenBlackHosts = {
               blockGambling = true;
-	      blockPorn = true;
-	    };
-	  }
+	            blockPorn = true;
+	          };
+	        }
+
           hyprland.nixosModules.default
           {
             programs.hyprland.enable = true;
@@ -40,7 +41,7 @@
           }
           #...
         ];
-	specialArgs.inputs = inputs;
+	      specialArgs.inputs = inputs;
       };
     };
   };
