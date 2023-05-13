@@ -6,6 +6,7 @@
     isNormalUser = true;
     extraGroups = [
       "wheel"
+      "nicekoishi"
       "sys"
       "log"
       "floppy"

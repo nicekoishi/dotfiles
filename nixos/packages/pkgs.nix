@@ -6,6 +6,7 @@
     btop
     firefox
     git
+    libsForQt5.kdenlive
     kitty
     libreoffice-fresh
     lxqt.lxqt-archiver

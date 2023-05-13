@@ -11,6 +11,7 @@ nvtop/
 pulse/
 systemd/
 pcmanfm-qt/
+Mozilla/
 
 zsh/.zcompdump
 zsh/.zsh_history

@@ -34,6 +34,7 @@
       "original": {
         "owner": "nix-community",
         "repo": "emacs-overlay",
+        "rev": "1e922fda2d7f6e29844ea215b7e4e110ba6ee4bf",
         "type": "github"
       }
     },
