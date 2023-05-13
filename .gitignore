@@ -12,6 +12,8 @@ pulse/
 systemd/
 pcmanfm-qt/
 Mozilla/
+environment.d/
+gtk-4.0/
 
 zsh/.zcompdump
 zsh/.zsh_history
