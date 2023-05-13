@@ -13,6 +13,10 @@
 
   environment.sessionVariables = rec {
     GBM_BACKEND = "nvidia-drm";
+    __GLX_VENDOR_LIBRARY_NAME="nvidia";
+
+    GTK_THEME="Catppuccin-Macchiato-Standard-Teal-Dark";
+    THEME_DIR="$HOME/.themes";
 
     QT_QPA_PLATFORM = "wayland";
     QT_QPA_PLATFORMTHEME = "qt5ct";
@@ -45,6 +49,7 @@
     cliphist
     clang
     coreutils
+    cmake
     fd
     wl-clipboard
     libva-utils
@@ -53,11 +58,12 @@
     killall
     wget
     xdg-user-dirs
+    unzip
+    zip
     polkit_gnome
     
     libsForQt5.qt5ct
     papirus-icon-theme
-    catppuccin-gtk
   ];
 
   services.greetd = {
