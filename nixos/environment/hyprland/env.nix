@@ -41,9 +41,14 @@
   environment.systemPackages = with pkgs; [
     xdg-utils
     swaynotificationcenter
+    swww
     cliphist
+    clang
+    coreutils
+    fd
     wl-clipboard
     libva-utils
+    ripgrep
     playerctl
     killall
     wget
