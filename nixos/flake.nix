@@ -3,6 +3,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
     anyrun.url = "github:Kirottu/anyrun";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
     hosts.url = "github:StevenBlack/hosts";
   };
 
@@ -10,11 +11,15 @@
     nixpkgs,
     hyprland,
     anyrun,
+    emacs-overlay,
     hosts,
     self,
     ...}: {
     
-    nixpkgs.overlays = [ (import self.inputs.anyrun) ];
+    nixpkgs.overlays = [ 
+    (import self.inputs.anyrun)
+    (import self.inputs.emacs-overlay)
+    ];
 
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {

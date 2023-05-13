@@ -1,6 +1,12 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
+  ## Overlays
+  imports = [
+    ../../overlays/anyrun.nix
+    ../../overlays/emacs-overlay.nix
+  ];
+
   services.dbus.enable = true;
   services.gvfs.enable = true;
   security.polkit.enable = true;
@@ -32,23 +38,21 @@
     ZDOTDIR = "$HOME/.config/zsh";
   };
 
-  environment.systemPackages = [
-    pkgs.xdg-utils
-    pkgs.swaynotificationcenter
-    pkgs.cliphist
-    pkgs.wl-clipboard
-    pkgs.libva-utils
-    pkgs.playerctl
-    pkgs.killall
-    pkgs.wget
-    pkgs.xdg-user-dirs
-    pkgs.polkit_gnome
-
-    pkgs.libsForQt5.qt5ct
-    pkgs.papirus-icon-theme
-    pkgs.catppuccin-gtk
-
-    inputs.anyrun.packages.x86_64-linux.anyrun
+  environment.systemPackages = with pkgs; [
+    xdg-utils
+    swaynotificationcenter
+    cliphist
+    wl-clipboard
+    libva-utils
+    playerctl
+    killall
+    wget
+    xdg-user-dirs
+    polkit_gnome
+    
+    libsForQt5.qt5ct
+    papirus-icon-theme
+    catppuccin-gtk
   ];
 
   services.greetd = {

@@ -10,8 +10,8 @@ lxqt/
 nvtop/
 pulse/
 systemd/
+pcmanfm-qt/
 
-pcmanfm-qt/default/recent-files.conf
 zsh/.zcompdump
 zsh/.zsh_history
 
