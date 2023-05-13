@@ -44,10 +44,24 @@
     hostName = "nixos";
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 80 443 ];
+      allowPing = true;
+      allowedTCPPorts = [ 80 443 5357 ];
+      allowedUDPPorts = [ 3702 ];
     };
   };
-  
+
+  services.samba.openFirewall = true;
+
+  # Virtual Machines
+  programs.dconf.enable = true;
+  services.spice-vdagentd.enable = true;
+  virtualisation = {
+    libvirtd = {
+      enable = true;
+    };
+    spiceUSBRedirection.enable = true;
+  };
+
   ## Printing
   services.printing = {
     enable = true;

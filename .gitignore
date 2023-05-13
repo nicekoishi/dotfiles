@@ -14,6 +14,7 @@ systemd/
 pcmanfm-qt/
 Mozilla/
 environment.d/
+obs-studio/
 
 zsh/.zcompdump
 zsh/.zsh_history

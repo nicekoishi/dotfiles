@@ -29,7 +29,7 @@
   
   users.users.nicekoishi.isNormalUser = true;
   users.users.nicekoishi.shell = pkgs.zsh;
-  
+
   fonts = {
     fontDir.enable = true;
     enableDefaultFonts = true;
@@ -39,8 +39,8 @@
     fontconfig = {
       defaultFonts = {
         serif = [ "Iosevka Nerd Font" ];
-	sansSerif = [ "Iosevka Nerd Font" ];
-	monospace = [ "Iosevka Nerd Font Mono" ];
+	      sansSerif = [ "Iosevka Nerd Font" ];
+	      monospace = [ "Iosevka Nerd Font Mono" ];
       };
     };
   };

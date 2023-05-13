@@ -1,6 +1,9 @@
 {config,pkgs,...}:
 
 {
+  imports = [
+    ../samba/smb.nix
+  ];
   ## User
   users.users.nicekoishi = {
     isNormalUser = true;
@@ -20,6 +23,8 @@
       "lp"
       "audio"
       "adm"
+      "libvirtd"
+      "kvm"
     ]; # Better be safe than sorry
   };
 

@@ -58,10 +58,13 @@
     killall
     wget
     xdg-user-dirs
+    libgsf
+    ffmpegthumbnailer
     unzip
     zip
     polkit_gnome
-    
+
+    gnome.adwaita-icon-theme
     libsForQt5.qt5ct
     papirus-icon-theme
   ];
@@ -90,10 +93,10 @@
       wantedBy = [ "default.target" ];
       serviceConfig = {
         Type = "simple";
-	ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-	Restart = "on-failure";
-	RestartSec = 1;
-	TimeoutStopSec = 10;
+	      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+	      Restart = "on-failure";
+	      RestartSec = 1;
+	      TimeoutStopSec = 10;
       };
     };
 
