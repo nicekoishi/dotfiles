@@ -4,6 +4,7 @@
   ## Bootloader
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
+    supportedFilesystems = [ "ntfs" ];
     loader.efi.canTouchEfiVariables = true;
     loader.systemd-boot = {
       enable = true;
@@ -45,8 +46,8 @@
     firewall = {
       enable = true;
       allowPing = true;
-      allowedTCPPorts = [ 80 443 5357 ];
-      allowedUDPPorts = [ 3702 ];
+      allowedTCPPorts = [ 80 443 5357 445 139 ];
+      allowedUDPPorts = [ 3702 137 138 ];
     };
   };
 

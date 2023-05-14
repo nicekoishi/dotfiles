@@ -4,7 +4,6 @@
   ## Overlays
   imports = [
     ../../overlays/anyrun.nix
-    ../../overlays/emacs-overlay.nix
   ];
 
   services.dbus.enable = true;
@@ -45,10 +44,12 @@
   environment.systemPackages = with pkgs; [
     xdg-utils
     swaynotificationcenter
+    busybox
     swww
     cliphist
     clang
     coreutils
+    cifs-utils
     cmake
     fd
     wl-clipboard
@@ -60,6 +61,7 @@
     xdg-user-dirs
     libgsf
     ffmpegthumbnailer
+    eww-wayland
     unzip
     zip
     polkit_gnome
@@ -71,6 +73,7 @@
 
   services.greetd = {
     enable = true;
+    package = pkgs.greetd.regreet;
     settings = rec {
       initial_session = {
         command = "Hyprland";
@@ -79,7 +82,11 @@
     default_session = initial_session;
     };
   };
-  
+  services.emacs = {
+    enable = true;
+    package = pkgs.emacs;
+  };
+
   environment.etc = {
     "hypr/swww-daemon".source = "${pkgs.swww}/bin/swww-daemon";
     "hypr/swww".source = "${pkgs.swww}/bin/swww";

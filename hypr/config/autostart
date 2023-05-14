@@ -4,6 +4,8 @@ exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESK
 exec-once = ~/.config/hypr/scripts/xdg-is-a-dummy
 exec-once = ~/.config/hypr/scripts/swww
 
+exec-once = emacs --daemon
+
 exec-once = wl-paste --type text --watch cliphist store
 exec-once = wl-paste --type image --watch cliphist store
 

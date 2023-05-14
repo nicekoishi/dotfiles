@@ -1,7 +1,6 @@
 BraveSoftware/
 btop/
 dconf/
-doom/
 fontconfig/
 gtk-3.0/
 gtk-4.0/
@@ -15,6 +14,7 @@ pcmanfm-qt/
 Mozilla/
 environment.d/
 obs-studio/
+mpv/
 
 zsh/.zcompdump
 zsh/.zsh_history

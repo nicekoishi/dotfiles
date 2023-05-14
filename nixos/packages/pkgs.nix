@@ -4,7 +4,7 @@
   environment.systemPackages = with pkgs; [
     brave
     btop
-    firefox
+    emacs
     git
     libsForQt5.kdenlive
     kitty
