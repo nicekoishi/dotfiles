@@ -2,10 +2,12 @@
 
 {
   environment.systemPackages = with pkgs; [
+    armcord
     brave
     btop
     emacs
     git
+    jq
     libsForQt5.kdenlive
     kitty
     libreoffice-fresh

@@ -3,7 +3,8 @@
 {
   ## Bootloader
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    kernelPackages = pkgs.linuxPackages_zen;
+    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     supportedFilesystems = [ "ntfs" ];
     loader.efi.canTouchEfiVariables = true;
     loader.systemd-boot = {
