@@ -63,6 +63,17 @@
     spiceUSBRedirection.enable = true;
   };
 
+  ## Disk Optimizations
+  services.btrfs = {
+    autoScrub.enable = true;
+  };
+  services.fstrim = {
+    enable = true;
+  };
+
+  ## zram because why not (needs newer kernel)
+  zramSwap.enable = true;
+
   ## Printing
   services.printing = {
     enable = true;
