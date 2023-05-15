@@ -4,6 +4,7 @@
   ## Overlays
   imports = [
     ../../overlays/anyrun.nix
+    ../../overlays/arrpc.nix
   ];
 
   services.dbus.enable = true;
@@ -53,12 +54,16 @@
     cmake
     fd
     wl-clipboard
+    libcamera
     libva-utils
     ripgrep
     playerctl
     killall
     wget
     xdg-user-dirs
+    slurp
+    qt6.qtwayland
+    libsForQt5.qt5.qtwayland
     libgsf
     ffmpegthumbnailer
     eww-wayland
@@ -82,6 +87,7 @@
     default_session = initial_session;
     };
   };
+
   services.emacs = {
     enable = true;
     package = pkgs.emacs;
@@ -94,17 +100,20 @@
     "hypr/xdg-is-a-dummy".source = "${pkgs.xdg-desktop-portal}";
   };
   systemd = {
-    user.services.polkit-gnome-authentication-agent-1 = {
-      enable = true;
-      description = "Starts polkit-gnome-authentication-agent-1";
-      wantedBy = [ "default.target" ];
-      serviceConfig = {
-        Type = "simple";
-	      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-	      Restart = "on-failure";
-	      RestartSec = 1;
-	      TimeoutStopSec = 10;
+    user.services = {
+      polkit-gnome-authentication-agent-1 = {
+        enable = true;
+        description = "Starts polkit-gnome-authentication-agent-1";
+        wantedBy = [ "default.target" ];
+        serviceConfig = {
+          Type = "simple";
+	        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+	        Restart = "on-failure";
+	        RestartSec = 1;
+	        TimeoutStopSec = 10;
+        };
       };
+      # ...
     };
 
     ##user.services.xdg-is-a-dummy = {

@@ -2,7 +2,6 @@
 
 {
   environment.systemPackages = with pkgs; [
-    armcord
     brave
     btop
     emacs
@@ -20,10 +19,11 @@
     lxqt.pcmanfm-qt
     libsForQt5.skanpage
     starship
-    virt-manager
-    virt-viewer
     spice spice-gtk
     spice-protocol
+    virt-manager
+    virt-viewer
+    webcord-vencord
     win-virtio
     win-spice
   ];

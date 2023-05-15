@@ -1,9 +1,10 @@
-{config,pkgs,...}:
+{config, lib, pkgs, inputs, ...}:
 
 {
   ## Bootloader
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
+    initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia-drm" "nvidia_uvm" ];
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     supportedFilesystems = [ "ntfs" ];
     loader.efi.canTouchEfiVariables = true;
@@ -88,8 +89,6 @@
   };
 
   ## Sound
-  sound.enable = true;
-  hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;

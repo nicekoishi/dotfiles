@@ -1,9 +1,11 @@
 exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+exec-once = systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-hyprland
+exec-once = systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-hyprland
 
 exec-once = ~/.config/hypr/scripts/xdg-is-a-dummy
 exec-once = ~/.config/hypr/scripts/swww
 
 exec-once = wl-paste --type text --watch cliphist store
 exec-once = wl-paste --type image --watch cliphist store
-
+exec-once = arRPC
