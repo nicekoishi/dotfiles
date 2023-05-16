@@ -49,10 +49,10 @@
 (defwidget nowplaying []
     (box :class "nowplaying" :orientation "h" :space-evenly false :halign "center"
          (image :class "nowplaying-image" :image-width 128 :image-height 128 :path mpris-thumb)
-         (label :class "nowplaying-title" :text nowplaying :limit-width 40)))
+         (label :class "nowplaying-title" :wrap true :justify "center" :text nowplaying-title :limit-width 36)))
 
 (defwidget volume []
-  (scale :max 101 :value volume :flipped true :orientation "vertical" :onchange "wpctl set-volume @DEFAULT_SINK@ {}%"))
+  (scale :class "scale-vol-slider" :max 101 :value volume :flipped true :orientation "vertical" :onchange "wpctl set-volume @DEFAULT_SINK@ {}%"))
 
 (defwidget active []
   (button :halign "center" :onclick "eww open --toggle music" active))
@@ -62,14 +62,17 @@
        (button :onclick "eww open --toggle volumeslider" "")
        (button :onclick "eww open --toggle calendar" time)))
 
+(deflisten nowplaying-artist :initial "akatsuki records"
+  "scripts/sys_info --nowplaying-artist")
+
+(deflisten nowplaying-title :initial "doki doki waku waku"
+  "scripts/sys_info --nowplaying-title")
+
 (defpoll active :interval "150ms"
   "scripts/sys_info --active")
 
 (defpoll mpris-thumb :interval "1s"
-  "scripts/sys_info --nowplayingalbum")
-
-(defpoll nowplaying :interval "300ms"
-  "scripts/sys_info --nowplaying")
+  "scripts/sys_info --nowplaying-album")
 
 (defpoll time :interval "1s"
   "scripts/sys_info --date")

@@ -16,7 +16,7 @@ help () {
 }
 
 get_active () {
-  hyprctl activewindow -j | rg "title" | sed -e 's/"title": //g' -e 's/\(.\{40\}\).*/\1 /' | sed -e 's/"//' -e "s/..$//"
+  hyprctl activewindow -j | rg "title" | sed -e 's/"title": //g' -e 's/\(.\{27\}\).*/\1 /' | sed -e 's/"//' -e "s/..$//" | tr -d '\n'
 }
 get_volume () {
   wpctl get-volume @DEFAULT_SINK@ | sed 's/Volume: //g' | awk '$3=100*$1' | sed 's/^......//'
@@ -28,8 +28,12 @@ get_date () {
 ##If works, it works oke
 currentPlayer=$(playerctl metadata --format {{playerName}})
 
-now_playing () {
-  playerctl metadata --format "{{artist}} - {{title}}" | sed 's/\(.\{29\}\).*/\1 /'
+now_playing_artist () {
+  playerctl metadata --format "{{ trunc(artist,16) }}" --follow
+}
+
+now_playing_title () {
+  playerctl metadata --format "{{ trunc(title,32) }}" --follow
 }
 
 fetchFirefoxAlbum () {
@@ -66,11 +70,12 @@ while true
 do
   case "$1"
     in
-    -a | --active ) get_active; shift ;;
-    -b | --nowplaying) now_playing; shift ;;
-    -c | --nowplayingalbum) now_playing_album; shift ;;
-    -d | --date) get_date; shift;;
-    -e | --volume) get_volume; shift ;;
+    --active ) get_active; shift ;;
+    --nowplaying-artist) now_playing_artist; shift ;;
+    --nowplaying-title) now_playing_title; shift ;;
+    --nowplaying-album) now_playing_album; shift ;;
+    --date) get_date; shift;;
+    --volume) get_volume; shift ;;
     -h | --help) help; shift ;;
     *)  break ;;
   esac
