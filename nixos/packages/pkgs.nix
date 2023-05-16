@@ -16,7 +16,6 @@
     mpv
     neovim
     neofetch
-    nuclear
     nvtop
     obs-studio
     lxqt.pcmanfm-qt
