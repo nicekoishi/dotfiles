@@ -37,6 +37,18 @@
 (defwidget bar []
   (centerbox :orientation "h" (workspaces)(active)(side)))
 
+(defwidget nowplaying []
+  (box :class "nowplaying-box"
+   (image :class "nowplaying-img" :halign "center" :image-width 128 :path nowplaying-thumb)
+   (box :class "nowplaying-box-info" :orientation "v"
+        (box :class "nowplaying-info" :halign "start" nowplaying-info)
+        (box :class "boiler-2" :halign "center"
+             (button :onclick "playerctl previous" :halign "start" "󰒮")
+             (button :onclick "playerctl play-pause" :halign "center" nowplaying-state)
+             (button :onclick "playerctl next" :halign "end" "󰒭"))
+        (scale :class "progress-bar" :onchange "playerctl position {}%" :value nowplaying-time))))
+
+
 (defwidget workspaces []
   (box :class "workspaces" :orientation "h" :space-evenly true :halign "start" :spacing 10
        (button :onclick "hyprctl dispatch workspace 1" "www")
@@ -45,11 +57,6 @@
        (button :onclick "hyprctl dispatch workspace 4" "spot")
        (button :onclick "hyprctl dispatch workspace 5" "game")
        (button :onclick "hyprctl dispatch workspace 6" "vbox")))
-
-(defwidget nowplaying []
-    (box :class "nowplaying" :orientation "h" :space-evenly false :halign "center"
-         (image :class "nowplaying-image" :image-width 128 :image-height 128 :path mpris-thumb)
-         (label :class "nowplaying-title" :wrap true :justify "center" :text nowplaying-title :limit-width 36)))
 
 (defwidget volume []
   (scale :class "scale-vol-slider" :max 101 :value volume :flipped true :orientation "vertical" :onchange "wpctl set-volume @DEFAULT_SINK@ {}%"))
@@ -62,16 +69,19 @@
        (button :onclick "eww open --toggle volumeslider" "")
        (button :onclick "eww open --toggle calendar" time)))
 
-(deflisten nowplaying-artist :initial "akatsuki records"
-  "scripts/sys_info --nowplaying-artist")
+(defpoll nowplaying-state :interval "500s"
+  "scripts/sys_info --nowplaying-state")
 
-(deflisten nowplaying-title :initial "doki doki waku waku"
-  "scripts/sys_info --nowplaying-title")
+(defpoll nowplaying-info :interval "1s"
+  "scripts/sys_info --nowplaying-info")
+
+(defpoll nowplaying-time :interval "835ms"
+  "scripts/sys_info --nowplaying-time")
 
 (defpoll active :interval "150ms"
   "scripts/sys_info --active")
 
-(defpoll mpris-thumb :interval "1s"
+(defpoll nowplaying-thumb :interval "1s"
   "scripts/sys_info --nowplaying-album")
 
 (defpoll time :interval "1s"

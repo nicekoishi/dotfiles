@@ -32,7 +32,7 @@
 
     XCURSOR_SIZE = "16";
 
-    MOZ_ENABLE_WAYLAND="1";
+    NIXOS_OZONE_WL = "1";
 
     LIBSEAT_BACKEND = "logind";
     LIBVA_DRIVER_NAME = "nvidia";
@@ -66,6 +66,8 @@
     libsForQt5.qt5.qtwayland
     libgsf
     ffmpegthumbnailer
+    egl-wayland
+    mesa
     eww-wayland
     unzip
     zip

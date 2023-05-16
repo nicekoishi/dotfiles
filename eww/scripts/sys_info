@@ -28,12 +28,32 @@ get_date () {
 ##If works, it works oke
 currentPlayer=$(playerctl metadata --format {{playerName}})
 
-now_playing_artist () {
-  playerctl metadata --format "{{ trunc(artist,16) }}" --follow
+now_playing_info () {
+  artist=$(playerctl metadata --format "{{ trunc(artist,16) }}")
+  title=$(playerctl metadata --format "{{ trunc(title,21) }}")
+
+  echo -e "$artist\n$title"
 }
 
-now_playing_title () {
-  playerctl metadata --format "{{ trunc(title,32) }}" --follow
+now_playing_time () {
+  position=$(playerctl metadata --format '{{duration(position)}}')
+  duration=$(playerctl metadata --format '{{duration(mpris:length)}}')
+
+  pos_sec=$(date -u -d "1970-01-01 $position" +%s)
+  dur_sec=$(date -u -d "1970-01-01 $duration" +%s)
+  percentage=$(( (pos_sec * 100) / dur_sec ))
+
+  echo "$percentage"
+}
+
+now_playing_state () {
+  status=$(playerctl status)
+
+  if [[ $status == Playing ]]; then
+    echo -e '\uf04b'
+  else
+    echo -e '\uf04c'
+  fi
 }
 
 fetchFirefoxAlbum () {
@@ -71,8 +91,9 @@ do
   case "$1"
     in
     --active ) get_active; shift ;;
-    --nowplaying-artist) now_playing_artist; shift ;;
-    --nowplaying-title) now_playing_title; shift ;;
+    --nowplaying-info) now_playing_info; shift ;;
+    --nowplaying-state) now_playing_state; shift ;;
+    --nowplaying-time) now_playing_time; shift ;;
     --nowplaying-album) now_playing_album; shift ;;
     --date) get_date; shift;;
     --volume) get_volume; shift ;;
