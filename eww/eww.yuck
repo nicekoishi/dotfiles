@@ -5,7 +5,74 @@
     :exclusive "true"
     :focusable "false"
     :namespace "eww-bar"
-  active)
+  (bar))
+
+(defwindow calendar
+    :monitor 0
+    :geometry (geometry :x "0%" :y "0px" :width "20%" :height "96px" :anchor "top right")
+    :stacking "overlay"
+    :exclusive "false"
+    :focuseable "true"
+    :namespace "eww-calendar"
+  (calendar))
+
+(defwindow volumeslider
+    :monitor 0
+    :geometry (geometry :x "88%" :y "0px" :width "1%" :height "16%")
+    :stacking "overlay"
+    :exclusive "false"
+    :focuseable "true"
+    :namespace "eww-volume-slider"
+  (volume))
+
+(defwindow music
+    :monitor 0
+    :geometry (geometry :x "0%" :y "0%" :width "24%" :height "16%" :anchor "top center")
+    :stacking "overlay"
+    :exclusive "false"
+    :focuseable "true"
+    :namespace "eww-music"
+  (nowplaying))
+
+(defwidget bar []
+  (centerbox :orientation "h" (workspaces)(active)(side)))
+
+(defwidget workspaces []
+  (box :class "workspaces" :orientation "h" :space-evenly true :halign "start" :spacing 10
+       (button :onclick "hyprctl dispatch workspace 1" "www")
+       (button :onclick "hyprctl dispatch workspace 2" "sys")
+       (button :onclick "hyprctl dispatch workspace 3" "chat")
+       (button :onclick "hyprctl dispatch workspace 4" "spot")
+       (button :onclick "hyprctl dispatch workspace 5" "game")
+       (button :onclick "hyprctl dispatch workspace 6" "vbox")))
+
+(defwidget nowplaying []
+    (box :class "nowplaying" :orientation "h" :space-evenly false :halign "center"
+         (image :class "nowplaying-image" :image-width 128 :image-height 128 :path mpris-thumb)
+         (label :class "nowplaying-title" :text nowplaying :limit-width 40)))
+
+(defwidget volume []
+  (scale :max 101 :value volume :flipped true :orientation "vertical" :onchange "wpctl set-volume @DEFAULT_SINK@ {}%"))
+
+(defwidget active []
+  (button :halign "center" :onclick "eww open --toggle music" active))
+
+(defwidget side []
+  (box :class "time" :orientation "h" :space-evenly true :halign "end" :spacing 10
+       (button :onclick "eww open --toggle volumeslider" "")
+       (button :onclick "eww open --toggle calendar" time)))
 
 (defpoll active :interval "150ms"
-  "scripts/active.sh")
+  "scripts/sys_info --active")
+
+(defpoll mpris-thumb :interval "1s"
+  "scripts/sys_info --nowplayingalbum")
+
+(defpoll nowplaying :interval "300ms"
+  "scripts/sys_info --nowplaying")
+
+(defpoll time :interval "1s"
+  "scripts/sys_info --date")
+
+(defpoll volume :interval "150ms"
+  "scripts/sys_info --volume")

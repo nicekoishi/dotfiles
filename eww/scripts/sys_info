@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+
+##Bash script to get basic system information (i know eww have some these but im doing it anyway)
+
+help () {
+  echo "
+  Usage: sys_info [--active | --nowplaying]
+
+    -a | --active               shows title of current active window, truncates to 40 characters, hyprland specific
+    -b | --nowplaying           shows playerctl info, artist - title
+    -c | --nowplayingalbum      it's just uname -r, nothing fancy
+    -d | --date                 fr its just date, but different ex: 14:21 May 10, 2020
+    -e | --volume               wpctl get-volume with sed and awk to print 0-100 value
+    -h | --help                 this is a cry for help
+  "
+}
+
+get_active () {
+  hyprctl activewindow -j | rg "title" | sed -e 's/"title": //g' -e 's/\(.\{40\}\).*/\1 /' | sed -e 's/"//' -e "s/..$//"
+}
+get_volume () {
+  wpctl get-volume @DEFAULT_SINK@ | sed 's/Volume: //g' | awk '$3=100*$1' | sed 's/^......//'
+}
+get_date () {
+  date '+%H:%M %b %d, %Y'
+}
+
+##If works, it works oke
+currentPlayer=$(playerctl metadata --format {{playerName}})
+
+now_playing () {
+  playerctl metadata --format "{{artist}} - {{title}}" | sed 's/\(.\{29\}\).*/\1 /'
+}
+
+fetchFirefoxAlbum () {
+  firefoxPath=$(find ~/.mozilla/firefox/firefox-mpris/*)
+  echo $firefoxPath
+}
+
+fetchAlbum () {
+  currentAlbum=$(playerctl metadata --format {{album}})
+  currentAlbumUrl=$(playerctl metadata --format {{mpris:artUrl}})
+  albumPath="/tmp/tmp.playerctl-is-a-dummy/$currentAlbum"
+  if [[ -f $albumPath ]]; then
+     echo $albumPath
+  else
+    mkdir -p /tmp/tmp.playerctl-is-a-dummy && find /tmp/tmp.playerctl-is-a-dummy -mindepth 1 -delete
+    curl -o "$albumPath" "$currentAlbumUrl"
+    echo $albumPath
+  fi
+}
+
+now_playing_album () {
+  if [[ $currentPlayer == firefox ]]; then
+    fetchFirefoxAlbum
+  else
+    fetchAlbum
+  fi
+}
+
+if [[ $# -eq 0 ]]; then
+  help
+fi
+
+while true
+do
+  case "$1"
+    in
+    -a | --active ) get_active; shift ;;
+    -b | --nowplaying) now_playing; shift ;;
+    -c | --nowplayingalbum) now_playing_album; shift ;;
+    -d | --date) get_date; shift;;
+    -e | --volume) get_volume; shift ;;
+    -h | --help) help; shift ;;
+    *)  break ;;
+  esac
+done

@@ -16,6 +16,7 @@ environment.d/
 obs-studio/
 mpv/
 WebCord/
+spotify/
 
 zsh/.zcompdump
 zsh/.zsh_history
@@ -24,3 +25,4 @@ zsh/.zsh_history
 /skanpagerc
 /user-dirs.locale
 /user-dirs.dirs
+/mimeapps.list

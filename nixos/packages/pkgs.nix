@@ -5,6 +5,8 @@
     brave
     btop
     emacs
+    ffmpeg
+    firefox
     git
     jq
     libsForQt5.kdenlive
@@ -14,11 +16,14 @@
     mpv
     neovim
     neofetch
+    nuclear
     nvtop
     obs-studio
     lxqt.pcmanfm-qt
+    python3Full
     libsForQt5.skanpage
     starship
+    spotify
     spice spice-gtk
     spice-protocol
     virt-manager
