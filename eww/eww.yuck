@@ -16,15 +16,6 @@
     :namespace "eww-calendar"
   (calendar))
 
-(defwindow volumeslider
-    :monitor 0
-    :geometry (geometry :x "88%" :y "0px" :width "1%" :height "16%")
-    :stacking "overlay"
-    :exclusive "false"
-    :focuseable "true"
-    :namespace "eww-volume-slider"
-  (volume))
-
 (defwindow music
     :monitor 0
     :geometry (geometry :x "0%" :y "0%" :width "24%" :height "16%" :anchor "top center")
@@ -41,12 +32,14 @@
   (box :class "nowplaying-box"
    (image :class "nowplaying-img" :halign "center" :image-width 128 :path nowplaying-thumb)
    (box :class "nowplaying-box-info" :orientation "v"
-        (box :class "nowplaying-info" :halign "start" nowplaying-info)
+        (transform :translate-y "16%"
+                   (box :class "nowplaying-info" :halign "start" nowplaying-info))
         (box :class "boiler-2" :halign "center"
              (button :onclick "playerctl previous" :halign "start" "󰒮")
              (button :onclick "playerctl play-pause" :halign "center" nowplaying-state)
              (button :onclick "playerctl next" :halign "end" "󰒭"))
-        (scale :class "progress-bar" :onchange "playerctl position {}%" :value nowplaying-time))))
+        (transform :translate-x "1%" :translate-y "-10%"
+                   (scale :class "now-playing-progress" :value nowplaying-info)))))
 
 
 (defwidget workspaces []
@@ -58,16 +51,16 @@
        (button :onclick "hyprctl dispatch workspace 5" "game")
        (button :onclick "hyprctl dispatch workspace 6" "vbox")))
 
-(defwidget volume []
-  (scale :class "scale-vol-slider" :max 101 :value volume :flipped true :orientation "vertical" :onchange "wpctl set-volume @DEFAULT_SINK@ {}%"))
-
 (defwidget active []
   (button :halign "center" :onclick "eww open --toggle music" active))
 
 (defwidget side []
-  (box :class "time" :orientation "h" :space-evenly true :halign "end" :spacing 10
-       (button :onclick "eww open --toggle volumeslider" "")
-       (button :onclick "eww open --toggle calendar" time)))
+  (box :class "side-widgets" :orientation "h" :space-evenly true :halign "end"
+       (box :class "volume-slider-box" :orientation "h" :space-evenly false :halign "end"
+            (eventbox :class "eventbox-volume-slider" :onscroll "scripts/sys_info {}"
+                      (button :class "volume-slider-button" volume)))
+       (box :class "clock-side" :orientation "h" :space-evenly false :halign "end"
+            (button :class "clock-content" :onclick "eww open --toggle calendar" time))))
 
 (defpoll nowplaying-state :interval "500s"
   "scripts/sys_info --nowplaying-state")

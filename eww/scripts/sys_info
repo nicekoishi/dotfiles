@@ -25,6 +25,14 @@ get_date () {
   date '+%H:%M %b %d, %Y'
 }
 
+up () {
+  eval "wpctl set-volume @DEFAULT_SINK@ 5%+"
+}
+
+down () {
+  eval "wpctl set-volume @DEFAULT_SINK@ 5%-"
+}
+
 ##If works, it works oke
 currentPlayer=$(playerctl metadata --format {{playerName}})
 
@@ -36,12 +44,10 @@ now_playing_info () {
 }
 
 now_playing_time () {
-  position=$(playerctl metadata --format '{{duration(position)}}')
-  duration=$(playerctl metadata --format '{{duration(mpris:length)}}')
+  position=$(playerctl metadata --format {{position}})
+  duration=$(playerctl metadata --format {{mpris:length}})
 
-  pos_sec=$(date -u -d "1970-01-01 $position" +%s)
-  dur_sec=$(date -u -d "1970-01-01 $duration" +%s)
-  percentage=$(( (pos_sec * 100) / dur_sec ))
+  percentage=$((position * 100 / duration))
 
   echo "$percentage"
 }
@@ -74,12 +80,53 @@ fetchAlbum () {
   fi
 }
 
+fetchPlaceholder() {
+  placeholder="/tmp/tmp.playerctl-is-a-dummy/placeholder.png"
+  dokidokiwakuwaku="https://img.youtube.com/vi/RtTYQuO1j6w/mqdefault.jpg" ## Doki Doki Waku Waku Thumbnail at 320x120
+
+  if [[ -f $placeholder ]]; then
+    echo $placeholder
+  else
+    curl -o "$placeholder" "$dokidokiwakuwaku"
+    echo "$placeholder"
+  fi
+}
+
 now_playing_album () {
   if [[ $currentPlayer == firefox ]]; then
     fetchFirefoxAlbum
+  elif [[ $currentPlayer == brave ]]; then
+    fetchPlaceholder
   else
     fetchAlbum
   fi
+}
+
+network_status () {
+  connected=false
+  default=$(ip route show default)
+  interface=$(echo "$default" | grep -oP 'dev \K\S+')
+
+  while true; do
+    # Ping a known server to check network connectivity
+    ping -c 1 gnu.org >/dev/null 2>&1
+
+    # Check the exit status of the ping command
+    if [ $? -eq 0 ]; then
+      if [ "$connected" = false ]; then
+        echo -e "󰖟$interface"
+        connected=true
+      fi
+    else
+      if [ "$connected" = true ]; then
+        echo "󰪎$interface"
+        connected=false
+      fi
+    fi
+
+    # Sleep for a specific interval before checking again
+    sleep 5
+  done
 }
 
 if [[ $# -eq 0 ]]; then
@@ -97,6 +144,8 @@ do
     --nowplaying-album) now_playing_album; shift ;;
     --date) get_date; shift;;
     --volume) get_volume; shift ;;
+    up) up; shift;;
+    down) down; shift;;
     -h | --help) help; shift ;;
     *)  break ;;
   esac
