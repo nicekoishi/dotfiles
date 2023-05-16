@@ -36,11 +36,23 @@
                    (box :class "nowplaying-info" :halign "start" nowplaying-info))
         (box :class "boiler-2" :halign "center"
              (button :onclick "playerctl previous" :halign "start" "󰒮")
-             (button :onclick "playerctl play-pause" :halign "center" nowplaying-state)
+             (button :onclick "playerctl play-pause" :halign "center" (playpause))
              (button :onclick "playerctl next" :halign "end" "󰒭"))
-        (transform :translate-x "1%" :translate-y "-10%"
-                   (scale :class "now-playing-progress" :value nowplaying-info)))))
+        (transform :translate-x "1%" :translate-y "-55%"
+                   (progress :class "now-playing-progress" :value nowplaying-info)))))
 
+(defwidget volumeinfo []
+  (box :class "volume-info"
+       (label :text "󰋎 ")
+       (label :text volume)))
+
+(defwidget micinfo []
+  (box :class "micinfo"
+       (label :text " ")
+       (label :text volumeMic)))
+
+(defwidget playpause []
+  (label :text "󰐎"))
 
 (defwidget workspaces []
   (box :class "workspaces" :orientation "h" :space-evenly true :halign "start" :spacing 10
@@ -56,14 +68,13 @@
 
 (defwidget side []
   (box :class "side-widgets" :orientation "h" :space-evenly true :halign "end"
-       (box :class "volume-slider-box" :orientation "h" :space-evenly false :halign "end"
-            (eventbox :class "eventbox-volume-slider" :onscroll "scripts/sys_info {}"
-                      (button :class "volume-slider-button" volume)))
+       (box :class "media-slider-box" :orientation "h" :space-evenly false :halign "end"
+            (eventbox :class "eventbox-mic-slider" :onscroll "scripts/sys_info mic{}"
+                      (button :class "mic-slider-button" :onclick "wpctl set-" (micinfo)))
+            (eventbox :class "eventbox-volume-slider" :onscroll "scripts/sys_info vol{}"
+                      (button :class "volume-slider-button" (volumeinfo))))
        (box :class "clock-side" :orientation "h" :space-evenly false :halign "end"
             (button :class "clock-content" :onclick "eww open --toggle calendar" time))))
-
-(defpoll nowplaying-state :interval "500s"
-  "scripts/sys_info --nowplaying-state")
 
 (defpoll nowplaying-info :interval "1s"
   "scripts/sys_info --nowplaying-info")
@@ -82,3 +93,6 @@
 
 (defpoll volume :interval "150ms"
   "scripts/sys_info --volume")
+
+(defpoll volumeMic :interval "150ms"
+  "scripts/sys_info --microphone")
