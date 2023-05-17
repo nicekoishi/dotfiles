@@ -11,6 +11,7 @@
 (setq doom-theme 'catppuccin)
 (setq catppuccin-flavor 'macchiato)
 
+;; Clipboard was being funny
 (when (getenv "WAYLAND_DISPLAY")
   (setq wl-copy-p nil
         interprogram-cut-function (lambda (text)
@@ -21,8 +22,11 @@
         interprogram-paste-function (lambda ()
                                       (unless (and wl-copy-p (process-live-p wl-copy-p))
                                         (shell-command-to-string "wl-paste -n | tr -d '\n'")))))
+
 (setq auto-save-default t)
 (editorconfig-mode 1)
+
+(doom/set-frame-opacity 88)
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;

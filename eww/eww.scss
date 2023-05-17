@@ -1,10 +1,12 @@
+$dark-background-color: rgba(36,39,58,0.22);
+
 *{
   all: unset;
   font-family: "Iosevka Nerd Font";
 }
 
 .bar {
-  background-color: rgba(36, 39, 58, 0.22);
+  background-color: $dark-background-color;
 }
 
 .workspaces {
@@ -55,12 +57,12 @@
 }
 
 .now-playing-progress {
-  margin-left: -21px;
+  margin-left: -32px;
 }
 
 .now-playing-progress scale trough highlight {
   all: unset;
-  background-color: #B48EAD;
+  background-color: rgba(139, 213, 202, 1);
   border-radius: 8px;
 }
 
@@ -76,14 +78,16 @@
 .nowplaying-title {
   margin-bottom: -36px;
   margin-left: -14px;
+  font-weight: bolder;
 }
 
 .nowplaying-artist {
   margin-left: -14px;
+  font-weight: 300;
 }
 
 .media-controls {
-  margin-left: -32px;
+  margin-left: -36px;
   font-size: 24px;
 }
 

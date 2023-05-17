@@ -7,6 +7,7 @@
     emacs
     ffmpeg
     firefox
+    gimp
     git
     libsForQt5.kdenlive
     kitty
