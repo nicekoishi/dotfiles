@@ -72,11 +72,16 @@ mic_down () {
 ##If works, it works oke
 currentPlayer=$(playerctl metadata --format {{playerName}})
 
-now_playing_info () {
+now_playing_artist () {
   local artist=$(playerctl metadata --format "{{ trunc(artist,16) }}")
+
+  echo -e "$artist"
+}
+
+now_playing_title () {
   local title=$(playerctl metadata --format "{{ trunc(title,21) }}")
 
-  echo -e "$artist\n$title"
+  echo -e "$title"
 }
 
 now_playing_time () {
@@ -128,6 +133,18 @@ now_playing_album () {
   fi
 }
 
+now_playing_status () {
+  local status=$(playerctl metadata --format {{status}})
+
+  if [[ $status == "Playing" ]];then
+     echo -e "\uf04b"
+  elif [[ $status == "Paused" ]];then
+     echo -e "\uead1"
+  else
+    echo -e "\uf04d"
+  fi
+}
+
 network_status () {
   local connected=false
   local default=$(ip route show default)
@@ -164,9 +181,11 @@ do
   case "$1"
     in
     --active ) get_active; shift ;;
-    --nowplaying-info) now_playing_info; shift ;;
+    --nowplaying-artist) now_playing_artist; shift ;;
+    --nowplaying-title) now_playing_title; shift ;;
     --nowplaying-time) now_playing_time; shift ;;
     --nowplaying-album) now_playing_album; shift ;;
+    --playerstatus) now_playing_status; shift ;;
     --date) get_date; shift;;
     --volume) get_volume; shift ;;
     --microphone) get_microphone; shift ;;

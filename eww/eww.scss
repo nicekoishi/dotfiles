@@ -1,0 +1,100 @@
+*{
+  all: unset;
+  font-family: "Iosevka Nerd Font";
+}
+
+.bar {
+  background-color: rgba(36, 39, 58, 0.22);
+}
+
+.workspaces {
+  background-color: rgba(1,1,1,1);
+  background-size: 200%;
+  font-size: 14px;
+}
+
+.widget-center {
+  background-size: 200%;
+  font-size: 18px;
+}
+
+.side-widgets {
+  font-size: 16px;
+  margin-left: 12px;
+  margin-right: 12px;
+}
+
+.clock-side {
+  margin-right: -4px;
+}
+
+.volume-info, .micinfo {
+  min-width: 72px;
+}
+
+.mic-num, .mic-icon, .vol-num, .vol-icon {
+  margin-right: -12px;
+}
+
+.mic-icon {
+  margin-right: -27px;
+}
+
+.nowplaying-box {
+  background-color: rgba(36, 39, 58, 0.88);
+  border-radius: 4%/8%;
+}
+
+.nowplaying-img {
+  background-size: 128px;
+  min-width: 128px;
+  min-height: 128px;
+  margin: 16px;
+  padding-left: 16px;
+  border-radius: 5%/8%;
+}
+
+.now-playing-progress {
+  margin-left: -21px;
+}
+
+.now-playing-progress scale trough highlight {
+  all: unset;
+  background-color: #B48EAD;
+  border-radius: 8px;
+}
+
+.now-playing-progress scale trough {
+  all: unset;
+  background-color: #3A404C;
+  border-radius: 8px;
+  min-height: 12px;
+  min-width: 196px;
+  margin: 0px 0px 0px 0px;
+}
+
+.nowplaying-title {
+  margin-bottom: -36px;
+  margin-left: -14px;
+}
+
+.nowplaying-artist {
+  margin-left: -14px;
+}
+
+.media-controls {
+  margin-left: -32px;
+  font-size: 24px;
+}
+
+/*.media-previous-button, .media-previous {
+  background-color: #FF0000;
+}
+
+.media-next-button, .media-next {
+  background-color: #FF00FF;
+}
+
+.media-play-pause-button, .media-play-pause {
+  background-color: #00FF00;
+}

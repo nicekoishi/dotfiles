@@ -8,7 +8,6 @@
     ffmpeg
     firefox
     git
-    jq
     libsForQt5.kdenlive
     kitty
     libreoffice-fresh

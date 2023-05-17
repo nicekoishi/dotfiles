@@ -14,45 +14,47 @@
     :exclusive "false"
     :focuseable "true"
     :namespace "eww-calendar"
-  (calendar))
+  (ewwcalendar))
 
 (defwindow music
     :monitor 0
-    :geometry (geometry :x "0%" :y "0%" :width "24%" :height "16%" :anchor "top center")
+    :geometry (geometry :x "0%" :y "4px" :width "21%" :height "16%" :anchor "top center")
     :stacking "overlay"
     :exclusive "false"
     :focuseable "true"
     :namespace "eww-music"
   (nowplaying))
 
+(defwidget ewwcalendar []
+  (calendar :class "ewwcalendar"))
+
 (defwidget bar []
-  (centerbox :orientation "h" (workspaces)(active)(side)))
+  (centerbox :class "bar" :orientation "h" (workspaces)(active)(side)))
 
 (defwidget nowplaying []
   (box :class "nowplaying-box"
-   (image :class "nowplaying-img" :halign "center" :image-width 128 :path nowplaying-thumb)
+   (box :class "nowplaying-img" :halign "center" :style "background-image: url('${nowplaying-thumb}')")
    (box :class "nowplaying-box-info" :orientation "v"
-        (transform :translate-y "16%"
-                   (box :class "nowplaying-info" :halign "start" nowplaying-info))
-        (box :class "boiler-2" :halign "center"
-             (button :onclick "playerctl previous" :halign "start" "󰒮")
-             (button :onclick "playerctl play-pause" :halign "center" (playpause))
-             (button :onclick "playerctl next" :halign "end" "󰒭"))
-        (transform :translate-x "1%" :translate-y "-55%"
-                   (progress :class "now-playing-progress" :value nowplaying-info)))))
+        (box :class "nowplaying-title" :halign "start" nowplaying-title)
+        (box :class "nowplaying-artist" :halign "start" nowplaying-artist)
+        (box :class "media-controls" :halign "center" :orientation "h" :spacing 16 :space-evenly false
+             (button :class "media-previous-button" :onclick "playerctl previous" :halign "start" "󰒮")
+             (button :class "media-play-pause" :onclick "playerctl play-pause" :halign "center" playerstatus)
+             (button :class "media-next-button" :onclick "playerctl next" :halign "end" "󰒭"))
+        (box :class "now-playing-progress" :halign "center" :vexpand false :hexpand false
+             (scale :onchange "playerctl position {}%" :min 0 :max 101 :active true :value nowplaying-time)))))
 
 (defwidget volumeinfo []
   (box :class "volume-info"
-       (label :text "󰋎 ")
-       (label :text volume)))
+       (label :class "vol-icon" :text "󰋎 ")
+       (label :class "vol-num" :text volume)
+       (label :text "%")))
 
 (defwidget micinfo []
   (box :class "micinfo"
-       (label :text " ")
-       (label :text volumeMic)))
-
-(defwidget playpause []
-  (label :text "󰐎"))
+       (label :class "mic-icon" :text " ")
+       (label :class "mic-num" :text volumeMic)
+       (label :text "%")))
 
 (defwidget workspaces []
   (box :class "workspaces" :orientation "h" :space-evenly true :halign "start" :spacing 10
@@ -61,10 +63,10 @@
        (button :onclick "hyprctl dispatch workspace 3" "chat")
        (button :onclick "hyprctl dispatch workspace 4" "spot")
        (button :onclick "hyprctl dispatch workspace 5" "game")
-       (button :onclick "hyprctl dispatch workspace 6" "vbox")))
+       (button :onclick "hyprctl dispatch workspace 6" "vbox ")))
 
 (defwidget active []
-  (button :halign "center" :onclick "eww open --toggle music" active))
+  (button :class "widget-center" :halign "center" :onclick "eww open --toggle music" active))
 
 (defwidget side []
   (box :class "side-widgets" :orientation "h" :space-evenly true :halign "end"
@@ -76,17 +78,23 @@
        (box :class "clock-side" :orientation "h" :space-evenly false :halign "end"
             (button :class "clock-content" :onclick "eww open --toggle calendar" time))))
 
-(defpoll nowplaying-info :interval "1s"
-  "scripts/sys_info --nowplaying-info")
+(defpoll nowplaying-artist :interval "1s"
+  "scripts/sys_info --nowplaying-artist")
 
-(defpoll nowplaying-time :interval "835ms"
+(defpoll nowplaying-title :interval "1s"
+  "scripts/sys_info --nowplaying-title")
+
+(defpoll nowplaying-time :interval "150ms"
   "scripts/sys_info --nowplaying-time")
-
-(defpoll active :interval "150ms"
-  "scripts/sys_info --active")
 
 (defpoll nowplaying-thumb :interval "1s"
   "scripts/sys_info --nowplaying-album")
+
+(defpoll playerstatus :interval "500ms"
+  "scripts/sys_info --playerstatus")
+
+(defpoll active :interval "150ms"
+  "scripts/sys_info --active")
 
 (defpoll time :interval "1s"
   "scripts/sys_info --date")

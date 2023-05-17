@@ -62,6 +62,8 @@
     wget
     xdg-user-dirs
     slurp
+    grim
+    jq
     qt6.qtwayland
     libsForQt5.qt5.qtwayland
     libgsf
