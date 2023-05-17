@@ -18,7 +18,7 @@
 
 (defwindow music
     :monitor 0
-    :geometry (geometry :x "0%" :y "4px" :width "21%" :height "16%" :anchor "top center")
+    :geometry (geometry :x "0%" :y "4px" :width "20%" :height "8%" :anchor "top center")
     :stacking "overlay"
     :exclusive "false"
     :focuseable "true"

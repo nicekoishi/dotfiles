@@ -1,6 +1,10 @@
 {config,pkgs,...}:
 
 {
+  imports = [
+    ./flake-packages.nix
+  ];
+
   environment.systemPackages = with pkgs; [
     brave
     btop
@@ -9,6 +13,7 @@
     firefox
     gimp
     git
+    hyprpicker
     libsForQt5.kdenlive
     kitty
     libreoffice-fresh

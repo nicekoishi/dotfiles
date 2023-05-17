@@ -1,22 +1,35 @@
-$dark-background-color: rgba(36,39,58,0.22);
+$dark-background-color: rgba(36,39,58,0.54);
+
+$darker-dark-a: rgba(35,23,55,0.37);
+$darker-dark: rgba(35,23,55,1);
+$lighter-dark-a: rgba(80,71,106,1);
+$darker-pink-a: rgba(215,195,207,1);
+$almost-white-but-not: rgba(241,225,234,1);
+$nice-purple-a: rgba(179,182,225,1);
+$bright-green-a: rgba(238,249,235,1);
+$bright-yellow-a: rgba(252,247,235,1);
+$lighter-pink-a: rgba(244,219,214,1);
+$best-girl-accent: #66b2b2;
 
 *{
   all: unset;
   font-family: "Iosevka Nerd Font";
+  color: $bright-yellow-a;
 }
 
 .bar {
-  background-color: $dark-background-color;
+  background-color: $darker-dark-a;
 }
 
 .workspaces {
-  background-color: rgba(1,1,1,1);
   background-size: 200%;
+  border-bottom: 3px solid $best-girl-accent;
   font-size: 14px;
 }
 
 .widget-center {
   background-size: 200%;
+  font-weight: 500;
   font-size: 18px;
 }
 
@@ -35,7 +48,11 @@ $dark-background-color: rgba(36,39,58,0.22);
 }
 
 .mic-num, .mic-icon, .vol-num, .vol-icon {
-  margin-right: -12px;
+  margin-right: -16px;
+}
+
+.vol-num, .vol-icon {
+  margin-left: -8px;
 }
 
 .mic-icon {
@@ -43,32 +60,34 @@ $dark-background-color: rgba(36,39,58,0.22);
 }
 
 .nowplaying-box {
-  background-color: rgba(36, 39, 58, 0.88);
-  border-radius: 4%/8%;
+  background-color: $darker-dark;
+  border-radius: 12px;
 }
 
 .nowplaying-img {
-  background-size: 128px;
-  min-width: 128px;
-  min-height: 128px;
-  margin: 16px;
-  padding-left: 16px;
-  border-radius: 5%/8%;
+  background-size: 136px;
+  min-width: 136px;
+  min-height: 136px;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  margin-right: 16px;
+  border-radius: 6% 8%;
 }
 
 .now-playing-progress {
   margin-left: -32px;
+  margin-top: -21px;
 }
 
 .now-playing-progress scale trough highlight {
   all: unset;
-  background-color: rgba(139, 213, 202, 1);
+  background-color: $best-girl-accent;
   border-radius: 8px;
 }
 
 .now-playing-progress scale trough {
   all: unset;
-  background-color: #3A404C;
+  background-color: $lighter-dark-a;
   border-radius: 8px;
   min-height: 12px;
   min-width: 196px;
@@ -76,12 +95,13 @@ $dark-background-color: rgba(36,39,58,0.22);
 }
 
 .nowplaying-title {
-  margin-bottom: -36px;
+  margin-bottom: -21px;
   margin-left: -14px;
   font-weight: bolder;
 }
 
 .nowplaying-artist {
+  margin-top: -21px;
   margin-left: -14px;
   font-weight: 300;
 }

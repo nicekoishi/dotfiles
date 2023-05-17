@@ -1,25 +1,36 @@
 {
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     hyprland.url = "github:hyprwm/Hyprland";
-    anyrun.url = "github:Kirottu/anyrun";
-    arrpc.url = "github:notashelf/arrpc-flake";
-    hosts.url = "github:StevenBlack/hosts";
+
+    anyrun= {
+      url = "github:Kirottu/anyrun";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    arrpc = {
+      url = "github:notashelf/arrpc-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hosts = {
+      url = "github:StevenBlack/hosts";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    spicetify-nix = {
+      url = "github:the-argus/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{
     nixpkgs,
     hyprland,
-    anyrun,
-    arrpc,
+    spicetify-nix,
     hosts,
-    self,
     ...}: {
-    
-    nixpkgs.overlays = [ 
-    (import self.inputs.anyrun)
-    (import self.inputs.arrpc)
-    ];
 
     nixosConfigurations = {
       nixos = nixpkgs.lib.nixosSystem {
@@ -41,7 +52,8 @@
           }
           #...
         ];
-	      specialArgs.inputs = inputs;
+
+        specialArgs.inputs = inputs;
       };
     };
   };

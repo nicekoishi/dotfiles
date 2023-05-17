@@ -1,12 +1,6 @@
 { config, lib, pkgs, inputs, ... }:
 
 {
-  ## Overlays
-  imports = [
-    ../../overlays/anyrun.nix
-    ../../overlays/arrpc.nix
-  ];
-
   services.dbus.enable = true;
   services.gvfs.enable = true;
   security.polkit.enable = true;

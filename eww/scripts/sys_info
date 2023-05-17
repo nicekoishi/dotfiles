@@ -137,11 +137,11 @@ now_playing_status () {
   local status=$(playerctl metadata --format {{status}})
 
   if [[ $status == "Playing" ]];then
-     echo -e "\uf04b"
-  elif [[ $status == "Paused" ]];then
      echo -e "\uead1"
+  elif [[ $status == "Paused" ]];then
+     echo -e "\uf04b"
   else
-    echo -e "\uf04d"
+    echo -e "\uead1"
   fi
 }
 

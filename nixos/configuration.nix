@@ -34,6 +34,11 @@ in
   };
   nix = {
     optimise.automatic = true;
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+
   };
 
   # Some programs need SUID wrappers, can be configured further or are
