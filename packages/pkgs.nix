@@ -1,0 +1,71 @@
+{config,pkgs,...}:
+
+{
+  imports = [
+    ./flake-packages.nix
+  ];
+
+  environment.systemPackages = with pkgs; [
+    brave
+    btop
+    busybox
+    cifs-utils
+    clang
+    cliphist
+    cmake
+    coreutils
+    egl-wayland
+    emacs
+    eww-wayland
+    fd
+    ffmpeg
+    ffmpegthumbnailer
+    firefox
+    gimp
+    git
+    gnome.adwaita-icon-theme
+    grim
+    hyprpicker
+    jq
+    killall
+    kitty
+    libcamera
+    libgsf
+    libreoffice-fresh
+    libsForQt5.kdenlive
+    libsForQt5.qt5.qtwayland
+    libsForQt5.qt5ct
+    libsForQt5.skanpage
+    libva-utils
+    lxqt.lxqt-archiver
+    lxqt.pcmanfm-qt
+    mesa
+    mpv
+    neofetch
+    neovim
+    nvtop
+    obs-studio
+    papirus-icon-theme
+    playerctl
+    polkit_gnome
+    python3Full
+    qt6.qtwayland
+    ripgrep
+    slurp
+    spice spice-gtk
+    spice-protocol
+    spotify
+    starship
+    swaynotificationcenter
+    swww
+    unzip
+    virt-manager
+    virt-viewer
+    webcord-vencord
+    wget
+    wl-clipboard
+    xdg-user-dirs
+    xdg-utils
+    zip
+  ];
+}
