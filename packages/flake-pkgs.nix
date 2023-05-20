@@ -1,12 +1,8 @@
-{
-  config,
-  inputs,
-  lib,
-  pkgs,
-  ...
-}: let
+{ config, inputs, lib, pkgs, ... }:
+let
   system = "x86_64-linux";
-in {
+in
+{
   environment.systemPackages = [
     inputs.anyrun.packages.${system}.anyrun
     inputs.arrpc.packages.${system}.arrpc

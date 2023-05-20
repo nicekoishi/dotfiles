@@ -1,8 +1,6 @@
+{config,pkgs,...}:
+
 {
-  config,
-  pkgs,
-  ...
-}: {
   imports = [
     ./flake-pkgs.nix
   ];
@@ -28,8 +26,7 @@
     papirus-icon-theme
     polkit_gnome
     qt6.qtwayland
-    spice
-    spice-gtk
+    spice spice-gtk
     spice-protocol
     swww
     virt-manager

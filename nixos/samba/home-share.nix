@@ -1,9 +1,6 @@
+{ config, lib, pkgs, ... }:
+
 {
-  config,
-  lib,
-  pkgs,
-  ...
-}: {
   services.samba = {
     shares = {
       casa = {

@@ -1,8 +1,6 @@
+{ config, pkgs, ...}:
+
 {
-  config,
-  pkgs,
-  ...
-}: {
   imports = [
     ../../packages/home-pkgs.nix
 

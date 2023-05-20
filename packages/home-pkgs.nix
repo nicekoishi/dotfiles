@@ -1,10 +1,6 @@
+{ config, pkgs, inputs, lib, ... }:
+
 {
-  config,
-  pkgs,
-  inputs,
-  lib,
-  ...
-}: {
   home.packages = with pkgs; [
     alejandra
     brave
