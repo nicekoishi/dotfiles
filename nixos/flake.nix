@@ -53,7 +53,7 @@
           #...
         ];
 
-        specialArgs.inputs = inputs;
+        specialArgs = {inherit inputs;};
       };
     };
   };
