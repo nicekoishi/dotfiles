@@ -1,13 +1,15 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   gtk = {
     enable = true;
 
     font = {
       name = "Iosevka";
       size = 12;
-      package = (pkgs.nerdfonts.override { fonts = [ "Iosevka" ]; });
+      package = pkgs.nerdfonts.override {fonts = ["Iosevka"];};
     };
 
     gtk2.configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
@@ -20,7 +22,7 @@
     theme = {
       name = "Catppuccin-Macchiato-Compact-Teal-Dark";
       package = pkgs.catppuccin-gtk.override {
-        accents = [ "teal" ];
+        accents = ["teal"];
         size = "compact";
         variant = "macchiato";
       };

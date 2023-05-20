@@ -1,14 +1,15 @@
 {
   description = "The most cursed flake you'll ever see (i guess)";
-  outputs = inputs@{ self
-  , anyrun
-  , arrpc
-  , home-manager
-  , hyprland
-  , nixpkgs
-  , spicetify-nix
-  , ...}: {
-
+  outputs = inputs @ {
+    self,
+    anyrun,
+    arrpc,
+    home-manager,
+    hyprland,
+    nixpkgs,
+    spicetify-nix,
+    ...
+  }: {
     nixosConfigurations = {
       polaris = nixpkgs.lib.nixosSystem {
         modules = [
@@ -31,8 +32,8 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    
-    anyrun= {
+
+    anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -57,6 +58,4 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
 }
-

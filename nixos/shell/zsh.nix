@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     enableSyntaxHighlighting = true;
@@ -32,12 +35,13 @@
 
     shellAliases = {
       l = "exa -l";
+      ls = "exa";
       la = "exa -la";
 
       did = "systemctl --user";
       had = "doas systemctl";
     };
 
-    shellGlobalAliases = {exa = "exa --icons --git";};
+    shellGlobalAliases = {exa = "exa --icons --git --group-directories-first";};
   };
 }

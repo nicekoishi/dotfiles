@@ -1,17 +1,20 @@
-{ config, lib, pkgs, ... }:
-
 {
-  imports = [ ./hardware.nix ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [./hardware.nix];
   # no one fears it anymore
   networking.hostName = "polaris";
 
   ## Bootloader
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
-    initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
-    blacklistedKernelModules = [ "i2c_nvidia_gpu" ];
-    extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-    supportedFilesystems = [ "ntfs" ];
+    initrd.kernelModules = ["nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm"];
+    blacklistedKernelModules = ["i2c_nvidia_gpu"];
+    extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
+    supportedFilesystems = ["ntfs"];
     loader.efi.canTouchEfiVariables = true;
     loader.systemd-boot = {
       enable = true;
@@ -22,34 +25,34 @@
     plymouth = {
       enable = true;
       theme = "nixos-bgrt";
-      themePackages = [ pkgs.nixos-bgrt-plymouth ];
+      themePackages = [pkgs.nixos-bgrt-plymouth];
     };
   };
 
   ## BTRFS needs this for compression
   fileSystems = {
-    "/".options = [ "compress=zstd" "noatime" "ssd" "defaults" ];
-    "/home".options = [ "compress=zstd" "noatime" "ssd" "defaults" ];
-    "/nix".options = [ "compress=zstd" "noatime" "ssd" "defaults" ];
-    "/var/cache".options = [ "compress=zstd" "noatime" "ssd" "defaults" ];
-    "/var/log".options = [ "compress=zstd" "noatime" "ssd" "defaults" ];
-    "/var/lib/libvirt/images".options = [ "compress=zstd" "noatime" "ssd" "defaults" ];
+    "/".options = ["compress=zstd" "noatime" "ssd" "defaults"];
+    "/home".options = ["compress=zstd" "noatime" "ssd" "defaults"];
+    "/nix".options = ["compress=zstd" "noatime" "ssd" "defaults"];
+    "/var/cache".options = ["compress=zstd" "noatime" "ssd" "defaults"];
+    "/var/log".options = ["compress=zstd" "noatime" "ssd" "defaults"];
+    "/var/lib/libvirt/images".options = ["compress=zstd" "noatime" "ssd" "defaults"];
   };
 
   ## Graphics
   hardware = {
     opengl = {
       enable = true;
-      extraPackages = with pkgs; [ nvidia-vaapi-driver ];
+      extraPackages = with pkgs; [nvidia-vaapi-driver];
     };
     nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
     nvidia.modesetting.enable = true;
   };
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = ["nvidia"];
 
   ## smth smth nix flakes, forgot #TODO: try sticking some ram in my brain to expand capacity
   nix.settings = {
-    experimental-features = [" nix-command" "flakes" ];
+    experimental-features = [" nix-command" "flakes"];
     substituters = ["https://hyprland.cachix.org"];
     trusted-public-keys = ["hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="];
   };
@@ -62,7 +65,6 @@
     extraOptions = ''
       experimental-features = nix-command flakes
     '';
-
   };
 
   ## if i forgot this, it would be annoying at least

@@ -1,6 +1,8 @@
-{config,pkgs,...}:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ../samba/smb.nix
   ];
@@ -47,11 +49,13 @@
     sudo.enable = false;
     doas = {
       enable = true;
-      extraRules = [{
-        users = ["nicekoishi"];
-        keepEnv = true;
-        persist = true;
-      }];
+      extraRules = [
+        {
+          users = ["nicekoishi"];
+          keepEnv = true;
+          persist = true;
+        }
+      ];
     };
   };
 
@@ -59,13 +63,14 @@
     fontDir.enable = true;
     enableDefaultFonts = true;
     fonts = with pkgs; [
-      (nerdfonts.override { fonts = [ "Iosevka" "FiraCode" "JetBrainsMono" ]; })
+      corefonts
+      (nerdfonts.override {fonts = ["Iosevka" "FiraCode" "JetBrainsMono"];})
     ];
     fontconfig = {
       defaultFonts = {
-        serif = [ "Iosevka Nerd Font" ];
-	      sansSerif = [ "Iosevka Nerd Font" ];
-	      monospace = [ "Iosevka Nerd Font Mono" ];
+        serif = ["Iosevka Nerd Font"];
+        sansSerif = ["Iosevka Nerd Font"];
+        monospace = ["Iosevka Nerd Font Mono"];
       };
     };
   };
