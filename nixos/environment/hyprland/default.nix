@@ -5,17 +5,21 @@
   services.gvfs.enable = true;
   security.polkit.enable = true;
 
-  imports = [ ../../../packages/pkgs.nix ../../users/nicekoishi.nix ];
+  imports = [
+    ../../../packages/pkgs.nix
+    ../../users/nicekoishi.nix
+  ];
+
+  programs.hyprland = {
+    enable = true;
+    nvidiaPatches = true;
+  };
 
   environment.sessionVariables = rec {
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME="nvidia";
 
-    GTK_THEME="Catppuccin-Macchiato-Standard-Teal-Dark";
-    THEME_DIR="$HOME/.themes";
-
     QT_QPA_PLATFORM = "wayland";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
 
     XDG_SESSION_TYPE = "wayland";
@@ -34,8 +38,6 @@
     LIBVA_DRIVER_NAME = "nvidia";
 
     WLR_NO_HARDWARE_CURSORS = "1";
-
-    ZDOTDIR = "$HOME/.config/zsh";
   };
 
   services.greetd = {
@@ -77,32 +79,5 @@
       };
       # ...
     };
-
-    ##user.services.xdg-is-a-dummy = {
-    ##  enable = true;
-    ##  description = "will you your now ffs";
-    ##  after = ["default.target"];
-    ##  script = "
-    ##    sleep 1
-    ##    killall xdg-destop-portal-hyprland
-    ##    killall xdg-desktop-portal-wlr
-    ##    killall xdg-desktop-portal
-    ##    ${pkgs.xdg-desktop-portal-hyprland}/libexec/xdg-desktop-portal-hyprland
-    ##    sleep 2
-    ##    ${pkgs.xdg-desktop-portal}/lib/xdg-desktop-portal
-    ##  ";
-    ##};
-    ##user.services.swww-pretty-wallpapers = {
-    ##  description = "Wallpaper slideshow provided by swww";
-    ##  after = ["default.target"];
-    ##  script = "
-    ##    ${pkgs.swww}/bin/swww-daemon
-    ##    while true
-    ##    do
-    ##      ${pkgs.swww}/bin/swww img $(find ~/Imagens/Wallpapers | shuf -n 1)
-    ##      sleep 300
-    ##    done
-    ##  ";
-    ##};
   };
 }
