@@ -33,11 +33,12 @@
     shellAliases = {
       l = "exa -l";
       la = "exa -la";
+      ls = "exa";
 
       did = "systemctl --user";
       had = "doas systemctl";
     };
 
-    shellGlobalAliases = {exa = "exa --icons --git";};
+    shellGlobalAliases = {exa = "exa --icons --git --group-directories-first";};
   };
 }
