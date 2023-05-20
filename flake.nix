@@ -1,9 +1,37 @@
 {
+  description = "The most cursed flake you'll ever see (i guess)";
+  outputs = inputs@{ self
+  , anyrun
+  , arrpc
+  , home-manager
+  , hyprland
+  , nixpkgs
+  , spicetify-nix
+  , ...}: {
+
+    nixosConfigurations = {
+      polaris = nixpkgs.lib.nixosSystem {
+        modules = [
+          ./hosts/polaris
+          ./nixos/environment/hyprland
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.nicekoishi = import ./nixos/users/home.nix;
+          }
+          #...
+        ];
+
+        specialArgs = {inherit inputs;};
+      };
+    };
+  };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
-    hyprland.url = "github:hyprwm/Hyprland";
-
+    
     anyrun= {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -14,9 +42,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hosts = {
-      url = "github:StevenBlack/hosts";
+    home-manager = {
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hyprland = {
+      url = "github:hyprwm/hyprland";
+      #inputs.nixpkgs.follows = "nixpkgs"; dont do this, it will make the cache useless
     };
 
     spicetify-nix = {
@@ -25,40 +58,5 @@
     };
   };
 
-  outputs = inputs@{
-    nixpkgs,
-    hyprland,
-    spicetify-nix,
-    anyrun,
-    arrpc,
-    hosts,
-    ...}: {
-
-    nixosConfigurations = {
-      polaris = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./hosts/polaris
-          ./nixos/environment/hyprland
-
-	        hosts.nixosModule
-	        {
-            networking.stevenBlackHosts = {
-              blockGambling = true;
-	            blockPorn = true;
-	          };
-	        }
-
-          hyprland.nixosModules.default
-          {
-            programs.hyprland.enable = true;
-            programs.hyprland.nvidiaPatches = true;
-          }
-          #...
-        ];
-
-        specialArgs = {inherit inputs;};
-      };
-    };
-  };
 }
 
