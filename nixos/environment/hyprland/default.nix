@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, ... }:
+{ config, lib, pkgs, inputs, hyprland, ... }:
 
 {
   services.dbus.enable = true;
@@ -8,6 +8,7 @@
   imports = [
     ../../../packages/pkgs.nix
     ../../users/nicekoishi.nix
+
   ];
 
   programs.hyprland = {

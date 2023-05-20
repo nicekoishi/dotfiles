@@ -3,6 +3,7 @@
 {
   programs.zsh = {
     enable = true;
+    enableSyntaxHighlighting = true;
     enableAutosuggestions = true;
     autocd = true;
     dirHashes = {

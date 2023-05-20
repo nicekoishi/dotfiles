@@ -6,6 +6,7 @@
 
     ../home-modules/gtk.nix
     ../home-modules/qt.nix
+    #../home-modules/spicetify.nix failed attempt to make it work: 4 TODO: fix this module
 
     ../shell
   ];
