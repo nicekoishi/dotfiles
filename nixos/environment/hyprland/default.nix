@@ -8,7 +8,6 @@
   imports = [
     ../../../packages/pkgs.nix
     ../../users/nicekoishi.nix
-
   ];
 
   programs.hyprland = {
@@ -51,11 +50,6 @@
       };
     default_session = initial_session;
     };
-  };
-
-  services.emacs = {
-    enable = true;
-    package = pkgs.emacs;
   };
 
   environment.etc = {

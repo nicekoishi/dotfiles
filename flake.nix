@@ -31,7 +31,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-
+    
     anyrun= {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";

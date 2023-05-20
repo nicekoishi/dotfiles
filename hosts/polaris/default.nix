@@ -19,7 +19,11 @@
       consoleMode = "max";
     };
 
-    plymouth.enable = true;
+    plymouth = {
+      enable = true;
+      theme = "nixos-bgrt";
+      themePackages = [ pkgs.nixos-bgrt-plymouth ];
+    };
   };
 
   ## BTRFS needs this for compression

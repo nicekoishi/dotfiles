@@ -2,9 +2,9 @@
 
 {
   home.packages = with pkgs; [
+    alejandra
     brave
     coreutils
-    emacs
     fd
     gimp
     grim
