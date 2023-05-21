@@ -42,6 +42,7 @@
     opengl = {
       enable = true;
       extraPackages = with pkgs; [ nvidia-vaapi-driver ];
+      driSupport32Bit = true;
     };
     nvidia.package = config.boot.kernelPackages.nvidiaPackages.latest;
     nvidia.modesetting.enable = true;

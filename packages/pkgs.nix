@@ -22,7 +22,6 @@
     libsForQt5.qt5.qtwayland
     libva-utils
     lutris
-    lxqt.pcmanfm-qt
     mesa
     mpv
     papirus-icon-theme
@@ -33,9 +32,13 @@
     swww
     virt-manager
     virt-viewer
+    xfce.thunar
+    xfce.thunar-media-tags-plugin
+    xfce.thunar-archive-plugin
     webcord-vencord
     wget
     wineWowPackages.waylandFull
+    winetricks
     wl-clipboard
   ];
 }
