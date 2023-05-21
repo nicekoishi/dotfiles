@@ -35,6 +35,7 @@
     virt-viewer
     webcord-vencord
     wget
+    wineWowPackages.waylandFull
     wl-clipboard
   ];
 }

@@ -51,6 +51,7 @@
     hyprland.url = "github:hyprwm/hyprland";
     #inputs.nixpkgs.follows = "nixpkgs"; dont do this, it will make the cache useless
     
+    nix-gaming.url = "github:fufexan/nix-gaming";
 
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
