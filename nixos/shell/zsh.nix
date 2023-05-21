@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, ... }:
 
 {
   programs.zsh = {
@@ -34,6 +34,7 @@
       l = "exa -l";
       la = "exa -la";
       ls = "exa";
+      cls = "clear";
 
       did = "systemctl --user";
       had = "doas systemctl";

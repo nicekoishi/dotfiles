@@ -1,4 +1,4 @@
-{config,pkgs,...}:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -21,6 +21,8 @@
     libgsf
     libsForQt5.qt5.qtwayland
     libva-utils
+    lutris
+    lxqt.pcmanfm-qt
     mesa
     mpv
     papirus-icon-theme

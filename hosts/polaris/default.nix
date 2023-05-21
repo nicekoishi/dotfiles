@@ -9,6 +9,7 @@
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
     initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
+    initrd.systemd.enable = true;
     blacklistedKernelModules = [ "i2c_nvidia_gpu" ];
     extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
     supportedFilesystems = [ "ntfs" ];
