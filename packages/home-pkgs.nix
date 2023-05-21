@@ -1,10 +1,11 @@
-{ config, pkgs, inputs, lib, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = with pkgs; [
     alejandra
     brave
     coreutils
+    emacs
     fd
     gimp
     grim
@@ -16,10 +17,10 @@
     libsForQt5.kdenlive
     libsForQt5.skanpage
     lxqt.lxqt-archiver
-    lxqt.pcmanfm-qt
     mpv
     neofetch
     neovim
+    nil
     nvtop
     obs-studio
     playerctl

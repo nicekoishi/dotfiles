@@ -32,7 +32,7 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     
-    anyrun= {
+    anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -47,10 +47,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hyprland = {
-      url = "github:hyprwm/hyprland";
-      #inputs.nixpkgs.follows = "nixpkgs"; dont do this, it will make the cache useless
-    };
+    
+    hyprland.url = "github:hyprwm/hyprland";
+    #inputs.nixpkgs.follows = "nixpkgs"; dont do this, it will make the cache useless
+    
 
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";

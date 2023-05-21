@@ -1,4 +1,4 @@
-{ config, lib, pkgs, inputs, hyprland, ... }:
+{ pkgs, ... }:
 
 {
   services.dbus.enable = true;
@@ -15,7 +15,9 @@
     nvidiaPatches = true;
   };
 
-  environment.sessionVariables = rec {
+  services.emacs.enable = true;
+
+  environment.sessionVariables = {
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME="nvidia";
 

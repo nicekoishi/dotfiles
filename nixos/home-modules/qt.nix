@@ -6,7 +6,7 @@
   ];
 
   home.sessionVariables = {
-    QT_PLATFORM_PLUGIN = "qt5ct";
+    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 
 }
