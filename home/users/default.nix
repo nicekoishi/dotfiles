@@ -4,8 +4,9 @@
     ../../modules/user/qt.nix
     ../../modules/user/shell
     ../../modules/user/xdg.nix
-    ../../modules/user/stalonetray.nix
     ../../packages/home-pkgs.nix
+
+    ../config
 
     #../home-modules/spicetify.nix failed attempt to make it work: 4 TODO: fix this module
   ];
