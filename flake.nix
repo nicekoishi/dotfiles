@@ -1,37 +1,18 @@
 {
   description = "The most cursed flake you'll ever see (i guess)";
-  outputs = inputs@{ self
-  , anyrun
-  , arrpc
-  , home-manager
-  , hyprland
-  , nixpkgs
-  , spicetify-nix
-  , ...}: {
-
+  outputs = { self, ... }@inputs:{
     nixosConfigurations = {
-      polaris = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./hosts/polaris
-          ./nixos/environment/hyprland
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.nicekoishi = import ./nixos/users/home.nix;
-          }
-          #...
-        ];
-
-        specialArgs = {inherit inputs;};
-      };
+      polaris = import ./hosts/polaris inputs;
     };
   };
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-    
+
+    hyprland.url = "github:hyprwm/hyprland";
+
+    nix-gaming.url = "github:fufexan/nix-gaming";
+
     anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,11 +27,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    
-    hyprland.url = "github:hyprwm/hyprland";
-    #inputs.nixpkgs.follows = "nixpkgs"; dont do this, it will make the cache useless
-    
 
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";

@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ../samba/smb.nix
+    ../../modules/user/samba
   ];
   ## User
   users.users.nicekoishi = {

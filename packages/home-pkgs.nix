@@ -9,6 +9,7 @@
     fd
     gimp
     grim
+    gnutar
     hyprpicker
     jq
     killall
@@ -30,6 +31,7 @@
     starship
     swaynotificationcenter
     unzip
+    unrar
     webcord-vencord
     zip
   ];
