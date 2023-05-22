@@ -5,15 +5,9 @@
   services.gvfs.enable = true;
   security.polkit.enable = true;
 
-  imports = [
-    ../../../packages/pkgs.nix
-    ../../users/nicekoishi.nix
-  ];
-
-  programs.hyprland = {
-    enable = true;
-    nvidiaPatches = true;
-  };
+  #imports = [
+    # dots
+  #];
 
   services.emacs.enable = true;
 
@@ -44,7 +38,6 @@
 
   services.greetd = {
     enable = true;
-    package = pkgs.greetd.regreet;
     settings = rec {
       initial_session = {
         command = "Hyprland";
