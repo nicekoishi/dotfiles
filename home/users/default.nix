@@ -1,17 +1,17 @@
 {
   imports = [
-    ../../packages/home-pkgs.nix
-    ../../modules/user/qt.nix
     ../../modules/user/gtk.nix
+    ../../modules/user/qt.nix
     ../../modules/user/shell
+    ../../modules/user/xdg.nix
+    ../../packages/home-pkgs.nix
 
     #../home-modules/spicetify.nix failed attempt to make it work: 4 TODO: fix this module
   ];
 
   home = {
     username = "nicekoishi";
-    # FIXME: Conflicting values, if setting up from scratch uncomment this!!
-    #homeDirectory = "/home/nicekoishi";
+    homeDirectory = "/home/nicekoishi";
 
     stateVersion = "23.05";
   };
