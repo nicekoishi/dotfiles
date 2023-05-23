@@ -20,9 +20,10 @@ let
     "x-scheme-handler/unknown" = browser;
 
     "application/json" = browser;
-    "audio/mp3" = video;
     "audio/m4a" = video;
+    "audio/mp3" = video;
     "audio/wav" = video;
+    "image/jpeg" = image;
     "image/png" = image;
     "image/webp" = image;
     "text/plain" = [ "emacsclient.desktop" ];

@@ -1,12 +1,22 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 let
   homeDir = config.home.homeDirectory;
 in
 {
-  wayland.windowManager.hyprland.enable = true;
-  wayland.windowManager.hyprland.extraConfig = ''
+  xdg.configFile."hypr/hyprland.conf".text = ''
+    source = ${homeDir}/.config/hypr/macchiato.conf
     monitor=,1920x1080,0x0,1,bitdepth,8
-    source = ~/.config/hypr/themes/catppuccin-macchiato.conf
+
+    exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+    exec-once = systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-hyprland
+    exec-once = systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-hyprland
+
+    exec-once = wl-paste --type text --watch cliphist store
+    exec-once = wl-paste --type image --watch cliphist store
+    exec-once = swww init && walld init
+    exec-once = eww daemon && eww open bar
+    exec-once = arRPC
 
     input {
       kb_layout = br
@@ -78,19 +88,6 @@ in
     master {
       new_is_master = true
     }
-
-    exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
-    exec-once = systemctl --user stop pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-hyprland
-    exec-once = systemctl --user start pipewire wireplumber xdg-desktop-portal xdg-desktop-portal-hyprland
-
-    exec-once = ~/.config/hypr/scripts/xdg-is-a-dummy
-    exec-once = ~/.config/hypr/scripts/swww
-
-    exec-once = wl-paste --type text --watch cliphist store
-    exec-once = wl-paste --type image --watch cliphist store
-    exec-once = eww daemon && eww open bar
-    exec-once = arRPC
 
     # Keybinds
     $mainMod = SUPER
@@ -169,8 +166,8 @@ in
     windowrule = center, lxqt-archiver
     windowrule = center,^(thunar)$
     windowrule = float, Lxappearance
-    windowrule = float, anyrun
     windowrule = float, Viewnior
+    windowrule = float, anyrun
     windowrule = float, confirm
     windowrule = float, confirmreset
     windowrule = float, dialog
@@ -180,8 +177,8 @@ in
     windowrule = float, geeqie
     windowrule = float, lxqt-archiver
     windowrule = float, notification
-    windowrule = float, orage
     windowrule = float, splash
+    windowrule = float, thunar
     windowrule = float, title:DevTools
     windowrule = float, title:Open File
     windowrule = float, title:Salvar Arquivo
@@ -197,7 +194,7 @@ in
     windowrule = idleinhibit focus, mpv
     windowrule = idleinhibit fullscreen, brave
     windowrule = move 75 44%, title:^(Volume Control)$
-    windowrule = opacity 0.92, pcmanfm-qt
+    windowrule = opacity 0.92, thunar
     windowrule = size 800 600, title:^(Volume Control)$
 
     # fix xwayland apps

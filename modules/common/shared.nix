@@ -38,6 +38,9 @@
     extraBackends = [ pkgs.hplipWithPlugin ];
   };
 
+  programs.adb.enable = true;
+  services.tumbler.enable = true;
+
   services.avahi = {
     enable = true;
     nssmdns = true;
