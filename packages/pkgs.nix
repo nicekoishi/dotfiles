@@ -26,19 +26,20 @@
     mpv
     papirus-icon-theme
     polkit_gnome
+    qgnomeplatform-qt6
     qt6.qtwayland
     spice spice-gtk
     spice-protocol
     swww
     virt-manager
     virt-viewer
-    xfce.thunar
-    xfce.thunar-media-tags-plugin
-    xfce.thunar-archive-plugin
     webcord-vencord
     wget
     wineWowPackages.waylandFull
     winetricks
     wl-clipboard
+    xfce.thunar
+    xfce.thunar-archive-plugin
+    xfce.thunar-media-tags-plugin
   ];
 }

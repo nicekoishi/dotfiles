@@ -1,9 +1,9 @@
 {
   imports = [
     ../../modules/user/gtk.nix
-    ../../modules/user/qt.nix
     ../../modules/user/shell
     ../../modules/user/xdg.nix
+    ../../modules/user/qt.nix
     ../../packages/home-pkgs.nix
 
     ../config
