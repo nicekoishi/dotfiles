@@ -8,8 +8,8 @@
     emacs
     fd
     gimp
-    grim
     gnutar
+    grim
     hyprpicker
     jq
     killall
@@ -30,8 +30,9 @@
     slurp
     starship
     swaynotificationcenter
-    unzip
     unrar
+    unzip
+    viewnior
     webcord-vencord
     zip
   ];

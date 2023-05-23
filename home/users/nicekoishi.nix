@@ -9,23 +9,24 @@
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [
-      "wheel"
-      "nicekoishi"
-      "sys"
-      "log"
+      "adbusers"
+      "adm"
+      "audio"
       "floppy"
-      "scanner"
+      "kvm"
+      "libvirtd"
+      "log"
+      "lp"
+      "nicekoishi"
+      "optical"
       "power"
       "rfkill"
+      "scanner"
+      "storage"
+      "sys"
       "users"
       "video"
-      "storage"
-      "optical"
-      "lp"
-      "audio"
-      "adm"
-      "libvirtd"
-      "kvm"
+      "wheel"
     ]; # Better be safe than sorry
   };
 
@@ -59,6 +60,7 @@
     fontDir.enable = true;
     enableDefaultFonts = true;
     fonts = with pkgs; [
+      corefonts
       (nerdfonts.override { fonts = [ "Iosevka" "FiraCode" "JetBrainsMono" ]; })
     ];
     fontconfig = {

@@ -1,18 +1,13 @@
-{pkgs, ...}:
-# Qt theming with Kvantum
+{ pkgs, ... }:
+
 {
-  home.packages = with pkgs; [
-    libsForQt5.qtstyleplugin-kvantum
-    (catppuccin-kvantum.override {
-      accent = "Mauve";
-      variant = "Mocha";
-    })
-  ];
-  home.sessionVariables = {
-    QT_STYLE_OVERRIDE = "kvantum";
+  home = {
+    packages = [ pkgs.libsForQt5.qt5ct ];
+    sessionVariables = {
+      QT_QPA_PLATFORMTHEME = "qt5ct";
+    };
   };
 
-  xdg.configFile."Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
-    General.Theme = "Catppuccin-Mocha-Mauve";
-  };
+  xdg.configFile."qt5ct/qt5ct.conf".source = ../../home/config/qt5ct/qt5ct.conf;
+  xdg.configFile."qt5ct/colors/Catppuccin-Macchiato.conf".source = ../../home/config/qt5ct/colors/Catppuccin-Macchiato.conf;
 }

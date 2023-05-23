@@ -1,0 +1,7 @@
+{
+  imports = [
+    ./webcord
+    ./eww
+    ./swaync
+  ];
+}

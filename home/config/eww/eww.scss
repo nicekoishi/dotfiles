@@ -1,0 +1,130 @@
+$dark-background-color: rgba(36,39,58,0.54);
+
+$darker-dark-a: rgba(35,23,55,0.37);
+$darker-dark: rgba(35,23,55,1);
+$lighter-dark-a: rgba(80,71,106,1);
+$darker-pink-a: rgba(215,195,207,1);
+$almost-white-but-not: rgba(241,225,234,1);
+$nice-purple-a: rgba(179,182,225,1);
+$bright-green-a: rgba(238,249,235,1);
+$bright-yellow-a: rgba(252,247,235,1);
+$lighter-pink-a: rgba(244,219,214,1);
+$best-girl-accent: #81d5ca;
+
+/* i hate this, but it works */
+*{
+  all: unset;
+  font-family: "Iosevka Nerd Font";
+  color: $bright-yellow-a;
+}
+
+.bar {
+  background-color: $darker-dark;
+}
+
+.workspaces {
+  background-size: 200%;
+  border-bottom: 3px solid $best-girl-accent;
+  font-size: 14px;
+}
+
+.widget-center {
+  background-size: 200%;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.side-widgets {
+  font-size: 16px;
+}
+
+.media-slider-box {
+  margin-right: -34px;
+}
+
+.volume-info, .micinfo {
+  min-width: 72px;
+}
+
+.mic-num, .vol-icon, .vol-num {
+  margin-right: -12px;
+}
+
+.mic-icon { margin-right: -16px; }
+
+.clock-side {
+  margin-right: -121px;
+  min-width: 225px;
+}
+
+.clock-content {
+  margin-left: 32px;
+}
+
+.noti-side {
+  margin-right: 14px;
+}
+
+.nowplaying-box {
+  background-color: $darker-dark;
+  border-radius: 12px;
+}
+
+.nowplaying-img {
+  background-size: 136px;
+  min-width: 136px;
+  min-height: 136px;
+  margin-bottom: 12px;
+  margin-top: 12px;
+  margin-right: 16px;
+  border-radius: 6% 8%;
+}
+
+.now-playing-progress {
+  margin-left: -32px;
+  margin-top: -21px;
+}
+
+.now-playing-progress scale trough highlight {
+  all: unset;
+  background-color: $best-girl-accent;
+  border-radius: 8px;
+}
+
+.now-playing-progress scale trough {
+  all: unset;
+  background-color: $lighter-dark-a;
+  border-radius: 8px;
+  min-height: 12px;
+  min-width: 196px;
+  margin: 0px 0px 0px 0px;
+}
+
+.nowplaying-title {
+  margin-bottom: -21px;
+  margin-left: -14px;
+  font-weight: bolder;
+}
+
+.nowplaying-artist {
+  margin-top: -21px;
+  margin-left: -14px;
+  font-weight: 300;
+}
+
+.media-controls {
+  margin-left: -36px;
+  font-size: 24px;
+}
+
+/*.media-previous-button, .media-previous {
+  background-color: #FF0000;
+}
+
+.media-next-button, .media-next {
+  background-color: #FF00FF;
+}
+
+.media-play-pause-button, .media-play-pause {
+  background-color: #00FF00;
+}

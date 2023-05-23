@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   nix.settings = {
     experimental-features = [" nix-command" "flakes" ];
@@ -25,6 +26,25 @@
   programs.gnupg.agent = {
     enable = true;
     enableSSHSupport = true;
+  };
+
+  services.printing = {
+    enable = true;
+    drivers = [ pkgs.hplipWithPlugin ];
+  };
+
+  hardware.sane = {
+    enable = true;
+    extraBackends = [ pkgs.hplipWithPlugin ];
+  };
+
+  programs.adb.enable = true;
+  services.tumbler.enable = true;
+
+  services.avahi = {
+    enable = true;
+    nssmdns = true;
+    openFirewall = true;
   };
 
   services.openssh = {
