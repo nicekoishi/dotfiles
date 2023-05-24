@@ -1,6 +1,6 @@
 {
   description = "The most cursed flake you'll ever see (i guess)";
-  outputs = { self, ... }@inputs:{
+  outputs = inputs: {
     nixosConfigurations = {
       polaris = import ./hosts/polaris inputs;
     };

@@ -1,11 +1,14 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 let
   homeDir = config.home.homeDirectory;
 in
 {
-  xdg.configFile."hypr/hyprland.conf".text = ''
+  imports = [ inputs.hyprland.homeManagerModules.default ];
+  xdg.configFile."hypr/macchiato.conf".source = ./macchiato.conf;
+  wayland.windowManager.hyprland.enable = true;
+  wayland.windowManager.hyprland.extraConfig = ''
     source = ${homeDir}/.config/hypr/macchiato.conf
-    monitor=,1920x1080,0x0,1,bitdepth,8
+    monitor=,1920x1080,0x0,1,bitdepth,10
 
     exec-once = dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once = systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
