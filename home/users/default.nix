@@ -4,6 +4,7 @@
     ../../modules/user/qt.nix
     ../../modules/user/thunar.nix
     ../../modules/user/xdg.nix
+    ../../modules/user/spicetify.nix
     ../../packages/home-pkgs.nix
 
     ../../modules/user/shell

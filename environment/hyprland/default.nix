@@ -21,11 +21,6 @@
 
     XDG_SESSION_TYPE = "wayland";
     XDG_SESSION_DESKTOP = "Hyprland";
-    XDG_CURRENT_DESKTOP = "Hyprland";
-
-    XDG_CACHE_HOME = "$HOME/.cache";
-    XDG_CONFIG_HOME = "$HOME/.config";
-    XDG_DATA_HOME = "$HOME/.local/share";
 
     XCURSOR_SIZE = "16";
 
@@ -59,7 +54,7 @@
       polkit-gnome-authentication-agent-1 = {
         enable = true;
         description = "Starts polkit-gnome-authentication-agent-1";
-        wantedBy = [ "default.target" ];
+        wantedBy = [ "hyprland-session.target" ];
         serviceConfig = {
           Type = "simple";
 	        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";

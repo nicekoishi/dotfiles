@@ -1,17 +1,17 @@
-{ pkgs, lib, spicetify-nix, inputs, ...}:
+{ pkgs, inputs, ...}:
 let
-  spicePkgs = spicetify-nix.packages.${pkgs.system}.default;
+  spicePkgs = inputs.spicetify-nix.packages.${pkgs.system}.default;
 in
 {
   # pretty spotify
-  # imports = [ inputs.spicetify-nix.homeManagerModule ];
+  imports = [ inputs.spicetify-nix.homeManagerModule ];
 
   programs.spicetify = {
     enable = true;
     theme = spicePkgs.themes.catppuccin-macchiato;
     colorScheme = "teal";
 
-    enabledExtension = with spicePkgs.extensions; [
+    enabledExtensions = with spicePkgs.extensions; [
       adblock
       bookmark
       groupSession
