@@ -1,11 +1,12 @@
 {
   imports = [
     ../../modules/user/gtk.nix
-    ../../modules/user/shell
-    ../../modules/user/xdg.nix
     ../../modules/user/qt.nix
+    ../../modules/user/thunar.nix
+    ../../modules/user/xdg.nix
     ../../packages/home-pkgs.nix
 
+    ../../modules/user/shell
     ../config
 
     #../home-modules/spicetify.nix failed attempt to make it work: 4 TODO: fix this module
