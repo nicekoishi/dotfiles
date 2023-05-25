@@ -1,6 +1,6 @@
 {
   description = "The most cursed flake you'll ever see (i guess)";
-  outputs = { self, ... }@inputs:{
+  outputs = inputs: {
     nixosConfigurations = {
       polaris = import ./hosts/polaris inputs;
     };
@@ -25,6 +25,11 @@
 
     home-manager = {
       url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hypr-contrib = {
+      url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
