@@ -1,6 +1,7 @@
-{ config, pkgs, inputs, ... }:
+{ config, inputs, ... }:
 let
   homeDir = config.home.homeDirectory;
+  wallDir = config.home.homeDirectory + "/Imagens/Wallpapers";
 in
 {
   imports = [ inputs.hyprland.homeManagerModules.default ];
@@ -13,7 +14,7 @@ in
 
     exec-once = wl-paste --type text --watch cliphist store
     exec-once = wl-paste --type image --watch cliphist store
-    exec-once = swww init && walld init
+    exec-once = swww init && walld init ${wallDir}
     exec-once = eww daemon && eww open bar
     exec-once = arRPC
 
@@ -94,7 +95,7 @@ in
     bind = $mainMod, A, exec, swaync-client -t -sw
     bind = $mainMod, B, exec, brave &
     bind = $mainMod, C, killactive,
-    bind = $mainMod, E, exec, thunar
+    bind = $mainMod, E, exec, kitty thunar
     bind = $mainMod, F, togglefloating,
     bind = $mainMod, F1, exec, killall waybar || waybar &
     bind = $mainMod, F2, exec, ~/.config/hypr/scripts/swww
@@ -102,7 +103,7 @@ in
     bind = $mainMod, M, exit,
     bind = $mainMod, P, pseudo, # dwindle
     bind = $mainMod, Q, exec, kitty
-    bind = $mainMod, R, exec, killall anyrun || anyrun
+    bind = $mainMod, R, exec, pkill anyrun || anyrun
     bind = $mainMod, V, exec, cliphist list | wofi --show dmenu | cliphist decode | wl-copy
     bind = SUPERSHIFT, F, fullscreen, 0
     bind = SUPERALT, F, fullscreen, 1
@@ -117,9 +118,9 @@ in
     binde=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
     binde=, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     binde=, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-    bind=, Print, exec, grim ${homeDir}/Imagens/Screenshots/$(date +%Y-%m-%d-%H:%M:%S).png && pw-play ${homeDir}/Música/Notification/camera-shutter.oga
-    bind= $mainMod, Print, exec, grim -g "$(slurp)" ${homeDir}/Imagens/Screenshots/$(date +%Y-%m-%d-%H:%M:%S).png && pw-play ${homeDir}/Música/Notification/camera-shutter.oga
-    bind= CTRL, Print, exec, grim -g "$(slurp)" - | wl-copy && pw-play ${homeDir}/Música/Notification/camera-shutter.oga
+    bind=, Print, exec, grimblast --notify copysave screen ${homeDir}/Imagens/Screenshots/$(date +%Y-%m-%d-%H:%M:%S).png && pw-play ${homeDir}/Música/Notification/camera-shutter.oga
+    bind= $mainMod, Print, exec, grimblast --notify copysave active ${homeDir}/Imagens/Screenshots/$(date +%Y-%m-%d-%H:%M:%S).png && pw-play ${homeDir}/Música/Notification/camera-shutter.oga
+    bind= ALT, Print, exec, grimblast --notify copysave area ${homeDir}/Imagens/Screenshots/$(date +%Y-%m-%d-%H:%M:%S).png && pw-play ${homeDir}/Música/Notification/camera-shutter.oga
 
     # Move focus with mainMod + arrow keys
     bind = $mainMod, down, movefocus, d
@@ -236,7 +237,7 @@ in
     # Spawn in workspace x
 
     windowrulev2 = tile, title:^(Spotify)$
-    windowrulev2 = workspace 3 silent, class:^(discord-screenaudio)$
+    windowrulev2 = workspace 3 silent, class:^(WebCord)$
     windowrulev2 = workspace 4 silent, title:^(Spotify)$
     windowrulev2 = workspace 5 silent, class:^(lutris*)$
     windowrulev2 = workspace 5 silent, class:^(steam*)$
