@@ -1,10 +1,12 @@
 {
   imports = [
     ../../modules/user/gtk.nix
+    ../../modules/user/neovim.nix
     ../../modules/user/qt.nix
-    ../../modules/user/thunar.nix
-    ../../modules/user/xdg.nix
     ../../modules/user/spicetify.nix
+    ../../modules/user/thunar.nix
+    ../../modules/user/vscode.nix
+    ../../modules/user/xdg.nix
     ../../packages/home-pkgs.nix
 
     ../../modules/user/shell

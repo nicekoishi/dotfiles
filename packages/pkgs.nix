@@ -22,6 +22,13 @@
     mpv
     papirus-icon-theme
     polkit_gnome
+
+    #getting rusty
+    cargo
+    rustc
+    rustfmt
+    rust-analyzer
+
     spice spice-gtk
     spice-protocol
     swww

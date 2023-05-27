@@ -21,6 +21,8 @@
     block = [ "gambling" "porn" ];
   };
 
+  networking.nameservers = [ "2620:fe::fe" "2620:fe::9" ];
+
   ## if i forgot this, it would be annoying at least
   programs.mtr.enable = true;
   programs.gnupg.agent = {

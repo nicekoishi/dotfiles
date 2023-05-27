@@ -20,11 +20,11 @@
     lxqt.lxqt-archiver
     mpv
     neofetch
-    neovim
     nil
     nvtop
     obs-studio
     playerctl
+    prismlauncher-qt5
     python3Full
     ripgrep
     slurp

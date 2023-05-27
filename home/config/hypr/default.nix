@@ -98,7 +98,7 @@ in
     bind = $mainMod, E, exec, kitty thunar
     bind = $mainMod, F, togglefloating,
     bind = $mainMod, F1, exec, killall waybar || waybar &
-    bind = $mainMod, F2, exec, ~/.config/hypr/scripts/swww
+    bind = $mainMod, F2, exec, walld init ${wallDir}
     bind = $mainMod, J, togglesplit, # dwindle
     bind = $mainMod, M, exit,
     bind = $mainMod, P, pseudo, # dwindle
