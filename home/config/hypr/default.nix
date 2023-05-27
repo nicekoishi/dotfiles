@@ -1,10 +1,12 @@
-{ config, inputs, ... }:
-let
+{
+  config,
+  inputs,
+  ...
+}: let
   homeDir = config.home.homeDirectory;
   wallDir = config.home.homeDirectory + "/Imagens/Wallpapers";
-in
-{
-  imports = [ inputs.hyprland.homeManagerModules.default ];
+in {
+  imports = [inputs.hyprland.homeManagerModules.default];
   xdg.configFile."hypr/macchiato.conf".source = ./macchiato.conf;
   wayland.windowManager.hyprland.systemdIntegration = true;
   wayland.windowManager.hyprland.enable = true;
@@ -95,7 +97,7 @@ in
     bind = $mainMod, A, exec, swaync-client -t -sw
     bind = $mainMod, B, exec, brave &
     bind = $mainMod, C, killactive,
-    bind = $mainMod, E, exec, kitty thunar
+    bind = $mainMod, E, exec, nemo
     bind = $mainMod, F, togglefloating,
     bind = $mainMod, F1, exec, killall waybar || waybar &
     bind = $mainMod, F2, exec, walld init ${wallDir}
@@ -164,7 +166,7 @@ in
 
     windowrule = animation none,anyrun
     windowrule = center, lxqt-archiver
-    windowrule = center,^(thunar)$
+    windowrule = center,^(nemo)$
     windowrule = float, Lxappearance
     windowrule = float, Viewnior
     windowrule = float, anyrun
@@ -178,7 +180,7 @@ in
     windowrule = float, lxqt-archiver
     windowrule = float, notification
     windowrule = float, splash
-    windowrule = float, thunar
+    windowrule = float, nemo
     windowrule = float, title:DevTools
     windowrule = float, title:Open File
     windowrule = float, title:Salvar Arquivo
@@ -194,7 +196,7 @@ in
     windowrule = idleinhibit focus, mpv
     windowrule = idleinhibit fullscreen, brave
     windowrule = move 75 44%, title:^(Volume Control)$
-    windowrule = opacity 0.92, thunar
+    windowrule = opacity 0.92, nemo
     windowrule = size 800 600, title:^(Volume Control)$
 
     # fix xwayland apps
