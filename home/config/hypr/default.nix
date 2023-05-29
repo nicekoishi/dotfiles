@@ -49,8 +49,8 @@ in {
       rounding = 8
       multisample_edges = true
 
-      blur = no
-      blur_size = 3
+      blur = yes
+      blur_size = 2
       blur_passes = 3
       blur_new_optimizations = on
       #blurls = gtk-layer-shell

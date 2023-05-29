@@ -41,4 +41,10 @@
     "net.core.default_qdisc" = "cake";
   };
   boot.kernelModules = ["tcp_bbr"];
+
+  networking.firewall = {
+    enable = true;
+    allowedTCPPorts = [80 443];
+    allowedUDPPorts = [80 443];
+  };
 }
