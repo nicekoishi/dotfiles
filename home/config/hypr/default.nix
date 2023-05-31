@@ -97,7 +97,7 @@ in {
     bind = $mainMod, A, exec, swaync-client -t -sw
     bind = $mainMod, B, exec, brave &
     bind = $mainMod, C, killactive,
-    bind = $mainMod, E, exec, nemo
+    bind = $mainMod, E, exec, pcmanfm-qt
     bind = $mainMod, F, togglefloating,
     bind = $mainMod, F1, exec, killall waybar || waybar &
     bind = $mainMod, F2, exec, walld init ${wallDir}
@@ -166,7 +166,7 @@ in {
 
     windowrule = animation none,anyrun
     windowrule = center, lxqt-archiver
-    windowrule = center,^(nemo)$
+    windowrule = center,^(pcmanfm-qt)$
     windowrule = float, Lxappearance
     windowrule = float, Viewnior
     windowrule = float, anyrun
@@ -180,7 +180,7 @@ in {
     windowrule = float, lxqt-archiver
     windowrule = float, notification
     windowrule = float, splash
-    windowrule = float, nemo
+    windowrule = float, pcmanfm-qt
     windowrule = float, title:DevTools
     windowrule = float, title:Open File
     windowrule = float, title:Salvar Arquivo
@@ -196,7 +196,7 @@ in {
     windowrule = idleinhibit focus, mpv
     windowrule = idleinhibit fullscreen, brave
     windowrule = move 75 44%, title:^(Volume Control)$
-    windowrule = opacity 0.92, nemo
+    windowrule = opacity 0.92, pcmanfm-qt
     windowrule = size 800 600, title:^(Volume Control)$
 
     # fix xwayland apps

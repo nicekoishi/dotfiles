@@ -13,6 +13,11 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
+    android-nixpkgs = {
+      url = "github:tadfisher/android-nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     anyrun = {
       url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,6 +48,4 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
 }
-

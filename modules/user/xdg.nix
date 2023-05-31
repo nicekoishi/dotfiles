@@ -1,8 +1,7 @@
-{ config, ... }:
-let
-  browser = [ "brave.desktop" ];
-  image = [ "viewnior.desktop" ];
-  video = [ "mpv.desktop" ];
+{config, ...}: let
+  browser = ["brave.desktop"];
+  image = ["viewnior.desktop"];
+  video = ["mpv.desktop"];
 
   mimeapps = {
     "application/x-extension-htm" = browser;
@@ -26,10 +25,10 @@ let
     "image/jpeg" = image;
     "image/png" = image;
     "image/webp" = image;
-    "text/plain" = [ "emacsclient.desktop" ];
+    "text/plain" = ["emacsclient.desktop"];
     "video/H264" = video;
     "video/H265" = video;
-    "x-scheme-handler/discord" = [ "webcord.desktop" ];
+    "x-scheme-handler/discord" = ["webcord.desktop"];
     "x-scheme-handler/spotify" = browser;
   };
 in {

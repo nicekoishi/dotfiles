@@ -23,17 +23,6 @@
     ffmpeg
     mpv
 
-    # dev
-    cargo
-    rust-analyzer
-    rustc
-    rustfmt
-
-    clang
-    cmake
-
-    flutter
-
     # virt manager and friends
     spice
     spice-gtk

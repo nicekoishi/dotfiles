@@ -1,8 +1,6 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home = {
-    packages = [ pkgs.libsForQt5.qt5ct ];
+    packages = [pkgs.libsForQt5.qt5ct];
     sessionVariables = {
       QT_QPA_PLATFORMTHEME = "qt5ct";
     };

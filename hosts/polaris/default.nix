@@ -1,8 +1,15 @@
-{ self, nixpkgs, home-manager, hyprland, ... }@inputs: nixpkgs.lib.nixosSystem
-
+{
+  self,
+  nixpkgs,
+  home-manager,
+  hyprland,
+  ...
+} @ inputs:
+nixpkgs.lib.nixosSystem
 {
   system = "x86_64-linux";
   specialArgs = {inherit inputs;};
+
   modules = [
     ./hardware.nix
     ./hardware-configuration.nix
@@ -15,6 +22,8 @@
     ../../packages/pkgs.nix
 
     "${self}/modules/common"
+
+    # common stuff
     home-manager.nixosModules.home-manager
     {
       home-manager.useGlobalPkgs = true;

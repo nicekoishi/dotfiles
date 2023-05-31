@@ -4,7 +4,7 @@
     ../../modules/user/neovim.nix
     ../../modules/user/qt.nix
     ../../modules/user/spicetify.nix
-    ../../modules/user/nemo.nix
+    ../../modules/user/pcmanfm.nix
     ../../modules/user/vscode.nix
     ../../modules/user/xdg.nix
     ../../packages/home-pkgs.nix

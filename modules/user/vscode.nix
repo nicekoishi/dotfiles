@@ -1,10 +1,15 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
       catppuccin.catppuccin-vsc
       dart-code.flutter
+      dart-code.dart-code
       jnoortheen.nix-ide
       kamadorueda.alejandra
       rust-lang.rust-analyzer

@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   home.packages = with pkgs; [
     alejandra
     brave
@@ -10,6 +8,7 @@
     gimp
     gnutar
     grim
+    heroic
     hyprpicker
     jq
     killall

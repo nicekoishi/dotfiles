@@ -1,19 +1,21 @@
-{ pkgs, ... }:
-
 {
+  pkgs,
+  inputs,
+  ...
+}: {
   services.dbus.enable = true;
   services.gvfs.enable = true;
   security.polkit.enable = true;
 
   #imports = [
-    # dots
+  # dots
   #];
 
   services.emacs.enable = true;
 
   environment.sessionVariables = {
     GBM_BACKEND = "nvidia-drm";
-    __GLX_VENDOR_LIBRARY_NAME="nvidia";
+    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
 
     QT_QPA_PLATFORM = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
@@ -32,6 +34,10 @@
     WLR_NO_HARDWARE_CURSORS = "1";
   };
 
+  xdg.portal = {
+    enable = true;
+  };
+
   services.greetd = {
     enable = true;
     settings = rec {
@@ -39,7 +45,7 @@
         command = "Hyprland";
         user = "nicekoishi";
       };
-    default_session = initial_session;
+      default_session = initial_session;
     };
   };
 
@@ -54,13 +60,13 @@
       polkit-gnome-authentication-agent-1 = {
         enable = true;
         description = "Starts polkit-gnome-authentication-agent-1";
-        wantedBy = [ "hyprland-session.target" ];
+        wantedBy = ["hyprland-session.target"];
         serviceConfig = {
           Type = "simple";
-	        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-	        Restart = "on-failure";
-	        RestartSec = 1;
-	        TimeoutStopSec = 10;
+          ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+          Restart = "on-failure";
+          RestartSec = 1;
+          TimeoutStopSec = 10;
         };
       };
       # ...

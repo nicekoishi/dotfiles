@@ -1,7 +1,6 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   nix.settings = {
-    experimental-features = [" nix-command" "flakes" ];
+    experimental-features = [" nix-command" "flakes"];
     substituters = [
       "https://hyprland.cachix.org"
       "https://nix-gaming.cachix.org"
@@ -18,10 +17,10 @@
 
   networking.stevenblack = {
     enable = true;
-    block = [ "gambling" "porn" ];
+    block = ["gambling" "porn"];
   };
 
-  networking.nameservers = [ "2620:fe::fe" "2620:fe::9" ];
+  networking.nameservers = ["2620:fe::fe" "2620:fe::9"];
 
   ## if i forgot this, it would be annoying at least
   programs.mtr.enable = true;
@@ -32,15 +31,15 @@
 
   services.printing = {
     enable = true;
-    drivers = [ pkgs.hplipWithPlugin ];
+    drivers = [pkgs.hplipWithPlugin]; # FIXME this stopped working, now using printing via avahi
   };
 
   hardware.sane = {
     enable = true;
-    extraBackends = [ pkgs.hplipWithPlugin ];
+    extraBackends = [pkgs.hplipWithPlugin];
   };
 
-  programs.adb.enable = true;
+  programs.java.enable = true;
   services.tumbler.enable = true;
 
   services.avahi = {
@@ -51,9 +50,7 @@
 
   services.openssh = {
     enable = true;
-    settings.passwordAuthentication = false;
-    settings.kbdInteractiveAuthentication = false;
-    settings.permitRootLogin = "no";
+    settings.PasswordAuthentication = false;
   };
 
   ## Keymap

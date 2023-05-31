@@ -11,7 +11,7 @@
         "create mask" = "0644";
         "directory mask" = "0755";
         "force user" = "nicekoishi";
-        "force group" = "wheel";
+        "force group" = "users";
       };
     };
   };
