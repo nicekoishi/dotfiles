@@ -17,5 +17,6 @@ in {
     LESSKEY = dots + "/less/key";
     WINEPREFIX = data + "/wine";
     XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
+    RUSTUP_HOME = data + "/rustup";
   };
 }

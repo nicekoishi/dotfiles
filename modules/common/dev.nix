@@ -1,10 +1,7 @@
 {pkgs, ...}: {
   environment.systemPackages = with pkgs; [
-    # dev
-    cargo
-    rust-analyzer
-    rustc
-    rustfmt
+    # FIXME wrong approach, it works for now though
+    rustup
 
     clang
     cmake

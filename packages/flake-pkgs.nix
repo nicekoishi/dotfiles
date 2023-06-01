@@ -12,11 +12,5 @@ in {
     inputs.nix-gaming.packages.${system}.wine-ge
     inputs.nix-gaming.packages.${system}.wine-tkg
     inputs.nix-gaming.packages.${system}.wine-discord-ipc-bridge
-
-    # android studio, i hate ya
-    inputs.android-nixpkgs.packages.${system}.build-tools-33-0-0
-    inputs.android-nixpkgs.packages.${system}.cmdline-tools-latest
-    inputs.android-nixpkgs.packages.${system}.emulator
-    inputs.android-nixpkgs.packages.${system}.platforms-android-33
   ];
 }

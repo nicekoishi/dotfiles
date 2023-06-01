@@ -11,8 +11,8 @@
     heroic
     hyprpicker
     jq
-    killall
     kitty
+    krita
     libreoffice-fresh
     libsForQt5.kdenlive
     libsForQt5.skanpage
