@@ -1,4 +1,8 @@
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   data = config.xdg.dataHome;
   dots = config.xdg.configHome;
   cache = config.xdg.cacheHome;
@@ -12,6 +16,7 @@ in {
   # i like my home clean
   home.sessionVariables = {
     _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java";
+    CHROME_EXECUTABLE = "${pkgs.brave}/opt/brave.com/brave/brave";
     DELTA_PAGER = "less -R";
     LESSHISTFILE = cache + "/less/history";
     LESSKEY = dots + "/less/key";
