@@ -1,11 +1,7 @@
-{
-  pkgs,
-  lib,
-  ...
-}: {
+{pkgs, ...}: {
   programs.vscode = {
     enable = true;
-    package = pkgs.vscodium;
+    package = pkgs.vscodium-fhs;
     extensions = with pkgs.vscode-extensions; [
       catppuccin.catppuccin-vsc
       dart-code.flutter
@@ -17,8 +13,8 @@
     ];
 
     userSettings = {
-      "dart.flutterSdkPaths" = "${pkgs.flutter}";
-      "dart.sdkPaths" = "${pkgs.dart}";
+      "dart.flutterSdkPath" = "${pkgs.flutter}";
+      "dart.sdkPath" = "${pkgs.dart}";
       "editor.fontFamily" = "'Iosevka Nerd Font Mono', 'monospace', monospace";
       "files.autoSave" = "onFocusChange";
       "git.autofetch" = true;

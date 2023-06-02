@@ -1,7 +1,7 @@
 {
   imports = [
     ../../modules/user/gtk.nix
-    ../../modules/user/neovim.nix
+    ../../modules/user/editors
     ../../modules/user/qt.nix
     ../../modules/user/spicetify.nix
     ../../modules/user/pcmanfm.nix
