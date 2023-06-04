@@ -7,12 +7,6 @@
   services.gvfs.enable = true;
   security.polkit.enable = true;
 
-  #imports = [
-  # dots
-  #];
-
-  services.emacs.enable = true;
-
   environment.sessionVariables = {
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";

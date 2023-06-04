@@ -3,7 +3,6 @@
     alejandra
     brave
     coreutils
-    emacs
     fd
     gimp
     gnutar
