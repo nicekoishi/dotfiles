@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./home-share.nix
+    ../home/samba/shares.nix
   ];
   services.samba = {
     enable = true;
@@ -11,8 +11,8 @@
       workgroup = WORKGROUP
       server role = standalone server
       usershare allow guests = yes
-      server string = NixOS
-      netbios name = NixOS
+      server string = polaris
+      netbios name = Polaris
       guest account = nobody
       hosts allow = 192.168. localhost
       hosts deny = 0.0.0.0/0

@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{pkgs, ...}: {
   services.dbus.enable = true;
   services.gvfs.enable = true;
   security.polkit.enable = true;
@@ -43,12 +39,6 @@
     };
   };
 
-  environment.etc = {
-    "hypr/swww-daemon".source = "${pkgs.swww}/bin/swww-daemon";
-    "hypr/swww".source = "${pkgs.swww}/bin/swww";
-    "hypr/xdg-is-a-dummy-hypr".source = "${pkgs.xdg-desktop-portal-hyprland}";
-    "hypr/xdg-is-a-dummy".source = "${pkgs.xdg-desktop-portal}";
-  };
   systemd = {
     user.services = {
       polkit-gnome-authentication-agent-1 = {

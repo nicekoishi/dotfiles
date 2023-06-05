@@ -7,6 +7,5 @@
     ./security.nix
     ./shared.nix
     ./virtualisation.nix
-    ../../packages/pkgs.nix
   ];
 }

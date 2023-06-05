@@ -1,3 +1,4 @@
+# straight from fufexan/dotfiles, go check it out
 {
   config,
   pkgs,

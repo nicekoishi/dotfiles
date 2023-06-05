@@ -33,6 +33,9 @@
       la = "exa -la";
       ls = "exa";
       cls = "clear";
+      
+      rebuild = "doas nixos-rebuild switch --flake ~dots/#$(hostname)";
+      update = "doas nix flake update ~dots";
 
       did = "systemctl --user";
       had = "doas systemctl";

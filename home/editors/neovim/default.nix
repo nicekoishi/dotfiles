@@ -1,6 +1,5 @@
 {
   inputs,
-  pkgs,
   ...
 }: {
   imports = [inputs.neovim-flake.homeManagerModules.default];

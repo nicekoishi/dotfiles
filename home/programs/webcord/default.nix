@@ -1,5 +1,3 @@
-{ config, lib, pkgs, ... }:
-
 {
   xdg.configFile."WebCord/Themes/theme".text = ''
 #app-mount{
