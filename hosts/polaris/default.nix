@@ -17,7 +17,6 @@ nixpkgs.lib.nixosSystem
 
     ../../environment/hyprland
 
-    # this isn't a bug, now it's a feature (actually the error was that im dumb and forgot to import environment/hyprland)
     ../../packages/pkgs.nix
 
     "${self}/modules/"

@@ -1,7 +1,6 @@
 {
   imports = [
     ./convenience.nix
-    ./dev.nix
     ./gamemode.nix
     ./jellyfin.nix
     ./security.nix

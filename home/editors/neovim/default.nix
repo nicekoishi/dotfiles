@@ -46,13 +46,15 @@
         };
       };
 
+      lineNumberMode = "number";
+
       ## pretty boi
       visuals = {
         enable = true;
         cellularAutomaton.enable = true;
         fidget-nvim.enable = true;
         nvimWebDevicons.enable = true;
-        scrollBar.enable = true;
+        scrollBar.enable = false;
         smoothScroll.enable = true;
         cursorWordline = {
           enable = true;

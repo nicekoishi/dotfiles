@@ -2,12 +2,10 @@
   nix.settings = {
     experimental-features = [" nix-command" "flakes"];
     substituters = [
-      "https://anyrun.cachix.org"
       "https://hyprland.cachix.org"
       "https://nix-gaming.cachix.org"
     ];
     trusted-public-keys = [
-      "anyrun.cachix.org-1:pqBobmOjI7nKlsUMV25u9QHa9btJK65/C8vn03p346s="
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
     ];
@@ -117,29 +115,39 @@
     sudo.enable = false;
     doas = {
       enable = true;
-      extraRules = [{
-        users = ["nicekoishi"];
-        keepEnv = true;
-        persist = true;
-      }];
+      extraRules = [
+        {
+          users = ["nicekoishi"];
+          keepEnv = true;
+          persist = true;
+        }
+      ];
     };
   };
 
   fonts = {
     fontDir.enable = true;
-    enableDefaultFonts = true;
+    enableDefaultFonts = false;
     fonts = with pkgs; [
+      material-symbols
+
       corefonts
-      (nerdfonts.override { fonts = [ "Iosevka" "FiraCode" "JetBrainsMono" ]; })
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+      (nerdfonts.override {fonts = ["Iosevka" "FiraCode" "JetBrainsMono"];})
     ];
     fontconfig = {
       defaultFonts = {
-        serif = [ "Iosevka Nerd Font" ];
-	      sansSerif = [ "Iosevka Nerd Font" ];
-	      monospace = [ "Iosevka Nerd Font Mono" ];
+        serif = ["Iosevka Nerd Font"];
+        sansSerif = ["Iosevka Nerd Font"];
+        monospace = ["Iosevka Nerd Font Mono"];
+        emoji = ["Noto Color Emoji"];
       };
     };
   };
+
+  zramSwap.enable = true;
 
   programs.zsh.enable = true;
   # Home Manager GTK stuff doesn't work without this!

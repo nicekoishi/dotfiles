@@ -4,6 +4,16 @@
   security.polkit.enable = true;
 
   environment.sessionVariables = {
+    _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java";
+    CHROME_EXECUTABLE = "${pkgs.brave}/opt/brave.com/brave/brave";
+    DELTA_PAGER = "less -R";
+    LESSHISTFILE = "$XDG_CACHE_HOME/less/history";
+    LESSKEY = "$XDG_CONFIG_HOME/less/key";
+    LSP_USE_PLISTS = "true";
+    WINEPREFIX = "$XDG_DATA_HOME/wine";
+    XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
+    RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
+    
     GBM_BACKEND = "nvidia-drm";
     __GLX_VENDOR_LIBRARY_NAME = "nvidia";
 
@@ -57,3 +67,4 @@
     };
   };
 }
+

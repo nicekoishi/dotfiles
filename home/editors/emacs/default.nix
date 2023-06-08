@@ -1,19 +1,14 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
-  emacs-pkg = inputs.emacs-overlay.packages.${pkgs.system}.emacs-pgtk;
+{pkgs, ...}: let
+  emacs-pkg = pkgs.emacs29-pgtk;
 in {
   services.emacs = {
     enable = true;
     package = emacs-pkg;
-    client.enable = true;
-    startWithUserSession = "graphical";
-  };
+    defaultEditor = true;
 
-  programs.emacs = {
-    enable = true;
-    package = emacs-pkg;
+    client = {
+      enable = true;
+      arguments = ["-c -a emacs"];
+    };
   };
 }

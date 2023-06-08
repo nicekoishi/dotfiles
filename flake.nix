@@ -9,22 +9,17 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    hyprland.url = "github:hyprwm/hyprland/51a930f802c71a0e67f05e7b176ded74e8e95f87";
+    hyprland.url = "github:hyprwm/hyprland";
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     anyrun = {
-      url = "github:Kirottu/anyrun/55647caaab6ed28c072dfd4613b56822426281b6";
+      url = "github:Kirottu/anyrun";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     arrpc = {
       url = "github:notashelf/arrpc-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    emacs-overlay = {
-      url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

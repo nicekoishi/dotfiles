@@ -9,7 +9,7 @@
     grim
     heroic
     hyprpicker
-    jq
+    jaq
     kitty
     krita
     libreoffice-fresh
