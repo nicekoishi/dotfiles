@@ -6,5 +6,6 @@
     ./security.nix
     ./shared.nix
     ./virtualisation.nix
+    ./xdg.nix
   ];
 }

@@ -18,6 +18,7 @@
     libva-utils
     wget
     wl-clipboard
+    ydotool
 
     # media
     ffmpeg

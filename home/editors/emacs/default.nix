@@ -11,4 +11,9 @@ in {
       arguments = ["-c -a emacs"];
     };
   };
+
+  programs.emacs = {
+    enable = true;
+    package = emacs-pkg;
+  };
 }

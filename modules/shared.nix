@@ -24,14 +24,10 @@
 
   ## if i forgot this, it would be annoying at least
   programs.mtr.enable = true;
-  programs.gnupg.agent = {
-    enable = true;
-    enableSSHSupport = true;
-  };
 
   services.printing = {
     enable = true;
-    drivers = [pkgs.hplipWithPlugin]; # FIXME this stopped working, now using printing via avahi
+    drivers = [pkgs.hplipWithPlugin];
   };
 
   hardware.sane = {

@@ -1,12 +1,15 @@
 {
   imports = [
     ../../editors
+    ../../git.nix
+    ../../gnupg.nix
     ../../gtk.nix
     ../../pcmanfm.nix
     ../../qt.nix
     ../../spicetify.nix
     ../../vscode.nix
     ../../xdg.nix
+
     ../../../packages/home-pkgs.nix
 
     ../../shell

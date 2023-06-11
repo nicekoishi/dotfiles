@@ -107,6 +107,8 @@ in {
     bind = $mainMod, Q, exec, kitty
     bind = $mainMod, R, exec, pkill anyrun || anyrun
     bind = $mainMod, V, exec, cliphist list | wofi --show dmenu | cliphist decode | wl-copy
+    bind = ALT, Q, exec, kitty doas v2 left
+    bind = ALT, E, exec, kitty doas v2 right
     bind = SUPERSHIFT, F, fullscreen, 0
     bind = SUPERALT, F, fullscreen, 1
     bind = ALT, F1, exec, ~/.config/hypr/scripts/keybinds
