@@ -1,36 +1,47 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./flake-pkgs.nix
   ];
 
   environment.systemPackages = with pkgs; [
+    # etc
+    lutris
+    polkit_gnome
+
+    # utils
     busybox
     cifs-utils
-    clang
     cliphist
-    cmake
     egl-wayland
-    eww-wayland
-    ffmpeg
     ffmpegthumbnailer
     git
-    gnome.adwaita-icon-theme
     libva-utils
-    lutris
+    wget
+    wl-clipboard
+    ydotool
+
+    # media
+    ffmpeg
     mpv
-    papirus-icon-theme
-    polkit_gnome
-    spice spice-gtk
+
+    # virt manager and friends
+    spice
+    spice-gtk
     spice-protocol
-    swww
     virt-manager
     virt-viewer
+
+    # the best wallpaper daemon and its friends
+    eww-wayland
+    gnome.adwaita-icon-theme
+    papirus-icon-theme
+    swww
+
+    # discord moderators be like
     webcord-vencord
-    wget
-    wineWowPackages.waylandFull
+
+    # wine
     winetricks
-    wl-clipboard
+    wineWowPackages.waylandFull
   ];
 }

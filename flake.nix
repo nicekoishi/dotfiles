@@ -33,11 +33,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-utils = {
+      url = "github:nicekoishi/nix-utils";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    neovim-flake = {
+      url = "github:NotAShelf/neovim-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
-
 }
-
