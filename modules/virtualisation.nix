@@ -27,12 +27,4 @@
   };
 
   virtualisation.oci-containers.backend = "podman";
-  virtualisation.oci-containers.containers = {
-    archive-team-warrior = {
-      image = "atdr.meo.ws/archiveteam/reddit-grab";
-      autoStart = true;
-      cmd = ["nicekoishi"];
-      extraOptions = ["--network=host"];
-    };
-  };
 }
