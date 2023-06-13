@@ -477,6 +477,24 @@
         "type": "github"
       }
     },
+    "flake-parts_3": {
+      "inputs": {
+        "nixpkgs-lib": "nixpkgs-lib_3"
+      },
+      "locked": {
+        "lastModified": 1685662779,
+        "narHash": "sha256-cKDDciXGpMEjP1n6HlzKinN0H+oLmNpgeCTzYnsA2po=",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "rev": "71fb97f0d875fd4de4994dfb849f2c75e17eb6c3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -1039,6 +1057,27 @@
         "type": "github"
       }
     },
+    "nix-utils": {
+      "inputs": {
+        "flake-parts": "flake-parts_3",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1686602704,
+        "narHash": "sha256-dR7NDM+JBH4f0SGScPTAxDJBOG4yjyBEkvkVwoQvEOA=",
+        "owner": "nicekoishi",
+        "repo": "nix-utils",
+        "rev": "c3ff59a970fda61e8cd5eb1a56349a222ed34515",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nicekoishi",
+        "repo": "nix-utils",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1685655444,
@@ -1081,6 +1120,24 @@
         "owner": "NixOS",
         "repo": "nixpkgs",
         "rev": "e1e1b192c1a5aab2960bf0a0bd53a2e8124fa18e",
+        "type": "github"
+      },
+      "original": {
+        "dir": "lib",
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-lib_3": {
+      "locked": {
+        "dir": "lib",
+        "lastModified": 1685564631,
+        "narHash": "sha256-8ywr3AkblY4++3lIVxmrWZFzac7+f32ZEhH/A8pNscI=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "4f53efe34b3a8877ac923b9350c874e3dcd5dc0a",
         "type": "github"
       },
       "original": {
@@ -1617,6 +1674,7 @@
         "hyprland": "hyprland",
         "neovim-flake": "neovim-flake",
         "nix-gaming": "nix-gaming",
+        "nix-utils": "nix-utils",
         "nixpkgs": "nixpkgs_6",
         "spicetify-nix": "spicetify-nix"
       }

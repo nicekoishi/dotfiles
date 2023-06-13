@@ -8,6 +8,7 @@
       dl = "$HOME/Downloads";
       docs = "$HOME/Documentos";
       dots = "$HOME/Documentos/dots-flake";
+      dev = "$HOME/Documentos/Dev";
       xvids = "$HOME/Vídeos";
     };
     dotDir = ".config/zsh";

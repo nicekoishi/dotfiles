@@ -1,6 +1,10 @@
-{pkgs, ...}: {
+{pkgs, inputs, ...}: {
   home.packages = with pkgs; [
     alejandra
+
+    # me/myself/i/cringe
+    inputs.nix-utils.packages.${system}.fastfetch
+
     brave
     coreutils
     fd

@@ -7,6 +7,7 @@
   services.gvfs.enable = true;
   security.polkit.enable = true;
 
+  environment.systemPackages = with pkgs; [qt5.qtwayland];
   environment.sessionVariables = {
     _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java";
     CHROME_EXECUTABLE = "${pkgs.brave}/opt/brave.com/brave/brave";
