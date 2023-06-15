@@ -55,6 +55,9 @@
     xkbVariant = "";
   };
 
+  services.dbus.packages = [pkgs.gcr];
+  services.udev.packages = [pkgs.gnome.gnome-settings-daemon];
+
   console.useXkbConfig = true;
 
   ## Sound
