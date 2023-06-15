@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  lib,
+  ...
+}: {
   programs.zsh = {
     enable = true;
     enableSyntaxHighlighting = true;
@@ -27,6 +31,11 @@
       zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
       zstyle ':completion:*' verbose true
       _comp_options+=(globdots)
+
+      ${lib.optionalString config.services.gpg-agent.enable ''
+        gnupg_path=$(ls $XDG_RUNTIME_DIR/gnupg)
+        export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/$gnupg_path/S.gpg-agent.ssh"
+      ''}
     '';
 
     shellAliases = {
@@ -34,7 +43,7 @@
       la = "exa -la";
       ls = "exa";
       cls = "clear";
-      
+
       rebuild = "doas nixos-rebuild switch --flake ~dots/#$(hostname)";
       update = "doas nix flake update ~dots";
 

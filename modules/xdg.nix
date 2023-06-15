@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   # home.sessionVariables does not work for some of these
   # so I did it all in here
 
