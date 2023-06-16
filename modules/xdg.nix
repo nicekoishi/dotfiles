@@ -3,6 +3,7 @@
   # so I did it all in here
 
   environment.sessionVariables = {
+    XDG_DATA_HOME = "$HOME/.local/share";
     XDG_CACHE_HOME = "$HOME/.local/cache";
 
     LESSHISTFILE = "$XDG_CACHE_HOME/less/history";
