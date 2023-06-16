@@ -1,9 +1,9 @@
 {
   imports = [
-    ./anyrun
-    ./hypr
-    ./webcord
-    ./eww
-    ./swaync
+    ./gaming
+
+    ./media.nix
+    ./prod.nix
+    ./wayland.nix
   ];
 }

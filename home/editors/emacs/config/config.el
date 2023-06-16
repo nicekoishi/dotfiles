@@ -78,14 +78,17 @@
   "t t" '(visual-line-mode :wk "Toggle truncated lines"))
 ) ;; rember if adding new leader-keys, add this parenthesis or emacs will hate u
 
+(use-package tree-sitter)
+(use-package tree-sitter-langs)
+
 (use-package corfu
   ;; Optional customizations
   :custom
   (corfu-cycle t)                ;; Enable cycling for `corfu-next/previous'
   (corfu-auto t)                 ;; Enable auto completion
   (setq-default corfu-auto-prefix 0
-		corfu-auto-delay 0)
-  ;; (corfu-separator ?\s)          ;; Orderless field separator
+                corfu-auto-delay 0)
+  (corfu-separator ?\s)          ;; Orderless field separator
   ;; (corfu-quit-at-boundary nil)   ;; Never quit at completion boundary
   ;; (corfu-quit-no-match nil)      ;; Never quit, even if there is no match
   ;; (corfu-preview-current nil)    ;; Disable current candidate preview
@@ -111,12 +114,12 @@
 
   ;; This function enables corfu in minibuffer
   (defun corfu-enable-in-minibuffer ()
-  "Enable Corfu in the minibuffer if `completion-at-point' is bound."
-  (when (where-is-internal #'completion-at-point (list (current-local-map)))
-    ;; (setq-local corfu-auto nil) ;; Enable/disable auto completion
-    (setq-local corfu-echo-delay nil ;; Disable automatic echo and popup
-		corfu-popupinfo-delay nil)
-    (corfu-mode 1)))
+    "Enable Corfu in the minibuffer if `completion-at-point' is bound."
+    (when (where-is-internal #'completion-at-point (list (current-local-map)))
+      ;; (setq-local corfu-auto nil) ;; Enable/disable auto completion
+      (setq-local corfu-echo-delay nil ;; Disable automatic echo and popup
+                  corfu-popupinfo-delay nil)
+      (corfu-mode 1)))
   (add-hook 'minibuffer-setup-hook #'corfu-enable-in-minibuffer)
   :init
   (global-corfu-mode))
@@ -199,15 +202,6 @@
 (require 'org-tempo)
 
 (setq org-src-window-setup 'current-window)
-
-(defun nice/treesit-install-all-languages ()
-  "Install all languages specified by `treesit-language-source-alist'."
-  (interactive)
-  (let ((languages (mapcar 'car treesit-language-source-alist)))
-    (dolist (lang languages)
-      (treesit-install-language-grammar lang)
-      (message "`%s' parser was installed." lang)
-      (sit-for 0.75))))
 
 (defun nice/reload-init-file ()
   (interactive)
@@ -433,32 +427,6 @@
   (projectile-mode +1)
   :config
   (setq projectile-project-search-path '("~/Documentos")))
-
-(require 'treesit)
-
-(setq treesit-language-source-alist
-      '((bash . ("https://github.com/tree-sitter/tree-sitter-bash"))
-        (c . ("https://github.com/tree-sitter/tree-sitter-c"))
-        (cpp . ("https://github.com/tree-sitter/tree-sitter-cpp"))
-        (css . ("https://github.com/tree-sitter/tree-sitter-css"))
-        (go . ("https://github.com/tree-sitter/tree-sitter-go"))
-        (html . ("https://github.com/tree-sitter/tree-sitter-html"))
-        (javascript . ("https://github.com/tree-sitter/tree-sitter-javascript"))
-        (json . ("https://github.com/tree-sitter/tree-sitter-json"))
-        (lua . ("https://github.com/Azganoth/tree-sitter-lua"))
-        (make . ("https://github.com/alemuller/tree-sitter-make"))
-        (python . ("https://github.com/tree-sitter/tree-sitter-python"))
-        (php . ("https://github.com/tree-sitter/tree-sitter-php"))
-        (ruby . ("https://github.com/tree-sitter/tree-sitter-ruby"))
-        (rust . ("https://github.com/tree-sitter/tree-sitter-rust"))
-        (sql . ("https://github.com/m-novikov/tree-sitter-sql"))
-        (toml . ("https://github.com/tree-sitter/tree-sitter-toml"))
-        (zig . ("https://github.com/GrayJack/tree-sitter-zig"))
-        ;; add more here dumb
-        ))
-
-(add-to-list 'major-mode-remap-alist
-             '(sh-mode . bash-ts-mode))
 
 ;; Enable vertico
 (use-package vertico

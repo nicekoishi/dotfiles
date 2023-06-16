@@ -5,7 +5,6 @@
 
   environment.systemPackages = with pkgs; [
     # etc
-    lutris
     polkit_gnome
 
     # utils
@@ -20,10 +19,6 @@
     wl-clipboard
     ydotool
 
-    # media
-    ffmpeg
-    mpv
-
     # virt manager and friends
     spice
     spice-gtk
@@ -32,16 +27,10 @@
     virt-viewer
 
     # the best wallpaper daemon and its friends
-    eww-wayland
     gnome.adwaita-icon-theme
     papirus-icon-theme
-    swww
-
-    # discord moderators be like
-    webcord-vencord
 
     # wine
     winetricks
-    wineWowPackages.waylandFull
   ];
 }

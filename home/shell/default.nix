@@ -10,6 +10,7 @@ in {
   imports = [
     ./cli.nix
     ./dev.nix
+    ./fetch.nix
     ./starship.nix
     ./zsh.nix
   ];
@@ -26,4 +27,14 @@ in {
     XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
     RUSTUP_HOME = data + "/rustup";
   };
+
+  home.packages = with pkgs; [
+    coreutils
+    fd
+    gnutar
+    jaq
+    unrar
+    unzip
+    zip
+  ];
 }
