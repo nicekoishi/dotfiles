@@ -4,6 +4,14 @@
     # you should use a dev shell i guess?
     rustup
 
+    # emacs kinda needs this, treesitter is annoying
+    clang_16
+    clang-tools_16
+
+    # nix
+    alejandra
+    nil
+
     # FIXME: flutter not detecting android-tools,
     # even with sdk installed
     android-tools

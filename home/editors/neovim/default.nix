@@ -1,7 +1,4 @@
-{
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [inputs.neovim-flake.homeManagerModules.default];
 
   programs.neovim-flake = {

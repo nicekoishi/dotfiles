@@ -10,8 +10,7 @@
     ../../vscode.nix
     ../../xdg.nix
 
-    ../../../packages/home-pkgs.nix
-
+    ../../config
     ../../shell
     ../../programs
   ];

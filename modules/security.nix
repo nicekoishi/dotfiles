@@ -1,4 +1,4 @@
-# security tweaks borrowed from @hlissner
+# security tweaks borrowed from @hlissner with some changes
 {
   boot.kernel.sysctl = {
     # The Magic SysRq key is a key combo that allows users connected to the
