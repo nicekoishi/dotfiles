@@ -3,11 +3,11 @@
 * About
 Probably one of the most cursed nix configurations you will find out there, all this in a flake!
 ** Contents
-+ [[file:environment/README.org][Environment]]
-+ [[file:home/README.org][Home]]
-+ [[file:hosts/README.org][Hosts]]
-+ [[file:modules/README.org][Modules]]
-+ [[file:packages/README.org][Packages]]
++ [[file:environment][Environment]]
++ [[file:home][Home]]
++ [[file:hosts][Hosts]]
++ [[file:modules][Modules]]
++ [[file:packages][Packages]]
 ** Desktop Preview
 #+CAPTION: hehe funni screenie
 #+NAME: fig:screenie
