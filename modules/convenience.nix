@@ -1,7 +1,4 @@
-{
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # FIXME: fix this mess for the love of god;
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "walld" ''

@@ -8,7 +8,6 @@
     polkit_gnome
 
     # utils
-    busybox
     cifs-utils
     cliphist
     egl-wayland
