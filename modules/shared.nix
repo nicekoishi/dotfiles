@@ -40,6 +40,11 @@
   programs.java.enable = true;
   services.tumbler.enable = true;
 
+  hardware.bluetooth = {
+    enable = true;
+    package = pkgs.blueman;
+  };
+
   services.avahi = {
     enable = true;
     nssmdns = true;
