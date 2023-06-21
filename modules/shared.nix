@@ -40,6 +40,10 @@
   programs.java.enable = true;
   services.tumbler.enable = true;
 
+  hardware.bluetooth = {
+    enable = true;
+  };
+
   services.avahi = {
     enable = true;
     nssmdns = true;

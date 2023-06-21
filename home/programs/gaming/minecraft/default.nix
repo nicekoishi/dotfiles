@@ -8,14 +8,17 @@
     # Java 8
     temurin-jre-bin-8
     zulu8
+    jre8
 
     # Java 11
     temurin-jre-bin-11
     graalvm11-ce
+    openjdk11-bootstrap
 
     # Java 17
     temurin-jre-bin-17
     graalvm17-ce
+    openjdk17
 
     # Latest
     temurin-jre-bin
