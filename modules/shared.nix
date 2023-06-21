@@ -42,7 +42,6 @@
 
   hardware.bluetooth = {
     enable = true;
-    package = pkgs.blueman;
   };
 
   services.avahi = {

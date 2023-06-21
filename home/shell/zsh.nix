@@ -45,7 +45,7 @@
       cls = "clear";
 
       rebuild = "doas nixos-rebuild switch --flake ~dots/#$(hostname)";
-      update = "doas nix flake update ~dots";
+      update = "nix flake update ~dots"; # running as root fucks up permissions dumb
 
       did = "systemctl --user";
       had = "doas systemctl";
