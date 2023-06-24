@@ -3,7 +3,7 @@
   inputs,
   ...
 }: let
-  inherit (inputs.anyrun.packages.${pkgs.system}) anyrun;
+  anyrun = inputs.anyrun.packages.${pkgs.system}.anyrun-with-all-plugins;
 in {
   xdg.configFile = {
     "anyrun/config.ron".text = ''

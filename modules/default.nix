@@ -3,6 +3,7 @@
     ./convenience.nix
     ./gamemode.nix
     ./jellyfin.nix
+    ./libvirt
     ./security.nix
     ./shared.nix
     ./telemetry.nix
