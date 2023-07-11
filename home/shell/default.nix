@@ -11,6 +11,7 @@ in {
     ./cli.nix
     ./dev.nix
     ./fetch.nix
+    ./nix.nix
     ./starship.nix
     ./zsh.nix
   ];
