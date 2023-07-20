@@ -19,6 +19,7 @@
     "x-scheme-handler/unknown" = browser;
 
     "application/json" = browser;
+    "application/pdf" = ["org.pwmt.zathura.desktop.desktop"];
     "audio/m4a" = video;
     "audio/mp3" = video;
     "audio/wav" = video;

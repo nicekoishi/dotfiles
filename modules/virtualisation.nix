@@ -18,13 +18,14 @@
   };
 
   # sleeping when doing pci passthrough is fun
-  systemd.services."libvirt-nosleep@" = {
-    description = "Preventing sleep while libvirt domain \"%i\" is running";
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.systemd}/bin/systemd-inhibit --what=sleep --why=\"Libvirt domain \"%i\"\" is running --who=%U --mode=block sleep infinity";
-    };
-  };
+  # FIX: this service is useless as is
+  # systemd.services."libvirt-nosleep@" = {
+  #   description = "Preventing sleep while libvirt domain \"%i\" is running";
+  #   serviceConfig = {
+  #     Type = "simple";
+  #     ExecStart = "${pkgs.systemd}/bin/systemd-inhibit --what=sleep --why=\"Libvirt domain \"%i\"\" is running --who=%U --mode=block sleep infinity";
+  #   };
+  # };
 
   # if using without passthrough
   virtualisation.spiceUSBRedirection.enable = true;

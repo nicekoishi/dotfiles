@@ -18,6 +18,7 @@
                 "label" = "noise_suppressor_stereo";
                 "control" = {
                   "VAD Threshold (%)" = 50.0;
+                  "Retroactive VAD Grace (ms)" = 0;
                 };
               }
             ];

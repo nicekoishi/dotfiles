@@ -26,9 +26,6 @@
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
     QT_QPA_PLATFORMTHEME = "qt5ct";
 
-    XDG_SESSION_TYPE = "wayland";
-    XDG_SESSION_DESKTOP = "Hyprland";
-
     XCURSOR_SIZE = "16";
 
     NIXOS_OZONE_WL = "1";

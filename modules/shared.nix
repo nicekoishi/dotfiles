@@ -114,6 +114,7 @@
   };
 
   time.timeZone = "America/Sao_Paulo";
+  time.hardwareClockInLocalTime = true; # eww windoes
   i18n.defaultLocale = "en_US.utf8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "pt_BR.utf8";

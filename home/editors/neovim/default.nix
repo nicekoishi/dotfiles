@@ -135,7 +135,6 @@
       };
 
       utility = {
-        colorizer.enable = true;
         icon-picker.enable = true;
         diffview-nvim.enable = true;
         motion = {
@@ -155,7 +154,6 @@
 
       ui = {
         noice.enable = true;
-        smartcolumn.enable = true;
       };
 
       session = {
