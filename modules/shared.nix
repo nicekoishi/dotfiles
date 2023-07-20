@@ -1,6 +1,12 @@
 {pkgs, ...}: {
   nix.settings = {
     experimental-features = [" nix-command" "flakes"];
+    builders-use-substitutes = true;
+    auto-optimise-store = true;
+    keep-going = true;
+    warn-dirty = false;
+    max-jobs = "auto";
+    http-connections = 0;
     substituters = [
       "https://ezkea.cachix.org"
       "https://hyprland.cachix.org"
@@ -10,6 +16,11 @@
       "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
       "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
+    ];
+
+    trusted-users = [
+      "root"
+      "@wheel"
     ];
   };
 
@@ -103,6 +114,7 @@
   };
 
   time.timeZone = "America/Sao_Paulo";
+  time.hardwareClockInLocalTime = true; # eww windoes
   i18n.defaultLocale = "en_US.utf8";
   i18n.extraLocaleSettings = {
     LC_ADDRESS = "pt_BR.utf8";

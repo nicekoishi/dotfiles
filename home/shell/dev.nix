@@ -8,10 +8,6 @@
     clang_16
     clang-tools_16
 
-    # nix
-    alejandra
-    nil
-
     # FIXME: flutter not detecting android-tools,
     # even with sdk installed
     android-tools

@@ -6,6 +6,7 @@
     ../../gtk.nix
     ../../pcmanfm.nix
     ../../qt.nix
+    ../../noise.nix
     ../../spicetify.nix
     ../../vscode.nix
     ../../xdg.nix
