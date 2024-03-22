@@ -72,14 +72,14 @@
       statusline = {
         lualine = {
           enable = true;
-          theme = "gruvbox";
+          theme = "gruvbox_material";
         };
       };
 
       theme = {
         enable = true;
-        name = "gruvbox";
-        style = "dark";
+        name = "catppuccin";
+        style = "mocha";
         transparent = false;
       };
 

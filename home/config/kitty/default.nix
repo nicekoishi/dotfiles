@@ -1,7 +1,7 @@
 {
   programs.kitty = {
     enable = true;
-    theme = "Gruvbox Material Dark Soft";
+    theme = "Catppuccin-Mocha";
     settings = {
       confirm_os_window_close = 0;
 

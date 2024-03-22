@@ -3,7 +3,6 @@
     ../../editors
     ../../git.nix
     ../../gnupg.nix
-    ../../theme.nix
     ../../pcmanfm.nix
     ../../noise.nix
     ../../xdg.nix
@@ -11,6 +10,7 @@
     ../../config
     ../../shell
     ../../programs
+    ../../theme
   ];
 
   home = {
