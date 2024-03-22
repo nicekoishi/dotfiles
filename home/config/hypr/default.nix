@@ -14,7 +14,7 @@ in {
 
     settings = {
       monitor = [
-        "HDMI-A-1, preferred, 0x0, auto"
+        ", 1920x1080, 0x0, 1"
       ];
     };
     extraConfig = ''
