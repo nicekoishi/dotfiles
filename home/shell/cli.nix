@@ -6,6 +6,7 @@
         pager = "less -FR";
         theme = "Catppuccin-macchiato";
       };
+<<<<<<< HEAD
       themes = {
         Catppuccin-macchiato = builtins.readFile (pkgs.fetchurl {
           url = "https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-macchiato.tmTheme";
@@ -16,5 +17,11 @@
 
     btop.enable = true;
     exa.enable = true;
+=======
+    };
+
+    btop.enable = true;
+    eza.enable = true;
+>>>>>>> 12c72a1 (too lazy to separate them all)
   };
 }

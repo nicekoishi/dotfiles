@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+<<<<<<< HEAD
   # FIXME: fix this mess for the love of god;
   environment.systemPackages = with pkgs; [
     (writeShellScriptBin "walld" ''
@@ -81,6 +82,10 @@
         esac
       done
     '')
+=======
+  # TODO: Delete this cursed creation and spread the holy wallpapers
+  environment.systemPackages = with pkgs; [
+>>>>>>> 12c72a1 (too lazy to separate them all)
     (writeShellScriptBin "v2" ''
       YDOSTATE=false
 

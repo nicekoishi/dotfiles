@@ -1,5 +1,9 @@
 {config, ...}: let
+<<<<<<< HEAD
   browser = ["brave.desktop"];
+=======
+  browser = ["firefox.desktop"];
+>>>>>>> 12c72a1 (too lazy to separate them all)
   image = ["viewnior.desktop"];
   video = ["mpv.desktop"];
 
@@ -46,11 +50,19 @@ in {
       enable = true;
       createDirectories = true;
 
+<<<<<<< HEAD
       documents = config.home.homeDirectory + "/Documentos";
       download = config.home.homeDirectory + "/Downloads";
       music = config.home.homeDirectory + "/Música";
       pictures = config.home.homeDirectory + "/Imagens";
       videos = config.home.homeDirectory + "/Vídeos";
+=======
+      documents = config.home.homeDirectory + "/Documents";
+      download = config.home.homeDirectory + "/Downloads";
+      music = config.home.homeDirectory + "/Music";
+      pictures = config.home.homeDirectory + "/Pictures";
+      videos = config.home.homeDirectory + "/Videos";
+>>>>>>> 12c72a1 (too lazy to separate them all)
     };
   };
 }

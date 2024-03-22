@@ -4,6 +4,10 @@
 {
   config,
   lib,
+<<<<<<< HEAD
+=======
+  pkgs,
+>>>>>>> 12c72a1 (too lazy to separate them all)
   modulesPath,
   ...
 }: {
@@ -16,6 +20,7 @@
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
+<<<<<<< HEAD
   fileSystems."/" = {
     device = "/dev/disk/by-uuid/53a6817a-f360-4aa1-87b0-628101865175";
     fsType = "btrfs";
@@ -56,6 +61,51 @@
     device = "/dev/disk/by-uuid/0DF1-637F";
     fsType = "vfat";
   };
+=======
+  boot.loader.efi.canTouchEfiVariables = true;
+  boot.loader.systemd-boot = {
+    enable = true;
+    configurationLimit = 12;
+    consoleMode = "max";
+  };
+
+  hardware.opengl = {
+    enable = true;
+    extraPackages = with pkgs; [nvidia-vaapi-driver];
+    driSupport = true;
+    driSupport32Bit = true;
+  };
+
+  hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.production;
+    modesetting.enable = true;
+  };
+
+  services.xserver.videoDrivers = ["nvidia"];
+
+  fileSystems."/" =
+    { device = "/dev/disk/by-uuid/418e6ca3-9b74-4cbf-9599-f237a39d931d";
+      fsType = "btrfs";
+      options = [ "subvol=@" "compress=zstd" "noatime" "ssd" ];
+    };
+
+  fileSystems."/home" =
+    { device = "/dev/disk/by-uuid/418e6ca3-9b74-4cbf-9599-f237a39d931d";
+      fsType = "btrfs";
+      options = [ "subvol=@home" "compress=zstd" "noatime" "ssd" ];
+    };
+
+  fileSystems."/nix" =
+    { device = "/dev/disk/by-uuid/418e6ca3-9b74-4cbf-9599-f237a39d931d";
+      fsType = "btrfs";
+      options = [ "subvol=@nix" "compress=zstd" "noatime" "ssd" ];
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/A807-E933";
+      fsType = "vfat";
+    };
+>>>>>>> 12c72a1 (too lazy to separate them all)
 
   swapDevices = [];
 
@@ -64,6 +114,10 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
+<<<<<<< HEAD
+=======
+  networking.hostName = "polaris";
+>>>>>>> 12c72a1 (too lazy to separate them all)
   # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp5s0.useDHCP = lib.mkDefault true;
 

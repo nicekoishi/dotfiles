@@ -6,6 +6,7 @@
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
+<<<<<<< HEAD
     enableAutosuggestions = true;
     autocd = true;
     dirHashes = {
@@ -14,6 +15,16 @@
       dots = "$HOME/Documentos/dots-flake";
       dev = "$HOME/Documentos/Dev";
       xvids = "$HOME/Vídeos";
+=======
+    autosuggestion.enable = true;
+    autocd = true;
+    dirHashes = {
+      dl = "$HOME/Downloads";
+      docs = "$HOME/Documents";
+      dots = "$HOME/Documents/dots";
+      dev = "$HOME/Documents/Dev";
+      xvids = "$HOME/Videos";
+>>>>>>> 12c72a1 (too lazy to separate them all)
     };
     dotDir = ".config/zsh";
     history = {
@@ -39,9 +50,15 @@
     '';
 
     shellAliases = {
+<<<<<<< HEAD
       l = "exa -l";
       la = "exa -la";
       ls = "exa";
+=======
+      l = "eza -l";
+      la = "eza -la";
+      ls = "eza";
+>>>>>>> 12c72a1 (too lazy to separate them all)
       cls = "clear";
 
       rebuild = "doas nixos-rebuild switch --flake ~dots/#$(hostname)";
@@ -51,6 +68,10 @@
       had = "doas systemctl";
     };
 
+<<<<<<< HEAD
     shellGlobalAliases = {exa = "exa --icons --git --group-directories-first";};
+=======
+    shellGlobalAliases = {eza = "eza --icons --git --group-directories-first";};
+>>>>>>> 12c72a1 (too lazy to separate them all)
   };
 }
