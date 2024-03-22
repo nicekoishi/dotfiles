@@ -44,6 +44,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-colors.url = "github:misterio77/nix-colors";
+
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     nur.url = "github:nix-community/nur";

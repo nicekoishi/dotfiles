@@ -15,7 +15,6 @@
     WLR_NO_HARDWARE_CURSORS = "1";
     XDG_SESSION_TYPE = "wayland";
     GBM_BACKEND = "nvidia-drm";
-    #__GLX_VENDOR_LIBRARY_NAME = "nvidia";
 
     _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java";
     DELTA_PAGER = "less -R";
@@ -28,7 +27,6 @@
 
     QT_QPA_PLATFORM = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
 
     XCURSOR_SIZE = "16";
 

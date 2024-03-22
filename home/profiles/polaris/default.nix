@@ -3,9 +3,8 @@
     ../../editors
     ../../git.nix
     ../../gnupg.nix
-    ../../gtk.nix
+    ../../theme.nix
     ../../pcmanfm.nix
-    ../../qt.nix
     ../../noise.nix
     ../../xdg.nix
 
