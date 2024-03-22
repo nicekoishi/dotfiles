@@ -1,11 +1,22 @@
 {
   inputs,
   pkgs,
-  lib,
   ...
 }: {
-  services.dbus.enable = true;
-  services.gvfs.enable = true;
+  services = {
+    dbus.enable = true;
+    gvfs.enable = true;
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "Hyprland";
+          user = "supeen";
+        };
+        default_session = initial_session;
+      };
+    };
+  };
   security.polkit.enable = true;
 
   programs.hyprland.portalPackage = inputs.xdg-desktop-portal-hyprland.packages."${pkgs.system}".xdg-desktop-portal-hyprland;
@@ -15,7 +26,6 @@
     WLR_NO_HARDWARE_CURSORS = "1";
     XDG_SESSION_TYPE = "wayland";
     GBM_BACKEND = "nvidia-drm";
-    #__GLX_VENDOR_LIBRARY_NAME = "nvidia";
 
     _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java";
     DELTA_PAGER = "less -R";
@@ -28,7 +38,6 @@
 
     QT_QPA_PLATFORM = "wayland";
     QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    QT_QPA_PLATFORMTHEME = "qt5ct";
 
     XCURSOR_SIZE = "16";
 
@@ -37,17 +46,6 @@
     LIBSEAT_BACKEND = "logind";
 
     YDOTOOL_SOCKET = "/tmp/.ydotool_socket";
-  };
-
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "Hyprland";
-        user = "supeen";
-      };
-      default_session = initial_session;
-    };
   };
 
   systemd = {

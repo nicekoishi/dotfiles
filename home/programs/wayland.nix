@@ -27,6 +27,7 @@ in {
     hyprpicker
     swaynotificationcenter
     swww
+    wl-clipboard
   ];
 
   # a bunch of ags stuff, too lazy to make a separate file
