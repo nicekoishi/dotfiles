@@ -1,14 +1,6 @@
 {
   pkgs,
   inputs,
-<<<<<<< HEAD
-  ...
-}: {
-  home.packages = with pkgs; [
-    inputs.hypr-contrib.packages.${pkgs.system}.grimblast
-
-    eww-wayland
-=======
   lib,
   config,
   ...
@@ -32,13 +24,10 @@ in {
   home.packages = with pkgs; [
     inputs.hypr-contrib.packages.${pkgs.system}.grimblast
 
->>>>>>> 12c72a1 (too lazy to separate them all)
     hyprpicker
     swaynotificationcenter
     swww
   ];
-<<<<<<< HEAD
-=======
 
   # a bunch of ags stuff, too lazy to make a separate file
   # okay i got it from fufexan/dotfiles
@@ -61,5 +50,4 @@ in {
       };
     };
   };
->>>>>>> 12c72a1 (too lazy to separate them all)
 }

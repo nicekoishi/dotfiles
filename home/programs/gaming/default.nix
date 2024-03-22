@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-{pkgs, ...}: {
-  imports = [
-    ./minecraft
-=======
 {
   pkgs,
   inputs,
@@ -14,14 +9,10 @@ in {
   imports = [
     ./minecraft
     ./legendary
->>>>>>> 12c72a1 (too lazy to separate them all)
   ];
 
   home.packages = with pkgs; [
     lutris
-<<<<<<< HEAD
-  ];
-=======
     mangohud
 
     arrpc
@@ -47,5 +38,4 @@ in {
     toggle_logging=F11
     toggle_fps_limit=Shift_R+F10
   '';
->>>>>>> 12c72a1 (too lazy to separate them all)
 }

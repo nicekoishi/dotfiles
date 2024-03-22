@@ -33,14 +33,11 @@
         nix.enable = true;
         python.enable = true;
 
-<<<<<<< HEAD
-=======
         ts = {
           enable = true;
           format.enable = true;
         };
 
->>>>>>> 12c72a1 (too lazy to separate them all)
         dart = {
           enable = true;
           flutter-tools.enable = true;
@@ -61,11 +58,7 @@
         nvimWebDevicons.enable = true;
         scrollBar.enable = false;
         smoothScroll.enable = true;
-<<<<<<< HEAD
-        cursorWordline = {
-=======
         cursorline = {
->>>>>>> 12c72a1 (too lazy to separate them all)
           enable = true;
           lineTimeout = 0;
         };
@@ -73,33 +66,20 @@
           enable = true;
           fillChar = null;
           eolChar = null;
-<<<<<<< HEAD
-          showCurrContext = true;
-=======
           scope.enabled = true;
->>>>>>> 12c72a1 (too lazy to separate them all)
         };
       };
       statusline = {
         lualine = {
           enable = true;
-<<<<<<< HEAD
-          theme = "catppuccin";
-=======
           theme = "gruvbox";
->>>>>>> 12c72a1 (too lazy to separate them all)
         };
       };
 
       theme = {
         enable = true;
-<<<<<<< HEAD
-        name = "catppuccin";
-        style = "macchiato";
-=======
         name = "gruvbox";
         style = "dark";
->>>>>>> 12c72a1 (too lazy to separate them all)
         transparent = false;
       };
 
@@ -111,17 +91,9 @@
       };
 
       filetree = {
-<<<<<<< HEAD
-        nvimTreeLua = {
-          enable = true;
-          renderer = {
-            rootFolderLabel = null;
-          };
-=======
         nvimTree = {
           enable = true;
           openOnSetup = false;
->>>>>>> 12c72a1 (too lazy to separate them all)
           view = {
             width = 25;
           };
@@ -200,24 +172,14 @@
       };
 
       presence = {
-<<<<<<< HEAD
-        presence-nvim = {
-=======
         neocord = {
->>>>>>> 12c72a1 (too lazy to separate them all)
           enable = true;
           auto_update = true;
           enable_line_number = true;
           show_time = true;
-<<<<<<< HEAD
-          image_text = "The Superior Text Editor";
-          client_id = "793271441293967371";
-          main_image = "neovim";
-=======
           logo_tooltip = "The Superior Text Editor";
           client_id = "793271441293967371";
           main_image = "logo";
->>>>>>> 12c72a1 (too lazy to separate them all)
           rich_presence = {
             editing_text = "Editing %s";
           };
