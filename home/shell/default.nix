@@ -21,7 +21,7 @@ in {
     _JAVA_OPTIONS = "-Djava.util.prefs.userRoot=$XDG_CONFIG_HOME/java";
     CHROME_EXECUTABLE = "${pkgs.brave}/opt/brave.com/brave/brave";
     DELTA_PAGER = "less -R";
-    DOTS = config.home.homeDirectory + "/Documentos/dots-flake";
+    DOTS = config.home.homeDirectory + "/Documents/dots";
     LESSHISTFILE = cache + "/less/history";
     LESSKEY = dots + "/less/key";
     WINEPREFIX = data + "/wine";
