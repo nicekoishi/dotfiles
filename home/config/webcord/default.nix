@@ -1,5 +1,9 @@
 {
   xdg.configFile."WebCord/Themes/theme".text = ''
+<<<<<<< HEAD
+=======
+
+>>>>>>> 12c72a1 (too lazy to separate them all)
     #app-mount{
       background-color: transparent;
       border-color: transparent;
@@ -2193,5 +2197,9 @@
       color: #ed8796;
       background: rgba(var(--ctp-red), 15%);
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 12c72a1 (too lazy to separate them all)
   '';
 }

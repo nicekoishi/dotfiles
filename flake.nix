@@ -1,5 +1,10 @@
 {
+<<<<<<< HEAD
   description = "The most cursed flake you'll ever see (i guess)";
+=======
+  description = "A very basic flake";
+
+>>>>>>> 12c72a1 (too lazy to separate them all)
   outputs = inputs: {
     nixosConfigurations = {
       polaris = import ./hosts/polaris inputs;
@@ -7,6 +12,7 @@
   };
 
   inputs = {
+<<<<<<< HEAD
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     hyprland.url = "github:hyprwm/hyprland/21f64b6";
@@ -28,6 +34,10 @@
       url = "github:notashelf/arrpc-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+=======
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    hyprland.url = "github:hyprwm/hyprland";
+>>>>>>> 12c72a1 (too lazy to separate them all)
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -39,6 +49,27 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+<<<<<<< HEAD
+=======
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+    };
+
+    arrpc = {
+      url = "github:notashelf/arrpc-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    anyrun = {
+      url = "github:Kirottu/anyrun";
+    };
+
+>>>>>>> 12c72a1 (too lazy to separate them all)
     neovim-flake = {
       url = "github:NotAShelf/neovim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,11 +77,26 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
+<<<<<<< HEAD
+=======
+    nur.url = "github:nix-community/nur";
+
+>>>>>>> 12c72a1 (too lazy to separate them all)
     spicetify-nix = {
       url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+<<<<<<< HEAD
   };
+=======
+
+    xdg-desktop-portal-hyprland = {
+      url = "github:hyprwm/xdg-desktop-portal-hyprland";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+  };
+
+>>>>>>> 12c72a1 (too lazy to separate them all)
   nixConfig = {
     extra-substituters = [
       "https://nix-community.cachix.org"

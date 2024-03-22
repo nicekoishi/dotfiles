@@ -1,6 +1,10 @@
 {pkgs, ...}: {
   nix.settings = {
+<<<<<<< HEAD
     experimental-features = [" nix-command" "flakes"];
+=======
+    experimental-features = ["nix-command" "flakes"];
+>>>>>>> 12c72a1 (too lazy to separate them all)
     builders-use-substitutes = true;
     auto-optimise-store = true;
     keep-going = true;
@@ -28,6 +32,7 @@
     config.allowUnfree = true;
   };
 
+<<<<<<< HEAD
   networking.stevenblack = {
     enable = true;
     block = ["gambling" "porn"];
@@ -89,6 +94,85 @@
 
   ## User
   users.users.nicekoishi = {
+=======
+  networking = {
+    nameservers = ["2620:fe::fe" "2620:fe::9"];
+    stevenblack = {
+      enable = true;
+      block = ["gambling" "porn"];
+    };
+  };
+
+  console.useXkbConfig = true;
+
+  ## if i forgot this, it would be annoying at least
+  programs = {
+    mtr.enable = true;
+    java.enable = true;
+
+    # Home Manager GTK stuff doesn't work without this!
+    dconf.enable = true;
+    zsh.enable = true;
+  };
+
+  security = {
+    sudo.enable = false;
+    doas = {
+      enable = true;
+      extraRules = [
+        {
+          users = ["supeen"];
+          keepEnv = true;
+          persist = true;
+        }
+      ];
+    };
+    rtkit.enable = true;
+  };
+
+  services = {
+    avahi = {
+      enable = true;
+      nssmdns4 = true;
+      openFirewall = true;
+    };
+    dbus.packages = [pkgs.gcr];
+    openssh = {
+      enable = true;
+      settings.PasswordAuthentication = false;
+    };
+    pipewire = {
+      enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      jack.enable = true;
+      pulse.enable = true;
+    };
+    printing = {
+      enable = true;
+      drivers = [pkgs.hplipWithPlugin];
+    };
+    tumbler.enable = true;
+    udev.packages = [pkgs.gnome.gnome-settings-daemon];
+    xserver.xkb = {
+      layout = "br";
+      variant = "";
+    };
+  };
+
+  hardware = {
+    bluetooth = {
+      enable = true;
+    };
+    sane = {
+      enable = true;
+      extraBackends = [pkgs.hplipWithPlugin];
+    };
+  };
+
+  ## User
+  users.users.supeen = {
+>>>>>>> 12c72a1 (too lazy to separate them all)
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [
@@ -100,7 +184,11 @@
       "libvirtd"
       "log"
       "lp"
+<<<<<<< HEAD
       "nicekoishi"
+=======
+      "supeen"
+>>>>>>> 12c72a1 (too lazy to separate them all)
       "optical"
       "power"
       "rfkill"
@@ -113,6 +201,7 @@
     ]; # Better be safe than sorry
   };
 
+<<<<<<< HEAD
   time.timeZone = "America/Sao_Paulo";
   time.hardwareClockInLocalTime = true; # eww windoes
   i18n.defaultLocale = "en_US.utf8";
@@ -139,13 +228,36 @@
           persist = true;
         }
       ];
+=======
+  time = {
+    timeZone = "America/Sao_Paulo";
+    hardwareClockInLocalTime = true; # eww windoes
+  };
+  i18n = {
+    defaultLocale = "en_US.utf8";
+    extraLocaleSettings = {
+      LC_ADDRESS = "pt_BR.utf8";
+      LC_IDENTIFICATION = "pt_BR.utf8";
+      LC_MEASUREMENT = "pt_BR.utf8";
+      LC_MONETARY = "pt_BR.utf8";
+      LC_NAME = "pt_BR.utf8";
+      LC_NUMERIC = "pt_BR.utf8";
+      LC_PAPER = "pt_BR.utf8";
+      LC_TELEPHONE = "pt_BR.utf8";
+      LC_TIME = "pt_BR.utf8";
+>>>>>>> 12c72a1 (too lazy to separate them all)
     };
   };
 
   fonts = {
     fontDir.enable = true;
+<<<<<<< HEAD
     enableDefaultFonts = false;
     fonts = with pkgs; [
+=======
+    enableDefaultPackages = false;
+    packages = with pkgs; [
+>>>>>>> 12c72a1 (too lazy to separate them all)
       material-symbols
 
       corefonts
@@ -166,9 +278,13 @@
 
   zramSwap.enable = true;
 
+<<<<<<< HEAD
   programs.zsh.enable = true;
   # Home Manager GTK stuff doesn't work without this!
   programs.dconf.enable = true;
 
   system.stateVersion = "23.05";
+=======
+  system.stateVersion = "23.11";
+>>>>>>> 12c72a1 (too lazy to separate them all)
 }

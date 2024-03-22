@@ -12,12 +12,18 @@
 
     # Java 11
     temurin-jre-bin-11
+<<<<<<< HEAD
     graalvm11-ce
+=======
+>>>>>>> 12c72a1 (too lazy to separate them all)
     openjdk11-bootstrap
 
     # Java 17
     temurin-jre-bin-17
+<<<<<<< HEAD
     graalvm17-ce
+=======
+>>>>>>> 12c72a1 (too lazy to separate them all)
     openjdk17
 
     # Latest
