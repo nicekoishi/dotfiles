@@ -3,8 +3,6 @@
   pkgs,
   ...
 }: {
-<<<<<<< HEAD
-=======
   home.pointerCursor = {
     package = pkgs.bibata-cursors;
     name = "Bibata-Modern-Classic";
@@ -13,7 +11,6 @@
     x11.enable = true;
   };
 
->>>>>>> 12c72a1 (too lazy to separate them all)
   gtk = {
     enable = true;
 
@@ -31,17 +28,8 @@
     };
 
     theme = {
-<<<<<<< HEAD
-      name = "Catppuccin-Macchiato-Compact-Teal-dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["teal"];
-        size = "compact";
-        variant = "macchiato";
-      };
-=======
       name = "gruvbox-dark";
       package = pkgs.gruvbox-dark-gtk;
->>>>>>> 12c72a1 (too lazy to separate them all)
     };
   };
 }

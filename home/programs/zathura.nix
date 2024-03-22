@@ -21,10 +21,6 @@
 
   xdg.configFile."zathura/catppuccin-macchiato".source = pkgs.fetchurl {
     url = "https://raw.githubusercontent.com/catppuccin/zathura/main/src/catppuccin-macchiato";
-<<<<<<< HEAD
-    hash = "sha256-cuR2W/Iwd57XZ+rE/ldIhIPZOQcHZNLtQEl2rUpC4Ek=";
-=======
     hash = "sha256-tsenfgz1LToAy2cICcPFheutThKhlXEAZfDtW+MnCEk=";
->>>>>>> 12c72a1 (too lazy to separate them all)
   };
 }

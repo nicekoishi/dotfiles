@@ -1,10 +1,6 @@
 {pkgs, ...}: {
   nix.settings = {
-<<<<<<< HEAD
-    experimental-features = [" nix-command" "flakes"];
-=======
     experimental-features = ["nix-command" "flakes"];
->>>>>>> 12c72a1 (too lazy to separate them all)
     builders-use-substitutes = true;
     auto-optimise-store = true;
     keep-going = true;
@@ -32,69 +28,6 @@
     config.allowUnfree = true;
   };
 
-<<<<<<< HEAD
-  networking.stevenblack = {
-    enable = true;
-    block = ["gambling" "porn"];
-  };
-
-  networking.nameservers = ["2620:fe::fe" "2620:fe::9"];
-
-  ## if i forgot this, it would be annoying at least
-  programs.mtr.enable = true;
-
-  services.printing = {
-    enable = true;
-    drivers = [pkgs.hplipWithPlugin];
-  };
-
-  hardware.sane = {
-    enable = true;
-    extraBackends = [pkgs.hplipWithPlugin];
-  };
-
-  programs.java.enable = true;
-  services.tumbler.enable = true;
-
-  hardware.bluetooth = {
-    enable = true;
-  };
-
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-    openFirewall = true;
-  };
-
-  services.openssh = {
-    enable = true;
-    settings.PasswordAuthentication = false;
-  };
-
-  ## Keymap
-  services.xserver = {
-    layout = "br";
-    xkbVariant = "";
-  };
-
-  services.dbus.packages = [pkgs.gcr];
-  services.udev.packages = [pkgs.gnome.gnome-settings-daemon];
-
-  console.useXkbConfig = true;
-
-  ## Sound
-  security.rtkit.enable = true;
-  services.pipewire = {
-    enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
-    jack.enable = true;
-    pulse.enable = true;
-  };
-
-  ## User
-  users.users.nicekoishi = {
-=======
   networking = {
     nameservers = ["2620:fe::fe" "2620:fe::9"];
     stevenblack = {
@@ -172,7 +105,6 @@
 
   ## User
   users.users.supeen = {
->>>>>>> 12c72a1 (too lazy to separate them all)
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [
@@ -184,11 +116,7 @@
       "libvirtd"
       "log"
       "lp"
-<<<<<<< HEAD
-      "nicekoishi"
-=======
       "supeen"
->>>>>>> 12c72a1 (too lazy to separate them all)
       "optical"
       "power"
       "rfkill"
@@ -201,34 +129,6 @@
     ]; # Better be safe than sorry
   };
 
-<<<<<<< HEAD
-  time.timeZone = "America/Sao_Paulo";
-  time.hardwareClockInLocalTime = true; # eww windoes
-  i18n.defaultLocale = "en_US.utf8";
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "pt_BR.utf8";
-    LC_IDENTIFICATION = "pt_BR.utf8";
-    LC_MEASUREMENT = "pt_BR.utf8";
-    LC_MONETARY = "pt_BR.utf8";
-    LC_NAME = "pt_BR.utf8";
-    LC_NUMERIC = "pt_BR.utf8";
-    LC_PAPER = "pt_BR.utf8";
-    LC_TELEPHONE = "pt_BR.utf8";
-    LC_TIME = "pt_BR.utf8";
-  };
-
-  security = {
-    sudo.enable = false;
-    doas = {
-      enable = true;
-      extraRules = [
-        {
-          users = ["nicekoishi"];
-          keepEnv = true;
-          persist = true;
-        }
-      ];
-=======
   time = {
     timeZone = "America/Sao_Paulo";
     hardwareClockInLocalTime = true; # eww windoes
@@ -245,19 +145,13 @@
       LC_PAPER = "pt_BR.utf8";
       LC_TELEPHONE = "pt_BR.utf8";
       LC_TIME = "pt_BR.utf8";
->>>>>>> 12c72a1 (too lazy to separate them all)
     };
   };
 
   fonts = {
     fontDir.enable = true;
-<<<<<<< HEAD
-    enableDefaultFonts = false;
-    fonts = with pkgs; [
-=======
     enableDefaultPackages = false;
     packages = with pkgs; [
->>>>>>> 12c72a1 (too lazy to separate them all)
       material-symbols
 
       corefonts
@@ -278,13 +172,5 @@
 
   zramSwap.enable = true;
 
-<<<<<<< HEAD
-  programs.zsh.enable = true;
-  # Home Manager GTK stuff doesn't work without this!
-  programs.dconf.enable = true;
-
-  system.stateVersion = "23.05";
-=======
   system.stateVersion = "23.11";
->>>>>>> 12c72a1 (too lazy to separate them all)
 }

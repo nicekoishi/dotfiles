@@ -4,23 +4,6 @@
   ...
 }: let
   homeDir = config.home.homeDirectory;
-<<<<<<< HEAD
-  wallDir = config.home.homeDirectory + "/Imagens/Wallpapers";
-in {
-  imports = [inputs.hyprland.homeManagerModules.default];
-  xdg.configFile."hypr/macchiato.conf".source = ./macchiato.conf;
-  wayland.windowManager.hyprland.systemdIntegration = true;
-  wayland.windowManager.hyprland.enable = true;
-  wayland.windowManager.hyprland.extraConfig = ''
-    source = ${homeDir}/.config/hypr/macchiato.conf
-    monitor=,1920x1080,0x0,1,bitdepth,10
-
-    exec-once = wl-paste --type text --watch cliphist store
-    exec-once = wl-paste --type image --watch cliphist store
-    exec-once = swww init && walld init ${wallDir}
-    exec-once = eww daemon && eww open bar
-    exec-once = arRPC
-=======
   wallDir = config.home.homeDirectory + "/Pictures/the holy wallpapers";
 in {
   imports = [inputs.hyprland.homeManagerModules.default];
@@ -34,7 +17,6 @@ in {
     exec-once = wl-paste --type text --watch cliphist store
     exec-once = wl-paste --type image --watch cliphist store
     exec-once = swww init && swww img ${wallDir}/Sekibanki.gif
->>>>>>> 12c72a1 (too lazy to separate them all)
 
     input {
       kb_layout = br
@@ -63,17 +45,6 @@ in {
 
     decoration {
       rounding = 8
-<<<<<<< HEAD
-      multisample_edges = true
-
-      blur = yes
-      blur_size = 2
-      blur_passes = 3
-      blur_new_optimizations = on
-      #blurls = gtk-layer-shell
-      blurls = lockscreen
-=======
->>>>>>> 12c72a1 (too lazy to separate them all)
 
       drop_shadow = no
       shadow_ignore_window = true
@@ -81,8 +52,6 @@ in {
       shadow_range = 10
       shadow_render_power = 2
       col.shadow = rgba(1a1a1aee)
-<<<<<<< HEAD
-=======
 
       blur {
         enabled = true
@@ -90,7 +59,6 @@ in {
         passes = 3
         new_optimizations = true
       }
->>>>>>> 12c72a1 (too lazy to separate them all)
     }
 
     animations {
@@ -129,10 +97,6 @@ in {
     bind = $mainMod, E, exec, pcmanfm-qt
     bind = $mainMod, F, togglefloating,
     bind = $mainMod, F1, exec, killall waybar || waybar &
-<<<<<<< HEAD
-    bind = $mainMod, F2, exec, walld init ${wallDir}
-=======
->>>>>>> 12c72a1 (too lazy to separate them all)
     bind = $mainMod, J, togglesplit, # dwindle
     bind = $mainMod, M, exit,
     bind = $mainMod, P, pseudo, # dwindle
@@ -154,15 +118,9 @@ in {
     binde=, XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
     binde=, XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     binde=, XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-<<<<<<< HEAD
-    bind=, Print, exec, grimblast --notify copysave screen ${homeDir}/Imagens/Screenshots/$(date +%Y-%m-%d-%H:%M:%S).png && pw-play ${homeDir}/Música/Notification/camera-shutter.oga
-    bind= $mainMod, Print, exec, grimblast --notify copysave active ${homeDir}/Imagens/Screenshots/$(date +%Y-%m-%d-%H:%M:%S).png && pw-play ${homeDir}/Música/Notification/camera-shutter.oga
-    bind= ALT, Print, exec, grimblast --notify copysave area ${homeDir}/Imagens/Screenshots/$(date +%Y-%m-%d-%H:%M:%S).png && pw-play ${homeDir}/Música/Notification/camera-shutter.oga
-=======
     bind=, Print, exec, grimblast --notify copysave screen ${homeDir}/Pictures/Screenshots/$(date +%Y-%m-%d-%H:%M:%S).png
     bind= $mainMod, Print, exec, grimblast --notify copysave active ${homeDir}/Pictures/Screenshots/$(date +%Y-%m-%d-%H:%M:%S).png
     bind= ALT, Print, exec, grimblast --notify copysave area ${homeDir}/Pictures/Screenshots/$(date +%Y-%m-%d-%H:%M:%S).png
->>>>>>> 12c72a1 (too lazy to separate them all)
 
     # Move focus with mainMod + arrow keys
     bind = $mainMod, down, movefocus, d
@@ -234,11 +192,7 @@ in {
     windowrule = fullscreen, title:wlogout
     windowrule = fullscreen, wlogout
     windowrule = idleinhibit focus, mpv
-<<<<<<< HEAD
-    windowrule = idleinhibit fullscreen, brave
-=======
     windowrule = idleinhibit fullscreen, firefox
->>>>>>> 12c72a1 (too lazy to separate them all)
     windowrule = move 75 44%, title:^(Volume Control)$
     windowrule = opacity 0.92, pcmanfm-qt
     windowrule = size 800 600, title:^(Volume Control)$

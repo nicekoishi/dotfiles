@@ -4,10 +4,7 @@
 {
   config,
   lib,
-<<<<<<< HEAD
-=======
   pkgs,
->>>>>>> 12c72a1 (too lazy to separate them all)
   modulesPath,
   ...
 }: {
@@ -20,48 +17,6 @@
   boot.kernelModules = ["kvm-amd"];
   boot.extraModulePackages = [];
 
-<<<<<<< HEAD
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/53a6817a-f360-4aa1-87b0-628101865175";
-    fsType = "btrfs";
-    options = ["subvol=@"];
-  };
-
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/53a6817a-f360-4aa1-87b0-628101865175";
-    fsType = "btrfs";
-    options = ["subvol=@nix"];
-  };
-
-  fileSystems."/var/log" = {
-    device = "/dev/disk/by-uuid/53a6817a-f360-4aa1-87b0-628101865175";
-    fsType = "btrfs";
-    options = ["subvol=@log"];
-  };
-
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/53a6817a-f360-4aa1-87b0-628101865175";
-    fsType = "btrfs";
-    options = ["subvol=@home"];
-  };
-
-  fileSystems."/var/cache" = {
-    device = "/dev/disk/by-uuid/53a6817a-f360-4aa1-87b0-628101865175";
-    fsType = "btrfs";
-    options = ["subvol=@cache"];
-  };
-
-  fileSystems."/var/lib/libvirt/images" = {
-    device = "/dev/disk/by-uuid/53a6817a-f360-4aa1-87b0-628101865175";
-    fsType = "btrfs";
-    options = ["subvol=@images"];
-  };
-
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/0DF1-637F";
-    fsType = "vfat";
-  };
-=======
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot = {
     enable = true;
@@ -105,7 +60,6 @@
     { device = "/dev/disk/by-uuid/A807-E933";
       fsType = "vfat";
     };
->>>>>>> 12c72a1 (too lazy to separate them all)
 
   swapDevices = [];
 
@@ -114,10 +68,7 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-<<<<<<< HEAD
-=======
   networking.hostName = "polaris";
->>>>>>> 12c72a1 (too lazy to separate them all)
   # networking.interfaces.eno1.useDHCP = lib.mkDefault true;
   # networking.interfaces.wlp5s0.useDHCP = lib.mkDefault true;
 
