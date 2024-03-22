@@ -1,8 +1,4 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [inputs.aagl.nixosModules.default];
 
   nix.settings = inputs.aagl.nixConfig;

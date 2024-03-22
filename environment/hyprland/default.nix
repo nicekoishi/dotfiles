@@ -1,11 +1,22 @@
 {
   inputs,
   pkgs,
-  lib,
   ...
 }: {
-  services.dbus.enable = true;
-  services.gvfs.enable = true;
+  services = {
+    dbus.enable = true;
+    gvfs.enable = true;
+    greetd = {
+      enable = true;
+      settings = rec {
+        initial_session = {
+          command = "Hyprland";
+          user = "supeen";
+        };
+        default_session = initial_session;
+      };
+    };
+  };
   security.polkit.enable = true;
 
   programs.hyprland.portalPackage = inputs.xdg-desktop-portal-hyprland.packages."${pkgs.system}".xdg-desktop-portal-hyprland;
@@ -35,17 +46,6 @@
     LIBSEAT_BACKEND = "logind";
 
     YDOTOOL_SOCKET = "/tmp/.ydotool_socket";
-  };
-
-  services.greetd = {
-    enable = true;
-    settings = rec {
-      initial_session = {
-        command = "Hyprland";
-        user = "supeen";
-      };
-      default_session = initial_session;
-    };
   };
 
   systemd = {
