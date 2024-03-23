@@ -40,7 +40,7 @@
       # how wine can be drunk
       "center, winecfg.exe"
       "center, zenity"
-      "center,steam_proton"
+      "center, steam_proton"
       "float, zenity"
       "nomaxsize, explorer.exe"
       "nomaxsize, steam_proton"
@@ -66,10 +66,13 @@
       "float,workspace 5 silent,class:^(leagueclientux.exe)$,title:^(League of Legends)$"
       "fullscreen, workspace 5 silent,class:^(league of legends.exe)$,title:^(League of Legends (TM) Client)$ windowrule = size 1920 1080,^(league of legends.exe)$"
 
+      # bruh
+      "suppressevent maximize, class:^(brave-browser)$"
+
       # start apps in n workspace
       "tile, title:^(Spotify)$"
       "workspace 3 silent, class:^(WebCord)$"
-      "workspace 4 silent, title:^(Spotify)$"
+      "workspace 4 silent, title:(.*)(Cantata)$"
       "workspace 5 silent, class:^(lutris*)$"
       "workspace 5 silent, class:^(steam*)$"
       "workspace 6 silent, class:^(virt-manager)$"

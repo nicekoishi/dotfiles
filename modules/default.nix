@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   imports = [
     ./gaming
+    ./convenience
 
-    ./convenience.nix
     ./jellyfin.nix
     ./security.nix
     ./shared.nix
