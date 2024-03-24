@@ -32,7 +32,7 @@
 
       # idle inhibit
       "idleinhibit focus, mpv"
-      "idleinhibit fullscreen, brave"
+      "idleinhibit focus, brave"
 
       # pcmanfm-qt opacity
       "opacity 0.92, pcmanfm-qt"
