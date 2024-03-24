@@ -38,27 +38,27 @@
       };
 
       general = {
-        gaps_in = 5;
-        gaps_out = 5;
-        border_size = 1;
-        "col.active_border" = "0xff94e2d5";
-        "col.inactive_border" = "0xff89dceb";
+        gaps_in = 4;
+        gaps_out = 8;
+        border_size = 0;
+        #"col.active_border" = "0xff94e2d5";
+        #"col.inactive_border" = "0xff89dceb";
 
         no_border_on_floating = false;
       };
 
       decoration = {
         rounding = 8;
-        drop_shadow = false;
+        drop_shadow = true;
         shadow_ignore_window = true;
         shadow_offset = "1 2";
-        shadow_range = 20;
-        shadow_render_power = 2;
-        "col.shadow" = "rgba(1a1a1aee)";
+        shadow_range = 10;
+        shadow_render_power = 3;
+        "col.shadow" = "rgba(292c3cee)";
 
         blur = {
           enabled = true;
-          size = 2;
+          size = 5;
           passes = 3;
           new_optimizations = true;
         };
@@ -77,11 +77,13 @@
           "windows, 1, 5, overshot, slide"
           "windowsOut, 1, 4, smoothOut, slide"
           "windowsMove, 1, 4, default"
+
           "border, 1, 10, default"
           "borderangle, 1, 8, default"
-          "fade, 1, 7, default"
+
+          "fade, 1, 10, smoothIn"
           "fadeDim, 1, 10, smoothIn"
-          "workspaces, 1, 6, default"
+          "workspaces, 1, 4, overshot, slidevert"
         ];
       };
 
