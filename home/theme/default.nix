@@ -44,7 +44,7 @@
   xdg.configFile = let
     qtctConf = colors: ''
       [Appearance]
-      style=Breeze
+      style=Catppuccin-Mocha
       icon_theme=Papirus-Dark
       standard-dialogs=xdgdesktopportal
 
