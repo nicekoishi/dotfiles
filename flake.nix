@@ -16,11 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    hypr-contrib = {
-      url = "github:hyprwm/contrib";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     ags = {
       url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +33,13 @@
     anyrun = {
       url = "github:Kirottu/anyrun";
     };
+
+    hypr-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hypridle.url = "github:hyprwm/hypridle";
 
     neovim-flake = {
       url = "github:NotAShelf/neovim-flake";

@@ -2,6 +2,7 @@
   imports = [
     inputs.hyprland.homeManagerModules.default
     ./binds.nix
+    ./hypridle.nix
     ./rules.nix
   ];
   wayland.windowManager.hyprland = {
