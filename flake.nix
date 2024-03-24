@@ -8,6 +8,7 @@
   };
 
   inputs = {
+    # nvidia 550 breaks stuff, go back to 535
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/hyprland";
 

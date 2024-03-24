@@ -41,8 +41,6 @@
       QT_QPA_PLATFORMTHEME = "qt5ct";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
 
-      XCURSOR_SIZE = "16";
-
       NIXOS_OZONE_WL = "1";
 
       LIBSEAT_BACKEND = "logind";

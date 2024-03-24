@@ -45,7 +45,6 @@
         "col.inactive_border" = "0xff89dceb";
 
         no_border_on_floating = false;
-        allow_tearing = true;
       };
 
       decoration = {
