@@ -46,6 +46,10 @@ in {
         # scroll through workspaces
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
+
+        # screenshot
+        "ALT, Print, exec, grimblast --cursor --notify copysave area"
+        ", Print, exec, grimblast --notify copysave output"
       ]
       ++ workspaces;
 

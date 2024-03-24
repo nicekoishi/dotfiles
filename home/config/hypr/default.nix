@@ -13,6 +13,8 @@
       monitor = [", 1920x1080, 0x0, 1"];
 
       exec-once = [
+        # pretty?
+        "walld" # refer to config/swww
         # can't be bothered
         "webcord --disable-gpu; sleep 5; pkill -f webcord; webcord"
         # why

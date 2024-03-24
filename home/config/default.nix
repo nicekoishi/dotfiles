@@ -5,5 +5,6 @@
     ./kitty
     ./webcord
     ./swaync
+    ./swww
   ];
 }
