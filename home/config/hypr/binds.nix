@@ -49,7 +49,7 @@ in {
 
         # screenshot
         "ALT, Print, exec, grimblast --cursor --notify copysave area"
-        ", Print, exec, grimblast --notify copysave output"
+        ", Print, exec, grimblast --notify copysave screen"
       ]
       ++ workspaces;
 
