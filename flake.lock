@@ -868,11 +868,11 @@
     "hyprland-protocols_2": {
       "inputs": {
         "nixpkgs": [
-          "xdg-desktop-portal-hyprland",
+          "xdph",
           "nixpkgs"
         ],
         "systems": [
-          "xdg-desktop-portal-hyprland",
+          "xdph",
           "systems"
         ]
       },
@@ -962,7 +962,7 @@
     "hyprlang_4": {
       "inputs": {
         "nixpkgs": [
-          "xdg-desktop-portal-hyprland",
+          "xdph",
           "nixpkgs"
         ],
         "systems": "systems_7"
@@ -2188,7 +2188,7 @@
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_9",
         "nur": "nur",
-        "xdg-desktop-portal-hyprland": "xdg-desktop-portal-hyprland"
+        "xdph": "xdph_2"
       }
     },
     "rose-pine": {
@@ -2769,29 +2769,6 @@
         "type": "gitlab"
       }
     },
-    "xdg-desktop-portal-hyprland": {
-      "inputs": {
-        "hyprland-protocols": "hyprland-protocols_2",
-        "hyprlang": "hyprlang_4",
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "systems": "systems_8"
-      },
-      "locked": {
-        "lastModified": 1709299639,
-        "narHash": "sha256-jYqJM5khksLIbqSxCLUUcqEgI+O2LdlSlcMEBs39CAU=",
-        "owner": "hyprwm",
-        "repo": "xdg-desktop-portal-hyprland",
-        "rev": "2d2fb547178ec025da643db57d40a971507b82fe",
-        "type": "github"
-      },
-      "original": {
-        "owner": "hyprwm",
-        "repo": "xdg-desktop-portal-hyprland",
-        "type": "github"
-      }
-    },
     "xdph": {
       "inputs": {
         "hyprland-protocols": [
@@ -2810,6 +2787,29 @@
           "hyprland",
           "systems"
         ]
+      },
+      "locked": {
+        "lastModified": 1709299639,
+        "narHash": "sha256-jYqJM5khksLIbqSxCLUUcqEgI+O2LdlSlcMEBs39CAU=",
+        "owner": "hyprwm",
+        "repo": "xdg-desktop-portal-hyprland",
+        "rev": "2d2fb547178ec025da643db57d40a971507b82fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hyprwm",
+        "repo": "xdg-desktop-portal-hyprland",
+        "type": "github"
+      }
+    },
+    "xdph_2": {
+      "inputs": {
+        "hyprland-protocols": "hyprland-protocols_2",
+        "hyprlang": "hyprlang_4",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": "systems_8"
       },
       "locked": {
         "lastModified": 1709299639,

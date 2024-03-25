@@ -53,7 +53,7 @@
 
     nur.url = "github:nix-community/nur";
 
-    xdg-desktop-portal-hyprland = {
+    xdph = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
       inputs.nixpkgs.follows = "nixpkgs";
     };

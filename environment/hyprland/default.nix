@@ -2,7 +2,9 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  inherit (inputs) xdph;
+in {
   services = {
     dbus.enable = true;
     gvfs.enable = true;
@@ -19,7 +21,7 @@
   };
   security.polkit.enable = true;
 
-  programs.hyprland.portalPackage = inputs.xdg-desktop-portal-hyprland.packages."${pkgs.system}".xdg-desktop-portal-hyprland;
+  programs.hyprland.portalPackage = xdph.packages."${pkgs.system}".default;
 
   environment = {
     sessionVariables = {

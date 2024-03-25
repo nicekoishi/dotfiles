@@ -5,6 +5,7 @@
   config,
   ...
 }: let
+  inherit (inputs) ags hypr-contrib;
   cfg = config.programs.ags;
 
   deps = with pkgs; [
@@ -19,10 +20,10 @@
     mission-center
   ];
 in {
-  imports = [inputs.ags.homeManagerModules.default];
+  imports = [ags.homeManagerModules.default];
 
   home.packages = with pkgs; [
-    inputs.hypr-contrib.packages.${pkgs.system}.grimblast
+    hypr-contrib.packages.${pkgs.system}.grimblast
 
     hyprpicker
     swaynotificationcenter
