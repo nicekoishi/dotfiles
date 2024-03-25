@@ -29,7 +29,7 @@
   };
 
   networking = {
-    nameservers = ["2620:fe::fe" "2620:fe::9"];
+    nameservers = ["2606:4700:4700::1111 2606:4700:4700::1001"];
     stevenblack = {
       enable = true;
       block = ["gambling" "porn"];
@@ -155,6 +155,7 @@
       material-symbols
 
       corefonts
+      vistafonts
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji

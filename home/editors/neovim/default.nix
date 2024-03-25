@@ -7,6 +7,7 @@
       enableEditorconfig = true;
       viAlias = true;
       vimAlias = true;
+
       debugMode = {
         enable = false;
         level = 20;
@@ -72,15 +73,15 @@
       statusline = {
         lualine = {
           enable = true;
-          theme = "gruvbox";
+          theme = "auto";
         };
       };
 
       theme = {
         enable = true;
-        name = "gruvbox";
-        style = "dark";
-        transparent = false;
+        name = "catppuccin";
+        style = "mocha";
+        transparent = true;
       };
 
       autopairs.enable = true;
@@ -157,6 +158,25 @@
 
       ui = {
         noice.enable = true;
+
+        colorizer = {
+          enable = true;
+
+          filetypes = {
+            css = {};
+            scss = {};
+            nix = {};
+          };
+
+          options = {
+            css = true;
+            css_fn = true;
+            hsl_fn = true;
+            rgb_fn = true;
+            rrggbbaa = true;
+            sass = true;
+          };
+        };
       };
 
       session = {

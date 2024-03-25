@@ -1,5 +1,5 @@
 {
-  description = "A very basic flake";
+  description = "A very cursed flake";
 
   outputs = inputs: {
     nixosConfigurations = {
@@ -8,16 +8,12 @@
   };
 
   inputs = {
+    # nvidia 550 breaks stuff, go back to 535
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/hyprland";
 
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hypr-contrib = {
-      url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -39,6 +35,13 @@
       url = "github:Kirottu/anyrun";
     };
 
+    hypr-contrib = {
+      url = "github:hyprwm/contrib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    hypridle.url = "github:hyprwm/hypridle";
+
     neovim-flake = {
       url = "github:NotAShelf/neovim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,11 +52,6 @@
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     nur.url = "github:nix-community/nur";
-
-    spicetify-nix = {
-      url = "github:the-argus/spicetify-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
 
     xdg-desktop-portal-hyprland = {
       url = "github:hyprwm/xdg-desktop-portal-hyprland";
