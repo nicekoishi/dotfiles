@@ -4,11 +4,15 @@
   programs.starship = {
     enable = true;
     settings = {
-      add_newline = true;
+      add_newline = false;
+      scan_timeout = 2;
+      command_timeout = 2000;
+
       character = {
         success_symbol = "";
         error_symbol = "";
       };
+
       git_status = {
         deleted = "✗";
         modified = "✶";

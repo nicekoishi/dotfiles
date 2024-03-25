@@ -7,6 +7,7 @@
       enableEditorconfig = true;
       viAlias = true;
       vimAlias = true;
+
       debugMode = {
         enable = false;
         level = 20;
@@ -80,7 +81,7 @@
         enable = true;
         name = "catppuccin";
         style = "mocha";
-        transparent = false;
+        transparent = true;
       };
 
       autopairs.enable = true;
