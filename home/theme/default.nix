@@ -41,6 +41,7 @@
     enable = true;
     platformTheme = "qtct";
   };
+
   xdg.configFile = let
     qtctConf = colors: ''
       [Appearance]

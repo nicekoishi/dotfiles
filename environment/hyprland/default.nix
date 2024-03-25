@@ -2,7 +2,9 @@
   inputs,
   pkgs,
   ...
-}: {
+}: let
+  inherit (inputs) xdph;
+in {
   services = {
     dbus.enable = true;
     gvfs.enable = true;
@@ -19,7 +21,7 @@
   };
   security.polkit.enable = true;
 
-  programs.hyprland.portalPackage = inputs.xdg-desktop-portal-hyprland.packages."${pkgs.system}".xdg-desktop-portal-hyprland;
+  programs.hyprland.portalPackage = xdph.packages."${pkgs.system}".default;
 
   environment = {
     sessionVariables = {
@@ -38,7 +40,6 @@
       RUSTUP_HOME = "$XDG_DATA_HOME/rustup";
 
       QT_QPA_PLATFORM = "wayland";
-      QT_QPA_PLATFORMTHEME = "qt5ct";
       QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
 
       NIXOS_OZONE_WL = "1";
@@ -49,6 +50,11 @@
     };
 
     systemPackages = [pkgs.qt6.qtwayland];
+  };
+
+  qt = {
+    enable = true;
+    platformTheme = "qt5ct";
   };
 
   systemd = {

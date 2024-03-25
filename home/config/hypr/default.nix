@@ -48,7 +48,7 @@
       };
 
       decoration = {
-        rounding = 8;
+        rounding = 12;
         drop_shadow = true;
         shadow_ignore_window = true;
         shadow_offset = "1 2";

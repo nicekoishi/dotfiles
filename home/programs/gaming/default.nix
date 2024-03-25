@@ -4,7 +4,8 @@
   lib,
   ...
 }: let
-  arrpc = inputs.arrpc.packages.${pkgs.system}.arrpc;
+  inherit (inputs) arrpc nix-gaming;
+  arRPC = arrpc.packages.${pkgs.system}.arrpc;
 in {
   imports = [
     ./minecraft
@@ -15,18 +16,20 @@ in {
     lutris
     mangohud
 
-    arrpc
-    inputs.nix-gaming.packages.${pkgs.system}.wine-ge
+    arRPC
+    nix-gaming.packages.${pkgs.system}.wine-ge
   ];
 
   systemd.user.services = {
     arRPC = {
-      Unit.PartOf = ["graphical-session.target"];
-      Unit.After = ["graphical-session.target"];
-      Unit.Description = "Discord Rich Presence for browsers, and some custom clients";
+      Unit = {
+        PartOf = ["graphical-session.target"];
+        After = ["graphical-session.target"];
+        Description = "Discord Rich Presence for browsers, and some custom clients";
+      };
       Install.WantedBy = ["graphical-session.target"];
       Service = {
-        ExecStart = "${lib.getExe arrpc}";
+        ExecStart = "${lib.getExe arRPC}";
         Restart = "always";
       };
     };

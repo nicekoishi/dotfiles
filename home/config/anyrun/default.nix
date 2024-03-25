@@ -2,12 +2,14 @@
   inputs,
   pkgs,
   ...
-}: {
-  imports = [inputs.anyrun.homeManagerModules.default];
+}: let
+  inherit (inputs) anyrun;
+in {
+  imports = [anyrun.homeManagerModules.default];
   programs.anyrun = {
     enable = true;
     config = {
-      plugins = with inputs.anyrun.packages.${pkgs.system}; [
+      plugins = with anyrun.packages.${pkgs.system}; [
         applications
         randr
         rink
@@ -19,14 +21,14 @@
       hidePluginInfo = true;
       maxEntries = 5;
       width.fraction = 0.3;
-      y.absolute = 13;
+      y.absolute = 9;
     };
 
     extraCss = ''
       * {
          transition: 200ms width 200ms height;
          font-family: "Iosevka Nerd Font";
-         font-size: 12px;
+         font-size: 0.67rem;
        }
 
        #window,
