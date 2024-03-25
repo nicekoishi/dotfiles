@@ -158,6 +158,25 @@
 
       ui = {
         noice.enable = true;
+
+        colorizer = {
+          enable = true;
+
+          filetypes = {
+            css = {};
+            scss = {};
+            nix = {};
+          };
+
+          options = {
+            css = true;
+            css_fn = true;
+            hsl_fn = true;
+            rgb_fn = true;
+            rrggbbaa = true;
+            sass = true;
+          };
+        };
       };
 
       session = {

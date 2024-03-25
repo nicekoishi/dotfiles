@@ -9,26 +9,22 @@
     config = {
       plugins = with inputs.anyrun.packages.${pkgs.system}; [
         applications
-        rink
         randr
+        rink
         shell
-        stdin
         translate
       ];
-      width = {fraction = 0.3;};
-      y = {absolute = 15;};
-      hideIcons = false;
-
-      ignoreExclusiveZones = false;
-
-      layer = "overlay";
-
       closeOnClick = true;
+      hideIcons = false;
+      hidePluginInfo = true;
+      maxEntries = 5;
+      width.fraction = 0.3;
+      y.absolute = 13;
     };
 
     extraCss = ''
       * {
-         transition: 200ms ease;
+         transition: 200ms width 200ms height;
          font-family: "Iosevka Nerd Font";
          font-size: 12px;
        }
@@ -42,7 +38,7 @@
        }
 
        #match:selected {
-         background: rgba(203, 166, 247, 0.7);
+         background: rgba(148, 226, 213, 0.5);
        }
 
        #match {
@@ -56,8 +52,8 @@
 
        box#main {
          background: rgba(30, 30, 46, 0.7);
-         border: 1px solid #28283d;
-         border-radius: 24px;
+         border: 1px solid rgba(40, 40, 61, 0.1);
+         border-radius: 8px;
          padding: 8px;
        }
     '';
