@@ -16,10 +16,13 @@
 
       lsp = {
         formatOnSave = true;
+        lspkind.enable = true;
+        lsplines.enable = true;
         lightbulb.enable = true;
+        lspsaga.enable = false;
         lspSignature.enable = true;
         nvimCodeActionMenu.enable = true;
-        trouble.enable = true;
+        trouble.enable = false;
       };
 
       ## i.e add stuff here to appear there (neovim ofc dumbass)
@@ -34,10 +37,7 @@
         nix.enable = true;
         python.enable = true;
 
-        ts = {
-          enable = true;
-          format.enable = true;
-        };
+        ts.enable = true;
 
         dart = {
           enable = true;

@@ -12,5 +12,8 @@
     # even with sdk installed
     android-tools
     flutter
+
+    # ags and eslint_d
+    nodejs
   ];
 }
