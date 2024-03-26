@@ -6,6 +6,7 @@
     ./jellyfin.nix
     ./security.nix
     ./shared.nix
+    ./rclone.nix
     ./virt-manager.nix
     ./xdg.nix
   ];
