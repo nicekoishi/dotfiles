@@ -87,6 +87,7 @@
     };
     tumbler.enable = true;
     udev.packages = [pkgs.gnome.gnome-settings-daemon];
+    udisks2.enable = true;
     xserver.xkb = {
       layout = "br";
       variant = "";
