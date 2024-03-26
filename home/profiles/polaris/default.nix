@@ -3,8 +3,9 @@
     ../../editors
     ../../git.nix
     ../../gnupg.nix
-    ../../pcmanfm.nix
     ../../noise.nix
+    ../../pcmanfm.nix
+    ../../udiskie.nix
     ../../xdg.nix
 
     ../../config
