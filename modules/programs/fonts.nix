@@ -1,0 +1,28 @@
+{pkgs, ...}: {
+  fonts = {
+    fontDir.enable = true;
+    enableDefaultPackages = false;
+
+    packages = with pkgs; [
+      material-symbols
+
+      # macrohard onfire
+      corefonts
+      vistafonts
+
+      noto-fonts
+      noto-fonts-cjk
+      noto-fonts-emoji
+
+      # yay
+      (nerdfonts.override {fonts = ["Iosevka" "FiraCode" "JetBrainsMono"];})
+    ];
+
+    fontconfig.defaultFonts = {
+      serif = ["Iosevka Nerd Font"];
+      sansSerif = ["Iosevka Nerd Font"];
+      monospace = ["Iosevka Nerd Font Mono"];
+      emoji = ["Noto Color Emoji"];
+    };
+  };
+}
