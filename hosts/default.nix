@@ -25,6 +25,8 @@
           "${dir}/programs/steam.nix"
           "${dir}/programs/virt-manager.nix"
 
+          "${dir}/services/system/gnome.nix"
+          "${dir}/services/system/rclone.nix"
           {
             home-manager = {
               users.supeen.imports = hmConfig."polaris";

@@ -5,7 +5,10 @@
 }: let
   inherit (inputs) xdph;
 in {
-  imports = [../../environment/hyprland];
+  imports = [
+    ../../environment/hyprland
+    ../services/user/polkit-gnome.nix
+  ];
   environment.variables.NIXOS_OZONE_WL = "1";
 
   programs.hyprland = {
