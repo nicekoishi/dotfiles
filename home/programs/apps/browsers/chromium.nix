@@ -21,6 +21,8 @@
       {id = "dhdgffkkebhmkfjojejmpbldmpobfkfo";}
       # volume master
       {id = "jghecgabfgfdldnmbfkhmffcabddioke";}
+      # tabliss
+      {id = "hipekcciheckooncpjeljhnekcoolahp";}
     ];
   };
 }
