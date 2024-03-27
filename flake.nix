@@ -1,16 +1,40 @@
 {
   description = "A very cursed flake";
 
-  outputs = inputs: {
-    nixosConfigurations = {
-      polaris = import ./hosts/polaris inputs;
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
+
+      imports = [
+        ./hosts
+        ./home/profiles
+        ./modules
+      ];
+
+      perSystem = {pkgs, ...}: {
+        devShells.default = pkgs.mkShell {
+          DIRENV_LOG_FORMAT = "";
+          packages = with pkgs; [
+            git
+            # nix
+            alejandra
+            deadnix
+            nil
+            statix
+          ];
+        };
+      };
     };
-  };
 
   inputs = {
     # nvidia 550 breaks stuff, go back to 535
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/hyprland";
+
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -31,9 +55,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    anyrun = {
-      url = "github:Kirottu/anyrun";
-    };
+    anyrun.url = "github:Kirottu/anyrun";
 
     hypr-contrib = {
       url = "github:hyprwm/contrib";

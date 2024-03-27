@@ -42,9 +42,19 @@
   };
   boot.kernelModules = ["tcp_bbr"];
 
-  networking.firewall = {
-    enable = true;
-    allowedTCPPorts = [80 443];
-    allowedUDPPorts = [80 443];
+  security = {
+    sudo.enable = false;
+    doas = {
+      enable = true;
+      extraRules = [
+        {
+          users = ["supeen"];
+          keepEnv = true;
+          persist = true;
+        }
+      ];
+    };
+
+    rtkit.enable = true;
   };
 }

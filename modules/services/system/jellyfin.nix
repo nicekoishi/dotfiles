@@ -1,7 +1,9 @@
 {pkgs, ...}: {
+  # requires manual setup through its web ui
+  # or maybe do cli if you want udnno
   services.jellyfin = {
-    enable = false;
-    openFirewall = false;
+    enable = true;
+    openFirewall = true;
   };
 
   environment.systemPackages = with pkgs; [
