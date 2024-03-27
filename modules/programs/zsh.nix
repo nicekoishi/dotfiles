@@ -1,5 +1,10 @@
 {
-  environment.pathsToLink = ["/share/zsh"];
+  # shell completions
+  environment.pathsToLink = [
+    "/share/zsh"
+    "/share/bash-completion"
+    "/share/nix-direnv"
+  ];
 
   programs = {
     less.enable = true;
