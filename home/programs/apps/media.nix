@@ -1,8 +1,12 @@
 {pkgs, ...}: {
   home.packages = with pkgs; [
     brave
-    mpv
     playerctl
     viewnior
   ];
+
+  programs.mpv = {
+    enable = true;
+    defaultProfiles = ["gpu-hq"];
+  };
 }
