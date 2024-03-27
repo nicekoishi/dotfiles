@@ -3,6 +3,8 @@
   pkgs,
   ...
 }: {
+  boot.blacklistedKernelModules = ["i2c_nvidia_gpu"];
+
   hardware.nvidia = {
     package = let
       rcu_patch = pkgs.fetchpatch {
