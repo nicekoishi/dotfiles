@@ -26,7 +26,7 @@ in {
         # apps
         "$mod, A, exec, swaync-client -t -sw"
         "$mod, B, exec, brave &"
-        "$mod, E, exec, pcmanfm-qt"
+        "$mod, E, exec, thunar"
         "$mod, Q, exec, kitty"
         "$mod, R, exec, pkill anyrun || anyrun"
 

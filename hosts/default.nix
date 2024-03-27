@@ -24,6 +24,7 @@
           "${dir}/programs/hyprland.nix"
           "${dir}/programs/steam.nix"
           "${dir}/programs/virt-manager.nix"
+          "${dir}/programs/thunar.nix"
 
           "${dir}/services/system/gnome.nix"
           "${dir}/services/system/rclone.nix"
