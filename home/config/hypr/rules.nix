@@ -16,7 +16,7 @@
       "float, file_progress"
       "float, lxqt-archiver"
       "float, notification"
-      "float, pcmanfm-qt"
+      "float, thunar"
       "float, splash"
       "float, title:DevTools"
       "float, title:Open File"
@@ -28,14 +28,14 @@
       "float, title:wlogout"
       "float, Viewnior"
       "float, viewnior"
-      "float,^(pcmanfm-qt)$"
+      "float,^(thunar)$"
 
       # idle inhibit
       "idleinhibit focus, mpv"
       "idleinhibit focus, brave"
 
-      # pcmanfm-qt opacity
-      "opacity 0.92, pcmanfm-qt"
+      # thunar opacity
+      "opacity 0.92, thunar"
 
       # how wine can be drunk
       "center, winecfg.exe"
