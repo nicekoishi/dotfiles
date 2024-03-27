@@ -25,7 +25,7 @@ in {
       [
         # apps
         "$mod, A, exec, swaync-client -t -sw"
-        "$mod, B, exec, brave &"
+        "$mod, B, exec, chromium-browser &"
         "$mod, E, exec, thunar"
         "$mod, Q, exec, kitty"
         "$mod, R, exec, pkill anyrun || anyrun"
@@ -46,6 +46,10 @@ in {
         # scroll through workspaces
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
+
+        # special workspace
+        "$mod SHIFT, S, movetoworkspace, special:magic"
+        "$mod, S, togglespecialworkspace, magic"
 
         # screenshot
         "ALT, Print, exec, grimblast --cursor --notify copysave area"

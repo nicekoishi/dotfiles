@@ -1,6 +1,6 @@
 # okay, this entire file is from fufexan/dotfiles
 {config, ...}: let
-  browser = ["brave-browser"];
+  browser = ["chromium-browser"];
   imageViewer = ["viewnior"];
   videoPlayer = ["mpv"];
 
@@ -36,7 +36,7 @@
       "application/pdf" = ["org.pwmt.zathura.desktop"];
       "text/html" = browser;
       "text/plain" = ["nvim"];
-      "inode/directory" = ["pcmanfm-qt"];
+      "inode/directory" = ["thunar"];
       "x-scheme-handler/discord" = ["webcord"];
       "x-scheme-handler/spotify" = browser;
     }
