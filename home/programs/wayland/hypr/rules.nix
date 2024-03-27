@@ -32,7 +32,7 @@
 
       # idle inhibit
       "idleinhibit focus, mpv"
-      "idleinhibit focus, brave"
+      "idleinhibit focus, chromium-browser"
 
       # thunar opacity
       "opacity 0.92, thunar"
@@ -67,7 +67,7 @@
       "fullscreen, workspace 5 silent,class:^(league of legends.exe)$,title:^(League of Legends (TM) Client)$ windowrule = size 1920 1080,^(league of legends.exe)$"
 
       # bruh
-      "suppressevent maximize, class:^(brave-browser)$"
+      "suppressevent maximize, class:^(chromium-browser)$"
 
       # start apps in n workspace
       "tile, title:^(Spotify)$"
