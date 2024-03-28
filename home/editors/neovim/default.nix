@@ -173,7 +173,10 @@
         transparent = true;
       };
 
-      treesitter.context.enable = true;
+      treesitter = {
+        fold = true;
+        context.enable = true;
+      };
 
       ui = {
         noice.enable = true;
