@@ -1,4 +1,9 @@
-let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
+  inherit (inputs) anyrun;
   # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
   # fufexan/dotfiles
   workspaces = builtins.concatLists (builtins.genList (
@@ -29,6 +34,7 @@ in {
         "$mod, E, exec, thunar"
         "$mod, Q, exec, kitty"
         "$mod, R, exec, pkill anyrun || anyrun"
+        "$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
 
         # commands
         "$mod, C, killactive"
