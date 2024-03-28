@@ -96,11 +96,12 @@
 
       lsp = {
         formatOnSave = true;
+        lightbulb.enable = true;
+        lspSignature.enable = true;
         lspkind.enable = true;
         lsplines.enable = true;
-        lightbulb.enable = true;
         lspsaga.enable = false;
-        lspSignature.enable = true;
+        nvim-docs-view.enable = true;
         nvimCodeActionMenu.enable = true;
         trouble.enable = false;
       };
