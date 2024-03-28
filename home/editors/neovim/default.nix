@@ -180,6 +180,12 @@
 
       ui = {
         noice.enable = true;
+        illuminate.enable = true;
+
+        borders = {
+          enable = true;
+          globalStyle = "rounded";
+        };
 
         colorizer = {
           enable = true;
