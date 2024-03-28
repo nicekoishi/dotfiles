@@ -24,7 +24,7 @@
 
       binds = {
         whichKey.enable = true;
-        cheatsheet.enable = true;
+        cheatsheet.enable = false;
       };
 
       comments = {
@@ -52,6 +52,10 @@
           hijackUnnamedBufferWhenOpening = true;
 
           view.width = 25;
+
+          mappings = {
+            toggle = "<C-n>";
+          };
         };
       };
 
