@@ -219,15 +219,18 @@
       ## pretty boi
       visuals = {
         enable = true;
-        cellularAutomaton.enable = true;
+        cellularAutomaton.enable = false;
         fidget-nvim.enable = true;
+        highlight-undo.enable = true;
         nvimWebDevicons.enable = true;
         scrollBar.enable = false;
         smoothScroll.enable = true;
+
         cursorline = {
           enable = true;
           lineTimeout = 0;
         };
+
         indentBlankline = {
           enable = true;
           fillChar = null;
