@@ -14,6 +14,7 @@ in {
         randr
         rink
         shell
+        stdin
         translate
       ];
       closeOnClick = true;
