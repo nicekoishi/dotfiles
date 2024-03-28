@@ -69,18 +69,19 @@
         gitsigns.codeActions = false;
       };
 
-      ## i.e add stuff here to appear there (neovim ofc dumbass)
+      # i was under the influence when i made that previous comment
       languages = {
         enableExtraDiagnostics = true;
         enableFormat = true;
         enableLSP = true;
         enableTreesitter = true;
 
+        bash.enable = true;
+        css.enable = true;
         html.enable = true;
         markdown.enable = true;
         nix.enable = true;
         python.enable = true;
-
         ts.enable = true;
 
         dart = {
