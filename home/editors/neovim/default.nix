@@ -5,24 +5,64 @@
     enable = true;
     settings.vim = {
       enableEditorconfig = true;
+      enableLuaLoader = true;
+      preventJunkFiles = true;
+      spellChecking.enable = true;
+      useSystemClipboard = true;
+
       viAlias = true;
       vimAlias = true;
 
+      lineNumberMode = "number";
+
+      autopairs.enable = true;
+
+      autocomplete = {
+        enable = true;
+        type = "nvim-cmp";
+      };
+
+      binds = {
+        whichKey.enable = true;
+        cheatsheet.enable = true;
+      };
+
+      comments = {
+        comment-nvim.enable = true;
+      };
+
+      dashboard = {
+        dashboard-nvim.enable = false;
+        alpha.enable = true;
+      };
+
       debugMode = {
         enable = false;
-        level = 20;
         logFile = "/tmp/nvim.log";
       };
 
-      lsp = {
-        formatOnSave = true;
-        lspkind.enable = true;
-        lsplines.enable = true;
-        lightbulb.enable = true;
-        lspsaga.enable = false;
-        lspSignature.enable = true;
-        nvimCodeActionMenu.enable = true;
-        trouble.enable = false;
+      filetree = {
+        nvimTree = {
+          enable = true;
+          openOnSetup = true;
+          disableNetrw = true;
+          updateFocusedFile.enable = true;
+
+          hijackCursor = true;
+          hijackUnnamedBufferWhenOpening = true;
+
+          view.width = 25;
+        };
+      };
+
+      gestures = {
+        gesture-nvim.enable = false;
+      };
+
+      git = {
+        enable = true;
+        gitsigns.enable = true;
+        gitsigns.codeActions = false;
       };
 
       ## i.e add stuff here to appear there (neovim ofc dumbass)
@@ -49,32 +89,69 @@
         };
       };
 
-      lineNumberMode = "number";
+      lsp = {
+        formatOnSave = true;
+        lspkind.enable = true;
+        lsplines.enable = true;
+        lightbulb.enable = true;
+        lspsaga.enable = false;
+        lspSignature.enable = true;
+        nvimCodeActionMenu.enable = true;
+        trouble.enable = false;
+      };
 
-      ## pretty boi
-      visuals = {
-        enable = true;
-        cellularAutomaton.enable = true;
-        fidget-nvim.enable = true;
-        nvimWebDevicons.enable = true;
-        scrollBar.enable = false;
-        smoothScroll.enable = true;
-        cursorline = {
+      minimap = {
+        minimap-vim.enable = false;
+        codewindow.enable = true; # lighter, faster, and uses lua for configuration
+      };
+
+      notes = {
+        mind-nvim.enable = true;
+        todo-comments.enable = true;
+      };
+
+      notify = {
+        nvim-notify.enable = true;
+      };
+
+      presence = {
+        neocord = {
           enable = true;
-          lineTimeout = 0;
-        };
-        indentBlankline = {
-          enable = true;
-          fillChar = null;
-          eolChar = null;
-          scope.enabled = true;
+          auto_update = true;
+          enable_line_number = true;
+          show_time = true;
+          logo_tooltip = "The Superior Text Editor";
+          client_id = "793271441293967371";
+          main_image = "logo";
+          rich_presence = {
+            editing_text = "Editing %s";
+          };
         };
       };
+
+      projects = {
+        project-nvim.enable = true;
+      };
+
+      session = {
+        nvim-session-manager.enable = true;
+      };
+
       statusline = {
         lualine = {
           enable = true;
           theme = "auto";
         };
+      };
+
+      tabline = {
+        nvimBufferline.enable = true;
+      };
+
+      telescope.enable = true;
+
+      terminal = {
+        toggleterm.enable = true;
       };
 
       theme = {
@@ -84,77 +161,7 @@
         transparent = true;
       };
 
-      autopairs.enable = true;
-
-      autocomplete = {
-        enable = true;
-        type = "nvim-cmp";
-      };
-
-      filetree = {
-        nvimTree = {
-          enable = true;
-          openOnSetup = false;
-          view = {
-            width = 25;
-          };
-        };
-      };
-
-      tabline = {
-        nvimBufferline.enable = true;
-      };
-
       treesitter.context.enable = true;
-
-      binds = {
-        whichKey.enable = true;
-        cheatsheet.enable = true;
-      };
-
-      telescope.enable = true;
-
-      git = {
-        enable = true;
-        gitsigns.enable = true;
-        gitsigns.codeActions = false;
-      };
-
-      minimap = {
-        minimap-vim.enable = false;
-        codewindow.enable = true; # lighter, faster, and uses lua for configuration
-      };
-
-      dashboard = {
-        dashboard-nvim.enable = false;
-        alpha.enable = true;
-      };
-
-      notify = {
-        nvim-notify.enable = true;
-      };
-
-      projects = {
-        project-nvim.enable = true;
-      };
-
-      utility = {
-        icon-picker.enable = true;
-        diffview-nvim.enable = true;
-        motion = {
-          hop.enable = true;
-          leap.enable = false;
-        };
-      };
-
-      notes = {
-        mind-nvim.enable = true;
-        todo-comments.enable = true;
-      };
-
-      terminal = {
-        toggleterm.enable = true;
-      };
 
       ui = {
         noice.enable = true;
@@ -179,30 +186,32 @@
         };
       };
 
-      session = {
-        nvim-session-manager.enable = true;
+      utility = {
+        icon-picker.enable = true;
+        diffview-nvim.enable = true;
+        motion = {
+          hop.enable = true;
+          leap.enable = false;
+        };
       };
 
-      gestures = {
-        gesture-nvim.enable = false;
-      };
-
-      comments = {
-        comment-nvim.enable = true;
-      };
-
-      presence = {
-        neocord = {
+      ## pretty boi
+      visuals = {
+        enable = true;
+        cellularAutomaton.enable = true;
+        fidget-nvim.enable = true;
+        nvimWebDevicons.enable = true;
+        scrollBar.enable = false;
+        smoothScroll.enable = true;
+        cursorline = {
           enable = true;
-          auto_update = true;
-          enable_line_number = true;
-          show_time = true;
-          logo_tooltip = "The Superior Text Editor";
-          client_id = "793271441293967371";
-          main_image = "logo";
-          rich_presence = {
-            editing_text = "Editing %s";
-          };
+          lineTimeout = 0;
+        };
+        indentBlankline = {
+          enable = true;
+          fillChar = null;
+          eolChar = null;
+          scope.enabled = true;
         };
       };
     };
