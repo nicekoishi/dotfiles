@@ -19,6 +19,18 @@
         consoleMode = "max";
       };
     };
+
+    consoleLogLevel = 3;
+    kernelParams = [
+      "quiet"
+      "systemd-show_status=auto"
+      "rd.udev.log_level=3"
+    ];
+
+    plymouth = {
+      enable = true;
+      theme = "breeze";
+    };
   };
   environment.systemPackages = [config.boot.kernelPackages.cpupower];
 }
