@@ -157,7 +157,13 @@
       telescope.enable = true;
 
       terminal = {
-        toggleterm.enable = true;
+        toggleterm = {
+          enable = true;
+          lazygit = {
+            enable = true;
+            direction = "tab";
+          };
+        };
       };
 
       theme = {
