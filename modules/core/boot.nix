@@ -1,6 +1,7 @@
 {
   pkgs,
   config,
+  self,
   ...
 }: {
   boot = {
@@ -29,7 +30,8 @@
 
     plymouth = {
       enable = true;
-      theme = "breeze";
+      theme = "funny-plymouth";
+      themePackages = [self.packages."${pkgs.system}".funny-plymouth];
     };
   };
   environment.systemPackages = [config.boot.kernelPackages.cpupower];

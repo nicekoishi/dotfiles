@@ -9,6 +9,7 @@
         ./hosts
         ./home/profiles
         ./modules
+        ./pkgs
       ];
 
       perSystem = {pkgs, ...}: {
