@@ -6,6 +6,12 @@
     # also enable will fail if remote doesn't exist '-'
     rclone-gdrive = let
       gdrive = "/home/supeen/Documents/Drive";
+      notification = ''
+        -t 5000 \
+        -i "dialog-warning" \
+        -u normal \
+        "Failed to mount" "<i>rclone reconnect"</i> should fix it
+      '';
       flags = ''
         --allow-other \
         --dir-cache-time 48h \
@@ -25,7 +31,7 @@
       wants = ["network-online.target"];
       after = ["network-online.target"];
       wantedBy = ["multi-user.target"];
-
+      postStop = "${pkgs.libnotify}/bin/notify-send \ ${notification}";
       serviceConfig = {
         Type = "simple";
         Environment = "RCLONE_CONFIG=/home/supeen/.config/rclone/rclone.conf";
