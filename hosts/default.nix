@@ -28,6 +28,9 @@
 
           "${dir}/services/system/gnome.nix"
           "${dir}/services/system/rclone.nix"
+
+          inputs.chaotic.nixosModules.default
+
           {
             home-manager = {
               users.supeen.imports = hmConfig."polaris";

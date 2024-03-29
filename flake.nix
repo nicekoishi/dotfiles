@@ -58,6 +58,8 @@
 
     anyrun.url = "github:Kirottu/anyrun";
 
+    chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
+
     hypr-contrib = {
       url = "github:hyprwm/contrib";
       inputs.nixpkgs.follows = "nixpkgs";

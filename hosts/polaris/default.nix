@@ -1,8 +1,20 @@
 {
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
   ];
 
-  services.fstrim.enable = true;
-  services.btrfs.autoScrub.enable = true;
+  boot = {
+    kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
+  };
+
+  environment.systemPackages = [pkgs.scx];
+
+  services = {
+    fstrim.enable = true;
+    btrfs.autoScrub.enable = true;
+  };
 }
