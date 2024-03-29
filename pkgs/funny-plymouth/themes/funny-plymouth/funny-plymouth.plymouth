@@ -1,0 +1,9 @@
+[Plymouth Theme]
+Name=funny-plymouth
+Description=Plymouth theme experiment
+Comment=@nicekoishi
+ModuleName=script
+
+[script]
+ImageDir=/usr/share/plymouth/themes/funny-plymouth/img
+ScriptFile=/usr/share/plymouth/themes/funny-plymouth/funny-plymouth.script
