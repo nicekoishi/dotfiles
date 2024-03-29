@@ -28,5 +28,10 @@
     nvidiaSettings = false;
   };
 
+  hardware.opengl = {
+    extraPackages = with pkgs; [nvidia-vaapi-driver];
+    extraPackages32 = with pkgs.pkgsi686Linux; [nvidia-vaapi-driver];
+  };
+
   services.xserver.videoDrivers = ["nvidia"];
 }
