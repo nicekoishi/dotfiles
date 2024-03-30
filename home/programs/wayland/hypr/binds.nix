@@ -31,7 +31,8 @@ in {
         # apps
         "$mod, A, exec, swaync-client -t -sw"
         "$mod, B, exec, chromium-browser &"
-        "$mod, E, exec, thunar"
+        "$mod, D, exec, thunar"
+        "$mod, E, exec, emacsclient -c -a emacs"
         "$mod, Q, exec, kitty"
         "$mod, R, exec, pkill anyrun || anyrun"
         "$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
