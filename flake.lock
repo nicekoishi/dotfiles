@@ -2546,6 +2546,26 @@
         "type": "github"
       }
     },
+    "quickshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1711716099,
+        "narHash": "sha256-j9j3O4iR0ovVZTgjUb2nyvyZ1fPNMrR0fm65E4kZcgo=",
+        "ref": "refs/heads/master",
+        "rev": "83afce7f68f8ffc74f53642d2bac9e604bd64dfc",
+        "revCount": 137,
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://git.outfoxxed.me/outfoxxed/quickshell"
+      }
+    },
     "registers": {
       "flake": false,
       "locked": {
@@ -2599,6 +2619,7 @@
         "nix-gaming": "nix-gaming",
         "nixpkgs": "nixpkgs_10",
         "nur": "nur",
+        "quickshell": "quickshell",
         "xdph": "xdph_2"
       }
     },
