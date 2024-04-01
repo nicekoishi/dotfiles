@@ -1,16 +1,6 @@
-import { App, Widget } from "./js/imports.js";
-const leLabel = Widget.Label({
-    label: "example",
-});
-const leBar = Widget.Window({
-    name: "bar",
-    anchor: ["top", "left", "right"],
-    child: leLabel,
-});
-
+import { App } from "./js/imports.js";
 App.config({
     windows: [
     // definitions
-        [leBar],
     ],
 });
