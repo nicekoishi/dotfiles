@@ -31,6 +31,7 @@ in {
         # apps
         "$mod, A, exec, swaync-client -t -sw"
         "$mod, B, exec, chromium-browser &"
+        "$mod, D, exec, emacsclient -c -a emacs"
         "$mod, E, exec, thunar"
         "$mod, Q, exec, kitty"
         "$mod, R, exec, pkill anyrun || anyrun"
