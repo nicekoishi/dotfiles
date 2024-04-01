@@ -12,7 +12,8 @@
     # hell
     ../../programs
     ../../programs/apps/obs
-    ../../programs/wayland/quickshell
+    ../../programs/wayland/ags
+    #../../programs/wayland/quickshell
     ../../programs/wayland/anyrun
     ../../programs/wayland/swaync
     ../../programs/wayland/swww

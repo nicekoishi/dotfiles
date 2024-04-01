@@ -18,10 +18,36 @@ Scope {
       }
 
       height: 25
+      
+      Socket {
+	path: `/tmp/hypr/${Quickshell.env("HYPRLAND_INSTANCE_SIGNATURE")}/.socket2.sock`
+	connected: true
 
-      ClockWidget {
-	anchors.centerIn: parent
+	signal activewindow(title: string);
+
+	parser: SplitParser {
+	  id: hypractive
+	  onRead: data => {
+	    const [type, body] = data.split(">>");
+	    const agrs = body.split(",");
+
+	    switch (type) {
+	    case "activewindow"
+	      activewindow(args[1])
+	      break;
+	    }
+	  }
+	}
       }
+
+      Text {
+	anchors.centerIn: parent
+	text: hypractive.activewindow
+      }
+      
+      /*ClockWidget {
+	anchors.centerIn: parent
+	}*/
     }
   }
 }
