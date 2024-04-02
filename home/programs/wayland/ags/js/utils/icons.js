@@ -23,20 +23,19 @@ export default {
         overamplified: "audio-volume-overamplified-symbolic",
     },
 
-    speaker: {
-        overamplified: "\uf14b",
-        high: "\ue050",
-        medium: "\ue04d",
-        low: "\ue04e",
-        muted: "\ue04f",
+    microphone: {
+        high: "microphone-sensitivity-high-symbolic",
+        medium: "microphone-sensitivity-medium-symbolic",
+        low: "microphone-sensitivity-low-symbolic",
+        muted: "microphone-sensitivity-muted-symbolic",
     },
 
-    microphone: {
-        overamplified: "\ue029",
-        high: "\ue029",
-        medium: "\ue029",
-        low: "\ue029",
-        muted: "\ue02b",
+    workspaces: {
+        1: "text-html-symbolic",
+        2: "org.gnome.Terminal-symbolic",
+        3: "contact-new-symbolic",
+        4: "multimedia-audio-player-symbolic",
+        5: "computer-symbolic",
     },
 
     wired: {
