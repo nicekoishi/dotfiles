@@ -8,6 +8,7 @@ export const fromService = async (file) => await require(`service/${file}`);
 // Required stuff
 export const App = await require("app");
 export const GLib = await requireCustom("gi://GLib");
+export const Gtk = await requireCustom("gi://Gtk?version=3.0");
 export const Service = await require("service");
 export const Utils = await import(resource("utils"));
 export const Variable = await require("variable");
