@@ -1,16 +1,10 @@
-import { App, Widget } from "./js/imports.js";
-const leLabel = Widget.Label({
-    label: "example",
-});
-const leBar = Widget.Window({
-    name: "bar",
-    anchor: ["top", "left", "right"],
-    child: leLabel,
-});
+import { App } from "./js/imports.js";
 
-App.config({
-    windows: [
-    // definitions
-        [leBar],
-    ],
-});
+import { Bar } from "./js/windows/bar/index.js";
+App.connect("config-parsed", () => print("config parsed"));
+
+function addWindows(windows) {
+    windows.forEach((win) => App.addWindow(win));
+}
+
+addWindows([Bar()]);
