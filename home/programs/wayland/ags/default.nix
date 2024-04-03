@@ -19,6 +19,7 @@
   ];
 
   guiDeps = with pkgs; [
+    networkmanagerapplet
     pavucontrol
   ];
 
