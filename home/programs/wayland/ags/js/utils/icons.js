@@ -7,6 +7,11 @@ export default {
 
     brightness: "display-brightness-symbolic",
 
+    common: {
+        arrowDown: "arrow-down",
+        arrowUp: "arrow-up",
+    },
+
     media: {
         play: "media-playback-start-symbolic",
         pause: "media-playback-pause-symbolic",
