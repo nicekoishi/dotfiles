@@ -5,6 +5,7 @@ import { Date } from "./modules/date.js";
 import { ActiveTitle } from "./modules/active.js";
 import { Workspaces } from "./modules/workspaces.js";
 import { Volume } from "./modules/volume.js";
+import { NetWidget } from "./modules/network.js";
 
 const Top = () =>
     Box({
@@ -27,7 +28,7 @@ const Bottom = () =>
         hpack: "end",
         children: [
             Box({
-                children: [Volume()],
+                children: [Volume(), NetWidget()],
             }),
             Date(),
         ],

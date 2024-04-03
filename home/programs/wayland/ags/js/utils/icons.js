@@ -39,16 +39,17 @@ export default {
     },
 
     wired: {
-        power: "󰈀",
-        poweroff: "󱘖",
+        power: "network-wired-symbolic",
+        powering: "network-wired-acquiring-symbolic",
+        poweroff: "network-wired-disconnected-symbolic",
     },
 
     wifi: {
-        none: "󰤭",
-        bad: "󰤠",
-        low: "󰤟",
-        normal: "󰤢",
-        good: "󰤨",
+        none: "network-wireless-disconnected-symbolic",
+        bad: "network-wireless-signal-weak-symbolic",
+        low: "network-wireless-signal-ok-symbolic",
+        normal: "network-wireless-signal-good-symbolic",
+        good: "network-wireless-signal-excellent-symbolic",
     },
 
     powerButton: "system-shutdown-symbolic",
