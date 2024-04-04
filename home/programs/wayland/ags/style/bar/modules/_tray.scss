@@ -1,0 +1,16 @@
+.tray {
+  margin: 1.5px 0 0 0;
+}
+
+.trayIcon {
+  @include barModule;
+  padding: 0;
+  margin: 0 3px 0 3px;
+}
+
+.trayIcons {
+  @include barModule;
+  margin-top: 6px;
+  padding: 6px 6px;
+  border-radius: 0.5em;
+}

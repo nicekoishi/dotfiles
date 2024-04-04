@@ -1,0 +1,22 @@
+.workspaces {
+  padding: 0.125em;
+
+  button {
+    @include barModule;
+
+    margin: 3px 3px;
+    min-width: 0.6rem;
+    min-height: 0.6rem;
+
+    background: $surface;
+    border-radius: 0.5em;
+
+    &:hover {
+      background: $lavender;
+    }
+
+    &.focused {
+      background: $red;
+    }
+  }
+}

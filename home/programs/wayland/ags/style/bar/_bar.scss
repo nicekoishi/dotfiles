@@ -1,0 +1,15 @@
+// top
+@import "modules/workspaces";
+
+// center
+@import "modules/music";
+
+// end
+@import "modules/date";
+@import "modules/volume";
+@import "modules/network";
+@import "modules/tray";
+
+.bar {
+  @include barWindow;
+}

@@ -1,0 +1,11 @@
+.volumeBox {
+  @include barModule;
+  border-radius: 0.5em;
+  margin: 0.375em 0.25em;
+  padding: 0.375em;
+}
+
+.volSpkIcon + .volSpkLabel,
+.volSpkBtn + .volMicBtn {
+  margin-left: 3px;
+}

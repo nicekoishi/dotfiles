@@ -46,6 +46,7 @@ export const Bar = ({ monitor } = {}) =>
         margins: [4, 4, 0, 4],
         monitor,
         child: CenterBox({
+            className: "bar",
             startWidget: Top(),
             centerWidget: Center(),
             endWidget: Bottom(),

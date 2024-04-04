@@ -1,4 +1,5 @@
 # 'borrowed' from notashelf/nyx
+# bind test
 {
   config,
   inputs,
@@ -29,6 +30,7 @@
   baseSrc = unions [
     ./js
     ./config.js
+    ./style.css
   ];
 
   filterNixFiles = fileFilter (file: lib.hasSuffix ".nix" file.name) ./.;
