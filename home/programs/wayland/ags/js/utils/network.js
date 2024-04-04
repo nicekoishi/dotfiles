@@ -7,8 +7,10 @@ export const wiredIcon = (internet) => {
     switch (true) {
         case internet === "connected":
             return wired.power;
-        case internet === "connecting":
-            return wired.powering;
+            /*  It's unfortunate that the icon takes too long to change
+            I find it pretty cool
+            case internet === "connecting":
+            return wired.powering;*/
         case internet === "disconnected":
             return wired.poweroff;
         default:

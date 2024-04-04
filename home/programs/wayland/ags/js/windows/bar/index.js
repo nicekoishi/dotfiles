@@ -1,8 +1,10 @@
 import { Widget } from "../../imports.js";
 const { Window, Box, CenterBox } = Widget;
 
-import { ActiveTitle } from "./modules/active.js";
+// TODO: If there isn't a music player, show active title
+//import { ActiveTitle } from "./modules/active.js";
 import { Date } from "./modules/date.js";
+import { Music } from "./modules/music.js";
 import { NetWidget } from "./modules/network.js";
 import { Tray } from "./modules/tray.js";
 import { Volume } from "./modules/volume.js";
@@ -12,7 +14,7 @@ const Top = () =>
     Box({
         className: "barTop",
         hpack: "start",
-        children: [ActiveTitle()],
+        children: [Workspaces()],
     });
 
 const Center = () =>
@@ -20,7 +22,7 @@ const Center = () =>
         className: "barCenter",
         spacing: 8,
         vertical: false,
-        children: [Workspaces()],
+        children: [Music()],
     });
 
 const Bottom = () =>

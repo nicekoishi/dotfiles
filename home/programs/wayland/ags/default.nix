@@ -20,6 +20,7 @@
 
   guiDeps = with pkgs; [
     networkmanagerapplet
+    mission-center
     pavucontrol
   ];
 
