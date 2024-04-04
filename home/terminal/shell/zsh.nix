@@ -3,7 +3,7 @@
   lib,
   ...
 }: {
-  imports = [./starship.nix];
+  imports = [./starship.nix ./nix-index.nix];
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;

@@ -78,6 +78,11 @@
 
     nix-colors.url = "github:misterio77/nix-colors";
 
+    nix-index-db = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nix-gaming.url = "github:fufexan/nix-gaming";
 
     # nvidia 550 breaks stuff, go back to 535
