@@ -3,6 +3,7 @@
   lib,
   ...
 }: {
+  imports = [./starship.nix];
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;
@@ -12,7 +13,7 @@
       dl = "$HOME/Downloads";
       docs = "$HOME/Documents";
       dots = "$HOME/Documents/dots";
-      dev = "$HOME/Documents/Dev";
+      dev = "$HOME/Documents/dev";
       xvids = "$HOME/Videos";
     };
     dotDir = ".config/zsh";
@@ -43,7 +44,9 @@
       la = "eza -la";
       ls = "eza";
       cls = "clear";
+      cat = "bat";
 
+      # TODO: delete this and move to nh
       rebuild = "doas nixos-rebuild switch --flake ~dots/#$(hostname)";
       update = "nix flake update ~dots"; # running as root fucks up permissions dumb
 

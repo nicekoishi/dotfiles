@@ -33,7 +33,7 @@ in {
         "$mod, B, exec, chromium-browser &"
         "$mod, D, exec, emacsclient -c -a emacs"
         "$mod, E, exec, thunar"
-        "$mod, Q, exec, kitty"
+        "$mod, Q, exec, footclient"
         "$mod, R, exec, pkill anyrun || anyrun"
         "$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
 
