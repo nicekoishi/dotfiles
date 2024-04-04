@@ -1,8 +1,22 @@
-{
+{lib, ...}: {
   wayland.windowManager.hyprland.settings = {
-    layerrule = [
-      "blur, ^(gtk-layer-shell|wofi|anyrun)$"
-      "ignorezero, ^(gtk-layer-shell|wofi|anyrun)$"
+    layerrule = let
+      toRegex = list: let
+        elements = lib.concatStringsSep "|" list;
+      in "^(${elements})$";
+
+      ignorealpha = [
+        "calendar"
+        "notifications"
+        "anyrun"
+      ];
+
+      layers = ignorealpha ++ ["bar" "gtk-layer-shell"];
+    in [
+      "blur, ${toRegex layers}"
+      "xray 1, ${toRegex ["bar" "gtk-layer-shell"]}"
+      "ignorealpha 0.2, ${toRegex ["bar" "gtk-layer-shell"]}"
+      "ignorealpha 0.5, ${toRegex (ignorealpha ++ ["music"])}"
     ];
 
     windowrule = [

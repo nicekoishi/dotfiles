@@ -1,5 +1,5 @@
 {pkgs ? import <nixpkgs> {}}: let
-  inherit (pkgs) mkShell;
+  inherit (pkgs) mkShell writeShellScriptBin;
 in
   mkShell {
     buildInputs = with pkgs; [
@@ -10,5 +10,11 @@ in
 
       # compiling the stylesheets, pretty cool tbh
       dart-sass
+      (writeShellScriptBin "compile-stylesheet" ''
+        ${dart-sass}/bin/sass --verbose \
+        --style compressed \
+        --no-source-map \
+        ./style/main.scss > ./style.css
+      '')
     ];
   }

@@ -1,0 +1,9 @@
+* {
+  all: unset;
+  font-family: "Iosevka Nerd Font Mono", Roboto, sans-serif;
+}
+
+tooltip {
+  @include roundingOuter;
+  background: $primary;
+}
