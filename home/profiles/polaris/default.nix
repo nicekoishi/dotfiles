@@ -1,24 +1,19 @@
 {
   imports = [
-    # self/home
-    ../../git.nix
-    ../../gnupg.nix
-    ../../noise.nix
-    ../../xdg.nix
+    # TODO: test vscode later
+    ../../editors/neovim
 
-    # importing both emacs and neovim for now
-    ../../editors
-
-    # hell
+    # is this actually making sense now?
     ../../programs
     ../../programs/apps/obs
     ../../programs/wayland/ags
     #../../programs/wayland/quickshell
     ../../programs/wayland/anyrun
-    #../../programs/wayland/swaync
     ../../programs/wayland/swww
 
-    ../../shell
+    ../../terminal
+    ../../terminal/emulators/foot
+    ../../terminal/emulators/kitty
     ../../theme
   ];
 }
