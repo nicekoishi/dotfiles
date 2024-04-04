@@ -19,6 +19,7 @@ export const Audio = await fromService("audio");
 export const Hyprland = await fromService("hyprland");
 export const Mpris = await fromService("mpris");
 export const Network = await fromService("network");
+export const Notifications = await fromService("notifications");
 export const SystemTray = await fromService("systemtray");
 
 export const Icons = await requireCustom("./utils/icons.js");

@@ -29,7 +29,7 @@ in {
     bind =
       [
         # apps
-        "$mod, A, exec, swaync-client -t -sw"
+        "$mod, A, exec, ags -t notificationArea"
         "$mod, B, exec, chromium-browser &"
         "$mod, D, exec, emacsclient -c -a emacs"
         "$mod, E, exec, thunar"

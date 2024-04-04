@@ -6,6 +6,7 @@ const { messageAsync } = Hyprland;
 export const Workspaces = () =>
     Box({
         className: "workspaces",
+        cursor: "pointer",
         child: Box({
             vertical: false,
             children: Array.from({ length: 5 }, (_, i) => i + 1).map((i) =>

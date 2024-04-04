@@ -10,6 +10,7 @@ export default {
     common: {
         arrowDown: "arrow-down",
         arrowUp: "arrow-up",
+        mediaMenu: "music-playlist-symbolic",
     },
 
     media: {

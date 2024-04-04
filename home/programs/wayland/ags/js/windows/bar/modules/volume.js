@@ -42,6 +42,7 @@ export const Volume = () =>
             Button({
                 className: "volumeSpeakerBtn",
                 child: speakerVol(),
+                cursor: "pointer",
                 onClicked: () => (Audio.speaker.is_muted = !Audio.speaker.is_muted),
                 onSecondaryClick: () => Utils.execAsync("pavucontrol"),
                 onScrollUp: () => (Audio.speaker.volume += 0.05),
@@ -50,6 +51,7 @@ export const Volume = () =>
             Button({
                 className: "volumeMicBtn",
                 child: micVol(),
+                cursor: "pointer",
                 onClicked: () =>
                     (Audio.microphone.is_muted = !Audio.microphone.is_muted),
 
