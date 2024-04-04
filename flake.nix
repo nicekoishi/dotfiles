@@ -17,6 +17,7 @@
           DIRENV_LOG_FORMAT = "";
           packages = with pkgs; [
             git
+
             # nix
             alejandra
             deadnix
@@ -86,6 +87,11 @@
 
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    spicetify = {
+      url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

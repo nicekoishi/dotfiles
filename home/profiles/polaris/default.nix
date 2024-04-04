@@ -5,7 +5,8 @@
 
     # is this actually making sense now?
     ../../programs
-    ../../programs/apps/obs
+    ../../programs/apps/media/obs
+    ../../programs/apps/media/spicetify
     ../../programs/wayland/ags
     #../../programs/wayland/quickshell
     ../../programs/wayland/anyrun

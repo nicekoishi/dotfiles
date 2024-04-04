@@ -3,10 +3,9 @@
     #./browsers/brave.nix
     ./browsers/chromium.nix
 
-    ./cantata
     ./discord
+    ./media
 
-    ./media.nix
     ./office.nix
   ];
 }
