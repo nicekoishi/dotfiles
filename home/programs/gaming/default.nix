@@ -14,11 +14,28 @@ in {
 
   home.packages = with pkgs; [
     lutris
-    mangohud
 
     arRPC
     nix-gaming.packages.${pkgs.system}.wine-ge
   ];
+
+  programs.mangohud = {
+    enable = true;
+    enableSessionWide = true;
+    settings = {
+      background_alpha = "0.5";
+      cpu_stats = true;
+      cpu_temp = true;
+      fps = true;
+      frame_timing = true;
+      frametime = true;
+      gpu_stats = true;
+      gpu_temp = true;
+      vulkan_driver = false;
+      wine = true;
+      toggle_hud = "Shift_R+F12";
+    };
+  };
 
   systemd.user.services = {
     arRPC = {
