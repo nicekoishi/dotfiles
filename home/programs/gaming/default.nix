@@ -21,11 +21,12 @@ in {
 
   programs.mangohud = {
     enable = true;
-    enableSessionWide = true;
     settings = {
       background_alpha = "0.5";
       cpu_stats = true;
       cpu_temp = true;
+      enableSessionWide = true;
+      font_size = 24;
       fps = true;
       frame_timing = true;
       frametime = true;
