@@ -1,11 +1,17 @@
 {
-  # FIXME: Is this useless now? Have to test later
   # home.sessionVariables does not work for some of these
   # so I did it all in here
 
   environment.variables = {
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_CACHE_HOME = "$HOME/.local/cache";
+
+    EDITOR = "nvim";
+    VISUAL = "nvim";
+    SUDO_EDITOR = "nvim";
+
+    PAGER = "less -FR";
+    MANPAGER = "nvim +Man!";
 
     LESSHISTFILE = "$XDG_CACHE_HOME/less/history";
     LESSKEY = "$XDG_CONFIG_HOME/less/key";
