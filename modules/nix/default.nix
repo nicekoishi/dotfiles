@@ -49,7 +49,12 @@
 
       max-jobs = "auto";
 
+      # for builds inside cgroups
       use-cgroups = true;
+
+      # direnv GC roots
+      keep-derivations = true;
+      keep-outputs = true;
 
       # why limit it? oh wait
       http-connections = 0;
