@@ -1,7 +1,7 @@
 {
   imports = [
-    # TODO: test vscode later
     ../../editors/neovim
+    ../../editors/vscode
 
     # is this actually making sense now?
     ../../programs
