@@ -10,9 +10,10 @@
     autosuggestion.enable = true;
     autocd = true;
     dirHashes = {
+      code = "$HOME/Documents/code";
       dl = "$HOME/Downloads";
       docs = "$HOME/Documents";
-      dots = "$HOME/Documents/dots";
+      dots = "$HOME/Documents/code/dots";
       dev = "$HOME/Documents/dev";
       xvids = "$HOME/Videos";
     };
@@ -45,10 +46,6 @@
       ls = "eza";
       cls = "clear";
       cat = "bat";
-
-      # TODO: delete this and move to nh
-      rebuild = "doas nixos-rebuild switch --flake ~dots/#$(hostname)";
-      update = "nix flake update ~dots"; # running as root fucks up permissions dumb
 
       did = "systemctl --user";
       had = "doas systemctl";
