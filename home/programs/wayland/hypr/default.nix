@@ -1,4 +1,8 @@
-{inputs, ...}: {
+{
+  config,
+  inputs,
+  ...
+}: {
   imports = [
     inputs.hyprland.homeManagerModules.default
     ./binds.nix
@@ -14,6 +18,8 @@
       monitor = [", 1920x1080, 0x0, 1"];
 
       exec-once = [
+        # pls rember
+        "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
         # pretty?
         "walld" # refer to config/swww
         # can't be bothered
