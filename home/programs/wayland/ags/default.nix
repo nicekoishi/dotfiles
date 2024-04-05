@@ -51,7 +51,10 @@ in {
   systemd.user.services.ags = {
     Unit = {
       Description = "Aylur's Gtk Shell";
-      PartOf = ["graphical-session.target"];
+      PartOf = [
+        "tray.target"
+        "graphical-session.target"
+      ];
     };
     Service = {
       Environment = "PATH=/run/wrappers/bin:${lib.makeBinPath dependencies}";
