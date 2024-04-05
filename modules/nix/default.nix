@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  imports = [./substituters.nix];
+  imports = [./substituters.nix ./nh.nix];
   nix = {
     # pin the registry to avoid downloading and evaluating a new nixpkgs version every time
     registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
@@ -57,7 +57,8 @@
       # log lines for failed builds
       log-lines = 50;
 
-      trusted-users = ["root" "@wheel"];
+      allowed-users = ["root" "@wheel" "nix-builder"];
+      trusted-users = ["root" "@wheel" "nix-builder"];
     };
   };
 
