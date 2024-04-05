@@ -1,9 +1,25 @@
 {
   config,
   pkgs,
+  lib,
   ...
 }: {
-  boot.blacklistedKernelModules = ["i2c_nvidia_gpu"];
+  boot.blacklistedKernelModules = ["i2c_nvidia_gpu" "nouveau"];
+
+  environment.systemPackages = with pkgs; [
+    nvtopPackages.nvidia
+    mesa
+
+    # vulkan
+    vulkan-tools
+    vulkan-loader
+    vulkan-validation-layers
+    vulkan-extension-layer
+
+    # libva
+    libva
+    libva-utils
+  ];
 
   hardware.nvidia = {
     package = let
@@ -22,9 +38,22 @@
 
         patches = [rcu_patch];
       };
-    # config.boot.kernelPackages.nvidiaPackages.production; # 550 is unusable as of 24/03/2024
+    # config.boot.kernelPackages.nvidiaPackages.stable;
+    # we won't get the latest driver until explicit sync support, broken as of 04/04/24
 
     modesetting.enable = true;
+
+    powerManagement = {
+      enable = true;
+      finegrained = false;
+    };
+
+    nvidiaPersistenced = true;
+
+    # how funny, it still doesn't work with suspend for me
+    # skill issue?
+    open = lib.mkDefault false;
+    # useless
     nvidiaSettings = false;
   };
 

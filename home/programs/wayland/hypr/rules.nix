@@ -45,8 +45,8 @@
       "float,^(thunar)$"
 
       # idle inhibit
-      "idleinhibit focus, mpv"
-      "idleinhibit focus, chromium-browser"
+      "idleinhibit fullscreen, mpv"
+      "idleinhibit fullscreen, chromium-browser"
 
       # thunar opacity
       "opacity 0.92, thunar"
