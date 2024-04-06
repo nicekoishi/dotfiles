@@ -7,6 +7,9 @@
     ../../programs
     ../../programs/apps/media/obs
     ../../programs/apps/media/spicetify
+    ../../programs/apps/media/editing/image
+    ../../programs/apps/media/editing/video
+
     ../../programs/wayland/ags
     #../../programs/wayland/quickshell
     ../../programs/wayland/anyrun

@@ -1,11 +1,14 @@
-{
+{pkgs, ...}: {
   imports = [
     #./browsers/brave.nix
     ./browsers/chromium.nix
 
     ./discord
     ./media
+    ./office
+  ];
 
-    ./office.nix
+  home.packages = with pkgs; [
+    qbittorrent
   ];
 }
