@@ -84,8 +84,8 @@
 
       # start apps in n workspace
       "tile, title:^(Spotify)$"
-      "workspace 3 silent, class:^(WebCord)$"
-      "workspace special:magic silent, title:(.*)(Cantata)$"
+      "workspace 3 silent, class:^(vesktop)$"
+      "workspace 4 silent, title:(.*)(Spotify)$"
       "workspace 5 silent, class:^(lutris*)$"
       "workspace 5 silent, class:^(steam*)$"
       "workspace 6 silent, class:^(virt-manager)$"
