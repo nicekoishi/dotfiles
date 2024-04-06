@@ -30,7 +30,6 @@
       "float, file_progress"
       "float, lxqt-archiver"
       "float, notification"
-      "float, thunar"
       "float, splash"
       "float, title:DevTools"
       "float, title:Open File"
@@ -42,14 +41,14 @@
       "float, title:wlogout"
       "float, Viewnior"
       "float, viewnior"
-      "float,^(thunar)$"
+      "float,^(Thunar)$"
 
       # idle inhibit
       "idleinhibit fullscreen, mpv"
       "idleinhibit fullscreen, chromium-browser"
 
       # thunar opacity
-      "opacity 0.92, thunar"
+      "opacity 0.92, Thunar"
 
       # how wine can be drunk
       "center, winecfg.exe"
