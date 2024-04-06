@@ -47,8 +47,12 @@
       _comp_options+=(globdots)
 
       # shouldn't it ask by default?
-      nh() {
-        command nh "$@" --ask
+      # also, don't use nh globally as it breaks cases where --ask isn't appliable
+      nh () {
+          case "$1" in
+              (os|clean) command nh "$@" --ask;;
+              (*) command nh "$@";;
+          esac
       }
 
       ${lib.optionalString config.services.gpg-agent.enable ''
