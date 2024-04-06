@@ -1,8 +1,13 @@
 # okay, this entire file is from fufexan/dotfiles
-{config, ...}: let
+{
+  config,
+  pkgs,
+  ...
+}: let
   browser = ["chromium-browser"];
   imageViewer = ["viewnior"];
   videoPlayer = ["mpv"];
+  mail = ["thunderbird"];
 
   xdgAssociations = type: program: list:
     builtins.listToAttrs (map (e: {
@@ -13,6 +18,7 @@
 
   image = xdgAssociations "image" imageViewer ["png" "svg" "jpeg" "gif" "webp"];
   video = xdgAssociations "video" videoPlayer ["mp4" "avi" "mkv"];
+  audio = xdgAssociations "audio" videoPlayer ["flac" "mp3" "wav" "aac"]; # using mpv until I sort this out
   browserTypes =
     (xdgAssociations "application" browser [
       "json"
@@ -33,15 +39,17 @@
 
   # XDG MIME types
   mimeapps = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) ({
-      "application/pdf" = ["org.pwmt.zathura.desktop"];
+      "application/pdf" = ["org.pwmt.zathura-pdf-mupdf"]; # so that was the reason pdf wasn't working
       "text/html" = browser;
       "text/plain" = ["nvim"];
       "inode/directory" = ["thunar"];
-      "x-scheme-handler/discord" = ["webcord"];
-      "x-scheme-handler/spotify" = browser;
+      "x-scheme-handler/discord" = ["vesktop"];
+      "x-scheme-handler/spotify" = ["spotify"];
+      "x-scheme-handler/mailto" = mail;
     }
     // image
     // video
+    // audio
     // browserTypes);
 in {
   xdg = {
@@ -50,6 +58,7 @@ in {
 
     mimeApps = {
       enable = true;
+      associations.added = mimeapps;
       defaultApplications = mimeapps;
     };
 
@@ -70,4 +79,6 @@ in {
       };
     };
   };
+
+  home.packages = with pkgs; [xdg-utils];
 }

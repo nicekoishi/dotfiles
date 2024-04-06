@@ -28,7 +28,7 @@
       "float, download"
       "float, error"
       "float, file_progress"
-      "float, lxqt-archiver"
+      "float, org.kde.ark"
       "float, notification"
       "float, splash"
       "float, title:DevTools"
@@ -41,14 +41,14 @@
       "float, title:wlogout"
       "float, Viewnior"
       "float, viewnior"
-      "float,^(Thunar)$"
+      "float, thunar"
 
       # idle inhibit
       "idleinhibit fullscreen, mpv"
       "idleinhibit fullscreen, chromium-browser"
 
       # thunar opacity
-      "opacity 0.92, Thunar"
+      "opacity 0.92, thunar"
 
       # how wine can be drunk
       "center, winecfg.exe"
