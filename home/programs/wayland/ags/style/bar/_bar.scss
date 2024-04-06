@@ -13,3 +13,20 @@
 .bar {
   @include barWindow;
 }
+
+.bar .music {
+  & > .box {
+    @include animated;
+    border-radius: $rounding;
+    margin: 0.4rem;
+  }
+
+  .cover {
+    margin: 4px 8px 4px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 9999px;
+    min-width: 2rem;
+    min-height: 2rem;
+  }
+}
