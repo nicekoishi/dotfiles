@@ -8,6 +8,9 @@
     ./binds.nix
     ./idle.nix
     ./rules.nix
+
+    # plugins
+    #./expo.nix FIXME: not working as of 06/04/2024, need to test later
   ];
   wayland.windowManager.hyprland = {
     enable = true;
@@ -40,7 +43,7 @@
         disable_splash_rendering = true;
         mouse_move_enables_dpms = true;
         enable_swallow = true;
-        swallow_regex = "kitty|foot|thunar|Alacritty";
+        swallow_regex = "kitty|foot|footclient|thunar|Alacritty";
       };
 
       general = {
