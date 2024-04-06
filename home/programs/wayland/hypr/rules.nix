@@ -83,9 +83,9 @@
       "suppressevent maximize, class:^(chromium-browser)$"
 
       # start apps in n workspace
-      "tile, title:^(Spotify)$"
+      "tile, initialtitle:^(Spotify Free)$"
       "workspace 3 silent, class:^(vesktop)$"
-      "workspace 4 silent, title:(.*)(Spotify)$"
+      "workspace 4 silent, initialtitle:^(Spotify Free)$"
       "workspace 5 silent, class:^(lutris*)$"
       "workspace 5 silent, class:^(steam*)$"
       "workspace 6 silent, class:^(virt-manager)$"
