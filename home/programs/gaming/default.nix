@@ -21,11 +21,11 @@ in {
 
   programs.mangohud = {
     enable = true;
+    enableSessionWide = true;
     settings = {
       background_alpha = "0.5";
       cpu_stats = true;
       cpu_temp = true;
-      enableSessionWide = true;
       font_size = 24;
       fps = true;
       frame_timing = true;
@@ -35,6 +35,7 @@ in {
       vulkan_driver = false;
       wine = true;
       toggle_hud = "Shift_R+F12";
+      toggle_hud_position = "Shift_R+Home";
     };
   };
 
@@ -52,11 +53,4 @@ in {
       };
     };
   };
-
-  xdg.configFile."MangoHud/MangoHud.conf".text = ''
-    toggle_hud=Scroll_Lock
-    toggle_hud_position=Shift_R+Home
-    toggle_logging=F11
-    toggle_fps_limit=Shift_R+F10
-  '';
 }
