@@ -43,7 +43,7 @@
         disable_splash_rendering = true;
         mouse_move_enables_dpms = true;
         enable_swallow = true;
-        swallow_regex = "kitty|foot|footclient|thunar|Alacritty";
+        swallow_regex = "^(kitty|footclient|Alacritty)";
       };
 
       general = {
