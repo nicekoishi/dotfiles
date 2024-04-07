@@ -4,23 +4,17 @@ import { Icons } from "../imports.js";
 const { wifi, wired } = Icons;
 
 export const wiredIcon = (internet) => {
-    switch (true) {
-        case internet === "connected":
-            return wired.power;
-            /*  It's unfortunate that the icon takes too long to change
-            I find it pretty cool
-            case internet === "connecting":
-            return wired.powering;*/
-        case internet === "disconnected":
-            return wired.poweroff;
-        default:
-            return wired.poweroff;
-    }
+    if (internet == "connected")
+        return wired.power;
+    if (internet == "connecting")
+        return wired.powering;
+    if (internet == "disconnected")
+        return wired.poweroff;
+    return wired.poweroff;
 };
 
-export const wiredTooltip = () => {
-    const eth = Network.wired.internet;
-    return `Status: ${eth}`;
+export const wiredTooltip = (internet) => {
+    return `Status: ${internet}`;
 };
 
 export const wifiIcon = (strength) => {
