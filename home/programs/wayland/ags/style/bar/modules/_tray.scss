@@ -1,3 +1,13 @@
+/* how did I take so long to find this out? 
+menu is in the global scope, so this does the trick
+ */
+
+* {
+  & > menu {
+    @include barModule;
+  }
+}
+
 .tray {
   margin: 1.5px 0 0 0;
 }
