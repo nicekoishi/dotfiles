@@ -27,7 +27,10 @@
     hardwareClockInLocalTime = true; # windoes, why
   };
 
-  zramSwap.enable = true;
+  zramSwap = {
+    enable = true;
+    memoryPercent = 90;
+  };
 
   system.stateVersion = lib.mkDefault "23.11";
 }
