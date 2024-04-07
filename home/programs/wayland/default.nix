@@ -8,6 +8,7 @@ in {
   imports = [
     ./clipboard
     ./hypr
+    ./wlogout
   ];
   home.packages = with pkgs; [
     hypr-contrib.packages.${pkgs.system}.grimblast

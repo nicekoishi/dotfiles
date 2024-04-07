@@ -37,6 +37,8 @@ in {
         "$mod, R, exec, pkill anyrun || anyrun"
         "$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
 
+        "ALT, F4, exec, wlogout"
+
         # commands
         "$mod, C, killactive"
         "$mod, F, togglefloating"

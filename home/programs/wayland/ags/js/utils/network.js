@@ -7,7 +7,7 @@ export const wiredIcon = (internet) => {
     if (internet == "connected")
         return wired.power;
     if (internet == "connecting")
-        return wired.powering;
+        return wired.power;
     if (internet == "disconnected")
         return wired.poweroff;
     return wired.poweroff;
