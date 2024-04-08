@@ -9,23 +9,12 @@
         ./hosts
         ./home/profiles
         ./modules
-        ./pkgs
+
+        # modularizing flake because why not?
+        ./flake/devshell.nix
+
+        ./flake/pkgs
       ];
-
-      perSystem = {pkgs, ...}: {
-        devShells.default = pkgs.mkShell {
-          DIRENV_LOG_FORMAT = "";
-          packages = with pkgs; [
-            git
-
-            # nix
-            alejandra
-            deadnix
-            nil
-            statix
-          ];
-        };
-      };
     };
 
   inputs = {
