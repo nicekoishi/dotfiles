@@ -1,14 +1,14 @@
 {
   description = "A very cursed flake";
 
-  outputs = inputs:
-    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs = {flake-parts, ...} @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux"];
 
       imports = [
         ./hosts
-        ./home/profiles
         ./modules
+        ./home/profiles
 
         # modularizing flake because why not?
         ./flake/devshell.nix

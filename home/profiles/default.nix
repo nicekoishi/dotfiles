@@ -1,11 +1,10 @@
 {
   self,
   inputs,
-  pkgs,
   ...
 }: let
   extraSpecialArgs = {inherit inputs self;};
-  hmConfig = {
+  homeImports = {
     "polaris" = [
       ../.
       ./polaris
@@ -13,17 +12,16 @@
   };
 
   inherit (inputs.home-manager.lib) homeManagerConfiguration;
-  _pkgs = inputs.nixpkgs.legacyPackages."${pkgs.system}";
+  pkgs = inputs.nixpkgs.legacyPackages."${pkgs.system}";
 in {
-  _module.args = {inherit hmConfig;};
+  _module.args = {inherit homeImports;};
 
   flake = {
     homeConfigurations = {
       "@polaris" = homeManagerConfiguration {
-        modules = hmConfig."polaris";
-        inherit _pkgs extraSpecialArgs;
+        modules = homeImports."polaris";
+        inherit pkgs extraSpecialArgs;
       };
-      #...
     };
   };
 }

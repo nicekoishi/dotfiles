@@ -1,20 +1,22 @@
 {
   self,
   inputs,
-  hmConfig,
-  desktop,
+  homeImports,
+  roles,
   ...
-}: {
-  flake.nixosConfigurations = let
-    inherit (inputs.nixpkgs.lib) nixosSystem;
-    dir = "${self}/modules";
-    specialArgs = {inherit inputs self;};
-  in {
+}: let
+  inherit (inputs.nixpkgs.lib) nixosSystem;
+
+  dir = "${self}/modules";
+
+  specialArgs = {inherit inputs self;};
+in {
+  flake.nixosConfigurations = {
     polaris = nixosSystem {
       inherit specialArgs;
 
       modules =
-        desktop
+        roles."desktop"
         ++ [
           ./polaris
 
@@ -33,7 +35,7 @@
 
           {
             home-manager = {
-              users.supeen.imports = hmConfig."polaris";
+              users.supeen.imports = homeImports."polaris";
               extraSpecialArgs = specialArgs;
             };
           }

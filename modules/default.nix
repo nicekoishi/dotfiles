@@ -1,23 +1,27 @@
 let
-  desktop = [
-    ./core/boot.nix
-    ./core/opengl.nix
+  roles = {
+    "common" = [
+      ./core
 
-    ./core
-    ./services
+      ./nix
+      ./programs
+    ];
+    "desktop" =
+      roles."common"
+      ++ [
+        ./services
 
-    ./services/system/avahi.nix
-    ./services/system/earlyoom.nix
-    ./services/system/greetd.nix
-    ./services/system/network.nix
-    ./services/system/pipewire.nix
-    ./services/system/printing.nix
-    ./services/system/udisks2.nix
+        ./services/system/avahi.nix
+        ./services/system/earlyoom.nix
+        ./services/system/greetd.nix
+        ./services/system/network.nix
+        ./services/system/pipewire.nix
+        ./services/system/printing.nix
+        ./services/system/udisks2.nix
 
-    ./nix
-    ./programs
-    ./convenience
-  ];
+        ./convenience
+      ];
+  };
 in {
-  _module.args = {inherit desktop;};
+  _module.args = {inherit roles;};
 }
