@@ -1,3 +1,3 @@
 {
-  imports = [./fonts.nix ./home-manager.nix ./xdg.nix];
+  imports = [./fonts.nix ./home-manager.nix ./xdg.nix ./zsh.nix];
 }

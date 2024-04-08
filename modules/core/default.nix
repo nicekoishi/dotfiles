@@ -1,10 +1,9 @@
 {lib, ...}: {
   imports = [
-    ../nix
-
-    ./users.nix
+    ./boot.nix
+    ./opengl.nix
     ./security.nix
-    ../programs/zsh.nix
+    ./users.nix
   ];
 
   i18n = {

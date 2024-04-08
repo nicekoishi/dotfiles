@@ -24,7 +24,7 @@ in {
   programs.spicetify = {
     enable = true;
     theme = spice.themes.catppuccin;
-    spotifyPackage = pkgs.spotifywm;
+    windowManagerPatch = true;
 
     colorScheme = "mocha";
 
