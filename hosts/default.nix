@@ -2,12 +2,14 @@
   self,
   inputs,
   homeImports,
-  roles,
   ...
 }: let
   inherit (inputs.nixpkgs.lib) nixosSystem;
 
   dir = "${self}/modules";
+
+  # roles
+  desktop = "${dir}/roles/desktop";
 
   specialArgs = {inherit inputs self;};
 in {
@@ -15,31 +17,30 @@ in {
     polaris = nixosSystem {
       inherit specialArgs;
 
-      modules =
-        roles."desktop"
-        ++ [
-          ./polaris
+      modules = [
+        desktop
+        ./polaris
 
-          "${dir}/core/nvidia.nix"
+        "${dir}/core/nvidia.nix"
 
-          "${dir}/programs/gaming"
-          "${dir}/programs/hyprland.nix"
-          "${dir}/programs/steam.nix"
-          "${dir}/programs/virt-manager.nix"
-          "${dir}/programs/thunar.nix"
+        "${dir}/programs/gaming"
+        "${dir}/programs/hyprland.nix"
+        "${dir}/programs/steam.nix"
+        "${dir}/programs/virt-manager.nix"
+        "${dir}/programs/thunar.nix"
 
-          "${dir}/services/system/gnome.nix"
-          "${dir}/services/system/rclone.nix"
+        "${dir}/services/system/gnome.nix"
+        "${dir}/services/system/rclone.nix"
 
-          inputs.chaotic.nixosModules.default
+        inputs.chaotic.nixosModules.default
 
-          {
-            home-manager = {
-              users.supeen.imports = homeImports."polaris";
-              extraSpecialArgs = specialArgs;
-            };
-          }
-        ];
+        {
+          home-manager = {
+            users.supeen.imports = homeImports."polaris";
+            extraSpecialArgs = specialArgs;
+          };
+        }
+      ];
     };
   };
 }

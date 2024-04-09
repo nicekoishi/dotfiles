@@ -7,7 +7,6 @@
 
       imports = [
         ./hosts
-        ./modules
         ./home/profiles
 
         # modularizing flake because why not?

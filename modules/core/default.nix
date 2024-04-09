@@ -6,24 +6,42 @@
     ./users.nix
   ];
 
-  i18n = {
-    defaultLocale = "en_US.utf8";
+  i18n = let
+    defaultLocale = "en_US.UTF-8";
+    br = "pt_BR.UTF-8";
+  in {
+    inherit defaultLocale;
     extraLocaleSettings = {
-      LC_ADDRESS = "pt_BR.utf8";
-      LC_IDENTIFICATION = "pt_BR.utf8";
-      LC_MEASUREMENT = "pt_BR.utf8";
-      LC_MONETARY = "pt_BR.utf8";
-      LC_NAME = "pt_BR.utf8";
-      LC_NUMERIC = "pt_BR.utf8";
-      LC_PAPER = "pt_BR.utf8";
-      LC_TELEPHONE = "pt_BR.utf8";
-      LC_TIME = "pt_BR.utf8";
+      LC_COLLATE = defaultLocale;
+      LC_CTYPE = defaultLocale;
+      LC_MESSAGES = defaultLocale;
+
+      LC_ADDRESS = br;
+      LC_IDENTIFICATION = br;
+      LC_MEASUREMENT = br;
+      LC_MONETARY = br;
+      LC_NAME = br;
+      LC_NUMERIC = br;
+      LC_PAPER = br;
+      LC_TELEPHONE = br;
+      LC_TIME = br;
     };
+
+    supportedLocales = [
+      "en_US.UTF-8/UTF-8"
+      "pt_BR.UTF-8/UTF-8"
+      "ja_JP.UTF-8/UTF-8"
+    ];
   };
 
   time = {
     timeZone = "America/Sao_Paulo";
     hardwareClockInLocalTime = true; # windoes, why
+  };
+
+  services.xserver.xkb = {
+    layout = "br";
+    variant = "";
   };
 
   zramSwap = {
