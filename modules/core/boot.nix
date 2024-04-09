@@ -15,10 +15,10 @@
 
     loader = {
       efi.canTouchEfiVariables = true;
-      timeout = 0;
+      timeout = 2; # see configurationLimit
       systemd-boot = {
         enable = true;
-        configurationLimit = 12;
+        configurationLimit = null; # had a sad experience with a broken initrd earlier, let's keep this on
         consoleMode = "max";
       };
     };

@@ -3,7 +3,6 @@ import { App, Notifications /*, Utils*/ } from "./js/imports.js";
 import { Bar } from "./js/windows/bar/index.js";
 import { NotificationPopup } from "./js/windows/notifications/index.js";
 import { Media } from "./js/windows/music/index.js";
-import { TimeCalendar } from "./js/windows/bar/modules/date.js";
 
 const css = App.configDir + "/style.css";
 
@@ -29,4 +28,4 @@ function addWindows(windows) {
     windows.forEach((win) => App.addWindow(win));
 }
 
-addWindows([Bar(), NotificationPopup(), Media(), TimeCalendar()]);
+addWindows([Bar(), NotificationPopup(), Media()]);
