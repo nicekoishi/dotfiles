@@ -43,7 +43,7 @@
       "text/html" = browser;
       "text/plain" = ["nvim"];
       "inode/directory" = ["thunar"];
-      "x-scheme-handler/discord" = ["vesktop"];
+      "x-scheme-handler/discord" = ["webcord"];
       "x-scheme-handler/spotify" = ["spotify"];
       "x-scheme-handler/mailto" = mail;
     }

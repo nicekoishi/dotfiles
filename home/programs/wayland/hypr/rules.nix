@@ -84,7 +84,7 @@
 
       # start apps in n workspace
       "tile, initialtitle:^(Spotify Free)$"
-      "workspace 3 silent, class:^(vesktop)$"
+      "workspace 3 silent, class:^(WebCord)$"
       "workspace 4 silent, initialtitle:^(Spotify Free)$"
       "workspace 5 silent, class:^(lutris*)$"
       "workspace 5 silent, class:^(steam*)$"
