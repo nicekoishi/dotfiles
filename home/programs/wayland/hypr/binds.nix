@@ -32,9 +32,9 @@ in {
         "$mod, A, exec, ags -t notificationArea"
         "$mod, B, exec, chromium-browser &"
         "$mod, D, exec, emacsclient -c -a emacs"
-        "$mod, E, exec, thunar"
-        "$mod, Q, exec, footclient"
-        "$mod, R, exec, pkill anyrun || anyrun"
+        "$mod, E, exec, run-as-service thunar"
+        "$mod, Q, exec, run-as-service footclient"
+        "$mod, R, exec, killall anyrun || run-as-service $(anyrun)"
         "$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
 
         "ALT, F4, exec, wlogout"

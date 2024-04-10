@@ -3,7 +3,7 @@
   config,
   ...
 }: {
-  config.xdg.systemDirs.data = let
+  xdg.systemDirs.data = let
     schema = pkgs.gsettings-desktop-schemas;
   in ["${schema}/share/gsettings-schemas/${schema.name}"];
 
@@ -12,7 +12,7 @@
 
     font = {
       name = "Iosevka";
-      size = 14;
+      size = 12;
       package = pkgs.nerdfonts.override {fonts = ["Iosevka"];};
     };
 
