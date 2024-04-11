@@ -10,6 +10,7 @@
         ./home/profiles
 
         # modularizing flake because why not?
+        ./flake/args.nix
         ./flake/devshell.nix
 
         ./flake/pkgs
