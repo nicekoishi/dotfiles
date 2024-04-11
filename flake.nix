@@ -22,12 +22,14 @@
       url = "github:ezKEa/aagl-gtk-on-nix";
     };
 
-    ags = {
-      url = "github:Aylur/ags";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    ags.url = "github:Aylur/ags";
 
     anyrun.url = "github:Kirottu/anyrun";
+
+    anyrun-nixos-options = {
+      url = "github:n3oney/anyrun-nixos-options";
+      inputs.flake-parts.follows = "flake-parts";
+    };
 
     arrpc = {
       url = "github:notashelf/arrpc-flake";

@@ -1,29 +1,76 @@
-{pkgs, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
+  home.packages = with pkgs; [
+    mpc_cli
+    cava
+  ];
+
   services = {
+    playerctld.enable = true;
+    mpd-mpris.enable = true;
+
+    # old reliable
     mpd = {
       enable = true;
-      #network.startWhenNeeded = true;
+      musicDirectory = "${config.xdg.userDirs.music}";
+      network = {
+        startWhenNeeded = true;
+        listenAddress = "127.0.0.1";
+        port = 6600;
+      };
+
       extraConfig = ''
+        auto_update "yes"
+        volume_normalization "yes"
+        restore_paused "yes"
+        filesystem_charset "UTF-8"
+
         audio_output {
           type "pipewire"
           name "Pipewire"
         }
-        auto_update "yes"
+
+        audio_output {
+          type "fifo"
+          name "Visualizer"
+          path "/tmp/mpd.fifo"
+          format "44100:16:2"
+        }
+
+        audio_output {
+          type "httpd"
+          name "lossless"
+          encoder "flac"
+          port "8000"
+          max_clients "9"
+          mixer_type "software"
+          format "44100:16:2"
+        }
       '';
     };
 
-    # disabled as it was spamming journalctl, as it was starting before arRPC
-    #mpd-discord-rpc = {
-    #  enable = true;
-    #  settings = {
-    #    # this app has no icons, just the name Cantata
-    #    id = 1221117858709508168;
-    #    hosts = ["localhost:6600"];
-    #    format = {
-    #      details = "$title";
-    #      state = "$album by $artist";
-    #    };
-    #  };
-    #};
+    mpdris2 = {
+      enable = true;
+      notifications = true;
+      multimediaKeys = true;
+      mpd = {inherit (config.services.mpd) musicDirectory;};
+    };
+
+    # disabled as it was spamming journalctl, because it was starting before arRPC
+    # it should be fixed now, as I removed the host option
+    mpd-discord-rpc = {
+      enable = true;
+      settings = {
+        # this app has no icons, just the name Cantata
+        id = 1221117858709508168;
+        format = {
+          details = "$title";
+          state = "$album by $artist";
+        };
+      };
+    };
   };
 }

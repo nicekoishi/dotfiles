@@ -8,6 +8,7 @@
     ../../programs/apps/media/obs
     ../../programs/apps/media/music/spotify
     ../../programs/apps/media/music/yt-music
+    ../../programs/apps/media/music/cantata
     ../../programs/apps/media/editing/image
     ../../programs/apps/media/editing/video
 
