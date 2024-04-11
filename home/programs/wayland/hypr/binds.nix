@@ -19,6 +19,8 @@
     )
     10);
 in {
+  # TODO: generate a svg image for all binds, like a cheatsheet
+  # wouldn't it be cool?
   wayland.windowManager.hyprland.settings = {
     # mouse movements
     bindm = [
@@ -29,22 +31,22 @@ in {
     bind =
       [
         # apps
-        "$mod, A, exec, ags -t bar"
-        "$mod, B, exec, chromium-browser &"
-        "$mod, D, exec, emacsclient -c -a emacs"
+        "$mod, F1, exec, ags -t bar"
+        "$mod, P, exec, emacsclient -c -a emacs"
+
         "$mod, E, exec, run-as-service thunar"
         "$mod, Q, exec, run-as-service footclient"
         "$mod, R, exec, killall anyrun || run-as-service $(env anyrun)"
         "$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
+        "$mod, W, exec, chromium-browser &"
 
         "ALT, F4, exec, wlogout"
 
         # commands
         "$mod, C, killactive"
         "$mod, F, togglefloating"
-        "$mod, J, togglesplit"
-        "$mod, M, exit"
-        "$mod, P, pseudo"
+        "$mod, D, togglesplit"
+        "$mod, B, pseudo"
 
         # move focus
         "$mod, down, movefocus, d"
@@ -56,9 +58,17 @@ in {
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
 
-        # special workspace
+        # quick special
         "$mod SHIFT, S, movetoworkspace, special:magic"
         "$mod, S, togglespecialworkspace, magic"
+
+        # media special
+        "$mod SHIFT, A, movetoworkspace, special:media"
+        "$mod, A, togglespecialworkspace, media"
+
+        # thunderbird special
+        "$mod SHIFT, T, movetoworkspace, special: thunderbird"
+        "$mod, T, togglespecialworkspace, thunderbird"
 
         # screenshot
         "ALT, Print, exec, grimblast --cursor --notify copysave area"
@@ -73,13 +83,13 @@ in {
 
     bindle = [
       # media controls
-      ", XF86AudioPlay, exec, playerctl play-pause"
-      ", XF86AudioNext, exec, playerctl next"
-      ", XF86AudioPrev, exec, playerctl previous"
+      "$mod, KP_Decimal, exec, playerctl play-pause"
+      "$mod, KP_Add, exec, playerctl next"
+      "$mod, KP_Subtract, exec, playerctl previous"
 
       # volume
-      ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK 5%-"
-      ", XF86AudioRaiseVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK 5%+"
+      "$mod ALT, KP_Subtract, exec, wpctl set-volume @DEFAULT_AUDIO_SINK 5%-"
+      "$mod ALT, KP_Add, exec, wpctl set-volume @DEFAULT_AUDIO_SINK 5%+"
     ];
   };
 }
