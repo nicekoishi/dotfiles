@@ -45,7 +45,7 @@ in {
         # commands
         "$mod, C, killactive"
         "$mod, F, togglefloating"
-        "$mod, D, togglesplit"
+        "$mod, G, togglesplit"
         "$mod, B, pseudo"
 
         # move focus
@@ -63,11 +63,11 @@ in {
         "$mod, S, togglespecialworkspace, magic"
 
         # media special
-        "$mod SHIFT, A, movetoworkspace, special:media"
-        "$mod, A, togglespecialworkspace, media"
+        "$mod SHIFT, D, movetoworkspace, special:media"
+        "$mod, D, togglespecialworkspace, media"
 
         # thunderbird special
-        "$mod SHIFT, T, movetoworkspace, special: thunderbird"
+        "$mod SHIFT, T, movetoworkspace, special:thunderbird"
         "$mod, T, togglespecialworkspace, thunderbird"
 
         # screenshot
