@@ -93,26 +93,6 @@
         "type": "github"
       }
     },
-    "arrpc": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1702716624,
-        "narHash": "sha256-IiPLKu8URsOeeWePz30PzU8Qj38XzeEWnLLP6bvzw/w=",
-        "owner": "notashelf",
-        "repo": "arrpc-flake",
-        "rev": "136eca7e4d13dc8c8cce24480614cbf9b120cc14",
-        "type": "github"
-      },
-      "original": {
-        "owner": "notashelf",
-        "repo": "arrpc-flake",
-        "type": "github"
-      }
-    },
     "attic": {
       "inputs": {
         "crane": [
@@ -2775,7 +2755,6 @@
         "ags": "ags",
         "anyrun": "anyrun",
         "anyrun-nixos-options": "anyrun-nixos-options",
-        "arrpc": "arrpc",
         "chaotic": "chaotic",
         "emacs-overlay": "emacs-overlay",
         "flake-parts": "flake-parts_2",

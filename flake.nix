@@ -31,11 +31,6 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
-    arrpc = {
-      url = "github:notashelf/arrpc-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";
 
     emacs-overlay = {
