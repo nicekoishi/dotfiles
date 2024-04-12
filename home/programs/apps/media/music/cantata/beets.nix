@@ -17,6 +17,7 @@
         "mpdupdate"
         "absubmit"
         "chroma"
+        "spotify"
         "duplicates"
         "edit"
         "embedart"
@@ -55,6 +56,8 @@
       lyrics.auto = true;
       replaygain.backend = "gstreamer";
       thumbnails.auto = true;
+      spotify.source_weight = 0.5;
+      mbsync.source_weight = 0.0;
     };
   };
 }
