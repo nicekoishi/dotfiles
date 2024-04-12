@@ -6,8 +6,8 @@
   inherit (inputs) xdph;
 in {
   imports = [
-    ../../environment/wayland
-    ../services/user/polkit-gnome.nix
+    ../../../environment/wayland
+    ../../services/user/polkit-gnome.nix
   ];
 
   programs.hyprland = {
