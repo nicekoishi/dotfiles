@@ -41,10 +41,10 @@
       "float, title:wlogout"
       "float, Viewnior"
       "float, viewnior"
-      "float, thunar"
+      "float, org.kde.dolphin"
 
       # thunar opacity
-      "opacity 0.98, thunar"
+      # "opacity 0.98, thunar"
     ];
 
     windowrulev2 = [

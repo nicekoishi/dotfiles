@@ -17,6 +17,7 @@
     LESSKEY = "$XDG_CONFIG_HOME/less/key";
     WINEPREFIX = "$XDG_DATA_HOME/wine";
     GNUPGHOME = "$XDG_DATA_HOME/gnupg";
+    KDEHOME = "$XDG_CONFIG_HOME/kde";
     XAUTHORITY = "$XDG_RUNTIME_DIR/Xauthority";
     LSP_USE_PLISTS = "true";
     DELTA_PAGER = "less -R";

@@ -69,7 +69,7 @@
       cat = "bat";
 
       did = "systemctl --user";
-      had = "doas systemctl";
+      had = "sudo systemctl";
     };
 
     shellGlobalAliases = {eza = "eza --icons --git --group-directories-first";};

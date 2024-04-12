@@ -13,7 +13,7 @@ in {
     "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
       General.theme = "catppuccin";
       Applications.catppuccin = ''
-        qt5ct, qt6ct, org.qbittorrent.qBittorrent, hyprland-share-picker, cantata, org.prismlauncher.PrismLauncher
+        qt5ct, qt6ct, org.kde.dolphin, org.qbittorrent.qBittorrent, hyprland-share-picker, cantata, org.prismlauncher.PrismLauncher
       '';
     };
 

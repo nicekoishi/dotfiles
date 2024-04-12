@@ -34,7 +34,7 @@ in {
         "$mod, F1, exec, ags -t bar"
         "$mod, P, exec, emacsclient -c -a emacs"
 
-        "$mod, E, exec, run-as-service thunar"
+        "$mod, E, exec, run-as-service dolphin"
         "$mod, Q, exec, run-as-service footclient"
         "$mod, R, exec, killall anyrun || run-as-service $(env anyrun)"
         "$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
