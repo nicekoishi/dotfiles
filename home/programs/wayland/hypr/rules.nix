@@ -54,7 +54,8 @@
       "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
 
       # allow tearing in games
-      "immediate, class:^(osu\!|cs2|Warframe)$"
+      "immediate, class:^(osu\!|cs2)$"
+      "immediate, class:^(steam_app_230410)$"
 
       # bruh
       "suppressevent maximize, class:^(chromium-browser)$"
