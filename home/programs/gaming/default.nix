@@ -33,6 +33,7 @@ in {
       wine = true;
       toggle_hud = "Shift_R+F12";
       toggle_hud_position = "Shift_R+Home";
+      blacklist = "anime-game-launcher,honkers-railway-launcher";
     };
   };
 }
