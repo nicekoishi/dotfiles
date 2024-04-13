@@ -71,7 +71,7 @@
       "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
 
       # start apps in n workspace
-      "tile, initialtitle:^(Spotify Free)$"
+      "tile, initialtitle:^(Spotify( Free| Premium)?)$"
 
       "workspace 3 silent, class:^(WebCord)$"
 

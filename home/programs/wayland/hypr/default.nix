@@ -76,9 +76,8 @@
           enabled = true;
           brightness = 0.82;
           new_optimizations = true;
-          passes = 3;
+          passes = 5;
           size = 10;
-          special = true;
           vibrancy = 0.2;
         };
       };
