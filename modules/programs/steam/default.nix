@@ -3,6 +3,10 @@
   programs.steam = {
     enable = true;
 
+    extraCompatPackages = [
+      pkgs.proton-ge-bin # raw mouse input ftw
+    ];
+
     # fix gamescope inside steam
     package = pkgs.steam.override {
       extraPkgs = pkgs:

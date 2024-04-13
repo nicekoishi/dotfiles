@@ -36,8 +36,10 @@
 
       input = {
         kb_layout = "br";
+
+        accel_profile = "flat";
         follow_mouse = 1;
-        sensitivity = 0;
+
         numlock_by_default = true;
       };
 
@@ -56,7 +58,9 @@
         #"col.active_border" = "0xff94e2d5";
         #"col.inactive_border" = "0xff89dceb";
 
+        allow_tearing = true;
         no_border_on_floating = false;
+        apply_sens_to_raw = 0;
       };
 
       decoration = {
@@ -70,9 +74,12 @@
 
         blur = {
           enabled = true;
-          size = 5;
-          passes = 3;
+          brightness = 0.82;
           new_optimizations = true;
+          passes = 3;
+          size = 10;
+          special = true;
+          vibrancy = 0.2;
         };
       };
 
