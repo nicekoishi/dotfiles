@@ -20,6 +20,7 @@
   inputs = {
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     ags.url = "github:Aylur/ags";
