@@ -38,7 +38,7 @@ in {
         "$mod, Q, exec, run-as-service kitty"
         "$mod, R, exec, killall anyrun || run-as-service $(anyrun)"
         "$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
-        "$mod, W, exec, chromium-browser &"
+        "$mod, W, exec, firefox"
 
         "ALT, F4, exec, wlogout"
 
