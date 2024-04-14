@@ -71,6 +71,10 @@
       "dimaround, class:^(xdg-desktop-portal-.*)$"
       "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
 
+      # lutris and most games launched through wine create an annoying system tray window
+      # go away
+      "workspace special silent, title:^(title:Wine System Tray)$"
+
       # start apps in n workspace
       "tile, initialtitle:^(Spotify( Free| Premium)?)$"
 
