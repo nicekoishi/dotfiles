@@ -7,7 +7,7 @@
 in {
   imports = [
     ./clipboard
-    ./hypr
+    ./hyprland
     ./wlogout
   ];
   home.packages = with pkgs; [
