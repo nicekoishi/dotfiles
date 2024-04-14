@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   imports = [
-    #./browsers/brave.nix
-    ./browsers/chromium.nix
+    #./browsers/brave
+    ./browsers/chromium
 
     ./discord
     ./media
