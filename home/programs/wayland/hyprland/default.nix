@@ -5,12 +5,7 @@
 }: {
   imports = [
     inputs.hyprland.homeManagerModules.default
-    ./binds.nix
-    ./idle.nix
-    ./rules.nix
-
-    # plugins
-    #./expo.nix FIXME: not working as of 06/04/2024, need to test later
+    ./config
   ];
   wayland.windowManager.hyprland = {
     enable = true;
