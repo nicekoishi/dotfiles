@@ -69,10 +69,13 @@
         blur = {
           enabled = true;
           brightness = 0.82;
+          contrast = 0.71;
           new_optimizations = true;
-          passes = 5;
-          size = 10;
+          ignore_opacity = true;
+          passes = 3;
+          size = 5;
           vibrancy = 0.2;
+          special = true;
         };
       };
 

@@ -53,6 +53,9 @@
       "rounding 0, xwayland:1"
       "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
 
+      # shadows for floating only
+      "noshadow, floating:0"
+
       # allow tearing in games
       "immediate, class:^(osu\!|cs2)$"
       "immediate, class:^(steam_app_230410)$"
