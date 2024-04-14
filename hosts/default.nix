@@ -33,7 +33,6 @@ in {
         "${dir}/services/system/rclone.nix"
 
         inputs.chaotic.nixosModules.default
-        inputs.nur.nixosModules.nur
 
         {
           home-manager = {
