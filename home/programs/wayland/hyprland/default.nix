@@ -26,7 +26,6 @@
         # can't be bothered
         "webcord --disable-gpu; sleep 5; pkill -f webcord; webcord"
         # why
-        "hyprland-bitwarden-resize"
       ];
 
       input = {

@@ -57,13 +57,14 @@
       "immediate, class:^(osu\!|cs2)$"
       "immediate, class:^(steam_app_230410)$"
 
-      # bruh
-      "suppressevent maximize, class:^(chromium-browser)$"
-
       # idle inhibit while watching videos
       "idleinhibit focus, class:^(mpv|.+exe)$"
       "idleinhibit focus, class:^(chromium-browser|firefox)$, title:^(.*Youtube.*)$"
       "idleinhibit fullscreen, class:^(chromium-browser|firefox)$"
+
+      # throw sharing indicators away
+      "workspace special silent, title:^(Firefox — Sharing Indicator)$"
+      "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
       # omg how pretty
       "dimaround, class:^(gcr-prompter)$"
