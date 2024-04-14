@@ -66,6 +66,10 @@
       "workspace special silent, title:^(Firefox — Sharing Indicator)$"
       "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
 
+      # bitwarden
+      "float, class:Bitwarden"
+      "size 800 600, class:Bitwarden"
+
       # omg how pretty
       "dimaround, class:^(gcr-prompter)$"
       "dimaround, class:^(xdg-desktop-portal-.*)$"
