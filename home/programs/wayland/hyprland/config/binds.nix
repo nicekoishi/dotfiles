@@ -58,13 +58,9 @@ in {
         "$mod, mouse_down, workspace, e+1"
         "$mod, mouse_up, workspace, e-1"
 
-        # quick special
-        "$mod SHIFT, S, movetoworkspace, special:magic"
-        "$mod, S, togglespecialworkspace, magic"
-
         # media special
-        "$mod SHIFT, D, movetoworkspace, special:media"
-        "$mod, D, togglespecialworkspace, media"
+        "$mod SHIFT, S, movetoworkspace, special:media"
+        "$mod, S, togglespecialworkspace, media"
 
         # thunderbird special
         "$mod SHIFT, T, movetoworkspace, special:thunderbird"
