@@ -57,8 +57,8 @@
       "noshadow, floating:0"
 
       # allow tearing in games
-      "immediate, class:^(osu\!|cs2)$"
-      "immediate, class:^(steam_app_230410)$"
+      #"immediate, class:^(osu\!|cs2)$"
+      #"immediate, class:^(steam_app_230410)$"
 
       # idle inhibit while watching videos
       "idleinhibit focus, class:^(mpv|.+exe)$"
