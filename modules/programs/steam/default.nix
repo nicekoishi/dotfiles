@@ -1,5 +1,13 @@
 # fufexan / dotfiles
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  environment.systemPackages = [
+    inputs.nix-gaming.packages.${pkgs.system}.wine-discord-ipc-bridge
+  ];
+
   programs.steam = {
     enable = true;
 
