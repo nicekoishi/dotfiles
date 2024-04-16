@@ -9,6 +9,7 @@ in {
     ./clipboard
     ./hyprland
     ./wlogout
+    ./ocr
   ];
   home.packages = with pkgs; [
     hypr-contrib.packages.${pkgs.system}.grimblast
