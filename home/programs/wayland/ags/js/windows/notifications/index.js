@@ -116,6 +116,7 @@ export const NotificationPopup = (monitor = 0) =>
     Window({
         monitor,
         name: "notifications",
+        layer: "overlay",
         anchor: ["top", "right"],
         margins: [8, 8, 8, 0],
         child: Box({
