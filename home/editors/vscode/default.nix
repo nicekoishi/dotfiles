@@ -20,6 +20,7 @@
         yzhang.markdown-all-in-one
 
         # cpp
+        ms-vscode.cmake-tools
         ms-vscode.cpptools
         xaver.clang-format
 
