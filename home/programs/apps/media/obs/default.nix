@@ -9,6 +9,9 @@ in {
   programs.obs-studio = {
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [
+      # helps me setup auto replay buffer
+      advanced-scene-switcher
+
       obs-gstreamer
       obs-pipewire-audio-capture
       obs-vkcapture
