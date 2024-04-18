@@ -1720,26 +1720,6 @@
         "type": "github"
       }
     },
-    "nh": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1713422373,
-        "narHash": "sha256-PuGzau2Wj0T8MC3V8a41rc/sXT0DrNz1Ow/ApR6a87s=",
-        "owner": "viperML",
-        "repo": "nh",
-        "rev": "c9cb03418dc782701ada556a49a9e8de0b415fbc",
-        "type": "github"
-      },
-      "original": {
-        "owner": "viperML",
-        "repo": "nh",
-        "type": "github"
-      }
-    },
     "nil": {
       "inputs": {
         "flake-utils": [
@@ -2752,7 +2732,6 @@
         "hyprland": "hyprland",
         "hyprland-plugins": "hyprland-plugins",
         "neovim-flake": "neovim-flake",
-        "nh": "nh",
         "nix-colors": "nix-colors",
         "nix-gaming": "nix-gaming",
         "nix-index-db": "nix-index-db",
