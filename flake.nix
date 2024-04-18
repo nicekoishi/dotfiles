@@ -68,11 +68,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nh = {
-      url = "github:viperML/nh";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-colors.url = "github:misterio77/nix-colors";
 
     nix-index-db = {
