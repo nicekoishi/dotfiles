@@ -5,16 +5,14 @@
 }: {
   imports = [
     inputs.hyprland.homeManagerModules.default
-    ./binds.nix
-    ./idle.nix
-    ./rules.nix
-
-    # plugins
-    #./expo.nix FIXME: not working as of 06/04/2024, need to test later
+    ./config
   ];
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd.enable = true;
+    systemd = {
+      enable = true;
+      variables = ["--all"];
+    };
 
     settings = {
       "$mod" = "SUPER";
@@ -28,13 +26,14 @@
         # can't be bothered
         "webcord --disable-gpu; sleep 5; pkill -f webcord; webcord"
         # why
-        "hyprland-bitwarden-resize"
       ];
 
       input = {
         kb_layout = "br";
+
+        accel_profile = "flat";
         follow_mouse = 1;
-        sensitivity = 0;
+
         numlock_by_default = true;
       };
 
@@ -53,7 +52,11 @@
         #"col.active_border" = "0xff94e2d5";
         #"col.inactive_border" = "0xff89dceb";
 
+        # BUG: disabled tearing as my nvidia gpu doesn't go well with it
+        # well, it's not like I have a >60Hz monitor anyway
+        #allow_tearing = true;
         no_border_on_floating = false;
+        apply_sens_to_raw = 0;
       };
 
       decoration = {
@@ -67,9 +70,14 @@
 
         blur = {
           enabled = true;
-          size = 5;
-          passes = 3;
+          brightness = 0.82;
+          contrast = 0.71;
           new_optimizations = true;
+          ignore_opacity = true;
+          passes = 3;
+          size = 5;
+          vibrancy = 0.2;
+          special = true;
         };
       };
 

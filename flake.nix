@@ -10,6 +10,7 @@
         ./home/profiles
 
         # modularizing flake because why not?
+        ./flake/args.nix
         ./flake/devshell.nix
 
         ./flake/pkgs
@@ -19,18 +20,16 @@
   inputs = {
     aagl = {
       url = "github:ezKEa/aagl-gtk-on-nix";
-    };
-
-    ags = {
-      url = "github:Aylur/ags";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ags.url = "github:Aylur/ags";
 
     anyrun.url = "github:Kirottu/anyrun";
 
-    arrpc = {
-      url = "github:notashelf/arrpc-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
+    anyrun-nixos-options = {
+      url = "github:n3oney/anyrun-nixos-options";
+      inputs.flake-parts.follows = "flake-parts";
     };
 
     chaotic.url = "github:chaotic-cx/nyx/nyxpkgs-unstable";

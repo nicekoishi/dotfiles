@@ -8,7 +8,11 @@
 in {
   programs.obs-studio = {
     enable = true;
-    plugins = [];
+    plugins = with pkgs.obs-studio-plugins; [
+      obs-gstreamer
+      obs-pipewire-audio-capture
+      obs-vkcapture
+    ];
   };
 
   xdg.configFile."obs-studio/themes" = {

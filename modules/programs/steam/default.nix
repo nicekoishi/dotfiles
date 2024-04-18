@@ -1,7 +1,19 @@
 # fufexan / dotfiles
-{pkgs, ...}: {
+{
+  pkgs,
+  inputs,
+  ...
+}: {
+  environment.systemPackages = [
+    inputs.nix-gaming.packages.${pkgs.system}.wine-discord-ipc-bridge
+  ];
+
   programs.steam = {
     enable = true;
+
+    extraCompatPackages = [
+      pkgs.proton-ge-bin # raw mouse input ftw
+    ];
 
     # fix gamescope inside steam
     package = pkgs.steam.override {

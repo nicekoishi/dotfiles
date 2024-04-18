@@ -132,7 +132,7 @@
 
       presence = {
         neocord = {
-          enable = true;
+          enable = false;
           auto_update = true;
           enable_line_number = true;
           show_time = true;

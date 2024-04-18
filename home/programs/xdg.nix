@@ -7,6 +7,8 @@
   browser = ["chromium-browser"];
   imageViewer = ["viewnior"];
   videoPlayer = ["mpv"];
+  fileManager = ["org.kde.dolphin"];
+  fileArchiver = ["org.kde.ark"];
   mail = ["thunderbird"];
 
   xdgAssociations = type: program: list:
@@ -36,21 +38,28 @@
       "https"
       "unknown"
     ]);
+  compressedTypes = xdgAssociations "application" fileArchiver [
+    "zip"
+    "gzip"
+    "rar"
+    "x-xz-compressed-tar"
+  ];
 
   # XDG MIME types
   mimeapps = builtins.mapAttrs (_: v: (map (e: "${e}.desktop") v)) ({
       "application/pdf" = ["org.pwmt.zathura-pdf-mupdf"]; # so that was the reason pdf wasn't working
       "text/html" = browser;
       "text/plain" = ["nvim"];
-      "inode/directory" = ["thunar"];
-      "x-scheme-handler/discord" = ["vesktop"];
+      "inode/directory" = fileManager;
+      "x-scheme-handler/discord" = ["WebCord"];
       "x-scheme-handler/spotify" = ["spotify"];
       "x-scheme-handler/mailto" = mail;
     }
     // image
     // video
     // audio
-    // browserTypes);
+    // browserTypes
+    // compressedTypes);
 in {
   xdg = {
     enable = true;

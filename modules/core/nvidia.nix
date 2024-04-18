@@ -6,20 +6,27 @@
 }: {
   boot.blacklistedKernelModules = ["i2c_nvidia_gpu" "nouveau"];
 
-  environment.systemPackages = with pkgs; [
-    nvtopPackages.nvidia
-    mesa
+  environment = {
+    sessionVariables = {
+      LIBVA_DRIVER_NAME = "nvidia";
+      WLR_NO_HARDWARE_CURSORS = "1";
+    };
 
-    # vulkan
-    vulkan-tools
-    vulkan-loader
-    vulkan-validation-layers
-    vulkan-extension-layer
+    systemPackages = with pkgs; [
+      nvtopPackages.nvidia
+      mesa
 
-    # libva
-    libva
-    libva-utils
-  ];
+      # vulkan
+      vulkan-tools
+      vulkan-loader
+      vulkan-validation-layers
+      vulkan-extension-layer
+
+      # libva
+      libva
+      libva-utils
+    ];
+  };
 
   hardware.nvidia = {
     package = let

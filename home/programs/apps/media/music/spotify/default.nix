@@ -2,6 +2,7 @@
   inputs,
   lib,
   pkgs,
+  self,
   ...
 }: let
   inherit (inputs) spicetify;
@@ -23,14 +24,20 @@ in {
 
   programs.spicetify = {
     enable = true;
-    theme = spice.themes.catppuccin;
     windowManagerPatch = true;
+    overwriteAssets = true;
+    sidebarConfig = true;
 
+    injectCss = true;
+    replaceColors = true;
+    theme = spice.themes.catppuccin;
     colorScheme = "mocha";
 
     enabledExtensions = with spice.extensions; [
       adblock
       shuffle
+      fullAppDisplay
+      groupSession
       volumePercentage
     ];
   };

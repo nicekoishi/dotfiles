@@ -41,54 +41,61 @@
       "float, title:wlogout"
       "float, Viewnior"
       "float, viewnior"
-      "float, thunar"
-
-      # idle inhibit
-      "idleinhibit fullscreen, mpv"
-      "idleinhibit fullscreen, chromium-browser"
+      "float, org.kde.dolphin"
 
       # thunar opacity
-      "opacity 0.92, thunar"
-
-      # how wine can be drunk
-      "center, winecfg.exe"
-      "center, zenity"
-      "center, steam_proton"
-      "float, zenity"
-      "nomaxsize, explorer.exe"
-      "nomaxsize, steam_proton"
-      "nomaxsize, winecfg.exe"
-      "size 415 470, steam_proton"
-      "size 415 470, winecfg.exe"
-
-      # didn't they put an anticheat a while ago?
-      "center,^(league of legends.exe)$"
-      "center,^(leagueclientux.exe)$"
-      "forceinput,^(league of legends.exe)$"
-      "nomaxsize, riotclientux.exe"
-      "size 1280 720,^(leagueclientux.exe)$"
-      "size 1280 720,^(riotclientux.exe)$"
+      # "opacity 0.98, thunar"
     ];
 
     windowrulev2 = [
       # fix xwayland apps
       "center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$"
-      "rounding 0, xwayland:1, floating:1"
+      "rounding 0, xwayland:1"
+      "size 640 400, class:^(.*jetbrains.*)$, title:^(splash)$"
 
-      # oh wait, well too lazy to delete this now
-      "float,workspace 5 silent,class:^(leagueclientux.exe)$,title:^(League of Legends)$"
-      "fullscreen, workspace 5 silent,class:^(league of legends.exe)$,title:^(League of Legends (TM) Client)$ windowrule = size 1920 1080,^(league of legends.exe)$"
+      # shadows for floating only
+      "noshadow, floating:0"
 
-      # bruh
-      "suppressevent maximize, class:^(chromium-browser)$"
+      # allow tearing in games
+      #"immediate, class:^(osu\!|cs2)$"
+      #"immediate, class:^(steam_app_230410)$"
+
+      # idle inhibit while watching videos
+      "idleinhibit focus, class:^(mpv|.+exe)$"
+      "idleinhibit focus, class:^(chromium-browser|firefox)$, title:^(.*Youtube.*)$"
+      "idleinhibit fullscreen, class:^(chromium-browser|firefox)$"
+
+      # throw sharing indicators away
+      "workspace special silent, title:^(Firefox — Sharing Indicator)$"
+      "workspace special silent, title:^(.*is sharing (your screen|a window)\.)$"
+
+      # bitwarden
+      "float, class:Bitwarden"
+      "size 800 600, class:Bitwarden"
+
+      # omg how pretty
+      "dimaround, class:^(gcr-prompter)$"
+      "dimaround, class:^(xdg-desktop-portal-.*)$"
+      "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
+
+      # lutris and most games launched through wine create an annoying system tray window
+      # go away
+      "workspace special silent, title:^(title:Wine System Tray)$"
 
       # start apps in n workspace
-      "tile, initialtitle:^(Spotify Free)$"
-      "workspace 3 silent, class:^(vesktop)$"
-      "workspace 4 silent, initialtitle:^(Spotify Free)$"
+      "tile, initialtitle:^(Spotify( Free| Premium)?)$"
+
+      "workspace 3 silent, class:^(WebCord)$"
+
+      "workspace 4 silent, initialtitle:^(Spotify( Free| Premium)?)$"
+      "workspace 4 silent, initialclass:^(cantata)$"
+
       "workspace 5 silent, class:^(lutris*)$"
       "workspace 5 silent, class:^(steam*)$"
+
       "workspace 6 silent, class:^(virt-manager)$"
+
+      "workspace special:thunderbird silent, initialclass:^(thunderbird)$"
     ];
   };
 }
