@@ -1,6 +1,6 @@
 {
   imports = [
-    ./hyprland-bitwarden.nix
+    #./hyprland-bitwarden.nix not necessary anymore as firefox doesn't have this problem
     ./reboot-to-windows.nix
   ];
 }

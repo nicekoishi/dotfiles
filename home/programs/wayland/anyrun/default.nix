@@ -1,13 +1,15 @@
 {
   inputs,
   pkgs,
+  osConfig,
   ...
 }: let
-  inherit (inputs) anyrun;
+  inherit (inputs) anyrun anyrun-nixos-options;
 in {
   imports = [anyrun.homeManagerModules.default];
   programs.anyrun = {
     enable = true;
+
     config = {
       plugins = with anyrun.packages.${pkgs.system}; [
         applications
@@ -15,14 +17,57 @@ in {
         rink
         shell
         stdin
+        symbols
         translate
+
+        anyrun-nixos-options.packages.${pkgs.system}.default
       ];
-      closeOnClick = true;
-      hideIcons = false;
-      hidePluginInfo = true;
-      maxEntries = 5;
+
       width.fraction = 0.3;
-      y.absolute = 9;
+      y.fraction = 0.02;
+      ignoreExclusiveZones = false;
+      layer = "overlay";
+      hidePluginInfo = false;
+      closeOnClick = false;
+      hideIcons = false;
+      maxEntries = 10;
+    };
+
+    extraConfigFiles = {
+      "applications.ron".text = ''
+        Config(
+          desktop_actions: true,
+          max_entries: 10,
+          terminal: Some("footclient"),
+        )
+      '';
+      "randr.ron".text = ''
+        Config(
+          prefix: ":ra",
+          max_entries: 5,
+        )
+      '';
+      "translate.ron".text = ''
+        Config(
+          prefix: ":pt",
+          language_delimiter ">",
+          max_entries: 3,
+        )
+      '';
+      "nixos-options.ron".text = let
+        nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
+        hm-options = inputs.home-manager.packages.${pkgs.system}.docs-json + "/share/doc/home-manager/options.json";
+        options = builtins.toJSON {
+          ":nix" = [nixos-options];
+          ":home" = [hm-options];
+        };
+      in ''
+        Config(
+          options: ${options},
+          min_score: 5,
+          max_entries: Some(4),
+        )
+      '';
     };
 
     extraCss = ''

@@ -24,10 +24,10 @@ in {
         "${dir}/core/nvidia.nix"
 
         "${dir}/programs/gaming"
-        "${dir}/programs/hyprland.nix"
-        "${dir}/programs/steam.nix"
-        "${dir}/programs/virt-manager.nix"
-        "${dir}/programs/thunar.nix"
+        "${dir}/programs/hyprland"
+        "${dir}/programs/steam"
+        "${dir}/programs/virt-manager"
+        "${dir}/programs/thunar"
 
         "${dir}/services/system/gnome.nix"
         "${dir}/services/system/rclone.nix"

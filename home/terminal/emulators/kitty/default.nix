@@ -5,12 +5,15 @@
     settings = {
       confirm_os_window_close = 0;
       background_opacity = "0.71";
+      term = "xterm-256color";
+
+      notify_on_command_finish = "unfocused notify";
 
       scrollback_lines = 10000;
       enable_audio_bell = true;
 
-      window_padding_width = "3 3 0 3";
       font_family = "Iosevka Nerd Font Propo";
+      font_size = 12;
     };
   };
 }

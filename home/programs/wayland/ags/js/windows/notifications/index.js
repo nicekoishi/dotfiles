@@ -1,4 +1,4 @@
-import { Hyprland, Notifications, Utils, Widget } from "../../imports.js";
+import { Notifications, Utils, Widget } from "../../imports.js";
 const { Box, Icon, Label, Button, EventBox, Window } = Widget;
 const { lookUpIcon } = Utils;
 
@@ -112,10 +112,11 @@ export const Notification = (notif) => {
     });
 };
 
-let lastMonitor;
-export const NotificationPopup = () =>
+export const NotificationPopup = (monitor = 0) =>
     Window({
+        monitor,
         name: "notifications",
+        layer: "overlay",
         anchor: ["top", "right"],
         margins: [8, 8, 8, 0],
         child: Box({
@@ -127,10 +128,4 @@ export const NotificationPopup = () =>
                 return popups.map(Notification);
             }),
         }),
-    }).hook(Hyprland.active, (self) => {
-    // prevent useless resets
-        if (lastMonitor === Hyprland.active.monitor)
-            return;
-
-        self.monitor = Hyprland.active.monitor.id;
     });

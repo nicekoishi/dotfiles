@@ -14,13 +14,12 @@
       '';
       flags = ''
         --allow-other \
-        --dir-cache-time 48h \
+        --dir-cache-time 72h \
         --drive-chunk-size 512M \
         --vfs-cache-mode full \
-        --vfs-read-chunk-size 32M \
-        --vfs-read-chunk-size-limit 2G \
+        --vfs-read-chunk-size 512M \
+        --vfs-read-chunk-size-limit off \
         --buffer-size 1G \
-        --bwlimit 8.5M:off \
         --stats 1m \
         --retries-sleep 60m \
         --log-level INFO
