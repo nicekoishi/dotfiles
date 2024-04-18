@@ -70,6 +70,9 @@ in {
         # screenshot
         "ALT, Print, exec, grimblast --cursor --notify copysave area"
         ", Print, exec, grimblast --notify copysave screen"
+
+        # obs
+        "$mod, F10, pass,^(com\.obsproject\.Studio)$"
       ]
       ++ workspaces;
 
