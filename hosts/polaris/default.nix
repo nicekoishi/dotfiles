@@ -1,9 +1,11 @@
 {
   lib,
   pkgs,
+  self,
   ...
 }: {
   imports = [
+    self.nixosModules.gpu-pass
     ./hardware-configuration.nix
   ];
 
@@ -33,6 +35,18 @@
         };
       };
       # i do have an wifi card, but don't wanna use it. yet
+    };
+  };
+
+  virtualisation.libvirtd.gpu-pass = {
+    enable = true;
+    devices = ["pci_0000_06_00_0" "pci_0000_06_00_1" "pci_0000_06_00_2" "pci_0000_06_00_3"];
+    guest = "Windows";
+
+    optimize = {
+      enable = true;
+      host = "0";
+      topography = "0-5";
     };
   };
 

@@ -13,6 +13,7 @@
         ./flake/args.nix
         ./flake/devshell.nix
 
+        ./flake/modules
         ./flake/pkgs
       ];
     };
