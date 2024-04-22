@@ -22,11 +22,6 @@
   }
 }
 
-.notifications widget:last-child .notification {
-  // so this was the reason my browser notifications were weird
-  margin-bottom: 4em;
-}
-
 .notification .icon {
   image {
     font-size: 5rem;
