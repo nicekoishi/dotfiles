@@ -42,6 +42,7 @@
     enable = true;
     devices = ["pci_0000_06_00_0" "pci_0000_06_00_1" "pci_0000_06_00_2" "pci_0000_06_00_3"];
     guest = "Windows";
+    desktopEntry = true;
 
     optimize = {
       enable = true;

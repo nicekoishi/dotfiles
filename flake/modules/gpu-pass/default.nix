@@ -26,6 +26,15 @@ in {
   options.virtualisation.libvirtd.gpu-pass = {
     enable = mkEnableOption "gpu-pass, for gpu passthrough";
 
+    desktopEntry = mkOption {
+      type = types.bool;
+      default = false;
+      example = true;
+      description = ''
+        Whether to create a desktop entry for the passthrough guest.
+      '';
+    };
+
     devices = mkOption {
       type = types.listOf types.str;
       default = [];
@@ -54,15 +63,6 @@ in {
         description = ''
           Isolate the host to the specified core(s), improving performance on the guest.
           This option passes straight to AllowedCPUs, so you can use any value you desire.
-        '';
-      };
-
-      desktopEntry = mkOption {
-        type = types.bool;
-        default = false;
-        example = true;
-        description = ''
-          Whether to create a desktop entry for the passthrough guest.
         '';
       };
 
@@ -195,7 +195,7 @@ in {
 
     # Maybe there is a better way? As NixOS uses systemd, it should be a problem
     # to depend on pkexec... Let's go with that
-    environment.systemPackages = [
+    environment.systemPackages = mkIf cfg.desktopEntry [
       (pkgs.makeDesktopItem
         {
           desktopName = cfg.guest;
