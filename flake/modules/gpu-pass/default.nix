@@ -9,9 +9,16 @@
     mkEnableOption
     mkOption
     mkIf
-    concatMapStrings
+    concatStringsSep
+    concatMapStringsSep
     types
     ;
+  toOptimize = cpu:
+    concatStringsSep "\n" [
+      "systemctl set-property --runtime -- user.slice AllowedCPUs=${cpu}"
+      "systemctl set-property --runtime -- system.slice AllowedCPUs=${cpu}"
+      "systemctl set-property --runtime -- init.scope AllowedCPUs=${cpu}"
+    ];
   cfg = config.virtualisation.libvirtd.gpu-pass;
 in {
   options.virtualisation.libvirtd.gpu-pass = {
@@ -88,11 +95,7 @@ in {
           }
               ${
             if cfg.optimize.enable
-            then ''
-              systemctl set-property --runtime -- user.slice AllowedCPUs=${cfg.optimize.host}
-              systemctl set-property --runtime -- system.slice AllowedCPUs=${cfg.optimize.host}
-              systemctl set-property --runtime -- init.scope AllowedCPUs=${cfg.optimize.host}
-            ''
+            then toOptimize cfg.optimize.host
             else ""
           }
 
@@ -113,13 +116,14 @@ in {
 
               ${
             if builtins.elem "nvidia" config.services.xserver.videoDrivers
-            then ''
-              modprobe -r nvidia_uvm
-              modprobe -r nvidia_drm
-              modprobe -r nvidia_modeset
-              modprobe -r nvidia
-              modprobe -r i2c_nvidia_gpu
-            ''
+            then
+              concatMapStringsSep "\n" (module: "modprobe -r ${module}") [
+                "nvidia_uvm"
+                "nvidia_drm"
+                "nvidia_modeset"
+                "nvidia"
+                "i2c_nvidia_gpu"
+              ]
             else if builtins.elem "amdgpu" config.services.xserver.videoDrivers
             then ''
               modprobe -r amdgpu
@@ -127,7 +131,7 @@ in {
             else builtins.throw "Unable to detect GPU! Are you using nouveau?"
           }
 
-              ${concatMapStrings (i: "virsh nodedev-detach " + i + "\n") cfg.devices}
+              ${concatMapStringsSep "\n" (device: "virsh nodedev-detach ${device}") cfg.devices}
 
               modprobe vfio
               modprobe vfio_pci
@@ -139,16 +143,17 @@ in {
               modprobe -r vfio_iommu_type1
               modprobe -r vfio
 
-              ${concatMapStrings (i: "virsh nodedev-reattach " + i + "\n") cfg.devices}
+              ${concatMapStringsSep "\n" (device: "virsh nodedev-reattach ${device}") cfg.devices}
 
               ${
             if builtins.elem "nvidia" config.services.xserver.videoDrivers
-            then ''
-              modprobe nvidia
-              modprobe nvidia_modeset
-              modprobe nvidia_drm
-              modprobe nvidia_uvm
-            ''
+            then
+              concatMapStringsSep "\n" (module: "modprobe ${module}") [
+                "nvidia"
+                "nvidia_modeset"
+                "nvidia_drm"
+                "nvidia_uvm"
+              ]
             else if builtins.elem "amdgpu" config.services.xserver.videoDrivers
             then ''
               modprobe amdgpu
@@ -161,16 +166,13 @@ in {
             then "systemctl start nvidia-persistenced.service"
             else ""
           }
-
+              # TODO: handle cases where this isn't applicable, like sddm
+              # and gdm
               systemctl start display-manager.service
 
               ${
             if cfg.optimize.enable
-            then ''
-              systemctl set-property --runtime -- user.slice AllowedCPUs=${cfg.optimize.topography}
-              systemctl set-property --runtime -- system.slice AllowedCPUs=${cfg.optimize.topography}
-              systemctl set-property --runtime -- init.scope AllowedCPUs=${cfg.optimize.topography}
-            ''
+            then toOptimize cfg.optimize.topography
             else ""
           }
               ;;
