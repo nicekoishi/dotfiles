@@ -13,7 +13,5 @@
     ../../services/system/pipewire.nix
     ../../services/system/printing.nix
     ../../services/system/udisks2.nix
-
-    ../../convenience
   ];
 }
