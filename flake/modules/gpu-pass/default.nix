@@ -11,6 +11,8 @@
     mkIf
     concatStringsSep
     concatMapStringsSep
+    hasInfix
+    toLower
     types
     ;
   toOptimize = cpu:
@@ -54,6 +56,16 @@ in {
           This option passes straight to AllowedCPUs, so you can use any value you desire.
         '';
       };
+
+      desktopEntry = mkOption {
+        type = types.bool;
+        default = false;
+        example = true;
+        description = ''
+          Whether to create a desktop entry for the passthrough guest.
+        '';
+      };
+
       topography = mkOption {
         type = types.str;
         example = "0-11";
@@ -180,5 +192,20 @@ in {
         '';
       });
     };
+
+    # Maybe there is a better way? As NixOS uses systemd, it should be a problem
+    # to depend on pkexec... Let's go with that
+    environment.systemPackages = [
+      (pkgs.makeDesktopItem
+        {
+          desktopName = cfg.guest;
+          name = "reboot-to-passthrough-guest";
+          icon =
+            if hasInfix "win" (toLower cfg.guest)
+            then "distributor-logo-windows"
+            else "computer";
+          exec = "pkexec virsh start ${cfg.guest}";
+        })
+    ];
   };
 }
