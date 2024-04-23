@@ -31,6 +31,7 @@ in {
 
         "${dir}/services/system/utilities/gnome"
         "${dir}/services/system/networking/rclone"
+        "${dir}/services/system/networking/tailscale"
 
         inputs.chaotic.nixosModules.default
 

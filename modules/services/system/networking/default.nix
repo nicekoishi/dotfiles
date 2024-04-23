@@ -38,7 +38,18 @@ in {
 
     openssh = {
       enable = true;
-      settings.PasswordAuthentication = false;
+      openFirewall = true;
+      startWhenNeeded = true;
+      settings = {
+        PermitRootLogin = lib.mkForce "no";
+
+        # pub key auth
+        PasswordAuthentication = false;
+        AuthenticationMethods = "publickey";
+        PubkeyAuthentication = "yes";
+        ChallengeResponseAuthentication = "no";
+        UsePAM = "no";
+      };
     };
   };
 
