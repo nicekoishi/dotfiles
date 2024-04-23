@@ -29,8 +29,8 @@ in {
         "${dir}/programs/virt-manager"
         "${dir}/programs/thunar"
 
-        "${dir}/services/system/gnome.nix"
-        "${dir}/services/system/rclone.nix"
+        "${dir}/services/system/utilities/gnome"
+        "${dir}/services/system/networking/rclone"
 
         inputs.chaotic.nixosModules.default
 

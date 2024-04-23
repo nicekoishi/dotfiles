@@ -6,12 +6,11 @@
 
     ../../services
 
-    ../../services/system/avahi.nix
-    ../../services/system/earlyoom.nix
-    ../../services/system/greetd.nix
-    ../../services/system/network.nix
-    ../../services/system/pipewire.nix
-    ../../services/system/printing.nix
-    ../../services/system/udisks2.nix
+    ../../services/system/hardware/audio
+    ../../services/system/login
+    ../../services/system/networking
+    ../../services/system/networking/printing
+    ../../services/system/utilities/oom
+    ../../services/system/utilities/udiskie
   ];
 }
