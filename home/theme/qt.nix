@@ -34,20 +34,22 @@ in {
     style.name = "kvantum";
   };
 
-  home.packages = with pkgs; [
-    themeQt
+  home = {
+    packages = with pkgs; [
+      themeQt
 
-    qt6Packages.qt6ct
-    libsForQt5.qt5ct
-    qt6Packages.qtstyleplugin-kvantum
-    libsForQt5.qtstyleplugin-kvantum
-  ];
+      qt6Packages.qt6ct
+      libsForQt5.qt5ct
+      qt6Packages.qtstyleplugin-kvantum
+      libsForQt5.qtstyleplugin-kvantum
+    ];
 
-  home.sessionVariables = {
-    QT_AUTO_SCREEN_SCALE_FACTOR = "1";
-    QT_QPA_PLATFORM = "wayland";
-    QT_STYLE_OVERRIDE = "kvantum";
-    QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-    DISABLE_QT5_COMPAT = "0";
+    sessionVariables = {
+      QT_AUTO_SCREEN_SCALE_FACTOR = "1";
+      QT_QPA_PLATFORM = "wayland";
+      QT_STYLE_OVERRIDE = "kvantum";
+      QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+      DISABLE_QT5_COMPAT = "0";
+    };
   };
 }

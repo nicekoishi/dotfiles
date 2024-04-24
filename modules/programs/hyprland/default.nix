@@ -7,7 +7,7 @@
 in {
   imports = [
     ../../../environment/wayland
-    ../../services/user/polkit-gnome.nix
+    ../../services/user/polkit-gnome
   ];
 
   programs.hyprland = {

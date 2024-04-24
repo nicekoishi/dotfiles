@@ -2,6 +2,9 @@
     flake/modules/gpu-pass
 </p>
 
+## Disclaimer
+The shell script I use here is made by [Gerg-L](https://github.com/Gerg-L/nixos)
+
 ## How to use
 
 ### To import it and make it available in your configuration:
