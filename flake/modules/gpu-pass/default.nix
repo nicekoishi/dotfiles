@@ -178,6 +178,7 @@ in {
             then "systemctl start nvidia-persistenced.service"
             else ""
           }
+          
               # TODO: handle cases where this isn't applicable, like sddm
               # and gdm
               systemctl start display-manager.service
