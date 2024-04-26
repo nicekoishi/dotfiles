@@ -38,7 +38,7 @@ and me going deaf from loud music (I should really turn down the volume).
 Run packages with:
 
 ```console
-    nix run github:nicekoishi/dotfiles#<package>
+  nix run github:nicekoishi/dotfiles#<package>
 ```
 
 Or install them through your inputs:
@@ -46,17 +46,17 @@ Or install them through your inputs:
 ```nix
 # flake.nix
 {
-    inputs.nicekoishi-dots = {
-        url = "github:nicekoishi/dotfiles";
-        inputs.nixpkgs.follows = "nixpkgs"
-    };
+inputs.nicekoishi-dots = {
+  url = "github:nicekoishi/dotfiles";
+  inputs.nixpkgs.follows = "nixpkgs"
+};
 }
 
 # configuration.nix
 {pkgs, inputs, ...}: {
-    environment.systemPackages = [
-        inputs.nicekoishi-dots.packages."${pkgs.system}".<package>
-    ];
+environment.systemPackages = [
+  inputs.nicekoishi-dots.packages."${pkgs.system}".<package>
+];
 }
 ```
 
@@ -68,13 +68,12 @@ Same thing for modules:
 
 # configuration.nix
 {inputs, ...}: {
-    imports = [
-        # for nixos modules
-        inputs.nicekoishi-dots.nixosModules.<module>
-
-        # for home manager modules
-        inputs.nicekoishi-dots.homeManagerModules.<module>
-    ];
+  imports = [
+    # for nixos modules
+    inputs.nicekoishi-dots.nixosModules.<module>
+    # for home manager modules
+    inputs.nicekoishi-dots.homeManagerModules.<module>
+  ];
 }
 ```
 

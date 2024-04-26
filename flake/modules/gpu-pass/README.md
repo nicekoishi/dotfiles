@@ -15,16 +15,16 @@ VT Console script from [Risingprism](https://gitlab.com/risingprismtv/single-gpu
 ```nix
 # flake.nix
 inputs.nicekoishi-dots = {
-    url = "github:nicekoishi/dotfiles";
-    inputs.nixpkgs.follows = "nixpkgs"
+  url = "github:nicekoishi/dotfiles";
+  inputs.nixpkgs.follows = "nixpkgs"
 };
 ...
 
 # configuration.nix
 {inputs, ...}: {
-    imports = [
-        inputs.nicekoishi-dots.nixosModules.gpu-pass
-    ];
+  imports = [
+    inputs.nicekoishi-dots.nixosModules.gpu-pass
+  ];
 }
 ```
 
@@ -37,15 +37,14 @@ inputs.nicekoishi-dots = {
 ```nix
 # configuration.nix
 virtualisation.libvirtd.gpu-pass = {
+  enable = true;
+  devices = ["pci_0000_06_00_0" "pci_0000_06_00_1" "pci_0000_06_00_2" "pci_0000_06_00_3"];
+  guest = "Windows";  
+  optimize = {
     enable = true;
-    devices = ["pci_0000_06_00_0" "pci_0000_06_00_1" "pci_0000_06_00_2" "pci_0000_06_00_3"];
-    guest = "Windows";
-
-    optimize = {
-        enable = true;
-        host = "0";
-        topography = "0-5";
-    };
+    host = "0";
+    topography = "0-5";
+  };
 };
 ```
 
