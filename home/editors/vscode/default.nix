@@ -36,7 +36,7 @@
       ++ [pkgs.vscode-extensions."2gua".rainbow-brackets];
 
     userSettings = {
-      "catppuccin.accentColor" = "teal";
+      "catppuccin.accentColor" = "blue";
       "editor.cursorBlinking" = "smooth";
       "editor.cursorSmoothCaretAnimation" = "explicit";
       "editor.fontFamily" = "Iosevka Nerd Font Propo";

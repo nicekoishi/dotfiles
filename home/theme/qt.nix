@@ -1,14 +1,14 @@
 # will kvantum finally work?
 {pkgs, ...}: let
-  themeQt = pkgs.catppuccin-kde.override {
+  qtTheme = pkgs.catppuccin-kde.override {
     flavour = ["mocha"];
-    accents = ["teal"];
+    accents = ["blue"];
     winDecStyles = ["modern"];
   };
 in {
   # why qt is so weird?
   xdg.configFile = {
-    "kdeglobals".source = "${themeQt}/share/color-schemes/CatppuccinMochaTeal.colors";
+    "kdeglobals".source = "${qtTheme}/share/color-schemes/CatppuccinMochaBlue.colors";
 
     "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
       General.theme = "catppuccin";
@@ -18,13 +18,13 @@ in {
     };
 
     "Kvantum/catppuccin/catppuccin.kvconfig".source = builtins.fetchurl {
-      url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/src/Catppuccin-Mocha-Teal/Catppuccin-Mocha-Teal.kvconfig";
-      sha256 = "1kzlb0vgy22dh5jhbba6pmaf7jxx7ab18g4ns2r6nxw2l3i4sdjq";
+      url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/src/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.kvconfig";
+      sha256 = "1f8xicnc5696g0a7wak749hf85ynfq16jyf4jjg4dad56y4csm6s";
     };
 
     "Kvantum/catppuccin/catppuccin.svg".source = builtins.fetchurl {
-      url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/src/Catppuccin-Mocha-Teal/Catppuccin-Mocha-Teal.svg";
-      sha256 = "1fny82l3m9334f64qlxz4s7l6dqgqiahsk2pj9srfwv8cql1jmv1";
+      url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/src/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.svg";
+      sha256 = "0vys09k1jj8hv4ra4qvnrhwxhn48c2gxbxmagb3dyg7kywh49wvg";
     };
   };
 
@@ -36,7 +36,7 @@ in {
 
   home = {
     packages = with pkgs; [
-      themeQt
+      qtTheme
 
       qt6Packages.qt6ct
       libsForQt5.qt5ct
