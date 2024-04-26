@@ -35,6 +35,9 @@
 
       flake-registry = "/etc/nix/registry.json";
 
+      # i can have a clean home now? nice
+      use-xdg-base-directories = true;
+
       # crappy cpu + compiling = a bad time
       # one day I will have another build machine
       builders-use-substitutes = true;
