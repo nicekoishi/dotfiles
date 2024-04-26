@@ -4,7 +4,7 @@ const { Window, Box, CenterBox } = Widget;
 // TODO: If there isn't a music player, show active title
 //import { ActiveTitle } from "./modules/active.js";
 import { Date } from "./modules/date.js";
-import { Music } from "./modules/music.js";
+//import { Music } from "./modules/music.js";
 import { NetWidget } from "./modules/network.js";
 import { Tray } from "./modules/tray.js";
 import { Volume } from "./modules/volume.js";
@@ -17,12 +17,17 @@ const Top = () =>
         children: [Workspaces()],
     });
 
+/*
+ * this widget wasn't behaving properly with mpd,
+ * making the bar hang for a few seconds.
+ * sometimes even hanging my system too.
+ */
 const Center = () =>
     Box({
         className: "barCenter",
         spacing: 8,
         vertical: false,
-        children: [Music()],
+    //children: [Music()],
     });
 
 const Bottom = () =>
