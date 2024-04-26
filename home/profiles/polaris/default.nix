@@ -12,10 +12,7 @@
     ../../programs/apps/media/editing/image
     ../../programs/apps/media/editing/video
 
-    ../../programs/wayland/ags
-    #../../programs/wayland/quickshell
-    ../../programs/wayland/anyrun
-    ../../programs/wayland/swww
+    ../../programs/services
 
     ../../terminal
     ../../terminal/emulators/foot
