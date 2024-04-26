@@ -193,8 +193,7 @@ in {
       });
     };
 
-    # Maybe there is a better way? As NixOS uses systemd, it should be a problem
-    # to depend on pkexec... Let's go with that
+    # FIXME: pkexec is dumb, but this won't work either because we're using qemu:///system
     environment.systemPackages = mkIf cfg.desktopEntry [
       (pkgs.makeDesktopItem
         {
@@ -204,7 +203,7 @@ in {
             if hasInfix "win" (toLower cfg.guest)
             then "distributor-logo-windows"
             else "computer";
-          exec = "pkexec virsh start ${cfg.guest}";
+          exec = "virsh start ${cfg.guest}";
         })
     ];
   };

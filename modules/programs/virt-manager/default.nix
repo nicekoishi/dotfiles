@@ -1,5 +1,15 @@
 {pkgs, ...}: {
-  virtualisation.libvirtd.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      verbatimConfig = ''
+        user = "supeen"
+        group = "users"
+        namespaces = []
+      '';
+    };
+  };
+
   programs.virt-manager.enable = true;
   environment.systemPackages = [pkgs.virtiofsd];
 }
