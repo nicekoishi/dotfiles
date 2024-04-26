@@ -10,7 +10,7 @@
 
   services = {
     playerctld.enable = true;
-    #mpd-mpris.enable = true; # if i'm using cantata, do I really need this?
+    mpd-mpris.enable = true;
 
     # old reliable
     mpd = {
@@ -55,7 +55,7 @@
     mpdris2 = {
       enable = true;
       notifications = true;
-      multimediaKeys = false;
+      multimediaKeys = true;
       mpd = {inherit (config.services.mpd) musicDirectory;};
     };
 
