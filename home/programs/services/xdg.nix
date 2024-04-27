@@ -89,5 +89,10 @@ in {
     };
   };
 
-  home.packages = with pkgs; [xdg-utils];
+  home.packages = with pkgs; [
+    (writeShellScriptBin "xdg-terminal-exec" ''
+      kitty "$@"
+    '')
+    xdg-utils
+  ];
 }
