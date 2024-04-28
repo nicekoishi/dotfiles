@@ -1,8 +1,8 @@
 {
   imports = [
+    ./emulators
     ./programs
-    ./shell/zsh.nix
-    ./shell/transient-services.nix
+    ./shell
   ];
 
   # shut the f up

@@ -3,7 +3,12 @@
   lib,
   ...
 }: {
-  imports = [./starship.nix ./nix-index.nix];
+  imports = [
+    ./starship.nix
+    ./nix-index.nix
+    ./transient-services.nix
+  ];
+
   programs.zsh = {
     enable = true;
     syntaxHighlighting.enable = true;

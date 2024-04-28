@@ -6,6 +6,7 @@
       systems = ["x86_64-linux"];
 
       imports = [
+        # TODO: reduce to a single entrypoint
         ./hosts
         ./home/profiles
 

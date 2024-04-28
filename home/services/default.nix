@@ -6,11 +6,8 @@
   inherit (inputs) hypr-contrib;
 in {
   imports = [
+    ./shared
     ./wayland
-
-    ./noise.nix
-    ./polkit-gnome.nix
-    ./xdg.nix
   ];
   home.packages = with pkgs; [
     hypr-contrib.packages.${pkgs.system}.grimblast

@@ -5,9 +5,9 @@
 }: let
   extraSpecialArgs = {inherit inputs self;};
   homeImports = {
-    "polaris" = [
+    "supeen" = [
       ../.
-      ./polaris
+      ./supeen
     ];
   };
 
@@ -19,7 +19,7 @@ in {
   flake = {
     homeConfigurations = {
       "@polaris" = homeManagerConfiguration {
-        modules = homeImports."polaris";
+        modules = homeImports."supeen";
         inherit pkgs extraSpecialArgs;
       };
     };

@@ -1,8 +1,12 @@
-{pkgs, ...}: {
-  imports = [
-    ./beets.nix # get audio track metadata, overall nice utility to have
-    ./mpd.nix # this wouldn't work without mpd, right?
-  ];
-
-  home.packages = [pkgs.cantata];
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  inherit (lib) mkIf;
+in {
+  config = mkIf config.services.mpd.enable {
+    home.packages = [pkgs.cantata];
+  };
 }

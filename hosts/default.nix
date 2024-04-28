@@ -37,7 +37,7 @@ in {
 
         {
           home-manager = {
-            users.supeen.imports = homeImports."polaris";
+            users.supeen.imports = homeImports."supeen";
             extraSpecialArgs = specialArgs;
           };
         }

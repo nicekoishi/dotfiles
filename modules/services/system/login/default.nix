@@ -3,15 +3,15 @@
   lib,
   ...
 }: {
-  services.greetd = {
+  services.greetd = let
+    session = {
+      command = "${lib.getExe config.programs.hyprland.package}";
+      user = "supeen";
+    };
+  in {
     enable = true;
-    vt = 2; # greetd shittin text on systemd startup log
-    settings = let
-      session = {
-        command = "${lib.getExe config.programs.hyprland.package} &> ~/.local/share/hyprland.log";
-        user = "supeen";
-      };
-    in {
+    settings = {
+      terminal.vt = 1;
       default_session = session;
       initial_session = session;
     };

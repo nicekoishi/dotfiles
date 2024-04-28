@@ -2,6 +2,5 @@
   imports = [
     ./apps
     ./gaming
-    ./services
   ];
 }
