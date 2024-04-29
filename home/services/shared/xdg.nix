@@ -85,6 +85,7 @@ in {
 
       extraConfig = {
         XDG_SCREENSHOTS_DIR = "${config.xdg.userDirs.pictures}/Screenshots";
+        XDG_WALLPAPERS_DIR = "${config.xdg.userDirs.pictures}/Wallpapers";
       };
     };
   };
