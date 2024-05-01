@@ -38,8 +38,15 @@ in {
         };
       };
 
-      wallpaper = {
-        Unit.After = ["wallpaperd.service"];
+      wallpaperd-change = {
+        Install.WantedBy = ["hyprland-session.target"];
+
+        Unit = {
+          After = ["wallpaperd.service"];
+          PartOf = ["wallpaperd.service"];
+          Wants = ["wallpaperd-change.timer"];
+        };
+
         Service = {
           Environment = configuration;
           Type = "oneshot";
@@ -48,13 +55,10 @@ in {
       };
     };
 
-    timers.wallpaper = {
-      Install.WantedBy = ["timers.target"];
+    timers.wallpaperd-change = {
+      Unit.PartOf = ["wallpaperd-change.service" "wallpaperd.service"];
 
-      Timer = {
-        OnUnitActiveSec = "10min";
-        Unit = "wallpaper.service";
-      };
+      Timer.OnUnitActiveSec = "10min";
     };
   };
 }
