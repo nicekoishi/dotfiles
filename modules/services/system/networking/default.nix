@@ -48,7 +48,8 @@ in {
         AuthenticationMethods = "publickey";
         PubkeyAuthentication = "yes";
         ChallengeResponseAuthentication = "no";
-        UsePAM = "no";
+        # why some are booleans and other are yes or no i wonder...
+        UsePAM = false;
       };
     };
   };
