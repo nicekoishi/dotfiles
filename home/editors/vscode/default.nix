@@ -33,7 +33,21 @@
         jnoortheen.nix-ide
         kamadorueda.alejandra
       ]
-      ++ [pkgs.vscode-extensions."2gua".rainbow-brackets];
+      ++ [pkgs.vscode-extensions."2gua".rainbow-brackets]
+      ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+        {
+          name = "felgo";
+          publisher = "felgo";
+          version = "2.0.1";
+          sha256 = "1zsc4hycczkx17qwqygva2xz2n1kjqb634wyac73063f6yfdpcz5";
+        }
+        {
+          name = "qml-formatter";
+          publisher = "andreoneti";
+          version = "1.3.3";
+          sha256 = "1hxn65gy47izls6n0n3gkrfj23zdf54hkhin4ywj98dw7cb7nxyy";
+        }
+      ];
 
     userSettings = {
       "catppuccin.accentColor" = "blue";
