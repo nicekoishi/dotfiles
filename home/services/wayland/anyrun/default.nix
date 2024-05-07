@@ -13,7 +13,7 @@ in {
     config = {
       plugins = with anyrun.packages.${pkgs.system}; [
         applications
-        randr
+        #randr # broken as of 07/05/2024
         rink
         shell
         stdin

@@ -2,5 +2,6 @@
   imports = [
     ./apps
     ./gaming
+    ./wms
   ];
 }

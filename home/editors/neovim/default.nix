@@ -76,7 +76,7 @@
       git = {
         enable = true;
         gitsigns.enable = true;
-        gitsigns.codeActions = false;
+        gitsigns.codeActions.enable = false;
       };
 
       # i was under the influence when i made that previous comment
@@ -133,14 +133,16 @@
       presence = {
         neocord = {
           enable = false;
-          auto_update = true;
-          enable_line_number = true;
-          show_time = true;
-          logo_tooltip = "The Superior Text Editor";
-          client_id = "793271441293967371";
-          main_image = "logo";
-          rich_presence = {
-            editing_text = "Editing %s";
+          setupOpts = {
+            auto_update = true;
+            enable_line_number = true;
+            show_time = true;
+            logo_tooltip = "The Superior Text Editor";
+            client_id = "793271441293967371";
+            main_image = "logo";
+            rich_presence = {
+              editing_text = "Editing %s";
+            };
           };
         };
       };

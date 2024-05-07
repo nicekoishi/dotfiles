@@ -1,6 +1,5 @@
 {
   imports = [
-    ./hyprland
     ./ags
     ./anyrun
     ./clipboard
