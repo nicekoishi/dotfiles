@@ -38,6 +38,9 @@
     };
   };
 
+  # temporary, soulseek port
+  networking.firewall.allowedTCPPorts = [2234];
+
   virtualisation.libvirtd.gpu-pass = {
     enable = true;
     devices = ["pci_0000_06_00_0" "pci_0000_06_00_1" "pci_0000_06_00_2" "pci_0000_06_00_3"];
