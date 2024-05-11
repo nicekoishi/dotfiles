@@ -25,7 +25,6 @@
       extraConfig = ''
         auto_update             "yes"
         volume_normalization    "yes"
-        replaygain              "track"
         restore_paused          "yes"
         filesystem_charset      "UTF-8"
 
@@ -53,19 +52,9 @@
       '';
     };
 
-    mpdris2 = {
-      enable = true;
-      notifications = true;
-      multimediaKeys = true;
-      mpd = {inherit (config.services.mpd) musicDirectory;};
-    };
-
-    # disabled as it was spamming journalctl, because it was starting before arRPC
-    # it should be fixed now, as I removed the host option
     mpd-discord-rpc = {
       enable = true;
       settings = {
-        # this app has no icons, just the name Cantata
         id = 1221117858709508168;
         format = {
           details = "$title";
@@ -73,5 +62,20 @@
         };
       };
     };
+
+    mpdris2 = {
+      enable = true;
+      notifications = true;
+      multimediaKeys = true;
+      mpd = {inherit (config.services.mpd) musicDirectory;};
+    };
+  };
+  # BUG: if you skip songs too quickly, it stops updates to discord for some reason
+  # This is a temporary workaround, restarting the service every 10 minutes
+  # https://github.com/JakeStanger/mpd-discord-rpc/issues/110
+  systemd.user.timers.mpd-discord-rpc = {
+    Unit.PartOf = ["mpd-discord-rpc.service"];
+
+    Timer.OnUnitActiveSec = "10min";
   };
 }
