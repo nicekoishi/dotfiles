@@ -22,7 +22,7 @@
         # pls rember
         "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
         # can't be bothered
-        "webcord --disable-gpu; sleep 5; pkill -f webcord; webcord"
+        "vesktop"
       ];
 
       input = {

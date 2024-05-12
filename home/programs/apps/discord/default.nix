@@ -6,10 +6,9 @@
     hash = "sha256-1H5l2E0VBUL1/k7tf21gXGVT158koARug/KeLixCukU=";
   };
 in {
-  home.packages = [pkgs.webcord-vencord];
+  home.packages = [pkgs.vesktop];
 
-  xdg.configFile.
-  "WebCord/Themes/theme" = {
+  xdg.configFile."vesktop/themes/Catppuccin.theme.css" = {
     source = "${mocha}/themes/mocha.theme.css";
   };
 
