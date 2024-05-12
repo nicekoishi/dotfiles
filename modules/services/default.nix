@@ -7,5 +7,9 @@
       enable = true;
       resyncTimer = "30m";
     };
+
+    geoclue2.enable = true;
   };
+
+  location.provider = "geoclue2";
 }

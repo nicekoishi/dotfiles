@@ -72,9 +72,9 @@ in {
 
     extraCss = ''
       * {
-         transition: 200ms width 200ms height;
+         all: unset;
          font-family: "Iosevka Nerd Font";
-         font-size: 0.67rem;
+         font-size: 0.9rem;
        }
 
        #window,
@@ -86,7 +86,7 @@ in {
        }
 
        #match:selected {
-         background: rgba(148, 226, 213, 0.5);
+         background: rgba(137, 180, 250, 0.5);
        }
 
        #match {
@@ -100,7 +100,7 @@ in {
 
        box#main {
          background: rgba(30, 30, 46, 0.7);
-         border: 1px solid rgba(40, 40, 61, 0.1);
+         border: 1px solid rgb(137, 180, 250);
          border-radius: 8px;
          padding: 8px;
        }
