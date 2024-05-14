@@ -12,6 +12,7 @@
     systemd = {
       enable = true;
       variables = ["--all"];
+      enableXdgAutostart = true;
     };
 
     settings = {
@@ -21,8 +22,6 @@
       exec-once = [
         # pls rember
         "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
-        # can't be bothered
-        "vesktop"
       ];
 
       input = {
