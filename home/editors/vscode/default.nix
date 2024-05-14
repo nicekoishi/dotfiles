@@ -1,3 +1,5 @@
+# annoying, as we can't start vscode with the correct theme
+# https://github.com/microsoft/vscode/issues/126823
 {pkgs, ...}: {
   programs.vscode = {
     enable = true;
@@ -51,6 +53,8 @@
 
     userSettings = {
       "catppuccin.accentColor" = "blue";
+      "workbench.colorTheme" = "Catppuccin Mocha";
+      "workbench.iconTheme" = "catppuccin-mocha";
       "editor.cursorBlinking" = "smooth";
       "editor.cursorSmoothCaretAnimation" = "explicit";
       "editor.fontFamily" = "Iosevka Nerd Font Propo";
@@ -66,8 +70,6 @@
       "terminal.integrated.gpuAcceleration" = "on";
       "window.menuBarVisibility" = "toggle";
       "window.restoreWindows" = "all";
-      "workbench.colorTheme" = "Catppuccin Mocha";
-      "workbench.iconTheme" = "catppuccin-mocha";
       "workbench.list.smoothScrolling" = true;
       "workbench.sideBar.location" = "right";
       "workbench.startupEditor" = "none";

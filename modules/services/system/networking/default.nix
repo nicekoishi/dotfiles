@@ -22,11 +22,6 @@ in {
         "interface-name:virbr*"
       ];
     };
-
-    stevenblack = {
-      enable = true;
-      block = ["gambling" "porn"];
-    };
   };
 
   services = {

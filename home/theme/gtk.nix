@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  self,
   ...
 }: let
   inherit (lib.strings) concatStringsSep;
@@ -14,7 +15,7 @@
 
   dark = pkgs.writeShellApplication {
     name = "dark-mode";
-    runtimeInputs = [pkgs.glib];
+    runtimeInputs = with pkgs; [glib];
     text = ''
       ${sessionVariables}
       gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Mocha-Standard-Blue-Dark"
@@ -24,7 +25,7 @@
 
   light = pkgs.writeShellApplication {
     name = "light-mode";
-    runtimeInputs = [pkgs.glib];
+    runtimeInputs = with pkgs; [glib];
     text = ''
       ${sessionVariables}
       gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Latte-Standard-Blue-Light"
@@ -57,11 +58,7 @@ in {
 
     theme = {
       name = "Catppuccin-Mocha-Standard-Blue-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["blue"];
-        tweaks = ["normal"];
-        variant = "mocha";
-      };
+      package = self.packages."${pkgs.system}".catppuccin-gtk;
     };
 
     gtk2 = {
@@ -78,14 +75,22 @@ in {
       gtk-xft-antialias = 1;
       gtk-xft-hinting = 1;
       gtk-xft-hintstyle = "hintslight";
-      gtk-application-prefer-dark-theme = true;
     };
 
     gtk4.extraConfig = {
       gtk-xft-antialias = 1;
       gtk-xft-hinting = 1;
       gtk-xft-hintstyle = "hintslight";
-      gtk-application-prefer-dark-theme = true;
     };
   };
+
+  # attempt at fixing gtk2 theming when using darkman
+  # such method doesn't work as we need to find a way to pass our
+  # new GTK2_RC_FILES to all gtk2 apps
+  # home.activation.gtk2-fix = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  #  if [ ! -f "${config.gtk.gtk2.configLocation}-light" ]; then
+  #    run ${pkgs.gawk}/bin/gawk -F' = ' '/^gtk-theme-name/ {gsub(/".*"/, "\"Catppuccin-Latte-Standard-Blue-Light\"")} {print}'\
+  #        "${config.gtk.gtk2.configLocation}" > "${config.gtk.gtk2.configLocation}-light"
+  #  fi
+  #'';
 }

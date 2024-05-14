@@ -8,6 +8,7 @@
     inherit (pkgs) callPackage;
   in {
     packages = {
+      catppuccin-gtk = callPackage ./catppuccin-gtk {};
       funny-plymouth = callPackage ./funny-plymouth {};
     };
   };

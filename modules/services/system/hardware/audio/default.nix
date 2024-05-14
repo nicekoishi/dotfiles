@@ -5,7 +5,7 @@
 }: let
   inherit (lib.generators) toLua;
 
-  quantum = 48;
+  quantum = 64;
   rate = 48000;
   qr = "${toString quantum}/${toString rate}";
 in {
