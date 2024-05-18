@@ -22,6 +22,7 @@
       exec-once = [
         # pls rember
         "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
+        "hyprlock"
       ];
 
       input = {

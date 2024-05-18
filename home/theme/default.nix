@@ -2,8 +2,9 @@
   imports = [
     ./apps
 
-    ./gtk.nix
-    ./qt.nix
+    ./gtk
+    ./qt
+    ./wallpapers
   ];
 
   services.darkman = {

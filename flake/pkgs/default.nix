@@ -4,12 +4,11 @@
     "aarch64-linux"
   ];
 
-  perSystem = {pkgs, ...}: let
-    inherit (pkgs) callPackage;
-  in {
-    packages = {
-      catppuccin-gtk = callPackage ./catppuccin-gtk {};
-      funny-plymouth = callPackage ./funny-plymouth {};
+  perSystem = {pkgs, ...}:
+    with pkgs; {
+      packages = {
+        catppuccin-gtk = callPackage ./catppuccin-gtk {};
+        funny-plymouth = callPackage ./funny-plymouth {};
+      };
     };
-  };
 }

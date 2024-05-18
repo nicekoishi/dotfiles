@@ -58,9 +58,11 @@ in
           Defaults timestamp_timeout = 60 # it should be 1 hour, right?
         '';
 
-        # it is possible to make rebuilds without password, but I don't lock
-        # my system and do want to confirm it
+        # it is possible to make rebuilds without password, but i need time to
+        # know if i didn't make a mistake
       };
+
+      pam.services.hyprlock.text = "auth include login";
 
       rtkit.enable = true;
     };
