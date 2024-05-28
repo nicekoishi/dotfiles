@@ -96,9 +96,6 @@
       "workspace 6 silent, class:^(virt-manager)$"
 
       "workspace special:thunderbird silent, initialclass:^(thunderbird)$"
-
-      # qtct special, just to force a refresh
-      "workspace special:qtct silent, class:^(qt5ct|qt6ct)$"
     ];
   };
 }

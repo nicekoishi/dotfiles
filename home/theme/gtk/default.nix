@@ -8,6 +8,25 @@
   inherit (lib.strings) concatStringsSep;
   inherit (lib.attrsets) mapAttrsToList;
 
+  cfg = config.gtk;
+  cfg2 = config.home.pointerCursor;
+
+  lightGtkTheme = "Catppuccin-Latte-Standard-Blue-Light";
+  darkGtkTheme = "Catppuccin-Mocha-Standard-Blue-Dark";
+
+  gtk2rc = theme: icon: ''
+    gtk-cursor-theme-name = "${cfg2.name}"
+    gtk-cursor-theme-size = ${builtins.toString cfg2.size}
+    gtk-font-name = "${cfg.font.name + " " + builtins.toString cfg.font.size}"
+    gtk-icon-theme-name = "${icon}"
+    gtk-theme-name = "${theme}"
+
+    gtk-xft-antialias=1
+    gtk-xft-hinting=1
+    gtk-xft-hintstyle="hintslight"
+    gtk-xft-rgba="rgb"
+  '';
+
   sessionVariables = concatStringsSep "\n" (mapAttrsToList (key: value: ''
       export ${key}="${toString value}"
     '')
@@ -18,8 +37,11 @@
     runtimeInputs = with pkgs; [glib];
     text = ''
       ${sessionVariables}
-      gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Mocha-Standard-Blue-Dark"
+      gsettings set org.gnome.desktop.interface gtk-theme "${darkGtkTheme}"
       gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+
+      mkdir -p "${config.xdg.configHome}/gtk-2.0"
+      ln -sf "${config.xdg.dataHome}/darkman-fixes/gtk2/gtkrc-dark" "${config.xdg.configHome}/gtk-2.0/gtkrc"
     '';
   };
 
@@ -28,8 +50,11 @@
     runtimeInputs = with pkgs; [glib];
     text = ''
       ${sessionVariables}
-      gsettings set org.gnome.desktop.interface gtk-theme "Catppuccin-Latte-Standard-Blue-Light"
+      gsettings set org.gnome.desktop.interface gtk-theme "${lightGtkTheme}"
       gsettings set org.gnome.desktop.interface icon-theme "Papirus-Light"
+
+      mkdir -p "${config.xdg.configHome}/gtk-2.0"
+      ln -sf "${config.xdg.dataHome}/darkman-fixes/gtk2/gtkrc-light" "${config.xdg.configHome}/gtk-2.0/gtkrc"
     '';
   };
 in {
@@ -38,8 +63,8 @@ in {
   in ["${schema}/share/gsettings-schemas/${schema.name}"];
 
   services.darkman = {
-    darkModeScripts = {gtk = lib.getExe dark;};
-    lightModeScripts = {gtk = lib.getExe light;};
+    darkModeScripts.gtk = lib.getExe dark;
+    lightModeScripts.gtk = lib.getExe light;
   };
 
   gtk = {
@@ -61,16 +86,6 @@ in {
       package = self.packages."${pkgs.system}".catppuccin-gtk;
     };
 
-    gtk2 = {
-      configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
-      extraConfig = ''
-        gtk-xft-antialias=1
-        gtk-xft-hinting=1
-        gtk-xft-hintstyle="hintslight"
-        gtk-xft-rgba="rgb"
-      '';
-    };
-
     gtk3.extraConfig = {
       gtk-xft-antialias = 1;
       gtk-xft-hinting = 1;
@@ -84,13 +99,13 @@ in {
     };
   };
 
-  # attempt at fixing gtk2 theming when using darkman
-  # such method doesn't work as we need to find a way to pass our
-  # new GTK2_RC_FILES to all gtk2 apps
-  # home.activation.gtk2-fix = lib.hm.dag.entryAfter ["writeBoundary"] ''
-  #  if [ ! -f "${config.gtk.gtk2.configLocation}-light" ]; then
-  #    run ${pkgs.gawk}/bin/gawk -F' = ' '/^gtk-theme-name/ {gsub(/".*"/, "\"Catppuccin-Latte-Standard-Blue-Light\"")} {print}'\
-  #        "${config.gtk.gtk2.configLocation}" > "${config.gtk.gtk2.configLocation}-light"
-  #  fi
-  #'';
+  # as we aren't using home-manager to build gtkrc
+  home.sessionVariables = {
+    GTK2_RC_FILES = lib.mkForce "${config.xdg.configHome}/gtk-2.0/gtkrc";
+  };
+
+  xdg.dataFile = {
+    "darkman-fixes/gtk2/gtkrc-light".text = gtk2rc "Catppuccin-Latte-Standard-Blue-Light" "Papirus-Light";
+    "darkman-fixes/gtk2/gtkrc-dark".text = gtk2rc "Catppuccin-Mocha-Standard-Blue-Dark" "Papirus-Dark";
+  };
 }
