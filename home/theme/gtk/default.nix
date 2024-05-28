@@ -32,19 +32,6 @@
     '')
     config.home.sessionVariables);
 
-  dark = pkgs.writeShellApplication {
-    name = "dark-mode";
-    runtimeInputs = with pkgs; [glib];
-    text = ''
-      ${sessionVariables}
-      gsettings set org.gnome.desktop.interface gtk-theme "${darkGtkTheme}"
-      gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
-
-      mkdir -p "${config.xdg.configHome}/gtk-2.0"
-      ln -sf "${config.xdg.dataHome}/darkman-fixes/gtk2/gtkrc-dark" "${config.xdg.configHome}/gtk-2.0/gtkrc"
-    '';
-  };
-
   light = pkgs.writeShellApplication {
     name = "light-mode";
     runtimeInputs = with pkgs; [glib];
@@ -55,6 +42,23 @@
 
       mkdir -p "${config.xdg.configHome}/gtk-2.0"
       ln -sf "${config.xdg.dataHome}/darkman-fixes/gtk2/gtkrc-light" "${config.xdg.configHome}/gtk-2.0/gtkrc"
+
+      ln -sf "${config.xdg.dataHome}/darkman-fixes/gtk4/gtk-light.css" "${config.xdg.configHome}/gtk-4.0/theme.css"
+    '';
+  };
+
+  dark = pkgs.writeShellApplication {
+    name = "dark-mode";
+    runtimeInputs = with pkgs; [glib];
+    text = ''
+      ${sessionVariables}
+      gsettings set org.gnome.desktop.interface gtk-theme "${darkGtkTheme}"
+      gsettings set org.gnome.desktop.interface icon-theme "Papirus-Dark"
+
+      mkdir -p "${config.xdg.configHome}/gtk-2.0"
+      ln -sf "${config.xdg.dataHome}/darkman-fixes/gtk2/gtkrc-dark" "${config.xdg.configHome}/gtk-2.0/gtkrc"
+
+      ln -sf "${config.xdg.dataHome}/darkman-fixes/gtk4/gtk-dark.css" "${config.xdg.configHome}/gtk-4.0/theme.css"
     '';
   };
 in {
@@ -92,10 +96,16 @@ in {
       gtk-xft-hintstyle = "hintslight";
     };
 
-    gtk4.extraConfig = {
-      gtk-xft-antialias = 1;
-      gtk-xft-hinting = 1;
-      gtk-xft-hintstyle = "hintslight";
+    gtk4 = {
+      extraConfig = {
+        gtk-xft-antialias = 1;
+        gtk-xft-hinting = 1;
+        gtk-xft-hintstyle = "hintslight";
+      };
+
+      extraCss = ''
+        @import url("file://${config.xdg.configHome}/gtk-4.0/theme.css");
+      '';
     };
   };
 
@@ -107,5 +117,8 @@ in {
   xdg.dataFile = {
     "darkman-fixes/gtk2/gtkrc-light".text = gtk2rc "Catppuccin-Latte-Standard-Blue-Light" "Papirus-Light";
     "darkman-fixes/gtk2/gtkrc-dark".text = gtk2rc "Catppuccin-Mocha-Standard-Blue-Dark" "Papirus-Dark";
+
+    "darkman-fixes/gtk4/gtk-light.css".source = "${cfg.theme.package}/share/themes/${lightGtkTheme}/gtk-4.0/gtk.css";
+    "darkman-fixes/gtk4/gtk-dark.css".source = "${cfg.theme.package}/share/themes/${darkGtkTheme}/gtk-4.0/gtk.css";
   };
 }
