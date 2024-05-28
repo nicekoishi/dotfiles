@@ -1,6 +1,8 @@
 {
   config,
   inputs,
+  lib,
+  osConfig,
   ...
 }: {
   imports = [
@@ -107,5 +109,11 @@
         preserve_split = true;
       };
     };
+
+    extraConfig = ''
+      cursor {
+        no_hardware_cursors=${lib.trivial.boolToString (builtins.elem "nvidia" osConfig.services.xserver.videoDrivers)}
+      }
+    '';
   };
 }
