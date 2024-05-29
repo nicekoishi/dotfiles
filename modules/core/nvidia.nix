@@ -8,7 +8,6 @@
   nvBeta = config.boot.kernelPackages.nvidiaPackages.beta;
   nvStable = config.boot.kernelPackages.nvidiaPackages.stable;
 
-  # FIXME: 555.42.02 is not on nixos-unstable 24/05/2024
   nvPackage =
     if (versionOlder nvBeta.version nvStable.version)
     then nvStable
@@ -52,8 +51,8 @@ in {
     # 555 fixed most of the bugs with suspend, but they still happen sometimes
     open = true;
 
-    # not need anymore
-    forceFullCompositionPipeline = false;
+    # let's leave this on, for my sanity's sake
+    forceFullCompositionPipeline = true;
 
     # useless
     nvidiaSettings = false;

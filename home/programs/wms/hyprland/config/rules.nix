@@ -82,6 +82,9 @@
       # go away
       "workspace special silent, title:^(title:Wine System Tray)$"
 
+      # force input
+      "forceinput,class:^(steam_app_230410)$"
+
       # start apps in n workspace
       "tile, initialtitle:^(Spotify( Free| Premium)?)$"
 
