@@ -21,12 +21,26 @@
     accents = ["blue"];
     winDecStyles = ["modern"];
   };
+
+  light = pkgs.writeShellApplication {
+    name = "light-mode";
+    runtimeInputs = [pkgs.coreutils];
+    text = ''
+      ln -sf "${qt-light}/share/color-schemes/CatppuccinLatteBlue.colors" "${config.xdg.configHome}/kdeglobals"
+    '';
+  };
+
+  dark = pkgs.writeShellApplication {
+    name = "light-mode";
+    runtimeInputs = [pkgs.coreutils];
+    text = ''
+      ln -sf "${qt-dark}/share/color-schemes/CatppuccinMochaBlue.colors" "${config.xdg.configHome}/kdeglobals"
+    '';
+  };
 in {
   imports = [
     # qtct darkman switching
     ./qtct
-
-    # kdeglobals darkman switching, for annoying apps
   ];
 
   # why qt is so weird?
@@ -66,6 +80,11 @@ in {
   qt = {
     enable = true;
     platformTheme.name = "qtct";
+  };
+
+  services.darkman = {
+    darkModeScripts.kdeglobals = lib.getExe dark;
+    lightModeScripts.kdeglobals = lib.getExe light;
   };
 
   home = {
