@@ -5,5 +5,5 @@
 }: let
   inherit (inputs) quickshell;
 in {
-  home.packages = [quickshell.packages."${pkgs.system}".nvidia];
+  home.packages = [quickshell.packages."${pkgs.system}".quickshell];
 }
