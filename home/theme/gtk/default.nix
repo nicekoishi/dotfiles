@@ -16,7 +16,7 @@
       package = pkgs.catppuccin-gtk.override {
         accents = ["blue"];
         tweaks = ["rimless"];
-        variant = "mocha";
+        variant = "latte";
       };
     };
     dark = {
@@ -24,7 +24,7 @@
       package = pkgs.catppuccin-gtk.override {
         accents = ["blue"];
         tweaks = ["rimless"];
-        variant = "latte";
+        variant = "mocha";
       };
     };
   };
@@ -101,7 +101,7 @@ in {
     };
 
     # have at least a fallback theme
-    theme = {inherit (theme.dark) name;};
+    theme = {inherit (theme.dark) name package;};
 
     gtk3.extraConfig = {
       gtk-xft-antialias = 1;
