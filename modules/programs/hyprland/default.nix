@@ -2,18 +2,14 @@
   inputs,
   pkgs,
   ...
-}: let
-  inherit (inputs) xdph;
-in {
-  # i really don't like messing with this...
-  disabledModules = ["programs/hyprland.nix"];
-
+}: {
+  # it really didn't go well
   imports = [
     inputs.hyprland.nixosModules.default
   ];
 
   programs.hyprland = {
     enable = true;
-    portalPackage = xdph.packages.${pkgs.system}.default;
+    portalPackage = inputs.xdph.packages."${pkgs.system}".xdg-desktop-portal-hyprland;
   };
 }
