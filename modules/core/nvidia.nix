@@ -49,7 +49,7 @@ in {
     nvidiaPersistenced = true;
 
     # 555 fixed most of the bugs with suspend, but they still happen sometimes
-    open = true;
+    open = lib.mkForce false;
 
     # let's leave this on, for my sanity's sake
     forceFullCompositionPipeline = true;
