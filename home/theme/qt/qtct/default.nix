@@ -6,12 +6,12 @@
 }: let
   inherit (lib.modules) mkIf;
 
-  qtct = icon: colors:
+  qtct = colors:
     (pkgs.formats.ini {}).generate "qtct.conf" {
       Appearance = {
-        icon_theme = builtins.toString icon;
+        icon_theme = "Papirus-Dark";
         standard_dialogs = "xdgdesktopportal";
-        style = "Breeze";
+        style = "kvantum-dark";
         color_scheme_path = "${/. + colors}";
         custom_palette = true;
       };
@@ -31,44 +31,10 @@
         wheel_scroll_lines = 3;
       };
     };
-
-  dark = pkgs.writeShellApplication {
-    name = "dark-mode";
-    runtimeInputs = with pkgs; [
-      config.wayland.windowManager.hyprland.package
-      coreutils
-    ];
-    text = ''
-      mkdir -p "${config.xdg.configHome}/qt5ct"
-      mkdir -p "${config.xdg.configHome}/qt6ct"
-
-      ln -sf "${config.xdg.dataHome}/darkman-fixes/qtct/qtct-dark.conf" "${config.xdg.configHome}/qt5ct/qt5ct.conf"
-      ln -sf "${config.xdg.dataHome}/darkman-fixes/qtct/qtct-dark.conf" "${config.xdg.configHome}/qt6ct/qt6ct.conf"
-    '';
-  };
-
-  light = pkgs.writeShellApplication {
-    name = "light-mode";
-    runtimeInputs = with pkgs; [
-      config.wayland.windowManager.hyprland.package
-      coreutils
-    ];
-    text = ''
-      mkdir -p "${config.xdg.configHome}/qt5ct"
-      mkdir -p "${config.xdg.configHome}/qt6ct"
-
-      ln -sf "${config.xdg.dataHome}/darkman-fixes/qtct/qtct-light.conf" "${config.xdg.configHome}/qt5ct/qt5ct.conf"
-      ln -sf "${config.xdg.dataHome}/darkman-fixes/qtct/qtct-light.conf" "${config.xdg.configHome}/qt6ct/qt6ct.conf"
-    '';
-  };
 in {
-  services.darkman = mkIf config.qt.enable {
-    darkModeScripts.qtct = lib.getExe dark;
-    lightModeScripts.qtct = lib.getExe light;
-  };
+  xdg.configFile = {
+    "qt5ct/qt5ct.conf".source = qtct ./colors.conf;
 
-  xdg.dataFile = {
-    "darkman-fixes/qtct/qtct-dark.conf".source = qtct "Papirus-Dark" ./colors-dark.conf;
-    "darkman-fixes/qtct/qtct-light.conf".source = qtct "Papirus-Light" ./colors-light.conf;
+    "qt6ct/qt6ct.conf".source = qtct ./colors.conf;
   };
 }

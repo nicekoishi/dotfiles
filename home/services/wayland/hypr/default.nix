@@ -1,6 +1,8 @@
 {
   imports = [
-    ./idle.nix
-    ./lock.nix
+    ./hypridle
+    ./hyprpaper
+
+    ./hyprlock
   ];
 }
