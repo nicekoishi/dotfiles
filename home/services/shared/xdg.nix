@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  browser = ["chromium-browser"];
+  browser = ["firefox"];
   imageViewer = ["viewnior"];
   videoPlayer = ["mpv"];
   fileManager = ["org.kde.dolphin"];
@@ -32,7 +32,6 @@
     ])
     // (xdgAssociations "x-scheme-handler" browser [
       "about"
-      "chrome"
       "ftp"
       "http"
       "https"
@@ -51,7 +50,7 @@
       "text/html" = browser;
       "text/plain" = ["nvim"];
       "inode/directory" = fileManager;
-      "x-scheme-handler/discord" = ["WebCord"];
+      "x-scheme-handler/discord" = ["Vesktop"];
       "x-scheme-handler/spotify" = ["spotify"];
       "x-scheme-handler/mailto" = mail;
     }

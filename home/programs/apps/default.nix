@@ -2,6 +2,7 @@
   imports = [
     #./browsers/brave
     ./browsers/chromium
+    ./browsers/firefox
 
     ./discord
     ./media
