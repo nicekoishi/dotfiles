@@ -1,4 +1,4 @@
-{
+{wallpaper, ...}: {
   programs.hyprlock = let
     font_family = "Iosevka Nerd Font Propo";
   in {
@@ -16,7 +16,7 @@
           monitor = "";
           # use ffmpeg -i input.png -b 8M output.png before,
           # hyprlock hyprlocking
-          path = "/tmp/current-wall.png";
+          path = "${wallpaper}";
           color = "rgb(30, 30, 46)";
           blur_passes = 3;
           blur_size = 8;

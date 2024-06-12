@@ -7,7 +7,7 @@
 }: let
   inherit (lib) mkIf;
 in {
-  systemd.user = mkIf config.wayland.windowManager.hyprland.enable {
+  systemd.user = mkIf (!config.services.hyprpaper.enable) {
     services = {
       wallpaperd = {
         Install.WantedBy = ["hyprland-session.target"];

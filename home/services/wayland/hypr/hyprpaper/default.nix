@@ -16,4 +16,6 @@
       ];
     };
   };
+
+  _module.args.wallpaper = ./dark.png;
 }
