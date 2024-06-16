@@ -11,7 +11,7 @@
       enableEditorconfig = true;
       enableLuaLoader = true;
       preventJunkFiles = true;
-      spellChecking.enable = true;
+      spellcheck.enable = true;
       useSystemClipboard = true;
 
       viAlias = true;
@@ -55,13 +55,14 @@
         nvimTree = {
           enable = true;
           openOnSetup = true;
-          disableNetrw = true;
-          updateFocusedFile.enable = true;
 
-          hijackCursor = true;
-          hijackUnnamedBufferWhenOpening = true;
-
-          view.width = 25;
+          setupOpts = {
+            disable_netrw = true;
+            update_focused_file.enable = true;
+            hijack_cursor = true;
+            hijack_unnamed_buffer_when_opening = true;
+            view.width = 25;
+          };
 
           mappings = {
             toggle = "<C-n>";
@@ -199,24 +200,7 @@
           globalStyle = "rounded";
         };
 
-        colorizer = {
-          enable = true;
-
-          filetypes = {
-            css = {};
-            scss = {};
-            nix = {};
-          };
-
-          options = {
-            css = true;
-            css_fn = true;
-            hsl_fn = true;
-            rgb_fn = true;
-            rrggbbaa = true;
-            sass = true;
-          };
-        };
+        colorizer.enable = true;
       };
 
       utility = {
