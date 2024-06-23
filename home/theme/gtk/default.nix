@@ -21,13 +21,13 @@
       package = pkgs.papirus-icon-theme;
     };
 
-    # have at least a fallback theme
     theme = {
-      name = "Catppuccin-Mocha-Standard-Blue-Dark";
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["blue"];
-        tweaks = ["rimless"];
-        variant = "mocha";
+      name = "Colloid-Dark-Compact-Catppuccin";
+      package = pkgs.colloid-gtk-theme.override {
+        themeVariants = ["default"]; # default: blue
+        colorVariants = ["dark"]; # wait, so this package can build both... should i do it again?
+        sizeVariants = ["compact"];
+        tweaks = ["catppuccin"];
       };
     };
 
