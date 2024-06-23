@@ -34,6 +34,7 @@ in {
         "${dir}/services/system/networking/tailscale"
 
         inputs.chaotic.nixosModules.default
+        inputs.nur.nixosModules.nur
 
         {
           home-manager = {

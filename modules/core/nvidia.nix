@@ -44,31 +44,33 @@ in {
     ];
   };
 
-  hardware.nvidia = {
-    package = nvPackage;
+  hardware = {
+    nvidia = {
+      package = nvPackage;
 
-    modesetting.enable = true;
+      modesetting.enable = true;
 
-    powerManagement = {
-      enable = true;
-      finegrained = false;
+      powerManagement = {
+        enable = true;
+        finegrained = false;
+      };
+
+      nvidiaPersistenced = true;
+
+      # disabled until nvidia fixes itself (i.e prob after a year)
+      open = lib.mkForce false;
+
+      # let's leave this on, for my sanity's sake
+      forceFullCompositionPipeline = true;
+
+      # useless
+      nvidiaSettings = false;
     };
 
-    nvidiaPersistenced = true;
-
-    # 555 fixed most of the bugs with suspend, but they still happen sometimes
-    open = lib.mkForce false;
-
-    # let's leave this on, for my sanity's sake
-    forceFullCompositionPipeline = true;
-
-    # useless
-    nvidiaSettings = false;
-  };
-
-  hardware.opengl = {
-    extraPackages = with pkgs; [nvidia-vaapi-driver];
-    extraPackages32 = with pkgs.pkgsi686Linux; [nvidia-vaapi-driver];
+    graphics = {
+      extraPackages = with pkgs; [nvidia-vaapi-driver];
+      extraPackages32 = with pkgs.pkgsi686Linux; [nvidia-vaapi-driver];
+    };
   };
 
   services.xserver.videoDrivers = ["nvidia"];
