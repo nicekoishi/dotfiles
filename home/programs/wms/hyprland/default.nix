@@ -14,7 +14,6 @@
     systemd = {
       enable = true;
       variables = ["--all"];
-      enableXdgAutostart = true;
     };
 
     settings = {
@@ -25,6 +24,11 @@
         # pls rember
         "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
         "hyprlock"
+
+        "[workspace 1 silent] firefox"
+        "[workspace 3 silent] vesktop"
+
+        "[workspace special:thunderbird silent] thunderbird"
       ];
 
       input = {
