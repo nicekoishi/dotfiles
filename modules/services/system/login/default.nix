@@ -2,10 +2,12 @@
   config,
   lib,
   ...
-}: {
+}: let
+  hyprland = lib.getExe config.programs.hyprland.package;
+in {
   services.greetd = let
     session = {
-      command = "${lib.getExe config.programs.hyprland.package}";
+      command = "${hyprland}";
       user = "supeen";
     };
   in {
