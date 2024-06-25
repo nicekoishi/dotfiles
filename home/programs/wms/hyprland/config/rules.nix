@@ -60,6 +60,10 @@
       #"immediate, class:^(osu\!|cs2)$"
       #"immediate, class:^(steam_app_230410)$"
 
+      # fix ultrakill fullscreen crash and mouse input
+      "forceinput, class:^(steam_app_1229490)"
+      "fullscreen, class:^(steam_app_1229490)"
+
       # idle inhibit while watching videos
       "idleinhibit focus, class:^(mpv|.+exe)$"
       "idleinhibit focus, class:^(chromium-browser|firefox)$, title:^(.*Youtube.*)$"
