@@ -1,4 +1,6 @@
-{
+let
+  wallpaper = ./wallpaper.png;
+in {
   services.hyprpaper = {
     enable = true;
     settings = {
@@ -8,14 +10,14 @@
       splash_offset = 2.0;
 
       preload = [
-        "${./dark.png}"
+        "${wallpaper}"
       ];
 
       wallpaper = [
-        "HDMI-A-1,${./dark.png}"
+        "HDMI-A-1,${wallpaper}"
       ];
     };
   };
 
-  _module.args.wallpaper = ./dark.png;
+  _module.args.wallpaper = wallpaper;
 }
