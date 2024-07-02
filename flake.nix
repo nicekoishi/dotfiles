@@ -10,12 +10,7 @@
         ./hosts
         ./home/profiles
 
-        # modularizing flake because why not?
-        ./flake/args.nix
-        ./flake/devshell.nix
-
-        ./flake/modules
-        ./flake/pkgs
+        ./flake
       ];
     };
 
@@ -89,6 +84,11 @@
 
     spicetify = {
       url = "github:the-argus/spicetify-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    treefmt-nix = {
+      url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
