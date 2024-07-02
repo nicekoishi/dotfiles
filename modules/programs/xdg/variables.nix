@@ -7,6 +7,7 @@
     XDG_RUNTIME_DIR = "/run/user/$UID";
 
     # general
+    BROWSER = "firefox";
     EDITOR = "nvim";
     MANPAGER = "nvim +Man!";
     SUDO_EDITOR = "nvim";
