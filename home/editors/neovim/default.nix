@@ -1,8 +1,4 @@
-{
-  inputs,
-  pkgs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [inputs.neovim-flake.homeManagerModules.default];
 
   programs.neovim-flake = {
@@ -18,12 +14,6 @@
       vimAlias = true;
 
       lineNumberMode = "number";
-
-      extraPlugins = with pkgs.vimPlugins; {
-        vim-qml = {
-          package = vim-qml;
-        };
-      };
 
       autopairs.enable = true;
 
