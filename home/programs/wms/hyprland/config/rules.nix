@@ -99,10 +99,15 @@
 
       "workspace 5 silent, class:^(lutris*)$"
       "workspace 5 silent, class:^(steam*)$"
+      "workspace 5 silent, class:^(steam_app_\d+)$"
 
       "workspace 6 silent, class:^(virt-manager)$"
 
       "workspace special:thunderbird silent, initialclass:^(thunderbird)$"
+    ];
+
+    workspace = [
+      "5, border:false, rounding:false"
     ];
   };
 }
