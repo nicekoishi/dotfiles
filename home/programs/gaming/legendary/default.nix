@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    #    ./gtav.nix
+    #./grand-theft-auto-v
   ];
 
   home.packages = with pkgs; [
