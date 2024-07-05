@@ -25,7 +25,6 @@ in {
 
         "${dir}/programs/gaming"
         "${dir}/programs/hyprland"
-        "${dir}/programs/steam"
         "${dir}/programs/virt-manager"
         "${dir}/programs/thunar"
 
