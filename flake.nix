@@ -20,7 +20,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ags.url = "github:Aylur/ags";
+    ags = {
+      url = "github:Aylur/ags";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 
     anyrun.url = "github:Kirottu/anyrun";
 
@@ -63,8 +66,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    nix-colors.url = "github:misterio77/nix-colors";
-
     nix-index-db = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -72,18 +73,12 @@
 
     nix-gaming.url = "github:fufexan/nix-gaming";
 
-    # nvidia 550 breaks stuff, go back to 535
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
     nur.url = "github:nix-community/nur";
 
     quickshell = {
       url = "git+https://git.outfoxxed.me/outfoxxed/quickshell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    spicetify = {
-      url = "github:the-argus/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
