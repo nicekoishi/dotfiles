@@ -17,9 +17,6 @@ in {
     blacklistedKernelModules = ["i2c_nvidia_gpu" "nouveau"];
     kernelParams = [
       "nvidia_drm.fbdev=1"
-      # weird performance decrease when launching games through lutris/bottles but not steam
-      # wtf nvidia, fix yourself
-      "nvidia.NVreg_EnableGpuFirmware=0"
     ];
   };
 
