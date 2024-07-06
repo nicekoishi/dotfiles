@@ -100,11 +100,6 @@
       which-key
     ]));
 in {
-  services.emacs = {
-    enable = true;
-    package = custom-emacs;
-  };
-
   xdg.configFile."emacs/early-init.el".text = ''
     (setq native-comp-speed -1)
     (setq package-enable-at-startup nil)
@@ -134,8 +129,10 @@ in {
                   (time-subtract after-init-time before-init-time))) gcs-done)
   '';
 
-  home = {
-    # dependencies for some emacs packages
-    packages = [custom-emacs];
+  home.packages = [custom-emacs];
+
+  services.emacs = {
+    enable = true;
+    package = custom-emacs;
   };
 }
