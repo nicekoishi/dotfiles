@@ -23,8 +23,10 @@ in {
 
         "${dir}/core/nvidia.nix"
 
+        "${dir}/programs/desktop/hyprland"
+        "${dir}/programs/desktop/gnome"
+
         "${dir}/programs/gaming"
-        "${dir}/programs/hyprland"
         "${dir}/programs/virt-manager"
         "${dir}/programs/thunar"
 

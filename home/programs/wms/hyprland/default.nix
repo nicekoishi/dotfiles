@@ -21,7 +21,6 @@
       exec-once = [
         # pls rember
         "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
-        "hyprlock"
 
         "[workspace 1 silent] firefox"
         "[workspace 3 silent] vesktop"

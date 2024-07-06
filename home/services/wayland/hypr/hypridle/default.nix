@@ -4,7 +4,6 @@
   pkgs,
   ...
 }: {
-  # TODO: dpms only for now, hyprlock later
   services.hypridle = {
     enable = true;
 
