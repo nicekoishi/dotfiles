@@ -87,8 +87,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    xdph.
-      url = "github:hyprwm/xdg-desktop-portal-hyprland";
+    xdph.url = "github:hyprwm/xdg-desktop-portal-hyprland";
   };
 
   nixConfig = {

@@ -13,6 +13,9 @@
     # set the path for channels compat
     nixPath = lib.mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
 
+    # nix for lesbians
+    package = pkgs.lix;
+
     daemonIOSchedClass = "idle";
     daemonCPUSchedPolicy = "idle";
     daemonIOSchedPriority = 7;
