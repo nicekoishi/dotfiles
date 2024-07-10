@@ -88,7 +88,7 @@
     };
 
     xdph.
-      url = "github:hyprwm/xdg-desktop-portal-hyprland/c7894aa";
+      url = "github:hyprwm/xdg-desktop-portal-hyprland";
   };
 
   nixConfig = {
