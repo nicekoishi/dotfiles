@@ -8,6 +8,8 @@
   ...
 }: let
   inherit (lib.fileset) fileFilter unions difference toSource;
+  inherit (lib.modules) mkIf;
+
   requiredDeps = with pkgs; [
     inputs.hyprland.packages.${pkgs.system}.default
 
@@ -48,7 +50,7 @@ in {
     };
   };
 
-  systemd.user.services.ags = {
+  systemd.user.services.ags = mkIf config.programs.ags.enable {
     Unit = {
       Description = "Aylur's Gtk Shell";
       PartOf = [
