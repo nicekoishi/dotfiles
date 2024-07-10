@@ -13,6 +13,10 @@
     # set the path for channels compat
     nixPath = lib.mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
 
+    daemonIOSchedClass = "idle";
+    daemonCPUSchedPolicy = "idle";
+    daemonIOSchedPriority = 7;
+
     # i was doing it manually before. am i stupid?
     gc = {
       automatic = true;
@@ -74,6 +78,7 @@
     doc.enable = false;
     nixos.enable = true;
     info.enable = false;
+
     man = {
       enable = lib.modules.mkDefault true;
       generateCaches = lib.modules.mkDefault true;
