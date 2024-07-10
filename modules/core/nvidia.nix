@@ -17,6 +17,7 @@ in {
     blacklistedKernelModules = ["i2c_nvidia_gpu" "nouveau"];
     kernelParams = [
       "nvidia_drm.fbdev=1"
+      "nvidia.NVreg_EnableGpuFirmware=0"
     ];
   };
 
