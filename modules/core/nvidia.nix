@@ -58,8 +58,8 @@ in {
       # disabled until nvidia fixes itself (i.e prob after a year)
       open = lib.mkForce false;
 
-      # let's leave this on, for my sanity's sake
-      forceFullCompositionPipeline = true;
+      # weird fullscreen bug when trying to use fsr, so lets disable it
+      forceFullCompositionPipeline = lib.mkForce false;
 
       # useless
       nvidiaSettings = false;
