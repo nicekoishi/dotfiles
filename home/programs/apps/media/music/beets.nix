@@ -15,7 +15,6 @@
 
       plugins = [
         "mpdupdate"
-        "absubmit"
         "chroma"
         "spotify"
         "duplicates"
