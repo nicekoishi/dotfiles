@@ -61,7 +61,7 @@
       #"immediate, class:^(steam_app_230410)$"
 
       # fix ultrakill fullscreen crash and mouse input
-      "forceinput, class:^(steam_app_1229490)"
+      "allowsinput, class:^(steam_app_1229490)"
       "fullscreen, class:^(steam_app_1229490)"
 
       # idle inhibit while watching videos
@@ -87,7 +87,7 @@
       "workspace special silent, title:^(title:Wine System Tray)$"
 
       # force input
-      "forceinput,class:^(steam_app_230410)$"
+      "allowsinput,class:^(steam_app_230410)$"
 
       # start apps in n workspace
       "tile, initialtitle:^(Spotify( Free| Premium)?)$"
