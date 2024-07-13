@@ -13,27 +13,29 @@ in {
   home.packages = with pkgs; [
     lutris
 
-    nix-gaming.packages.${pkgs.system}.wine-ge
+    nix-gaming.packages.${pkgs.system}.wine-tkg
   ];
 
   programs.mangohud = {
     enable = true;
     settings = {
       background_alpha = "0.5";
+      fps_limit = "60,0";
       cpu_stats = true;
-      cpu_mhz = true;
       cpu_temp = true;
+      enableSessionWide = true;
       font_size = 24;
       fps = true;
       frame_timing = true;
       frametime = true;
       gpu_stats = true;
-      gpu_power = true;
       gpu_temp = true;
+      no_display = true;
       vulkan_driver = false;
       wine = true;
       toggle_hud = "Shift_R+F12";
       toggle_hud_position = "Shift_R+Home";
+      toggle_fps_limit = "Shift_R+F1";
     };
   };
 }
