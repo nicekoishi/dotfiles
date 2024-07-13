@@ -1,16 +1,13 @@
 {
   description = "A very cursed flake";
 
-  outputs = {flake-parts, ...} @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
       systems = ["x86_64-linux"];
 
       imports = [
-        # TODO: reduce to a single entrypoint
         ./hosts
-        ./home/profiles
-
-        ./flake
+        ./flake # parts configuration like devshell, packages and modules
       ];
     };
 

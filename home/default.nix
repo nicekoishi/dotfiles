@@ -1,4 +1,12 @@
 {
+  imports = [
+    ./editors
+    ./programs
+    ./services
+    ./terminal
+    ./theme
+  ];
+
   home = {
     username = "supeen";
     homeDirectory = "/home/supeen";

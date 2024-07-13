@@ -35,13 +35,6 @@ in {
 
         inputs.chaotic.nixosModules.default
         inputs.nur.nixosModules.nur
-
-        {
-          home-manager = {
-            users.supeen.imports = homeImports."supeen";
-            extraSpecialArgs = specialArgs;
-          };
-        }
       ];
     };
   };
