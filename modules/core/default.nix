@@ -5,7 +5,6 @@
 }: {
   imports = [
     ./boot.nix
-    ./graphics.nix
     ./security.nix
     ./users.nix
   ];

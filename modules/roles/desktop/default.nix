@@ -2,11 +2,13 @@
   imports = [
     ../../programs
 
-    ../../services/system/hardware
+    ../../system/hardware
+    ../../system/hardware/bluetooth.nix
 
-    ../../services/system/networking/printing
+    ../../system/networking
+    ../../system/networking/printing
 
-    ../../services/system/utilities/gnome
-    ../../services/system/utilities/udiskie
+    ../../system/utilities/gnome
+    ../../system/utilities/udiskie
   ];
 }

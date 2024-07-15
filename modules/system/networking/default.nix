@@ -1,7 +1,7 @@
 {lib, ...}: let
   inherit (lib) mkDefault mkForce;
 in {
-  imports = [./firewall];
+  imports = [./firewall ./tailscale];
   networking = {
     useDHCP = mkForce false;
     useNetworkd = mkForce true;

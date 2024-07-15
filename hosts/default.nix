@@ -11,7 +11,7 @@
   core = [
     "${dir}/core"
     "${dir}/nix"
-    "${dir}/services"
+    "${dir}/system"
   ];
 
   desktop = ["${dir}/roles/desktop"] ++ core;
@@ -26,7 +26,7 @@ in {
         [
           ./polaris
 
-          "${dir}/core/nvidia.nix"
+          "${dir}/system/hardware/video/nvidia"
 
           "${dir}/programs/desktop/hyprland"
           "${dir}/programs/desktop/gnome"
