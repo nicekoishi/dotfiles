@@ -6,13 +6,19 @@
 }: {
   imports = [
     self.nixosModules.gpu-pass
-    ./hardware-configuration.nix
+    ./fs
   ];
 
-  boot = {
-    kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
-    kernelParams = ["amd-pstate=active"];
+  networking = {
+    useDHCP = lib.mkDefault true;
+    hostName = "polaris";
+
+    firewall.allowedTCPPorts = [2234];
   };
+
+  nixpkgs.hostPlatform = "x86_64-linux";
+
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
 
   environment.systemPackages = [pkgs.scx];
 
@@ -38,8 +44,10 @@
     };
   };
 
-  # temporary, soulseek port
-  networking.firewall.allowedTCPPorts = [2234];
+  services = {
+    fstrim.enable = true;
+    btrfs.autoScrub.enable = true;
+  };
 
   virtualisation.libvirtd.gpu-pass = {
     enable = true;
@@ -52,10 +60,5 @@
       host = "0";
       topography = "0-5";
     };
-  };
-
-  services = {
-    fstrim.enable = true;
-    btrfs.autoScrub.enable = true;
   };
 }

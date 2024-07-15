@@ -66,5 +66,4 @@
       themePackages = [self.packages."${pkgs.system}".funny-plymouth];
     };
   };
-  environment.systemPackages = [config.boot.kernelPackages.cpupower];
 }
