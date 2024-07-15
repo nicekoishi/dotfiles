@@ -10,6 +10,7 @@
     coreutils
     jq
     libnotify
+    power-profiles-daemon
     systemd
   ]);
 
@@ -21,6 +22,7 @@
       hyprctl --batch 'keyword decoration:blur:enabled 0 ; keyword animations:enabled 0'
     done
 
+    powerprofilesctl set performance
     notify-send -i 'computer-symbolic' 'Gamemode started!' 'Disabling useless stuff' -u 'low'
   '';
 
@@ -32,6 +34,7 @@
       hyprctl --batch 'keyword decoration:blur:enabled 1 ; keyword animations:enabled 1'
     done
 
+    powerprofilesctl set balanced
     notify-send -i 'computer-symbolic' 'Gamemode ended!' 'Enabling the pretty stuff' -u 'low'
   '';
 in {
