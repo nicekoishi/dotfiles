@@ -1,41 +1,44 @@
 {
   self,
   inputs,
-  homeImports,
   ...
 }: let
-  inherit (inputs.nixpkgs.lib) nixosSystem;
+  inherit (inputs.nixpkgs) lib;
 
   dir = "${self}/modules";
 
   # roles
-  desktop = "${dir}/roles/desktop";
+  core = [
+    "${dir}/core"
+    "${dir}/nix"
+    "${dir}/services"
+  ];
+
+  desktop = ["${dir}/roles/desktop"] ++ core;
 
   specialArgs = {inherit inputs self;};
 in {
   flake.nixosConfigurations = {
-    polaris = nixosSystem {
+    polaris = lib.nixosSystem {
       inherit specialArgs;
 
-      modules = [
-        desktop
-        ./polaris
+      modules =
+        [
+          ./polaris
 
-        "${dir}/core/nvidia.nix"
+          "${dir}/core/nvidia.nix"
 
-        "${dir}/programs/desktop/hyprland"
-        "${dir}/programs/desktop/gnome"
+          "${dir}/programs/desktop/hyprland"
+          "${dir}/programs/desktop/gnome"
 
-        "${dir}/programs/gaming"
-        "${dir}/programs/virt-manager"
-        "${dir}/programs/thunar"
+          "${dir}/programs/gaming"
+          "${dir}/programs/virt-manager"
+          "${dir}/programs/thunar"
 
-        "${dir}/services/system/utilities/gnome"
-        "${dir}/services/system/networking/tailscale"
-
-        inputs.chaotic.nixosModules.default
-        inputs.nur.nixosModules.nur
-      ];
+          inputs.chaotic.nixosModules.default
+          inputs.nur.nixosModules.nur
+        ]
+        ++ desktop;
     };
   };
 }
