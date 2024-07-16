@@ -1,10 +1,11 @@
 {
-  config,
   inputs,
+  inputs',
+  self',
   self,
   ...
 }: let
-  specialArgs = {inherit inputs self;};
+  specialArgs = {inherit inputs self inputs' self';};
 in {
   imports = [inputs.home-manager.nixosModules.default];
 

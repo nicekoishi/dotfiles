@@ -16,8 +16,6 @@
     firewall.allowedTCPPorts = [2234];
   };
 
-  nixpkgs.hostPlatform = "x86_64-linux";
-
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
 
   environment.systemPackages = [pkgs.scx];

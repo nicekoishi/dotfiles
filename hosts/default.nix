@@ -1,45 +1,53 @@
 {
-  self,
   inputs,
+  withSystem,
   ...
 }: let
   inherit (inputs.self) lib;
-  inherit (lib.nice) mkSystem;
 
-  dir = "${self}/modules";
+  inherit (lib.lists) concatLists flatten forEach;
+  inherit (lib.nice) mkNixosSystem;
 
-  # roles
-  core = [
-    "${dir}/core"
-    "${dir}/nix"
-    "${dir}/system"
-  ];
+  modulePath = "${../modules}";
 
-  desktop = ["${dir}/roles/desktop"] ++ core;
+  # it doesn't return a proper path if it isn't in parentheses
+  # what the heck
+  core = forEach ["core" "nix" "system"] (
+    i: modulePath + ("/" + i)
+  );
 
-  specialArgs = {inherit inputs self;};
+  desktop = flatten [core (modulePath + "/roles/desktop")];
 in {
   flake.nixosConfigurations = {
-    polaris = mkSystem {
-      inherit specialArgs;
+    polaris = mkNixosSystem {
+      inherit withSystem;
+      hostname = "polaris";
+      system = "x86_64-linux";
 
-      modules =
+      modules = flatten (concatLists [
         [
           ./polaris
+          desktop
+        ]
+        # TODO: this is ugly as hell, import everything and select which ones this host shall use
+        (
+          forEach
+          [
+            "system/hardware/video/nvidia"
 
-          "${dir}/system/hardware/video/nvidia"
+            "programs/desktop/hyprland"
+            "programs/desktop/gnome"
 
-          "${dir}/programs/desktop/hyprland"
-          "${dir}/programs/desktop/gnome"
-
-          "${dir}/programs/gaming"
-          "${dir}/programs/virt-manager"
-          "${dir}/programs/thunar"
-
+            "programs/gaming"
+            "programs/virt-manager"
+            "programs/thunar"
+          ] (i: modulePath + ("/" + i))
+        )
+        [
           inputs.chaotic.nixosModules.default
           inputs.nur.nixosModules.nur
         ]
-        ++ desktop;
+      ]);
     };
   };
 }
