@@ -4,6 +4,7 @@
     ./fmt.nix
     ./shell.nix
 
+    ./lib
     ./modules
     ./pkgs
 

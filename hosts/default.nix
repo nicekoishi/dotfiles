@@ -3,7 +3,8 @@
   inputs,
   ...
 }: let
-  inherit (inputs.nixpkgs) lib;
+  inherit (inputs.self) lib;
+  inherit (lib.nice) mkSystem;
 
   dir = "${self}/modules";
 
@@ -19,7 +20,7 @@
   specialArgs = {inherit inputs self;};
 in {
   flake.nixosConfigurations = {
-    polaris = lib.nixosSystem {
+    polaris = mkSystem {
       inherit specialArgs;
 
       modules =
