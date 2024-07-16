@@ -1,11 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
-  inherit (lib.modules) mkIf;
-
+{pkgs, ...}: let
   qtct = colors:
     (pkgs.formats.ini {}).generate "qtct.conf" {
       Appearance = {

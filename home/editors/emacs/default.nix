@@ -10,7 +10,7 @@
       emacs
       package
 
-      (final: prev: {
+      (_: prev: {
         tree-sitter = prev.tree-sitter.override {
           extraGrammars = {
             tree-sitter-qmljs = {
