@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  imports = [./substituters.nix ./nh.nix];
+  imports = [./home-manager.nix ./nh.nix ./substituters.nix];
   nix = {
     # pin the registry to avoid downloading and evaluating a new nixpkgs version every time
     registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
