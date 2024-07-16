@@ -1,17 +1,17 @@
 {
   inputs,
-  pkgs,
+  inputs',
   osConfig,
   ...
 }: let
-  inherit (inputs) anyrun anyrun-nixos-options;
+  inherit (inputs') anyrun anyrun-nixos-options;
 in {
-  imports = [anyrun.homeManagerModules.default];
+  imports = [inputs.anyrun.homeManagerModules.default];
   programs.anyrun = {
     enable = true;
 
     config = {
-      plugins = with anyrun.packages.${pkgs.system}; [
+      plugins = with anyrun.packages; [
         applications
         #randr # broken as of 07/05/2024
         rink
@@ -20,7 +20,7 @@ in {
         symbols
         translate
 
-        anyrun-nixos-options.packages.${pkgs.system}.default
+        anyrun-nixos-options.packages.anyrun-nixos-options
       ];
 
       width.fraction = 0.3;
@@ -56,7 +56,7 @@ in {
       '';
       "nixos-options.ron".text = let
         nixos-options = osConfig.system.build.manual.optionsJSON + "/share/doc/nixos/options.json";
-        hm-options = inputs.home-manager.packages.${pkgs.system}.docs-json + "/share/doc/home-manager/options.json";
+        hm-options = inputs'.home-manager.packages.docs-json + "/share/doc/home-manager/options.json";
         options = builtins.toJSON {
           ":nix" = [nixos-options];
           ":home" = [hm-options];

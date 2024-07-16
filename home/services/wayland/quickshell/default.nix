@@ -1,6 +1,6 @@
 {
   config,
-  inputs,
+  inputs',
   lib,
   pkgs,
   ...
@@ -8,10 +8,10 @@
   inherit (lib.modules) mkIf;
   inherit (lib.meta) getExe;
 
-  quickshell = inputs.quickshell.packages."${pkgs.system}".quickshell;
+  quickshell = inputs'.quickshell.packages.quickshell;
 
   requiredDeps = with pkgs; [
-    inputs.hyprland.packages."${pkgs.system}".default
+    inputs'.hyprland.packages.default
 
     bash
   ];

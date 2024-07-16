@@ -1,8 +1,8 @@
 # 'borrowed' from notashelf/nyx
-# bind test
 {
   config,
   inputs,
+  inputs',
   lib,
   pkgs,
   ...
@@ -11,7 +11,7 @@
   inherit (lib.modules) mkIf;
 
   requiredDeps = with pkgs; [
-    inputs.hyprland.packages.${pkgs.system}.default
+    inputs'.hyprland.packages.default
 
     # scripts and helpers
     bash

@@ -1,6 +1,6 @@
 {
   inputs,
-  pkgs,
+  inputs',
   ...
 }: {
   # it really didn't go well
@@ -10,6 +10,6 @@
 
   programs.hyprland = {
     enable = true;
-    portalPackage = inputs.xdph.packages."${pkgs.system}".xdg-desktop-portal-hyprland;
+    portalPackage = inputs'.xdph.packages.xdg-desktop-portal-hyprland;
   };
 }

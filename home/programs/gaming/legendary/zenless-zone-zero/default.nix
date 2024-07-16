@@ -1,6 +1,7 @@
 {
   pkgs,
   inputs,
+  inputs',
   ...
 }: {
   home.packages =
@@ -32,7 +33,7 @@
         };
 
         opts = {
-          wine = inputs.nix-gaming.packages.${pkgs.system}.wine-tkg;
+          wine = inputs'.nix-gaming.packages.wine-tkg;
         };
       });
 }

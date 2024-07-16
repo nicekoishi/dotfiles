@@ -1,9 +1,9 @@
 {
+  inputs',
   pkgs,
-  inputs,
   ...
 }: let
-  inherit (inputs) nix-gaming;
+  inherit (inputs') nix-gaming;
 in {
   imports = [
     ./minecraft
@@ -13,7 +13,7 @@ in {
   home.packages = with pkgs; [
     lutris
 
-    nix-gaming.packages.${pkgs.system}.wine-tkg
+    nix-gaming.packages.wine-tkg
   ];
 
   programs.mangohud = {

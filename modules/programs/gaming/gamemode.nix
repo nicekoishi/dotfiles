@@ -1,12 +1,12 @@
 # straight from fufexan/dotfiles, go check it out
 {
-  inputs,
+  inputs',
   pkgs,
   lib,
   ...
 }: let
   programs = lib.makeBinPath (with pkgs; [
-    inputs.hyprland.packages."${pkgs.system}".default
+    inputs'.hyprland.packages.default
     coreutils
     jq
     libnotify

@@ -1,6 +1,6 @@
 {
+  self',
   pkgs,
-  self,
   ...
 }: {
   boot = {
@@ -62,7 +62,7 @@
     plymouth = {
       enable = true;
       theme = "funny-plymouth";
-      themePackages = [self.packages."${pkgs.system}".funny-plymouth];
+      themePackages = [self'.packages.funny-plymouth];
     };
   };
 }

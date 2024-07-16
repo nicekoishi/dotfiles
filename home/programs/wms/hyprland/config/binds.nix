@@ -1,9 +1,5 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
-  inherit (inputs) anyrun;
+{inputs', ...}: let
+  inherit (inputs') anyrun;
   # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
   # fufexan/dotfiles
   workspaces = builtins.concatLists (builtins.genList (
@@ -38,7 +34,7 @@ in {
         "$mod, O, exec, run-as-service ocr"
         "$mod, Q, exec, run-as-service kitty"
         "$mod, R, exec, pkill .anyrun-wrapped || run-as-service anyrun"
-        "$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.${pkgs.system}.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
+        "$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
         "$mod, W, exec, firefox"
 
         "ALT, F4, exec, wlogout -p layer-shell"

@@ -1,13 +1,12 @@
 {
-  pkgs,
   inputs,
+  inputs',
+  pkgs,
   ...
-}: let
-  inherit (inputs) nix-gaming;
-in {
+}: {
   home.packages =
     []
-    ++ (nix-gaming.lib.legendaryBuilder pkgs
+    ++ (inputs.nix-gaming.lib.legendaryBuilder pkgs
       {
         games = {
           grand-theft-auto-v = {
@@ -35,7 +34,7 @@ in {
         };
 
         opts = {
-          wine = nix-gaming.packages.${pkgs.system}.wine-ge;
+          wine = inputs'.nix-gaming.packages.wine-ge;
         };
       });
 }

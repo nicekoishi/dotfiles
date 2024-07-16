@@ -1,13 +1,13 @@
 {
   inputs,
+  inputs',
   lib,
-  pkgs,
   ...
 }: let
-  inherit (inputs) spicetify;
-  spice = spicetify.packages."${pkgs.system}".default;
+  inherit (inputs') spicetify;
+  spice = spicetify.packages.default;
 in {
-  imports = [spicetify.homeManagerModule];
+  imports = [inputs.spicetify.homeManagerModule];
 
   # webcord crashes on the login menu but it works
   # spotify is lazy i guess
