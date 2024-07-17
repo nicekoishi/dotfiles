@@ -3,7 +3,6 @@
     ./editors
     ./programs
     ./services
-    ./terminal
     ./theme
   ];
 

@@ -3,5 +3,6 @@
     ./apps
     ./gaming
     ./wms
+    ./terminal
   ];
 }
