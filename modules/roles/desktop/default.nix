@@ -9,6 +9,7 @@
     ../../system/networking/printing
 
     ../../system/utilities/gnome
+    ../../system/utilities/psd
     ../../system/utilities/udiskie
   ];
 }
