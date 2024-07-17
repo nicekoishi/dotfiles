@@ -1,7 +1,7 @@
 {
   xdg.portal = {
     enable = true;
-    xdgOpenUsePortal = true;
+    xdgOpenUsePortal = false;
     config.hyprland.default = ["hyprland"];
   };
 }
