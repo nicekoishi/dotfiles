@@ -4,7 +4,6 @@
     duf
     fd
     jaq
-    ripgrep
 
     # archive
     gnutar
@@ -12,6 +11,4 @@
     unzip
     zip
   ];
-
-  programs.eza.enable = true;
 }

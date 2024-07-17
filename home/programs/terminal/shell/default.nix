@@ -3,11 +3,7 @@
   lib,
   ...
 }: {
-  imports = [
-    ./starship.nix
-    ./nix-index.nix
-    ./transient-services.nix
-  ];
+  imports = [./starship.nix];
 
   programs.zsh = {
     enable = true;
@@ -67,8 +63,11 @@
     '';
 
     shellAliases = {
-      l = "eza -l";
-      la = "eza -la";
+      # annoying
+      sudo = "sudo ";
+
+      l = "eza --long";
+      la = "eza --long --all";
       ls = "eza";
       cls = "clear";
       cat = "bat";
@@ -76,7 +75,5 @@
       did = "systemctl --user";
       had = "sudo systemctl";
     };
-
-    shellGlobalAliases = {eza = "eza --icons --git --group-directories-first";};
   };
 }
