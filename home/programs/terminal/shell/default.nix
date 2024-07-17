@@ -66,14 +66,15 @@
       # annoying
       sudo = "sudo ";
 
+      did = "systemctl --user";
+      had = "sudo systemctl";
+
       l = "eza --long";
       la = "eza --long --all";
       ls = "eza";
+
       cls = "clear";
       cat = "bat";
-
-      did = "systemctl --user";
-      had = "sudo systemctl";
     };
   };
 }
