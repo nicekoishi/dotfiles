@@ -27,9 +27,10 @@
         statix
 
         # lazy
+        # also: https://github.com/NixOS/nix/issues/6941#issuecomment-1230136775
         (pkgs.writeShellApplication {
           name = "update";
-          text = ''nix flake update && git commit flake.lock -m " chore: flake update" '';
+          text = ''nix --option commit-lockfile-summary "chore: flake update" flake update --commit-lock-file '';
         })
       ];
     };
