@@ -219,9 +219,7 @@
 
         indentBlankline = {
           enable = true;
-          fillChar = null;
-          eolChar = null;
-          scope.enabled = true;
+          setupOpts.scope.enabled = true;
         };
       };
     };
