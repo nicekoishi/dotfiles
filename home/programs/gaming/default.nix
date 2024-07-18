@@ -20,7 +20,7 @@ in {
     enable = true;
     settings = {
       background_alpha = "0.5";
-      fps_limit = "60,0";
+      fps_limit = "0,60";
       cpu_stats = true;
       cpu_temp = true;
       enableSessionWide = true;
