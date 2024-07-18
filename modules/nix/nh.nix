@@ -4,7 +4,7 @@
   programs.nh = {
     enable = true;
     clean = {
-      enable = true;
+      enable = false;
       dates = "weekly";
     };
   };
