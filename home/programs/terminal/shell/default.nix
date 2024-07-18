@@ -66,6 +66,8 @@
       # annoying
       sudo = "sudo ";
 
+      cleanup = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
+
       did = "systemctl --user";
       had = "sudo systemctl";
 
