@@ -1,43 +1,30 @@
 {
   inputs,
   inputs',
-  lib,
   ...
 }: let
-  inherit (inputs') spicetify;
-  spice = spicetify.packages.default;
+  spicetify = inputs'.spicetify.legacyPackages;
 in {
-  imports = [inputs.spicetify.homeManagerModule];
-
-  # webcord crashes on the login menu but it works
-  # spotify is lazy i guess
-  xdg.desktopEntries."spotify" = lib.mkForce {
-    name = "Spotify";
-    type = "Application";
-    mimeType = ["x-scheme-handler/spotify"];
-    icon = "spotify-client";
-    exec = "spotify --disable-gpu %U";
-    categories = ["Audio"];
-    terminal = false;
-  };
+  imports = [inputs.spicetify.homeManagerModules.default];
 
   programs.spicetify = {
     enable = true;
     windowManagerPatch = true;
-    overwriteAssets = true;
-    sidebarConfig = true;
+    spotifyLaunchFlags = "--disable-gpu";
 
-    injectCss = true;
-    replaceColors = true;
-    theme = spice.themes.catppuccin;
+    theme = spicetify.themes.catppuccin;
     colorScheme = "mocha";
 
-    enabledExtensions = with spice.extensions; [
+    enabledExtensions = with spicetify.extensions; [
       adblock
       shuffle
       fullAppDisplay
       groupSession
       volumePercentage
+    ];
+
+    enabledCustomApps = with spicetify.apps; [
+      localFiles
     ];
   };
 }
