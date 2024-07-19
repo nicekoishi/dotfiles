@@ -19,13 +19,7 @@
       monitor = [", 1920x1080, 0x0, 1"];
 
       exec-once = [
-        # pls rember
         "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
-
-        "[workspace 1 silent] firefox"
-        "[workspace 3 silent] vesktop"
-
-        "[workspace special:thunderbird silent] thunderbird"
       ];
 
       input = {
@@ -40,10 +34,12 @@
       misc = {
         disable_hyprland_logo = true;
         disable_splash_rendering = true;
+
         mouse_move_enables_dpms = true;
         key_press_enables_dpms = true;
+
         enable_swallow = true;
-        swallow_regex = "^(kitty|footclient|Alacritty)";
+        swallow_regex = "kitty|footclient|Alacritty";
       };
 
       general = {
