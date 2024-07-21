@@ -5,7 +5,7 @@
 }: let
   inherit (inputs) self;
   inherit (lib.attrsets) recursiveUpdate;
-  inherit (lib.lists) singleton concatLists; # NOTE: is there a difference between builtins.concatLists and its lib counterpart?
+  inherit (lib.lists) concatLists flatten singleton; # NOTE: is there a difference between builtins.concatLists and its lib counterpart?
   inherit (lib.modules) mkDefault;
 
   # you can say this is a ripoff of https://github.com/NotAShelf/nyx/blob/main/parts/lib/builders.nix
@@ -34,7 +34,8 @@
             inherit inputs self inputs' self';
           } (args.specialArgs or {});
 
-          modules = concatLists [
+          # NOTE: is there a problem flattening this list here instead of smaller flattens?
+          modules = flatten (concatLists [
             # NOTE: if I understood it correctly, it should return something like this
             # [{...}]
             (singleton {
@@ -42,9 +43,9 @@
               nixpkgs.hostPlatform = mkDefault args.system;
             })
 
-            # NOTE: and here things like chaotic or nur
+            # NOTE: and here things like chaotic or nur or any module actually
             (args.modules or [])
-          ];
+          ]);
         });
   };
 in {

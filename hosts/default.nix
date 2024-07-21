@@ -5,16 +5,14 @@
 }: let
   inherit (inputs.self) lib;
 
-  inherit (lib.lists) concatLists flatten forEach;
+  inherit (lib.lists) concatLists flatten map;
   inherit (lib.nice) mkNixosSystem;
 
-  modulePath = "${../modules}";
+  modulePath = ../modules;
 
   # it doesn't return a proper path if it isn't in parentheses
-  # what the heck
-  core = forEach ["core" "nix" "system"] (
-    i: modulePath + ("/" + i)
-  );
+  # https://nixos.wiki/wiki/Nix_Language:_Tips_%26_Tricks
+  core = map (path: modulePath + ("/" + path)) ["core" "nix" "system"];
 
   desktop = flatten [core (modulePath + "/roles/desktop")];
 in {
@@ -24,30 +22,17 @@ in {
       hostname = "polaris";
       system = "x86_64-linux";
 
-      modules = flatten (concatLists [
+      modules = concatLists [
         [
+          "${modulePath}/system/hardware/video/nvidia"
           ./polaris
           desktop
         ]
-        # TODO: this is ugly as hell, import everything and select which ones this host shall use
-        (
-          forEach
-          [
-            "system/hardware/video/nvidia"
-
-            "programs/desktop/hyprland"
-            "programs/desktop/gnome"
-
-            "programs/gaming"
-            "programs/virt-manager"
-            "programs/thunar"
-          ] (i: modulePath + ("/" + i))
-        )
         [
           inputs.chaotic.nixosModules.default
           inputs.nur.nixosModules.nur
         ]
-      ]);
+      ];
     };
   };
 }
