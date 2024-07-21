@@ -37,7 +37,7 @@
           type                  "fifo"
           name                  "Visualizer"
           path                  "/tmp/mpd.fifo"
-          format                "44100:16:2"
+          format                "48000:16:1"
         }
 
         audio_output {
@@ -47,7 +47,7 @@
           port                  "8000"
           max_clients           "9"
           mixer_type            "software"
-          format                "44100:16:2"
+          format                "48000:16:1"
         }
       '';
     };
