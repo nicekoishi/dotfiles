@@ -8,6 +8,9 @@
   inherit (lib.lists) concatLists flatten map;
   inherit (lib.nice) mkNixosSystem;
 
+  # what the... Maybe I'm looking at this the wrong way, but is there a better way to get path of
+  # where a function is called, or it will always default to where the function is defined?
+  mkNixosSystem' = args: mkNixosSystem (args // {hosts = ./.;});
   modulePath = ../modules;
 
   # it doesn't return a proper path if it isn't in parentheses
@@ -17,7 +20,7 @@
   desktop = flatten [core (modulePath + "/roles/desktop")];
 in {
   flake.nixosConfigurations = {
-    polaris = mkNixosSystem {
+    polaris = mkNixosSystem' {
       inherit withSystem;
       hostname = "polaris";
       system = "x86_64-linux";
@@ -25,7 +28,6 @@ in {
       modules = concatLists [
         [
           "${modulePath}/system/hardware/video/nvidia"
-          ./polaris
           desktop
         ]
         [
