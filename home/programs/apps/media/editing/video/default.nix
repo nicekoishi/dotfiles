@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
 in {
   config = mkIf config.programs.obs-studio.enable {
     # stupid resolve doesn't work with novideo

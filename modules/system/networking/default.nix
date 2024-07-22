@@ -1,5 +1,5 @@
 {lib, ...}: let
-  inherit (lib) mkDefault mkForce;
+  inherit (lib.modules) mkDefault mkForce;
 in {
   imports = [./firewall ./tailscale];
   networking = {

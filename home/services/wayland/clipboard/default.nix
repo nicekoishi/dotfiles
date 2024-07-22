@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (lib) getExe;
+  inherit (lib.meta) getExe;
 in {
   systemd.user.services.cliphist = {
     Unit = {

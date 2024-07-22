@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib) mkIf;
+  inherit (lib.modules) mkIf;
 in {
   systemd.user = mkIf (!config.services.hyprpaper.enable) {
     services = {

@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkMerge mkForce;
+  inherit (lib.modules) mkMerge mkForce;
   inherit (lib.strings) concatStringsSep;
 in {
   services.fail2ban = {
