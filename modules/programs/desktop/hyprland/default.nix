@@ -14,15 +14,15 @@
   error: Package, 'Hyprland', did not specify any session names, as strings, in
   'passthru.providedSessions'. This is required when used as a session package.
   */
-  hyprlandSessionFile =
-    (pkgs.writeTextFile rec {
+  hyprlandSession =
+    (pkgs.writeTextFile {
       name = "Hyprland";
-      destination = "/share/wayland-sessions/${toLower name}.desktop";
+      destination = "/share/wayland-sessions/${toLower hyprlandSession.name}.desktop";
       text = ''
         [Desktop Entry]
-        Name=${name}
+        Name=${hyprlandSession.name}
         Comment=An intelligent dynamic tiling Wayland compositor
-        Exec=${pkgs.systemd}/bin/systemd-cat --identifier=${name} ${name}
+        Exec=${pkgs.systemd}/bin/systemd-cat --identifier=${hyprlandSession.name} ${hyprlandSession.name}
         Type=Application
       '';
     })
@@ -38,7 +38,7 @@ in {
   ];
 
   services.displayManager.sessionPackages = [
-    hyprlandSessionFile
+    hyprlandSession
   ];
 
   /*
