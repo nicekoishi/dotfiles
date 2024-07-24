@@ -16,7 +16,7 @@
 
     settings = {
       "$mod" = "SUPER";
-      monitor = [", 1920x1080, 0x0, 1"];
+      monitor = ["HDMI-A-1, 1920x1080, 0x0, 1"];
 
       exec-once = [
         "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
@@ -40,6 +40,9 @@
 
         enable_swallow = true;
         swallow_regex = "kitty|footclient|Alacritty";
+
+        # for some reason it was set to false
+        vfr = true;
       };
 
       general = {
@@ -67,14 +70,15 @@
 
         blur = {
           enabled = true;
-          brightness = 0.82;
-          contrast = 0.71;
-          new_optimizations = true;
-          ignore_opacity = true;
           passes = 3;
           size = 5;
-          vibrancy = 0.2;
+          brightness = 0.82;
+          contrast = 0.71;
+          ignore_opacity = true;
+          new_optimizations = true;
           special = true;
+          vibrancy = 0.2;
+          xray = true;
         };
       };
 
