@@ -7,7 +7,7 @@
       background_opacity = "0.71";
       term = "xterm-256color";
 
-      notify_on_command_finish = "unfocused notify";
+      notify_on_cmd_finish = "unfocused";
 
       scrollback_lines = 10000;
       enable_audio_bell = true;
