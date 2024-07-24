@@ -18,6 +18,8 @@ in {
   # TODO: generate a svg image for all binds, like a cheatsheet
   # wouldn't it be cool?
   wayland.windowManager.hyprland.settings = {
+    "$mod" = "SUPER";
+
     # mouse movements
     bindm = [
       "$mod, mouse:272, movewindow"
