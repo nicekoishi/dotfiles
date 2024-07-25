@@ -4,10 +4,19 @@
     "aarch64-linux"
   ];
 
-  perSystem = {pkgs, ...}:
-    with pkgs; {
-      packages = {
-        funny-plymouth = callPackage ./funny-plymouth {};
+  perSystem = {
+    config,
+    pkgs,
+    ...
+  }: {
+    packages = {
+      funny-plymouth = pkgs.callPackage ./funny-plymouth {};
+
+      suncord = pkgs.callPackage ./suncord {};
+      suncord-web-extension = pkgs.callPackage ./suncord {buildWebExtension = true;};
+      webcord-suncord = pkgs.callPackage ./webcord-suncord {
+        inherit (config.packages) suncord-web-extension;
       };
     };
+  };
 }

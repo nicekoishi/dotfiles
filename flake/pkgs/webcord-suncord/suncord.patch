@@ -1,0 +1,19 @@
+diff --git a/sources/code/common/main.ts b/sources/code/common/main.ts
+index e3d4d72..52f6443 100644
+--- a/sources/code/common/main.ts
++++ b/sources/code/common/main.ts
+@@ -347,6 +347,7 @@ app.userAgentFallback = getUserAgent(process.versions.chrome, userAgent.mobile,
+ const singleInstance = app.requestSingleInstanceLock();
+ 
+ function main(): void {
++  session.defaultSession.loadExtension("@suncord@");
+   if (overwriteMain) {
+     // Execute flag-specific functions for ready application.
+     overwriteMain();
+@@ -520,4 +521,4 @@ app.on("child-process-gone", (_event, details) => {
+     console.error(kolor.bold("[%s:%d]")+" %s", name, details.exitCode, reason);
+     if(tip !== null) setImmediate(() => console.error(kolor.bold("[%s:TIP]")+" %s", name, tip));
+   }
+-});
+\ No newline at end of file
++});
