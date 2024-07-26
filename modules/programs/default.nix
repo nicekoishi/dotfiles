@@ -8,7 +8,6 @@
     ./desktop/gnome
 
     ./gaming
-    ./virt-manager
     ./thunar
 
     ./fonts.nix

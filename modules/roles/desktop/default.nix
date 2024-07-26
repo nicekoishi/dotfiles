@@ -8,6 +8,8 @@
     ../../system/networking
     ../../system/networking/printing
 
+    ../../system/virtualization
+
     ../../system/utilities/gnome
     ../../system/utilities/psd
     ../../system/utilities/udiskie
