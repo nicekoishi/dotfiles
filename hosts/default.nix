@@ -5,7 +5,7 @@
 }: let
   inherit (inputs.self) lib;
 
-  inherit (lib.lists) concatLists flatten map;
+  inherit (lib.lists) flatten map;
   inherit (lib.nice) mkNixosSystem;
 
   # what the... Maybe I'm looking at this the wrong way, but is there a better way to get path of
@@ -25,15 +25,11 @@ in {
       hostname = "polaris";
       system = "x86_64-linux";
 
-      modules = concatLists [
-        [
-          "${modulePath}/system/hardware/video/nvidia"
-          desktop
-        ]
-        [
-          inputs.chaotic.nixosModules.default
-          inputs.nur.nixosModules.nur
-        ]
+      modules = [
+        "${modulePath}/system/hardware/video/nvidia"
+        desktop
+
+        inputs.chaotic.nixosModules.default
       ];
     };
   };

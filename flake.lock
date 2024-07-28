@@ -1167,21 +1167,6 @@
         "type": "sourcehut"
       }
     },
-    "nur": {
-      "locked": {
-        "lastModified": 1722123906,
-        "narHash": "sha256-mlWl7wlHvJnhgSTtGxHzQav8wKvfOi1vfNTefEGVHPA=",
-        "owner": "nix-community",
-        "repo": "nur",
-        "rev": "86c5c9f9aeefa98727dccf233ebf9ada1298ae50",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "repo": "nur",
-        "type": "github"
-      }
-    },
     "plugin-alpha-nvim": {
       "flake": false,
       "locked": {
@@ -2824,7 +2809,6 @@
         "nix-gaming": "nix-gaming",
         "nix-index-db": "nix-index-db",
         "nixpkgs": "nixpkgs_8",
-        "nur": "nur",
         "quickshell": "quickshell",
         "spicetify": "spicetify",
         "treefmt-nix": "treefmt-nix",
