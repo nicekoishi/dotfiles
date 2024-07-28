@@ -14,16 +14,21 @@ in {
 
   services.arrpc = {
     enable = true;
-    package = pkgs.arrpc.overrideAttrs (_: {
+    package = pkgs.arrpc.overrideAttrs (prev: {
       pname = "arrpc";
       version = "3.4.0";
 
       src = pkgs.fetchFromGitHub {
         owner = "OpenAsar";
         repo = "arrpc";
-        rev = "59553e276716cde3c0afa8bff56aa8af3ab774cc";
-        hash = "sha256-kjpsPWjgoSNs569DfN8T3/lPB8MzUck7QqD/wfNL8To=";
+        rev = "c62ec6a04c8d870530aa6944257fe745f6c59a24";
+        hash = "sha256-wIRr+LnOp9PW7v5xOqpdB6AjqINBlYFkoGRorYkRC2I=";
       };
+
+      # TODO: add detectable.json patch
+      patches =
+        (prev.patches or [])
+        ++ [];
     });
   };
 }
