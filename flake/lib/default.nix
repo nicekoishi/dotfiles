@@ -7,10 +7,12 @@
   # it does adds a few more layers, but nothing that inherit can't fix
   importedLibs = {
     builders = import ./builders.nix {inherit inputs lib;};
+    misc = import ./misc.nix {inherit lib;};
 
     # NOTE: forgot where I saw it, but if an attrset is explicitly named you can do this
     # this is just to make the functions available under lib.nice instead
     inherit (importedLibs.builders) mkNixosSystem;
+    inherit (importedLibs.misc) capitalize;
   };
 
   extendedLib = lib.extend (_: _: {
