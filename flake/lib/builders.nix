@@ -1,3 +1,4 @@
+# https://github.com/NotAShelf/nyx/blob/main/parts/lib/builders.nix
 {
   inputs,
   lib,
@@ -8,8 +9,6 @@
   inherit (lib.lists) concatLists flatten singleton;
   inherit (lib.modules) mkDefault;
 
-  # you can say this is a ripoff of https://github.com/NotAShelf/nyx/blob/main/parts/lib/builders.nix
-  # and you're right, this is.
   # still think that everything should be in a separate namespace, as to not confuse with
   # the 'normal' nixpkgs.lib
   mkSystem = lib.nixosSystem;
