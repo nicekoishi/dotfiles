@@ -17,7 +17,7 @@
     package = pkgs.lix;
 
     daemonIOSchedClass = "idle";
-    daemonCPUSchedPolicy = "idle";
+    daemonCPUSchedPolicy = "batch";
     daemonIOSchedPriority = 7;
 
     # i was doing it manually before. am i stupid?
@@ -42,35 +42,34 @@
 
       flake-registry = "/etc/nix/registry.json";
 
-      # i can have a clean home now? nice
-      use-xdg-base-directories = true;
+      # automatically optimise symlinks, saving space
+      auto-optimise-store = true;
 
       # crappy cpu + compiling = a bad time
       # one day I will have another build machine
       builders-use-substitutes = true;
 
-      # automatically optimise symlinks, saving space
-      auto-optimise-store = true;
+      http-connections = 0;
+
+      # direnv GC roots
+      keep-derivations = true;
+      keep-outputs = true;
 
       keep-going = true;
 
-      # i know, shut up
-      warn-dirty = false;
+      # log lines for failed builds
+      log-lines = 50;
 
       max-jobs = "auto";
 
       # for builds inside cgroups
       use-cgroups = true;
 
-      # direnv GC roots
-      keep-derivations = true;
-      keep-outputs = true;
+      # i can have a clean home now? nice
+      use-xdg-base-directories = true;
 
-      # why limit it? oh wait
-      http-connections = 0;
-
-      # log lines for failed builds
-      log-lines = 50;
+      # i know, shut up
+      warn-dirty = false;
 
       allowed-users = ["root" "@wheel" "nix-builder"];
       trusted-users = ["root" "@wheel" "nix-builder"];
