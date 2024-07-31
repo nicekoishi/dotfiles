@@ -12,8 +12,4 @@
     enableSshSupport = true;
     pinentryPackage = pkgs.pinentry-gnome3;
   };
-
-  programs.ssh.extraConfig = ''
-    AddKeysToAgent yes
-  '';
 }

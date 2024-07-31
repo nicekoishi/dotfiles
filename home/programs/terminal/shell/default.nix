@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: {
+{config, ...}: {
   imports = [./starship.nix];
 
   programs.zsh = {
@@ -50,16 +46,11 @@
       # shouldn't it ask by default?
       # also, don't use nh globally as it breaks cases where --ask isn't appliable
       nh () {
-          case "$1" in
-              (os|clean) command nh "$@" --ask;;
-              (*) command nh "$@";;
-          esac
+        case "$1" in
+            (os|clean) command nh "$@" --ask;;
+            (*) command nh "$@";;
+        esac
       }
-
-      ${lib.optionalString config.services.gpg-agent.enable ''
-        gnupg_path=$(ls $XDG_RUNTIME_DIR/gnupg)
-        export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/gnupg/$gnupg_path/S.gpg-agent.ssh"
-      ''}
     '';
 
     shellAliases = {
