@@ -1,5 +1,8 @@
 {
-  imports = [./greeter.nix];
+  imports = [
+    ./greeter.nix
+    ./pam.nix
+  ];
 
   services.greetd = {
     enable = true;
