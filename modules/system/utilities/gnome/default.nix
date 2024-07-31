@@ -3,7 +3,11 @@
   pkgs,
   ...
 }: {
-  programs.dconf.enable = true;
+  programs = {
+    dconf.enable = true;
+    seahorse.enable = true;
+  };
+
   services = {
     dbus.packages = with pkgs; [
       dconf
