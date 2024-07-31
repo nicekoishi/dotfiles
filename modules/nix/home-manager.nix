@@ -5,7 +5,9 @@
   self,
   ...
 }: let
-  specialArgs = {inherit inputs self inputs' self';};
+  lib = inputs.home-manager.lib // self.lib;
+
+  specialArgs = {inherit lib inputs self inputs' self';};
 in {
   imports = [inputs.home-manager.nixosModules.default];
 
