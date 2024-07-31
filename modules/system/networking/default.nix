@@ -28,6 +28,13 @@ in {
       unmanaged = [
         "interface-name:virbr*"
       ];
+
+      wifi = {
+        backend = "wpa_supplicant";
+        macAddress = "random";
+        powersave = true;
+        scanRandMacAddress = true;
+      };
     };
   };
 

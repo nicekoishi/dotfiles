@@ -14,6 +14,7 @@
     hostName = "polaris";
 
     firewall.allowedTCPPorts = [2234];
+    networkmanager.unmanaged = ["type:wifi"];
   };
 
   boot.kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
@@ -38,7 +39,10 @@
           IPMasquerade = "no";
         };
       };
-      # i do have an wifi card, but don't wanna use it. yet
+      "20-network-wlan" = {
+        matchConfig.type = "wlan";
+        linkConfig.Unmanaged = "yes";
+      };
     };
   };
 
