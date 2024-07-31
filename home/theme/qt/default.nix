@@ -7,26 +7,30 @@
   ...
 }: let
   inherit (lib.modules) mkIf mkMerge;
+  inherit (lib.nice) capitalize;
+  inherit (lib.strings) concatMapStrings hasPrefix;
 
   cfg = config.qt;
 
-  themePkg = pkgs.catppuccin-kde.override {
-    flavour = ["mocha"];
-    accents = ["blue"];
-    winDecStyles = ["modern"];
+  # TODO: move this mess elsewhere, and tidy it up
+  theme = {
+    name = "Catppuccin";
+    package = pkgs.catppuccin-kde.override theme.opts;
+    opts = {
+      flavour = ["mocha"];
+      accents = ["blue"];
+      winDecStyles = ["modern"];
+    };
   };
 in {
-  imports = [
-    ./qtct
-  ];
-
-  # why qt is so weird?
-  # ended up giving up on switching, too much of a headache (literally)
+  # this will only work if only one flavour or accent is specified btw
   xdg.configFile = let
     url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/src";
+    colors = "${theme.name + concatMapStrings (i: capitalize i) (theme.opts.flavour ++ theme.opts.accents)}";
   in {
+    "kdeglobals".source = "${theme.package}/share/color-schemes/${colors}.colors";
     "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
-      General.theme = "Catppuccin";
+      General.theme = "${theme.name}";
       Applications.Catppuccin = ''
         qt5ct, org.kde.dolphin, org.qbittorrent.qBittorrent, hyprland-share-picker, cantata, org.kde.kid3-qt
       '';
@@ -44,7 +48,7 @@ in {
 
   qt = {
     enable = true;
-    platformTheme.name = "qtct";
+    platformTheme.name = "gtk3";
     style.name = "kvantum";
   };
 
@@ -56,13 +60,11 @@ in {
           libsForQt5.qt5ct
           breeze-icons
 
-          # trying to use qt.style.name will set QT_STYLE_OVERRIDE
-          # qtct won't work with that variable, so we install our theme here
-          themePkg
+          # just realized that i may be stupid
+          theme.package
         ]
 
-        (mkIf (cfg.platformTheme.name
-          == "gtk") [
+        (mkIf (hasPrefix "gtk" cfg.platformTheme.name) [
           libsForQt5.qtstyleplugins
           qt6Packages.qt6gtk2
         ])
