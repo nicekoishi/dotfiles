@@ -6,7 +6,6 @@
     ./hypr
     ./ocr
     ./quickshell
-    ./swww
     ./wlogout
   ];
 }
