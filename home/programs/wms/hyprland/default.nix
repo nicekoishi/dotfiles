@@ -1,17 +1,8 @@
-{
-  inputs,
-  lib,
-  ...
-}: let
-  inherit (builtins) filter map toString;
-  inherit (lib.filesystem) listFilesRecursive;
-  inherit (lib.strings) hasSuffix;
-in {
-  imports =
-    [inputs.hyprland.homeManagerModules.default]
-    ++ filter (hasSuffix ".nix") (
-      map toString (filter (p: p != ./default.nix) (listFilesRecursive ./config))
-    );
+{inputs, ...}: {
+  imports = [
+    inputs.hyprland.homeManagerModules.default
+    ./config
+  ];
 
   wayland.windowManager.hyprland = {
     enable = true;
@@ -22,6 +13,9 @@ in {
 
     settings = {
       monitor = ["HDMI-A-1, 1920x1080, 0x0, 1"];
+      env = [
+        "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
+      ];
     };
   };
 }

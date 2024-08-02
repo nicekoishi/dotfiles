@@ -12,13 +12,14 @@
   home.packages = with pkgs; [
     qbittorrent
 
-    plasma5Packages.dolphin
-    plasma5Packages.dolphin-plugins
-    plasma5Packages.kio
-    plasma5Packages.kio-extras
-    #plasma5Packages.kio-gdrive # doesn't work if your account has two factor auth
-    plasma5Packages.kimageformats
-    plasma5Packages.kdegraphics-thumbnailers
-    plasma5Packages.ffmpegthumbs
+    kdePackages.ark
+    kdePackages.dolphin
+    kdePackages.dolphin-plugins
+    kdePackages.kio
+    kdePackages.kio-extras
+    kdePackages.kio-gdrive
+    kdePackages.kimageformats
+    kdePackages.kdegraphics-thumbnailers
+    kdePackages.ffmpegthumbs
   ];
 }
