@@ -12,6 +12,7 @@
   nice.host = {
     cpu = "amd";
     gpu = ["nvidia"];
+    roles = ["desktop" "gaming"];
     environments = ["hyprland" "gnome"];
     waylandReady = true;
   };

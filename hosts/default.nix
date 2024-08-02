@@ -13,15 +13,13 @@
 
   # roles definition, each containing its own set of configs/overrides
   roles = modulePath + "/roles";
-  desktop = roles + "/desktop";
-  gaming = roles + "/gaming";
 
   # the heck?
   mkNixosSystem' = args:
     mkNixosSystem (args
       // {
         hosts = ./.;
-        modules = args.modules ++ [system options];
+        modules = args.modules ++ [system options roles];
       });
 in {
   flake.nixosConfigurations = {
@@ -31,8 +29,6 @@ in {
       system = "x86_64-linux";
 
       modules = [
-        desktop
-        gaming
         inputs.chaotic.nixosModules.default
       ];
     };

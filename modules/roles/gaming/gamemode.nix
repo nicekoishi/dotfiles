@@ -1,10 +1,15 @@
 # straight from fufexan/dotfiles, go check it out
 {
+  config,
   inputs',
   pkgs,
   lib,
   ...
 }: let
+  inherit (builtins) elem;
+  inherit (lib.modules) mkIf;
+  cfg = config.nice.host;
+
   programs = lib.makeBinPath (with pkgs; [
     inputs'.hyprland.packages.default
     coreutils
@@ -38,24 +43,28 @@
     notify-send -i 'computer-symbolic' 'Gamemode ended!' 'Enabling the pretty stuff' -u 'low'
   '';
 in {
-  programs.gamemode = {
-    enable = true;
-    enableRenice = true;
-    settings = {
-      general = {
-        softrealtime = "auto";
-        renice = 15;
-      };
-      custom = {
-        start = startscript.outPath;
-        end = endscript.outPath;
+  config = mkIf (elem "gaming" cfg.roles) {
+    users.groups.gamemode = {};
+
+    programs.gamemode = {
+      enable = true;
+      enableRenice = true;
+      settings = {
+        general = {
+          softrealtime = "auto";
+          renice = 15;
+        };
+        custom = {
+          start = startscript.outPath;
+          end = endscript.outPath;
+        };
       };
     };
-  };
 
-  boot.kernel.sysctl = {
-    # this is default on Fedora, and I used it on Arch too
-    # TODO: remember all the stuff I forgot to add
-    "vm.max_map_count" = 2147483642;
+    boot.kernel.sysctl = {
+      # this is default on Fedora, and I used it on Arch too
+      # TODO: remember all the stuff I forgot to add
+      "vm.max_map_count" = 2147483642;
+    };
   };
 }

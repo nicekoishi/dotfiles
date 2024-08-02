@@ -4,6 +4,7 @@
   lib,
   ...
 }: let
+  inherit (builtins) elem;
   inherit (lib.modules) mkIf;
   inherit (lib.strings) versionOlder;
 
@@ -17,7 +18,7 @@
     then nvStable
     else nvBeta;
 in {
-  config = mkIf (builtins.elem "nvidia" cfg.gpu) {
+  config = mkIf (elem "desktop" cfg.roles && elem "nvidia" cfg.gpu) {
     boot = {
       blacklistedKernelModules = ["i2c_nvidia_gpu" "nouveau"];
       kernelParams = [
