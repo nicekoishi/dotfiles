@@ -17,7 +17,6 @@
     kdePackages.dolphin-plugins
     kdePackages.kio
     kdePackages.kio-extras
-    kdePackages.kio-gdrive
     kdePackages.kimageformats
     kdePackages.kdegraphics-thumbnailers
     kdePackages.ffmpegthumbs
