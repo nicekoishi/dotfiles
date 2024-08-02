@@ -60,8 +60,16 @@ in {
           libsForQt5.qt5ct
           breeze-icons
 
-          # just realized that i may be stupid
+          # make kde theme package available
           theme.package
+
+          # fix qt platform plugin not found
+          libsForQt5.qt5.qtwayland
+          kdePackages.qtwayland
+
+          # fix no icons on dolphin
+          libsForQt5.qt5.qtsvg
+          kdePackages.qtsvg
         ]
 
         (mkIf (hasPrefix "gtk" cfg.platformTheme.name) [
