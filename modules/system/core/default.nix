@@ -4,8 +4,6 @@
   ...
 }: {
   imports = [
-    ./nix
-
     ./boot.nix
     ./security.nix
     ./users.nix

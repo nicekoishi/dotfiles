@@ -1,5 +1,6 @@
 {
   imports = [
     ./console
+    ./nix
   ];
 }
