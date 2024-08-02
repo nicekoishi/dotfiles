@@ -4,20 +4,25 @@
   ...
 }: let
   inherit (inputs.self) lib;
-
-  inherit (lib.lists) flatten map;
   inherit (lib.nice) mkNixosSystem;
 
-  # what the... Maybe I'm looking at this the wrong way, but is there a better way to get path of
-  # where a function is called, or it will always default to where the function is defined?
-  mkNixosSystem' = args: mkNixosSystem (args // {hosts = ./.;});
+  # core modules definition
   modulePath = ../modules;
+  system = modulePath + "/system";
+  options = modulePath + "/options";
 
-  # it doesn't return a proper path if it isn't in parentheses
-  # https://nixos.wiki/wiki/Nix_Language:_Tips_%26_Tricks
-  core = map (path: modulePath + ("/" + path)) ["core" "nix" "system"];
+  # roles definition, each containing its own set of configs/overrides
+  roles = modulePath + "/roles";
+  desktop = roles + "/desktop";
+  gaming = roles + "/gaming";
 
-  desktop = flatten [core (modulePath + "/roles/desktop")];
+  # the heck?
+  mkNixosSystem' = args:
+    mkNixosSystem (args
+      // {
+        hosts = ./.;
+        modules = args.modules ++ [system options];
+      });
 in {
   flake.nixosConfigurations = {
     polaris = mkNixosSystem' {
@@ -26,9 +31,8 @@ in {
       system = "x86_64-linux";
 
       modules = [
-        "${modulePath}/system/hardware/video/nvidia"
         desktop
-
+        gaming
         inputs.chaotic.nixosModules.default
       ];
     };

@@ -9,9 +9,15 @@
     ./fs
   ];
 
+  nice.host = {
+    cpu = "amd";
+    gpu = ["nvidia"];
+    environments = ["hyprland" "gnome"];
+    waylandReady = true;
+  };
+
   networking = {
     useDHCP = lib.mkDefault true;
-    hostName = "polaris";
 
     firewall.allowedTCPPorts = [2234];
     networkmanager.unmanaged = ["type:wifi"];

@@ -6,7 +6,7 @@
 }: let
   inherit (lib.attrsets) optionalAttrs;
 
-  nvidiaGpu = builtins.elem "nvidia" osConfig.services.xserver.videoDrivers;
+  nvidiaGpu = builtins.elem "nvidia" osConfig.nice.host.gpu;
 in {
   imports = [./settings];
 

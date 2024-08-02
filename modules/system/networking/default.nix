@@ -1,7 +1,13 @@
 {lib, ...}: let
   inherit (lib.modules) mkDefault mkForce;
 in {
-  imports = [./firewall ./tailscale];
+  imports = [
+    # TODO: maybe avahi shouldn't be available to all roles?
+    ./avahi
+    ./firewall
+    ./tailscale
+  ];
+
   networking = {
     useDHCP = mkForce false;
     useNetworkd = mkForce true;
