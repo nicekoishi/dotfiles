@@ -6,6 +6,15 @@
   ...
 }: {
   imports = [./home-manager.nix ./nh.nix ./substituters.nix];
+
+  # save flake locally on /etc/nixos/dotfiles
+  environment.etc."nixos/dotfiles" = {
+    source = inputs.self;
+    # https://github.com/NixOS/nixpkgs/issues/200744
+    # this won't work if set to any mode that's not symlink
+    #mode = "0644";
+  };
+
   nix = {
     # pin the registry to avoid downloading and evaluating a new nixpkgs version every time
     registry = lib.mapAttrs (_: v: {flake = v;}) inputs;
