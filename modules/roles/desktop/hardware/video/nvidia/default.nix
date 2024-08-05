@@ -18,7 +18,7 @@
     then nvStable
     else nvBeta;
 in {
-  config = mkIf (elem "desktop" cfg.roles && elem "nvidia" cfg.gpu) {
+  config = mkIf (elem "nvidia" cfg.gpu) {
     boot = {
       blacklistedKernelModules = ["i2c_nvidia_gpu" "nouveau"];
       kernelParams = [
@@ -65,6 +65,7 @@ in {
         open = lib.mkForce false;
 
         # weird fullscreen bug when trying to use fsr, so lets disable it
+        # it didn't help, as it was a hyprland problem. one day it will be fixed
         forceFullCompositionPipeline = lib.mkForce false;
 
         # useless

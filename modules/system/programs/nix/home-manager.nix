@@ -7,15 +7,12 @@
   ...
 }: let
   lib = inputs.home-manager.lib // self.lib;
-  inherit (builtins) elem;
   inherit (lib.modules) mkIf;
 
-  cfg = config.nice.host;
+  cfg = config.nice.user;
   specialArgs = {inherit lib inputs self inputs' self';};
 in {
-  imports = [inputs.home-manager.nixosModules.default];
-
-  home-manager = mkIf (elem "desktop" cfg.roles) {
+  home-manager = mkIf cfg.home-manager {
     # keep yapping
     verbose = true;
 

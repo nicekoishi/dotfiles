@@ -9,12 +9,17 @@
     ./fs
   ];
 
-  nice.host = {
-    cpu = "amd";
-    gpu = ["nvidia"];
-    roles = ["desktop" "gaming"];
-    environments = ["hyprland" "gnome"];
-    waylandReady = true;
+  nice = {
+    host = {
+      cpu = "amd";
+      gpu = ["nvidia"];
+      environments = ["hyprland" "gnome"];
+      waylandReady = true;
+
+      kernel = pkgs.linuxPackages_cachyos;
+    };
+
+    user.home-manager = true;
   };
 
   networking = {
@@ -23,8 +28,6 @@
     firewall.allowedTCPPorts = [2234];
     networkmanager.unmanaged = ["type:wifi"];
   };
-
-  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_cachyos;
 
   environment.systemPackages = [pkgs.scx];
 
@@ -54,7 +57,6 @@
   };
 
   services = {
-    fstrim.enable = true;
     btrfs.autoScrub.enable = true;
   };
 

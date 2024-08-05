@@ -1,6 +1,5 @@
 {
   imports = [
-    ./host
-    ./user
+    ./opts.nix
   ];
 }

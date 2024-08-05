@@ -5,5 +5,6 @@
     ./xdg
 
     ./dbus.nix
+    ./fstrim.nix
   ];
 }

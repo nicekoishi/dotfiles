@@ -1,11 +1,5 @@
-{
-  self',
-  pkgs,
-  ...
-}: {
+{self', ...}: {
   boot = {
-    kernelPackages = pkgs.linuxPackages_zen;
-
     initrd = {
       verbose = false;
       systemd.enable = true;
@@ -23,6 +17,7 @@
     };
 
     consoleLogLevel = 3;
+    # notashelf/nyx
     kernelParams = [
       # useful stuff
 

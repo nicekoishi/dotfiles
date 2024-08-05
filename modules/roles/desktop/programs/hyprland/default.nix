@@ -6,6 +6,7 @@
   pkgs,
   ...
 }: let
+  inherit (builtins) elem;
   inherit (lib.modules) mkIf;
   inherit (lib.strings) toLower;
 
@@ -34,7 +35,7 @@ in {
   # doesn't matter, as we're not using it anyway if it's not enabled
   disabledModules = ["programs/hyprland"];
 
-  config = mkIf (builtins.elem "hyprland" cfg.environments) {
+  config = mkIf (elem "hyprland" cfg.environments) {
     # now I can safely do this, as we're enabling all the necessary options manually
 
     # we don't need it, as the session entry can launch it directly
@@ -55,9 +56,6 @@ in {
     systemd.user.extraConfig = ''
       DefaultEnvironment="PATH=/run/wrappers/bin:/etc/profiles/per-user/%u/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin:$PATH"
     '';
-
-    # TODO: this should be common between wayland compositors, move to a common place
-    programs.xwayland.enable = true;
 
     # portal setup
     xdg.portal = {
