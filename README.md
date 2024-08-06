@@ -1,6 +1,11 @@
-<p align="center">
-    nicekoishi/dotfiles
-</p>
+<!-- deno-fmt-ignore-start -->
+
+> [!IMPORTANT]
+> A good chunk of this configuration was borrowed from both
+> [NotAShelf](https://github.com/NotAShelf/nyx) and
+> [fufexan](https://github.com/fufexan/dotfiles)
+
+<!-- deno-fmt-ignore-end -->
 
 ## About
 
@@ -20,23 +25,22 @@ deaf from loud music (I should really turn down the volume).
 
 -   [flake](flake): modular flake.nix thanks to
     [flake-parts](https://github.com/hercules-ci/flake-parts)
-    -   [modules](flake/modules): collection of useful modules you may want to use
+    -   [modules](flake/modules): collection of useful modules you may want to use.
     -   [packages](flake/pkgs): collection of useless packages that no one would
-        ever use
+        ever use.
 -   [home](home): [home-manager](https://github.com/nix-community/home-manager)
-    configuration
-    -   [editors](home/editors): my editors configuration, currently using nvim
+    configuration.
+    -   [editors](home/editors): my editors configuration, currently using nvim.
     -   [programs](home/programs): programs and their configurations, managed by
-        home-manager
-    -   [services](home/services): useful services at user level
-    -   [theme](home/theme): ~~hopefully~~ unified theming for all my systems
--   [hosts](hosts): host specific configuration
-    -   [polaris](hosts/polaris): main ~~and for now only~~ host of this
-        configuration. It has a NVIDIA card, unfortunately
--   [modules](modules): modules shared across my hosts
+        home-manager.
+    -   [services](home/services): useful services at user level.
+    -   [theme](home/theme): unified theming for 'all' my systems.
+-   [hosts](hosts): host specific configuration.
+    -   [polaris](hosts/polaris): workstation. Bound by NVIDIA, unfortunately;
+-   [modules](modules): modules shared across my hosts.
     -   [options](modules/options): mostly options for host specific configurations
-    -   [system](modules/system): defaults for every host
-    -   [roles](modules/roles): specific overrides for each type of host
+    -   [system](modules/system): defaults for every host.
+    -   [roles](modules/roles): specific overrides for each type of host.
 
 ## Outputs
 
