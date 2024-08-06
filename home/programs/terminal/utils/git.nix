@@ -14,7 +14,7 @@
     userEmail = "contato.koish@gmail.com";
 
     extraConfig = {
-      credential.helper = "${pkgs.git.override {withLibsecret = true;}}/bin/git-credential-libsecret";
+      credential.helper = "${pkgs.gitFull}/bin/git-credential-libsecret";
     };
   };
 }
