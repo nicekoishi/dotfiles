@@ -14,9 +14,6 @@ in {
 
       #GDK_BACKEND = "wayland";
       XDG_SESSION_TYPE = "wayland";
-      MOZ_ENABLE_WAYLAND = "1";
-
-      QT_QPA_PLATFORM = "wayland;xcb";
     };
 
     programs.xwayland.enable = true;
