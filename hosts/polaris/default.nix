@@ -43,15 +43,16 @@
       "10-network-eth" = {
         matchConfig.type = "en*";
         networkConfig = {
-          DHCP = "yes";
+          DHCP = true;
           IPv6AcceptRA = true;
-          IPForward = "yes";
-          IPMasquerade = "no";
+          IPv4Forwarding = true;
+          IPv6Forwarding = true;
+          IPMasquerade = true;
         };
       };
       "20-network-wlan" = {
         matchConfig.type = "wlan";
-        linkConfig.Unmanaged = "yes";
+        linkConfig.Unmanaged = true;
       };
     };
   };
