@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: {
-  imports = [./home-manager.nix ./nh.nix ./substituters.nix];
+  imports = [./nh.nix ./substituters.nix];
 
   # save flake locally on /etc/nixos/dotfiles
   environment.etc."nixos/dotfiles" = {
