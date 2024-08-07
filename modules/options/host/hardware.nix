@@ -1,13 +1,15 @@
 {lib, ...}: let
   inherit (lib.options) mkOption;
-  inherit (lib.types) enum listOf;
+  inherit (lib.types) enum listOf nullOr;
 in {
   options.nice.host = {
     cpu = mkOption {
-      type = enum ["amd" "intel"];
+      type = nullOr (enum ["amd" "intel"]);
+      default = null;
     };
     gpu = mkOption {
-      type = listOf (enum ["amd" "nvidia"]);
+      type = nullOr (listOf (enum ["amd" "nvidia"]));
+      default = null;
     };
   };
 }

@@ -6,7 +6,7 @@
 }: let
   inherit (lib.modules) mkMerge;
   inherit (lib.options) mkOption;
-  inherit (lib.types) bool enum listOf;
+  inherit (lib.types) bool enum listOf nullOr;
 
   cfg = config.nice.host;
 in {
@@ -16,10 +16,11 @@ in {
     };
 
     environments = mkOption {
-      type = listOf (enum [
+      type = nullOr (listOf (enum [
         "hyprland"
         "gnome"
-      ]);
+      ]));
+      default = null;
     };
 
     waylandReady = mkOption {
