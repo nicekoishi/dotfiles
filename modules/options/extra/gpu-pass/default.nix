@@ -4,39 +4,24 @@
   pkgs,
   ...
 }: let
-  inherit
-    (lib)
-    mkEnableOption
-    mkOption
-    mkIf
-    concatStringsSep
-    concatMapStringsSep
-    hasInfix
-    toLower
-    types
-    ;
+  inherit (lib.modules) mkIf;
+  inherit (lib.options) mkEnableOption mkOption;
+  inherit (lib.strings) concatMapStringsSep optionalString;
+  inherit (lib.types) listOf str;
+
   toOptimize = cpu:
-    concatStringsSep "\n" [
-      "systemctl set-property --runtime -- user.slice AllowedCPUs=${cpu}"
-      "systemctl set-property --runtime -- system.slice AllowedCPUs=${cpu}"
-      "systemctl set-property --runtime -- init.scope AllowedCPUs=${cpu}"
+    concatMapStringsSep "\n" (slice: "systemctl set-property --runtime -- ${slice} AllowedCPUs=${cpu}") [
+      "user.slice"
+      "system.slice"
+      "init.scope"
     ];
-  cfg = config.virtualisation.libvirtd.gpu-pass;
+  cfg = config.nice.modules.gpu-pass;
 in {
-  options.virtualisation.libvirtd.gpu-pass = {
+  options.nice.modules.gpu-pass = {
     enable = mkEnableOption "gpu-pass, for gpu passthrough";
 
-    desktopEntry = mkOption {
-      type = types.bool;
-      default = false;
-      example = true;
-      description = ''
-        Whether to create a desktop entry for the passthrough guest.
-      '';
-    };
-
     devices = mkOption {
-      type = types.listOf types.str;
+      type = listOf str;
       default = [];
       example = ["pci_0000_06_00_0" "pci_0000_06_00_1" "pci_0000_06_00_2" "pci_0000_06_00_3"];
       description = ''
@@ -46,7 +31,7 @@ in {
     };
 
     guest = mkOption {
-      type = types.str;
+      type = str;
       default = "win10";
       example = "Windows";
       description = ''
@@ -57,7 +42,7 @@ in {
     optimize = {
       enable = mkEnableOption "Dynamically isolate CPUs with systemd";
       host = mkOption {
-        type = types.str;
+        type = str;
         default = "0";
         example = "0-8";
         description = ''
@@ -67,7 +52,7 @@ in {
       };
 
       topography = mkOption {
-        type = types.str;
+        type = str;
         example = "0-11";
         description = ''
           When guest shutdowns, return these cores to the host. You can find them by using lscpu -e.
@@ -100,16 +85,9 @@ in {
             "prepare")
               systemctl stop display-manager.service
 
-              ${
-            if config.hardware.nvidia.nvidiaPersistenced
-            then "systemctl stop nvidia-persistenced.service"
-            else ""
-          }
-              ${
-            if cfg.optimize.enable
-            then toOptimize cfg.optimize.host
-            else ""
-          }
+              ${optionalString config.hardware.nvidia.nvidiaPersistenced "systemctl stop nvidia-persistenced"}
+
+              ${optionalString cfg.optimize.enable (toOptimize cfg.optimize.host)}
 
               if test -e "/tmp/vfio-bound-consoles"; then
                   rm -f /tmp/vfio-bound-consoles
@@ -140,20 +118,27 @@ in {
             then ''
               modprobe -r amdgpu
             ''
-            else builtins.throw "Unable to detect GPU! Are you using nouveau?"
+            else builtins.throw "Unable to detect GPU!"
           }
 
               ${concatMapStringsSep "\n" (device: "virsh nodedev-detach ${device}") cfg.devices}
 
-              modprobe vfio
-              modprobe vfio_pci
-              modprobe vfio_iommu_type1
+              ${
+            concatMapStringsSep "\n" (module: "modprobe ${module}") [
+              "vfio"
+              "vfio_pci"
+              "vfio_iommu_type1"
+            ]
+          }
               ;;
-
             "release")
-              modprobe -r vfio_pci
-              modprobe -r vfio_iommu_type1
-              modprobe -r vfio
+          ${
+            concatMapStringsSep "\n" (module: "modprobe -r ${module}") [
+              "vfio-pci"
+              "vfio_iommu_type1"
+              "vfio"
+            ]
+          }
 
               ${concatMapStringsSep "\n" (device: "virsh nodedev-reattach ${device}") cfg.devices}
 
@@ -170,41 +155,20 @@ in {
             then ''
               modprobe amdgpu
             ''
-            else builtins.throw "Unable to detect GPU! Are you using nouveau?"
+            else builtins.throw "Unable to detect GPU!"
           }
 
-              ${
-            if config.hardware.nvidia.nvidiaPersistenced
-            then "systemctl start nvidia-persistenced.service"
-            else ""
-          }
+              ${optionalString config.hardware.nvidia.nvidiaPersistenced "systemctl start nvidia-persistenced"}
+
               # TODO: handle cases where this isn't applicable, like sddm
               # and gdm
               systemctl start display-manager.service
 
-              ${
-            if cfg.optimize.enable
-            then toOptimize cfg.optimize.topography
-            else ""
-          }
+              ${optionalString cfg.optimize.enable (toOptimize cfg.optimize.topography)}
               ;;
           esac
         '';
       });
     };
-
-    # FIXME: pkexec is dumb, but this won't work either because we're using qemu:///system
-    environment.systemPackages = mkIf cfg.desktopEntry [
-      (pkgs.makeDesktopItem
-        {
-          desktopName = cfg.guest;
-          name = "reboot-to-passthrough-guest";
-          icon =
-            if hasInfix "win" (toLower cfg.guest)
-            then "distributor-logo-windows"
-            else "computer";
-          exec = "virsh start ${cfg.guest}";
-        })
-    ];
   };
 }
