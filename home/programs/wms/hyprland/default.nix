@@ -1,8 +1,15 @@
 {
   config,
   inputs,
+  lib,
+  osConfig,
   ...
-}: {
+}: let
+  inherit (builtins) elem;
+  inherit (lib.modules) mkIf;
+  cfg = osConfig.nice.host;
+  gpu = cfg.gpu;
+in {
   imports = [
     inputs.hyprland.homeManagerModules.default
     ./config
@@ -112,6 +119,14 @@
 
         # for some reason it was set to false
         vfr = true;
+      };
+
+      # https://github.com/hyprwm/Hyprland/issues/7230
+      # the default is 2, and it should disable it for nvidia gpu's... but it doesn't
+      # so we have to explicitly disable it - shut up, it's not funny
+      render = mkIf (elem "nvidia" gpu) {
+        explicit_sync = 0;
+        explicit_sync_kms = 0;
       };
     };
   };
