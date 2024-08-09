@@ -1,11 +1,9 @@
 {
   lib,
   pkgs,
-  self,
   ...
 }: {
   imports = [
-    self.nixosModules.gpu-pass
     ./fs
   ];
 

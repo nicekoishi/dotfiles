@@ -25,7 +25,6 @@ deaf from loud music (I should really turn down the volume).
 
 -   [flake](flake): modular flake.nix thanks to
     [flake-parts](https://github.com/hercules-ci/flake-parts)
-    -   [modules](flake/modules): collection of useful modules you may want to use.
     -   [packages](flake/pkgs): collection of useless packages that no one would
         ever use.
 -   [home](home): [home-manager](https://github.com/nix-community/home-manager)
