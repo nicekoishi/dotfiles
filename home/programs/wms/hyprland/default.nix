@@ -80,6 +80,12 @@ in {
         };
       };
 
+      device = {
+        name = "wacom-one-by-wacom-s-pen";
+        accel_profile = "flat";
+        left_handed = true;
+      };
+
       general = {
         gaps_in = 4;
         gaps_out = 8;
@@ -88,7 +94,7 @@ in {
         #"col.inactive_border" = "0xff89dceb";
 
         no_border_on_floating = false;
-        apply_sens_to_raw = 0;
+        apply_sens_to_raw = false;
       };
 
       input = {
