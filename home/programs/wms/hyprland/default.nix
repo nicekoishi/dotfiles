@@ -5,10 +5,14 @@
   osConfig,
   ...
 }: let
-  inherit (builtins) elem;
+  inherit (builtins) elem toString;
+  inherit (lib.attrsets) mapAttrsToList;
   inherit (lib.modules) mkIf;
-  cfg = osConfig.nice.host;
-  gpu = cfg.gpu;
+  inherit (lib.strings) concatStringsSep;
+
+  cfg = osConfig.nice;
+  usr = cfg.user;
+  host = cfg.host;
 in {
   imports = [
     inputs.hyprland.homeManagerModules.default
@@ -24,7 +28,17 @@ in {
     };
 
     settings = {
-      monitor = ["HDMI-A-1, 1920x1080, 0x0, 1"];
+      # monitor = ["HDMI-A-1, 1920x1080, 0x0, 1"];
+      # TODO: do we really need that many toString 's?
+      # what the heck is this ugly thing
+      monitor = mapAttrsToList (name: opts:
+        concatStringsSep "," [
+          name
+          "${toString opts.width}x${toString opts.height}@${toString opts.refreshRate}"
+          "${toString opts.pos.x}x${toString opts.pos.y}"
+          "1"
+        ])
+      usr.monitors;
 
       env = [
         "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
@@ -130,7 +144,7 @@ in {
       # https://github.com/hyprwm/Hyprland/issues/7230
       # the default is 2, and it should disable it for nvidia gpu's... but it doesn't
       # so we have to explicitly disable it - shut up, it's not funny
-      render = mkIf (elem "nvidia" gpu) {
+      render = mkIf (elem "nvidia" host.gpu) {
         explicit_sync = 0;
         explicit_sync_kms = 0;
       };

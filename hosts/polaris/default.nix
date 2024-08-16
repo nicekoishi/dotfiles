@@ -29,7 +29,17 @@
       };
     };
 
-    user.home-manager = true;
+    user = {
+      monitors = {
+        "HDMI-A-1" = {
+          main = true;
+          width = 1920;
+          height = 1080;
+        };
+      };
+
+      home-manager = true;
+    };
   };
 
   networking = {
