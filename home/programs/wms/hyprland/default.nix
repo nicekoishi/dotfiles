@@ -108,7 +108,6 @@ in {
         #"col.inactive_border" = "0xff89dceb";
 
         no_border_on_floating = false;
-        apply_sens_to_raw = false;
       };
 
       input = {
