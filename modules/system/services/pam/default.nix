@@ -11,6 +11,5 @@
   in {
     login = {} // gpgKeyring;
     greetd = {} // gpgKeyring;
-    tuigreet = {} // gpgKeyring;
   };
 }
