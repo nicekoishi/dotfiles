@@ -1,22 +1,28 @@
 .workspaces {
-  padding: 0.125em;
+  background: transparent;
 
   button {
     @include barModule;
 
-    margin: 3px 3px;
+    margin: 5px 3px;
     min-width: 0.6rem;
     min-height: 0.6rem;
+    padding: 6px 0;
 
     background: $surface;
-    border-radius: 0.5em;
+    border-radius: 99px;
 
     &:hover {
       background: $lavender;
     }
 
     &.focused {
+      border-radius: 14px;
       background: $red;
+    }
+
+    &.urgent {
+      background: red;
     }
   }
 }

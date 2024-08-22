@@ -1,26 +1,42 @@
-/* how did I take so long to find this out? 
-menu is in the global scope, so this does the trick
- */
-
+/* gtk docs ftw */
 * {
   & > menu {
     @include barModule;
+
+    separator {
+      background-color: $red;
+    }
+
+    menuitem {
+      * {
+        padding: 2px;
+      }
+
+      &:hover {
+        background-color: $lavender;
+        border-radius: 8px;
+      }
+
+      label {
+        margin: 4px;
+      }
+    }
   }
 }
 
 .tray {
-  margin: 1.5px 0 0 0;
+  margin: 0 0 1.5px 0;
 }
 
-.trayIcon {
+.trayItem {
   @include barModule;
   padding: 0;
-  margin: 0 3px 0 3px;
+  margin: 4px 4px;
 }
 
 .trayIcons {
   @include barModule;
-  margin-top: 6px;
+  margin-left: 6px;
   padding: 6px 6px;
   border-radius: 0.5em;
 }

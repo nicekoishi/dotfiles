@@ -1,9 +1,8 @@
 .clock {
-  background: $surfaceVariant;
-  color: $onPrimary;
+  @include barModule;
   font-family: $monoFont;
   font-weight: 800;
   border-radius: 0.5em;
-  margin: 0.375em 0.25em;
+  margin: 4px 4px;
   padding: 0.375em;
 }

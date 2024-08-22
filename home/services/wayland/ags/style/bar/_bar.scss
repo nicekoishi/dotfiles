@@ -7,8 +7,8 @@
 // end
 @import "modules/date";
 @import "modules/volume";
-@import "modules/network";
 @import "modules/tray";
+@import "modules/menu";
 
 .bar {
   @include barWindow;
