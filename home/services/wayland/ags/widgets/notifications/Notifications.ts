@@ -5,9 +5,10 @@ const { lookUpIcon, timeout } = Utils;
 function NotificationIcon({ app_entry, app_icon, image }) {
     if (image) {
         return Box({
+            vpack: "start",
             css:
                 `background-image: url("${image}");` +
-                "background-size: contain;" +
+                "background-size: cover;" +
                 "background-repeat: no-repeat;" +
                 "background-position: center;",
         });
@@ -110,7 +111,7 @@ export default (monitor = 0) => {
     function onNotified(_: any, id: number) {
         const n = Notifications.getNotification(id);
         if (n)
-            list.children = [Notification(n), ...list.children];
+            list.children = [...list.children, Notification(n)];
         // https://github.com/TheAyes
         let time: number = -1;
         switch (n?.urgency) {
