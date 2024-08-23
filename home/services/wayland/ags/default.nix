@@ -50,7 +50,8 @@
 
     cp -r ${agsSrc}/assets $out/
 
-    sass --verbose --style compressed --no-source-map \
+    sass --verbose \
+      --no-source-map \
       ${agsSrc}/style/main.scss \
       $out/style.css
 

@@ -13,9 +13,10 @@ in
       (writeShellScriptBin "compile-stylesheet" ''
         mkdir -p $out
         ${dart-sass}/bin/sass --verbose \
-          --style compressed \
           --no-source-map \
-          ./style/main.scss > $out/style.css
+          ./style/main.scss > ./style.css
+
+        cp ./style.css $out/style.css
 
         sed -i "s|style: \"style.css\"|style: \"$out/style.css\"|" $out/style.css
       '')

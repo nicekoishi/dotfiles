@@ -1,4 +1,5 @@
 .nix-menu {
-  @include barModule;
-  padding: 14px 0;
+    @include barModule;
+    @include iconSpin;
+    padding: 14px 0;
 }
