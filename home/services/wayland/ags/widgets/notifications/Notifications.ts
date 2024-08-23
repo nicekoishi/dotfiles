@@ -152,5 +152,21 @@ export default (monitor = 0) => {
             vertical: true,
             child: list,
         }),
+
+        /* HACK: I hate myself for doing this, pls send help */
+        setup: (self) => {
+            self.hook(
+                Notifications,
+                () => {
+                    timeout(30, () => {
+                        App.applyCss(" .notifications { padding: unset; } ");
+                    });
+                    timeout(62, () => {
+                        App.applyCss(" .notifications { padding: 4px 0; } ");
+                    });
+                },
+                "notified",
+            );
+        },
     });
 };
