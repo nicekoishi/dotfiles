@@ -236,6 +236,7 @@ tooltip {
   border-radius: calc(12px + 2px);
   margin: 5px 5px 5px 12px;
   min-width: 25rem;
+  min-height: 6rem;
   background-color: #1e1e2e;
   color: #cdd6f4;
 }

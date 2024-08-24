@@ -44,13 +44,16 @@ function Notification(n: any) {
         label: n.summary,
         useMarkup: true,
     });
-    const scroll = (widget) =>
+
+    // FIXME: Viewport size too small, and it's unnecessary sometimes.
+    // If bottom anchor is added, the window grabs input of half the screen
+    const scroll = (w: any) =>
         Scrollable({
             className: "notification-scrollable",
             hscroll: "never",
             vscroll: "always",
             css: "min-width: 0.4em; min-height: 2em;",
-            child: widget,
+            child: w,
         });
 
     const body = Label({
@@ -99,8 +102,7 @@ function Notification(n: any) {
 
                         setup: (self) => {
                             if (n.body.length > 0) {
-                                // NOTE: Isn't this too high, or maybe it's enough?
-                                if (n.body.length > 240)
+                                if (n.body.length > 140)
                                     self.children = [title, scroll(body)];
                                 else
                                     self.children = [title, body];
@@ -158,8 +160,7 @@ export default (monitor = 0) => {
         monitor,
         name: `notifications${monitor}`,
         className: "notifications",
-        exclusivity: "normal",
-        anchor: ["top", "right", "bottom"],
+        anchor: ["top"],
         margins: [4, 4, 4, 4],
         child: Box({
             css: "padding: 1px;",
