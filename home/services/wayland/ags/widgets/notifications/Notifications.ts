@@ -45,14 +45,12 @@ function Notification(n: any) {
         useMarkup: true,
     });
 
-    // FIXME: Viewport size too small, and it's unnecessary sometimes.
-    // If bottom anchor is added, the window grabs input of half the screen
     const scroll = (w: any) =>
         Scrollable({
             className: "notification-scrollable",
             hscroll: "never",
             vscroll: "always",
-            css: "min-width: 0.4em; min-height: 2em;",
+            css: "min-width: 0.75em; min-height: 3em;",
             child: w,
         });
 
@@ -61,6 +59,7 @@ function Notification(n: any) {
         hexpand: true,
         useMarkup: true,
         xalign: 0,
+        yalign: 0,
         justification: "left",
         label: n.body,
         wrap: true,
@@ -163,7 +162,8 @@ export default (monitor = 0) => {
         anchor: ["top"],
         margins: [4, 4, 4, 4],
         child: Box({
-            css: "padding: 1px;",
+            // nasty, it's to avoid clipping
+            css: "padding: 1px 1px 12px 1px;",
             className: "notifications",
             vertical: true,
             child: list,
