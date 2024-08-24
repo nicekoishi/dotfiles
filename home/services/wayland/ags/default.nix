@@ -78,8 +78,7 @@ in {
     Unit = {
       Description = "Aylur's Gtk Shell";
       PartOf = [
-        "tray.target"
-        "graphical-session.target"
+        "hyprland-session.target"
       ];
     };
     Service = {
