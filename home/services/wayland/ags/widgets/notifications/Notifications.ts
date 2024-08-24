@@ -1,5 +1,5 @@
 const Notifications = await Service.import("notifications");
-const { Box, Button, EventBox, Icon, Label, Window } = Widget;
+const { Box, Button, EventBox, Icon, Label, Scrollable, Window } = Widget;
 const { lookUpIcon, timeout } = Utils;
 
 function NotificationIcon({ app_entry, app_icon, image }) {
@@ -44,6 +44,15 @@ function Notification(n: any) {
         label: n.summary,
         useMarkup: true,
     });
+    const scroll = (widget) =>
+        Scrollable({
+            className: "notification-scrollable",
+            hscroll: "never",
+            vscroll: "always",
+            css: "min-width: 0.4em; min-height: 2em;",
+            child: widget,
+        });
+
     const body = Label({
         className: "body",
         hexpand: true,
@@ -89,10 +98,15 @@ function Notification(n: any) {
                         vpack: "center",
 
                         setup: (self) => {
-                            if (n.body.length > 0)
-                                self.children = [title, body];
-                            else
+                            if (n.body.length > 0) {
+                                // NOTE: Isn't this too high, or maybe it's enough?
+                                if (n.body.length > 240)
+                                    self.children = [title, scroll(body)];
+                                else
+                                    self.children = [title, body];
+                            } else {
                                 self.children = [title];
+                            }
                         },
                     }),
                 ],
@@ -144,29 +158,14 @@ export default (monitor = 0) => {
         monitor,
         name: `notifications${monitor}`,
         className: "notifications",
-        anchor: ["top", "right"],
-        margins: [4, 4, 4, 0],
+        exclusivity: "normal",
+        anchor: ["top", "right", "bottom"],
+        margins: [4, 4, 4, 4],
         child: Box({
             css: "padding: 1px;",
             className: "notifications",
             vertical: true,
             child: list,
         }),
-
-        /* HACK: I hate myself for doing this, pls send help */
-        setup: (self) => {
-            self.hook(
-                Notifications,
-                () => {
-                    timeout(30, () => {
-                        App.applyCss(" .notifications { padding: unset; } ");
-                    });
-                    timeout(62, () => {
-                        App.applyCss(" .notifications { padding: 4px 0; } ");
-                    });
-                },
-                "notified",
-            );
-        },
     });
 };
