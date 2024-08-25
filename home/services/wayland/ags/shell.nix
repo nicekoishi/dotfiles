@@ -8,6 +8,8 @@ in
       # eslint setup
       nodePackages.pnpm
 
+      # the following scripts are always run using pnpm, so they should always run in the base path
+
       # compiling the stylesheets, pretty cool tbh
       dart-sass
       (writeShellScriptBin "compile-stylesheet" ''
@@ -23,15 +25,17 @@ in
       # this will run after compile-stylesheet, and its just for testing anyway
       (writeShellScriptBin "build-ags-config" ''
         mkdir -p $out
+        cp -r ./assets $out/assets
+
         ${bun}/bin/bun build ./config.ts \
-          --public-path "$@" \
+          --public-path . \
           --target bun \
           --external "resource://*" \
           --external "gi://*" \
           --external "file://*" \
           --outfile $out/config.js
 
-        sed -i "s|App.addIcons(\"assets\")|App.addIcons("\"${./assets}"\")|" $out/config.js
+        sed -i "s|App.addIcons(\"assets\")|App.addIcons("\"$out/assets"\")|" $out/config.js
       '')
     ];
   }

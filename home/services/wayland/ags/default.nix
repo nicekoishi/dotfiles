@@ -47,7 +47,6 @@
 
   agsConfig = pkgs.runCommand "build-ags-configuration" {nativeBuildInputs = [pkgs.bun pkgs.dart-sass];} ''
     mkdir -p $out
-
     cp -r ${agsSrc}/assets $out/
 
     sass --verbose \

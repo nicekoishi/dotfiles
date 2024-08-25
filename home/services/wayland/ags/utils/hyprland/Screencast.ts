@@ -1,7 +1,5 @@
 import Icons from "utils/Icons";
 
-const PowerProfiles = await Service.import("powerprofiles");
-
 /* TODO: screencast event returns a string state, owner and maybe I should send a PR */
 /* but the quality of this code is... Well, if it works it works */
 export default (self: any, name: string, data: string) => {
@@ -16,7 +14,7 @@ export default (self: any, name: string, data: string) => {
         switch (sc.state) {
             case "1":
                 self.toggleClassName("speen", false);
-                self.attribute.screencast = true;
+                self.attribute = { ...self.attribute, screencast: true };
 
                 if (sc.owner == "0")
                     self.icon = Icons.wm.screencast.monitor;
@@ -24,11 +22,8 @@ export default (self: any, name: string, data: string) => {
                     self.icon = Icons.wm.screencast.window;
                 break;
             case "0":
-                self.attribute.screencast = false;
+                self.attribute = { ...self.attribute, screencast: false };
                 self.icon = Icons.nix;
-
-                if (PowerProfiles.active_profile == "performance")
-                    self.toggleClassName("speen", true);
                 break;
         }
     }

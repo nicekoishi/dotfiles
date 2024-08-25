@@ -1,3 +1,6 @@
+/* There's a script that resolves this path to the final one, but it should be ../assets */
+App.addIcons("assets");
+
 export default {
     nix: "nix-snowflake-white-symbolic",
     audio: {

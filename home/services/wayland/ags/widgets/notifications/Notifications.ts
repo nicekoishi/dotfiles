@@ -2,6 +2,12 @@ const Notifications = await Service.import("notifications");
 const { Box, Button, EventBox, Icon, Label, Scrollable, Window } = Widget;
 const { lookUpIcon, timeout } = Utils;
 
+Object.assign(Notifications, {
+    popupTimeout: 5000,
+    forceTimeout: false,
+    cacheAction: true,
+});
+
 function NotificationIcon({ app_entry, app_icon, image }) {
     if (image) {
         return Box({
