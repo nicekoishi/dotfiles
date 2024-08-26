@@ -1,0 +1,30 @@
+[
+  {
+    "aliases": ["NIKKE"],
+    "hook": true,
+    "id": "1266919642341970020",
+    "name": "NIKKE",
+    "executables": [
+      {
+        "is_launcher": false,
+        "name": "nikke.exe",
+        "os": "win32"
+      },
+      {
+        "is_launcher": false,
+        "name": "game/nikke.exe",
+        "os": "win32"
+      },
+      {
+        "is_launcher": false,
+        "name": "nikke/game/nikke.exe",
+        "os": "win32"
+      },
+      {
+        "is_launcher": false,
+        "name": "nikke/nikke/game/nikke.exe",
+        "os": "win32"
+      }
+    ]
+  }
+]

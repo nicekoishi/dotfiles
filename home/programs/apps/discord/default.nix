@@ -16,7 +16,7 @@ in {
     enable = true;
     package = pkgs.arrpc.overrideAttrs (prev: {
       pname = "arrpc";
-      version = "3.4.0";
+      version = "3.4.0-uoogh";
 
       src = pkgs.fetchFromGitHub {
         owner = "OpenAsar";
@@ -25,10 +25,13 @@ in {
         hash = "sha256-wIRr+LnOp9PW7v5xOqpdB6AjqINBlYFkoGRorYkRC2I=";
       };
 
-      # TODO: add detectable.json patch
-      patches =
-        (prev.patches or [])
-        ++ [];
+      # add custom detectables to detectable.json
+      buildPhase =
+        (prev.buildPhase or "")
+        + ''
+          ${pkgs.jq}/bin/jq -c '. += input' src/process/detectable.json ${./custom-games.json} > detectable-custom.json
+          mv detectable-custom.json src/process/detectable.json
+        '';
     });
   };
 }
