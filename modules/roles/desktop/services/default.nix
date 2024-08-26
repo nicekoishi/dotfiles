@@ -8,5 +8,6 @@
 
     ./geoclue.nix
     ./systemd.nix
+    ./xdg-desktop-portal.nix
   ];
 }

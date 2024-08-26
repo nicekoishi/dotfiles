@@ -11,7 +11,7 @@
     host = {
       cpu = "amd";
       gpu = ["nvidia"];
-      environments = ["hyprland" "gnome"];
+      environments = ["hyprland"];
       waylandReady = true;
 
       kernel = pkgs.linuxPackages_cachyos;
