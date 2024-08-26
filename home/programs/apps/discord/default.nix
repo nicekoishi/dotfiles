@@ -21,8 +21,8 @@ in {
       src = pkgs.fetchFromGitHub {
         owner = "OpenAsar";
         repo = "arrpc";
-        rev = "c62ec6a04c8d870530aa6944257fe745f6c59a24";
-        hash = "sha256-wIRr+LnOp9PW7v5xOqpdB6AjqINBlYFkoGRorYkRC2I=";
+        rev = "3898488be9de93165fe05b3077154e0f0d946894";
+        hash = "sha256-aTDSHgovPMWIwbmKEl0JelEqX8QKDRiMOom04T/vMOk=";
       };
 
       # add custom detectables to detectable.json
