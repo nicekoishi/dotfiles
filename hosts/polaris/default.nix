@@ -61,17 +61,17 @@
 
     networks = {
       "10-network-eth" = {
-        matchConfig.type = "en*";
+        matchConfig.Type = "en*";
         networkConfig = {
           DHCP = true;
           IPv6AcceptRA = true;
           IPv4Forwarding = true;
           IPv6Forwarding = true;
-          IPMasquerade = true;
+          IPMasquerade = "both";
         };
       };
       "20-network-wlan" = {
-        matchConfig.type = "wlan";
+        matchConfig.Type = "wlan";
         linkConfig.Unmanaged = true;
       };
     };
