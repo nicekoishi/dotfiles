@@ -42,9 +42,6 @@
       "float, Viewnior"
       "float, viewnior"
       "float, org.kde.dolphin"
-
-      # thunar opacity
-      # "opacity 0.98, thunar"
     ];
 
     windowrulev2 = [
@@ -55,6 +52,8 @@
 
       # shadows for floating only
       "noshadow, floating:0"
+
+      "float, class:^(xdg-desktop-portal-.*)$"
 
       # allow tearing in games
       #"immediate, class:^(osu\!|cs2)$"
@@ -104,10 +103,6 @@
       "workspace 6 silent, class:^(virt-manager)$"
 
       "workspace special:thunderbird silent, initialclass:^(thunderbird)$"
-    ];
-
-    workspace = [
-      "5, border:false, rounding:false"
     ];
   };
 }
