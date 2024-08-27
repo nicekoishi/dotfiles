@@ -15,7 +15,7 @@
       "system.slice"
       "init.scope"
     ];
-  cfg = config.nice.modules.gpu-pass;
+  cfg = config.nice.modules.extra.gpu-pass;
 in {
   options.nice.modules.extra.gpu-pass = {
     enable = mkEnableOption "gpu-pass, for gpu passthrough";
