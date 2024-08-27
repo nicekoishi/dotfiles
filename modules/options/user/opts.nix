@@ -7,12 +7,20 @@
   inherit (lib.lists) count optionals;
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.strings) concatStringsSep;
-  inherit (lib.types) attrsOf int submodule;
+  inherit (lib.types) attrsOf enum int listOf nullOr submodule;
 
-  cfg = config.nice.user;
+  cfg = config.nice.modules.user;
 in {
-  options.nice.user = {
-    home-manager =
+  options.nice.modules.user = {
+    environments = mkOption {
+      type = nullOr (listOf (enum [
+        "hyprland"
+        "gnome"
+      ]));
+      default = null;
+    };
+
+    home-manager.enable =
       mkEnableOption ""
       // {
         description = "Manage a user environment using Nix";

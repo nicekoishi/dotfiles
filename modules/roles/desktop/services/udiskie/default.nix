@@ -5,9 +5,10 @@
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.nice.user;
+  cfg = config.nice.modules;
+  usr = cfg.user;
 in {
-  config = mkIf cfg.home-manager {
+  config = mkIf usr.home-manager.enable {
     services.udisks2.enable = true;
     home-manager.users.supeen = {
       services.udiskie.enable = true;

@@ -7,7 +7,8 @@
   inherit (builtins) elem;
   inherit (lib.modules) mkIf;
 
-  cfg = config.nice.host;
+  cfg = config.nice.modules;
+  dev = cfg.host;
 
   nvPackage = config.boot.kernelPackages.nvidiaPackages.mkDriver {
     version = "560.35.03";
@@ -18,7 +19,7 @@
     persistencedSha256 = "sha256-E2J2wYYyRu7Kc3MMZz/8ZIemcZg68rkzvqEwFAL3fFs=";
   };
 in {
-  config = mkIf (elem "nvidia" cfg.gpu) {
+  config = mkIf (elem "nvidia" dev.gpu) {
     boot = {
       blacklistedKernelModules = ["i2c_nvidia_gpu" "nouveau"];
       kernelParams = [

@@ -4,9 +4,12 @@
   pkgs,
   ...
 }: let
+  inherit (builtins) elem;
   inherit (lib.attrsets) optionalAttrs;
 
-  nvidiaGpu = builtins.elem "nvidia" osConfig.nice.host.gpu;
+  cfg = osConfig.nice.modules;
+  dev = cfg.host;
+  nvidiaGpu = elem "nvidia" dev.gpu;
 in {
   imports = [./settings];
 

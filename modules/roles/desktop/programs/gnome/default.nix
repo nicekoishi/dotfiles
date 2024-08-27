@@ -5,9 +5,11 @@
 }: let
   inherit (builtins) elem;
   inherit (lib.modules) mkIf;
-  cfg = config.nice.host;
+
+  cfg = config.nice.modules;
+  usr = cfg.user;
 in {
-  config = mkIf (elem "gnome" cfg.environments) {
+  config = mkIf (elem "gnome" usr.environments) {
     services.xserver = {
       enable = true;
 

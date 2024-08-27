@@ -17,7 +17,7 @@
     ];
   cfg = config.nice.modules.gpu-pass;
 in {
-  options.nice.modules.gpu-pass = {
+  options.nice.modules.extra.gpu-pass = {
     enable = mkEnableOption "gpu-pass, for gpu passthrough";
 
     devices = mkOption {

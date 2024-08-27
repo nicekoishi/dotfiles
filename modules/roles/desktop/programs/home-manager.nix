@@ -9,10 +9,11 @@
   lib = inputs.home-manager.lib // self.lib;
   inherit (lib.modules) mkIf;
 
-  cfg = config.nice.user;
+  cfg = config.nice.modules;
+  usr = cfg.user;
   specialArgs = {inherit lib inputs self inputs' self';};
 in {
-  home-manager = mkIf cfg.home-manager {
+  home-manager = mkIf usr.home-manager.enable {
     # keep yapping
     verbose = true;
 

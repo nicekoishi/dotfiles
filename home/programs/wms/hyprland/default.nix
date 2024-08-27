@@ -10,9 +10,9 @@
   inherit (lib.modules) mkIf mkMerge;
   inherit (lib.strings) concatStringsSep;
 
-  cfg = osConfig.nice;
+  cfg = osConfig.nice.modules;
   usr = cfg.user;
-  host = cfg.host;
+  dev = cfg.host;
 in {
   imports = [
     inputs.hyprland.homeManagerModules.default
@@ -145,7 +145,7 @@ in {
         # the default is 2, and it should disable it for nvidia gpu's... but it doesn't
         # so we have to explicitly disable it - shut up, it's not funny
       }
-      (mkIf (elem "nvidia" host.gpu) {
+      (mkIf (elem "nvidia" dev.gpu) {
         cursor.allow_dumb_copy = true;
         render = {
           explicit_sync = 0;

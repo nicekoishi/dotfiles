@@ -7,10 +7,11 @@
   inherit (lib.modules) mkIf mkMerge;
   inherit (lib.strings) versionAtLeast versionOlder;
 
-  cfg = config.nice.host;
+  cfg = config.nice.modules;
+  dev = cfg.host;
   kver = config.boot.kernelPackages.kernel.version;
 in {
-  config = mkIf (cfg.cpu == "amd") {
+  config = mkIf (dev.cpu == "amd") {
     environment.systemPackages = [pkgs.amdctl];
 
     hardware.cpu.amd.updateMicrocode = true;

@@ -10,7 +10,8 @@
   inherit (lib.modules) mkIf;
   inherit (lib.strings) toLower;
 
-  cfg = config.nice.host;
+  cfg = config.nice.modules;
+  usr = cfg.user;
   hyprlandPkg = inputs'.hyprland.packages.hyprland;
 
   /*
@@ -35,7 +36,7 @@ in {
   # doesn't matter, as we're not using it anyway if it's not enabled
   disabledModules = ["programs/hyprland"];
 
-  config = mkIf (elem "hyprland" cfg.environments) {
+  config = mkIf (elem "hyprland" usr.environments) {
     # now I can safely do this, as we're enabling all the necessary options manually
 
     # we don't need it, as the session entry can launch it directly

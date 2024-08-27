@@ -4,9 +4,11 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  cfg = config.nice.host;
+
+  cfg = config.nice.modules;
+  dev = cfg.host;
 in {
-  config = mkIf cfg.waylandReady {
+  config = mkIf dev.waylandReady {
     environment.variables = {
       NIXOS_OZONE_WL = "1";
       _JAVA_AWT_WM_NONEREPARENTING = "1";

@@ -4,23 +4,15 @@
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkMerge;
+  # inherit (lib.modules) mkMerge;
   inherit (lib.options) mkOption;
-  inherit (lib.types) bool enum listOf nullOr;
+  inherit (lib.types) bool;
 
-  cfg = config.nice.host;
+  cfg = config.nice.modules.host;
 in {
-  options.nice.host = {
+  options.nice.modules.host = {
     kernel = mkOption {
       default = pkgs.linuxPackages_zen;
-    };
-
-    environments = mkOption {
-      type = nullOr (listOf (enum [
-        "hyprland"
-        "gnome"
-      ]));
-      default = null;
     };
 
     waylandReady = mkOption {
