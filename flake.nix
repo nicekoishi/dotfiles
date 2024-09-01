@@ -61,6 +61,11 @@
       inputs.hyprland.follows = "hyprland";
     };
 
+    hyprpaper = {
+      url = "github:hyprwm/hyprpaper";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     neovim-flake = {
       url = "github:NotAShelf/neovim-flake";
       inputs.nixpkgs.follows = "nixpkgs";
