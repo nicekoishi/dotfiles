@@ -46,7 +46,7 @@ in {
 
   services = {
     # in case my isp fucks up again, don't want to use it ever again
-    #cloudflare-warp.enable = true;
+    cloudflare-warp.enable = true;
     resolved = {
       enable = true;
       dnssec = "false";
