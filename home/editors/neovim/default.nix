@@ -179,6 +179,8 @@
       treesitter = {
         fold = true;
         context.enable = true;
+        # https://github.com/NotAShelf/nvf/issues/368#issuecomment-2316514657
+        addDefaultGrammars = false;
       };
 
       ui = {
