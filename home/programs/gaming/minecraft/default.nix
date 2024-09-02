@@ -31,8 +31,6 @@ in {
         mangohud
         #jprofiler failing to build because of some sha256 mismatch.
       ];
-
-      glfw = pkgs.glfw-wayland-minecraft;
     in [
       (pkgs.prismlauncher.override {
         # this entire file was copy pasted from raf
@@ -40,10 +38,6 @@ in {
         # also, wtf do i need multiple versions of java for this...
         inherit jdks;
         inherit additionalPrograms;
-
-        # so this is how we run minecraft natively on wayland...
-        # i may be stupid
-        inherit glfw;
       })
     ];
   };
