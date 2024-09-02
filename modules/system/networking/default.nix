@@ -5,6 +5,7 @@ in {
     # TODO: maybe avahi shouldn't be available to all roles?
     ./avahi
     ./firewall
+    ./ssh
     ./tailscale
   ];
 
@@ -52,23 +53,6 @@ in {
       dnssec = "false";
       dnsovertls = "opportunistic";
       fallbackDns = ["9.9.9.9"];
-    };
-
-    openssh = {
-      enable = true;
-      openFirewall = true;
-      startWhenNeeded = true;
-      settings = {
-        PermitRootLogin = lib.mkForce "no";
-
-        # pub key auth
-        PasswordAuthentication = false;
-        AuthenticationMethods = "publickey";
-        PubkeyAuthentication = "yes";
-        ChallengeResponseAuthentication = "no";
-        # why some are booleans and other are yes or no i wonder...
-        UsePAM = false;
-      };
     };
   };
 

@@ -1,6 +1,7 @@
 {
   perSystem = {
     config,
+    inputs',
     pkgs,
     ...
   }: {
@@ -19,6 +20,8 @@
 
         # omg this is so cool
         config.treefmt.build.wrapper
+
+        inputs'.agenix.packages.default
 
         # nix
         alejandra

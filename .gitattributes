@@ -1,0 +1,6 @@
+*.envrc
+*.lock -diff
+
+*.age binary
+*.age linguist-detectable=false
+*.age linguist-documentation=false

@@ -6,8 +6,10 @@
   inherit (inputs.self) lib;
   inherit (lib.nice) mkNixosSystem mkNixosIso mkModulesFor;
 
-  mkModulesFor' = mkModulesFor ./. [system options];
+  mkModulesFor' = mkModulesFor ./. [secrets system options];
+
   hm = inputs.home-manager.nixosModules.default;
+  secrets = inputs.agenix.nixosModules.default;
 
   # core modules definition
   modulePath = ../modules;

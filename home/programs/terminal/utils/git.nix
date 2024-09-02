@@ -7,7 +7,7 @@
     ignores = ["*~" "node_modules" "target"];
     signing = {
       signByDefault = true;
-      key = "9F726CE991F7ACD8";
+      key = "FDD4A13AE926A114";
     };
 
     userName = "Lucas Portela";
