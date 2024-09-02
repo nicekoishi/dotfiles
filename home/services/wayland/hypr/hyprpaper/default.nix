@@ -1,8 +1,9 @@
-let
+{inputs', ...}: let
   wallpaper = ./wallpaper.png;
 in {
   services.hyprpaper = {
     enable = true;
+    package = inputs'.hyprpaper.packages.hyprpaper;
     settings = {
       ipc = "off";
 
