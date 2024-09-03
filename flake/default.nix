@@ -7,6 +7,7 @@
     ./lib
     ./modules
     ./pkgs
+    ./templates
 
     inputs.treefmt-nix.flakeModule
   ];
