@@ -49,9 +49,13 @@
         remove_art_file = true;
       };
 
+      fetchart = {
+        auto = true;
+        maxwidth = 1200; # this makes mpd lag when art is too big i.e >1200px
+      };
+
       acousticbrainz.auto = true;
       chroma.auto = true;
-      fetchart.auto = true;
       lyrics.auto = true;
       replaygain.backend = "gstreamer";
       thumbnails.auto = true;
