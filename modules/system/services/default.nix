@@ -7,5 +7,6 @@
 
     ./dbus.nix
     ./fs.nix
+    ./zram.nix
   ];
 }

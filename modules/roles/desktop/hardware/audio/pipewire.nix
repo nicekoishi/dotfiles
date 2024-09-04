@@ -84,5 +84,6 @@ in {
     };
   };
 
+  security.rtkit.enable = true;
   hardware.pulseaudio.enable = lib.mkForce false;
 }

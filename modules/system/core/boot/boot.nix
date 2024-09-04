@@ -1,5 +1,16 @@
-{self', ...}: {
+{
+  config,
+  lib,
+  ...
+}: let
+  inherit (lib.modules) mkDefault mkForce;
+
+  cfg = config.nice.modules;
+  host = cfg.host;
+in {
   boot = {
+    consoleLogLevel = 3;
+
     initrd = {
       verbose = false;
       systemd.enable = true;
@@ -8,19 +19,13 @@
 
     loader = {
       efi.canTouchEfiVariables = true;
-      timeout = 2; # see configurationLimit
-      systemd-boot = {
-        enable = true;
-        configurationLimit = null; # had a sad experience with a broken initrd earlier, let's keep this on
-        consoleMode = "max";
-      };
+      timeout = mkForce 2; # see configurationLimit
     };
 
-    consoleLogLevel = 3;
-    # notashelf/nyx
-    kernelParams = [
-      # useful stuff
+    kernelPackages = mkDefault host.kernel;
 
+    # https://github.com/NotAShelf/nyx/blob/d407b4d6e5ab7f60350af61a3d73a62a5e9ac660/modules/core/common/system/os/boot/generic.nix#L127
+    kernelParams = [
       /*
          CPU idle behaviour
       poll: slightly improve performance at cost of a hotter system (not recommended)
@@ -53,11 +58,5 @@
       "systemd-show_status=auto"
       "rd.systemd.show_status=auto"
     ];
-
-    plymouth = {
-      enable = true;
-      theme = "funny-plymouth";
-      themePackages = [self'.packages.funny-plymouth];
-    };
   };
 }
