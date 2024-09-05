@@ -5,14 +5,37 @@
   osConfig,
   ...
 }: let
-  inherit (builtins) elem toString;
-  inherit (lib.attrsets) mapAttrsToList;
+  inherit (builtins) elem elemAt toString;
+  inherit (lib.attrsets) attrValues filterAttrs mapAttrsToList;
   inherit (lib.modules) mkIf mkMerge;
   inherit (lib.strings) concatStringsSep;
 
   cfg = osConfig.nice.modules;
   usr = cfg.user;
   dev = cfg.host;
+
+  # FIXME: this function wasn't properly tested at all, but it should work
+  mkHyprlandPosition = opts: let
+    main = filterAttrs (_: mon: mon.main) usr.monitors;
+    reference = elemAt (attrValues main) 0;
+
+    posX =
+      if (opts.pos == "right")
+      then "${toString reference.width}"
+      else if (opts.pos == "left")
+      then "${toString (-reference.width)}"
+      else "0";
+    posY =
+      if (opts.pos == "top")
+      then "${toString (-reference.height)}"
+      else if (opts.pos == "bottom")
+      then "${toString reference.height}"
+      else "0";
+  in
+    # just return a set value if it's main, no need to keep evaluating
+    if opts.main
+    then "0x0"
+    else "${posX}x${posY}";
 in {
   imports = [
     inputs.hyprland.homeManagerModules.default
@@ -36,8 +59,8 @@ in {
           concatStringsSep "," [
             name
             "${toString opts.width}x${toString opts.height}@${toString opts.refreshRate}"
-            "${toString opts.pos.x}x${toString opts.pos.y}"
-            "1"
+            (mkHyprlandPosition opts)
+            "${toString opts.scale}"
           ])
         usr.monitors;
 

@@ -53,18 +53,17 @@ in {
             default = 60;
           };
 
-          # TODO: if not specified, this will definitely cause a conflict
-          # can an assertion help here? or just don't be stupid?
-          pos = {
-            x = mkOption {
-              type = int;
-              default = 0;
-            };
+          pos = mkOption {
+            type = nullOr (enum ["top" "right" "bottom" "left"]);
+            default = null;
+            description = ''
+              Used in a multi-monitor setup to properly position them.
+            '';
+          };
 
-            y = mkOption {
-              type = int;
-              default = 0;
-            };
+          scale = mkOption {
+            type = int;
+            default = 1;
           };
         };
       });
