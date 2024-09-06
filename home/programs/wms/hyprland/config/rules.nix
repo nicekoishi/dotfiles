@@ -21,15 +21,18 @@
 
     windowrule = [
       # make apps floaty
+      "float, Viewnior"
       "float, anyrun"
+      "float, com.saivert.pwvucontrol"
       "float, confirm"
       "float, confirmreset"
       "float, dialog"
       "float, download"
       "float, error"
       "float, file_progress"
-      "float, org.kde.ark"
       "float, notification"
+      "float, org.kde.ark"
+      "float, org.kde.dolphin"
       "float, splash"
       "float, title:DevTools"
       "float, title:Open File"
@@ -39,9 +42,7 @@
       "float, title:^(Volume Control)$"
       "float, title:branchdialog"
       "float, title:wlogout"
-      "float, Viewnior"
       "float, viewnior"
-      "float, org.kde.dolphin"
     ];
 
     windowrulev2 = [

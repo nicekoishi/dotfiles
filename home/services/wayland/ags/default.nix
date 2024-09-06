@@ -23,6 +23,7 @@
 
   guiDeps = with pkgs; [
     mission-center
+    gnome-calendar
     pwvucontrol
   ];
 
