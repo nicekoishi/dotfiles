@@ -1,6 +1,6 @@
 {
   imports = [
-    ./pipewire.nix
+    ./pipewire
     ./realtime.nix
   ];
 }
