@@ -10,21 +10,18 @@
 
   services = {
     playerctld.enable = true;
-    mpd-mpris.enable = true;
 
     # old reliable
     mpd = {
       enable = true;
       musicDirectory = "${config.xdg.userDirs.music}";
       network = {
-        startWhenNeeded = true;
         listenAddress = "127.0.0.1";
         port = 6600;
       };
 
       extraConfig = ''
         auto_update             "yes"
-        volume_normalization    "yes"
         restore_paused          "yes"
         filesystem_charset      "UTF-8"
 
@@ -40,14 +37,13 @@
           format                "48000:16:1"
         }
 
-        audio_output {
-          type                  "httpd"
-          name                  "lossless"
-          encoder               "flac"
-          port                  "8000"
-          max_clients           "9"
-          mixer_type            "software"
-          format                "48000:16:1"
+        input_cache {
+          size                  "1 GB"
+        }
+
+        resampler {
+          plugin                "soxr"
+          quality               "high"
         }
       '';
     };
