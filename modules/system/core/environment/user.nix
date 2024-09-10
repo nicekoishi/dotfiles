@@ -1,10 +1,10 @@
 {pkgs, ...}: let
   keys = [
+    # polaris, cursed gpg to ssh key
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMt/fj0+1c7Ktr9WQCqYHoi3jWSxV8/cwEUaT/92DA7q"
+
     # android phone, just for testing
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIhD0eTqw4a+9M8Xh2NIo3FGgiprFzRWEsBU5p7k6wc+ u0_a304@localhost"
-
-    # windows vm, if something starts getting weird in there
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGJ5crVsOsqKNUqm7eyOJM6ReJlXGmaAKlZu/WHKiSzI supeen@polaris-win"
   ];
 in {
   users.users.supeen = {

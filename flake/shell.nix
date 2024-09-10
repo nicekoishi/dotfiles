@@ -15,12 +15,7 @@
       inputsFrom = [config.treefmt.build.devShell];
 
       packages = with pkgs; [
-        # would something bad happen if I forget this?
-        git
-
-        # omg this is so cool
         config.treefmt.build.wrapper
-
         inputs'.agenix.packages.default
 
         # nix
@@ -28,6 +23,7 @@
         deadnix
         nil
         statix
+        git
 
         # lazy
         # also: https://github.com/NixOS/nix/issues/6941#issuecomment-1230136775
