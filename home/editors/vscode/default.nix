@@ -26,6 +26,9 @@
         ms-vscode.cpptools
         xaver.clang-format
 
+        # flutter
+        dart-code.flutter
+
         # catppuccin theme
         catppuccin.catppuccin-vsc
         catppuccin.catppuccin-vsc-icons
