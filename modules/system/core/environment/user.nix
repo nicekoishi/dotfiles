@@ -16,7 +16,6 @@ in {
       "adbusers"
       "adm"
       "audio"
-      "gamemode"
       "kvm"
       "libvirtd"
       "lp"
