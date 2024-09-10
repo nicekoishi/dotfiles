@@ -30,10 +30,13 @@ in {
       XAUTHORITY = "${XDG_RUNTIME_DIR}/Xauthority";
 
       # programming stuff
-      ADB_LIBUSB = "1";
+      ADB_LIBUSB = "1"; # this should be the default upstream, but let's keep it here
       ANDROID_HOME = "${XDG_DATA_HOME}/android";
       CARGO_HOME = "${XDG_DATA_HOME}/cargo";
       DOCKER_CONFIG = "${XDG_CONFIG_HOME}/docker";
+      GOMODCACHE = "${XDG_CACHE_HOME}/go/mod";
+      GOPATH = "${XDG_DATA_HOME}/go";
+      GRADLE_HOME = "${XDG_DATA_HOME}/gradle";
       NODE_REPL_HISTORY = "${XDG_DATA_HOME}/node_repl_history";
       NPM_CONFIG_CACE = "${XDG_CACHE_HOME}/npm";
       NPM_CONFIG_TMP = "${XDG_RUNTIME_DIR}/npm";
