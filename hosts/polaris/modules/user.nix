@@ -19,6 +19,11 @@
       #};
     };
 
+    style = {
+      gtk.forceTheme = true;
+      qt.useKvantum = true;
+    };
+
     # NOTE: shouldn't this be the default for all desktop systems?
     # this includes laptops too
     home-manager.enable = true;

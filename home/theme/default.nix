@@ -1,13 +1,16 @@
-{pkgs, ...}: {
+{osConfig, ...}: let
+  inherit (cfg.cursor) name package size;
+
+  cfg = osConfig.nice.modules.user.style;
+in {
   imports = [
     ./gtk
     ./qt
   ];
 
   home.pointerCursor = {
-    package = pkgs.bibata-cursors;
-    name = "Bibata-Modern-Classic";
-    size = 24;
+    inherit name package size;
+
     gtk.enable = true;
     x11.enable = true;
   };

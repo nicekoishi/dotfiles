@@ -1,83 +1,75 @@
 # https://github.com/NotAShelf/nyx/blob/main/homes/notashelf/themes/qt.nix
 # this file quickly became quite the mess huh...
 {
-  config,
   lib,
+  osConfig,
   pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf mkMerge;
-  inherit (lib.nice) capitalize;
-  inherit (lib.strings) concatMapStrings hasPrefix;
+  inherit (lib.strings) concatStringsSep;
+  inherit (cfg.qt) theme kvantum;
 
-  cfg = config.qt;
-
-  # TODO: move this mess elsewhere, and tidy it up
-  theme = {
-    name = "Catppuccin";
-    package = pkgs.catppuccin-kde.override theme.opts;
-    opts = {
-      flavour = ["mocha"];
-      accents = ["blue"];
-      winDecStyles = ["modern"];
-    };
-  };
+  cfg = osConfig.nice.modules.user.style;
 in {
-  # this will only work if only one flavour or accent is specified btw
-  xdg.configFile = let
-    url = "https://raw.githubusercontent.com/catppuccin/Kvantum/main/src";
-    colors = "${theme.name + concatMapStrings (i: capitalize i) (theme.opts.flavour ++ theme.opts.accents)}";
-  in {
-    "kdeglobals".source = "${theme.package}/share/color-schemes/${colors}.colors";
+  xdg.configFile = {
     "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {
-      General.theme = "${theme.name}";
-      Applications.Catppuccin = ''
-        qt5ct, org.kde.dolphin, org.qbittorrent.qBittorrent, hyprland-share-picker, cantata, org.kde.kid3-qt
-      '';
-    };
-    "Kvantum/Catppuccin/Catppuccin.kvconfig".source = builtins.fetchurl {
-      url = "${url}/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.kvconfig";
-      sha256 = "1f8xicnc5696g0a7wak749hf85ynfq16jyf4jjg4dad56y4csm6s";
+      General.theme = "Catppuccin";
+      Applications.Catppuccin = concatStringsSep ", " [
+        "qt5ct"
+        "org.kde.dolphin"
+        "org.qbittorrent.qBittorrent"
+        "hyprland-share-picker"
+        "cantata"
+        "org.kde.kid3-qt"
+      ];
     };
 
-    "Kvantum/Catppuccin/Catppuccin.svg".source = builtins.fetchurl {
-      url = "${url}/Catppuccin-Mocha-Blue/Catppuccin-Mocha-Blue.svg";
-      sha256 = "0vys09k1jj8hv4ra4qvnrhwxhn48c2gxbxmagb3dyg7kywh49wvg";
-    };
+    "kdeglobals".source = theme.kdeglobals;
+    "Kvantum/Catppuccin/Catppuccin.kvconfig".source = kvantum.kvconfig;
+    "Kvantum/Catppuccin/Catppuccin.svg".source = kvantum.svg;
   };
 
   qt = {
     enable = true;
-    platformTheme.name = "gtk3";
-    style.name = "kvantum";
+    platformTheme = {
+      name = mkIf cfg.gtk.forceTheme "gtk3";
+      package = [];
+    };
+
+    style = {
+      name = mkIf cfg.qt.useKvantum "kvantum";
+      package = [];
+    };
   };
 
   home = {
     packages = with pkgs;
       mkMerge [
         [
+          # what if
           qt6Packages.qt6ct
           libsForQt5.qt5ct
           breeze-icons
-
-          # make kde theme package available
           theme.package
 
           # fix qt platform plugin not found
           libsForQt5.qt5.qtwayland
-          kdePackages.qtwayland
-
-          # fix no icons on dolphin
           libsForQt5.qt5.qtsvg
+          libsForQt5.breeze-qt5
+          kdePackages.qtwayland
           kdePackages.qtsvg
+          kdePackages.qqc2-desktop-style
+          qt6.qtwayland
+          qt6.qtsvg
         ]
 
-        (mkIf (hasPrefix "gtk" cfg.platformTheme.name) [
+        (mkIf cfg.gtk.forceTheme [
           libsForQt5.qtstyleplugins
           qt6Packages.qt6gtk2
         ])
 
-        (mkIf (cfg.style.name == "kvantum") [
+        (mkIf cfg.qt.useKvantum [
           qt6Packages.qtstyleplugin-kvantum
           libsForQt5.qtstyleplugin-kvantum
         ])
