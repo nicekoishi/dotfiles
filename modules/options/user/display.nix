@@ -3,70 +3,71 @@
   lib,
   ...
 }: let
-  inherit (lib.attrsets) filterAttrs mapAttrsToList;
-  inherit (lib.lists) count optionals;
-  inherit (lib.options) mkEnableOption mkOption;
-  inherit (lib.strings) concatStringsSep;
+  inherit (lib.attrsets) hasAttr;
+  inherit (lib.lists) optionals;
+  inherit (lib.options) mkOption;
   inherit (lib.types) attrsOf either enum int nullOr package str submodule;
 
-  cfg = config.nice.modules.user;
+  cfg = config.nice.modules.user.display;
 in {
   options.nice.modules.user = {
-    # adapted from vimjoyer's video:
-    # https://www.youtube.com/watch?v=EUiXzX7nthY&t=200s
-    monitors = mkOption {
-      default = {};
-      type = attrsOf (submodule {
-        options = {
-          main = mkEnableOption "Whether to define this monitor as default";
+    display = {
+      main = mkOption {
+        default = null;
+        type = nullOr str;
+      };
 
-          width = mkOption {
-            type = int;
-            example = 1920;
-          };
+      # adapted from vimjoyer's video:
+      # https://www.youtube.com/watch?v=EUiXzX7nthY&t=200s
+      monitors = mkOption {
+        default = {};
+        type = attrsOf (submodule {
+          options = {
+            width = mkOption {
+              type = int;
+              example = 1920;
+            };
 
-          height = mkOption {
-            type = int;
-            example = 1080;
-          };
+            height = mkOption {
+              type = int;
+              example = 1080;
+            };
 
-          refreshRate = mkOption {
-            type = int;
-            default = 60;
-          };
+            refreshRate = mkOption {
+              type = int;
+              default = 60;
+            };
 
-          pos = mkOption {
-            type = nullOr (enum ["top" "right" "bottom" "left"]);
-            default = null;
-            description = ''
-              Used in a multi-monitor setup to properly position them.
-            '';
-          };
+            pos = mkOption {
+              type = nullOr (enum ["top" "right" "bottom" "left"]);
+              default = null;
+              description = ''
+                Used in a multi-monitor setup to properly position them.
+              '';
+            };
 
-          scale = mkOption {
-            type = int;
-            default = 1;
-          };
+            scale = mkOption {
+              type = int;
+              default = 1;
+            };
 
-          wallpaper = mkOption {
-            type = either str package;
+            wallpaper = mkOption {
+              type = either str package;
+            };
           };
-        };
-      });
+        });
+      };
     };
   };
 
   config = {
-    warnings = let
-      mainMonitors = filterAttrs (_: val: val.main) cfg.monitors;
-      monToList = mapAttrsToList (name: _: name) mainMonitors;
-      checkMain = list: (count (i: i != null) list) > 1;
-    in
-      optionals (checkMain monToList) [
-        ''
-          Multiple main monitors set. This could lead to a broken configuration in window managers:
-          ${concatStringsSep ", " monToList}
-        ''
-      ];
+    warnings = optionals (!hasAttr cfg.main cfg.monitors) [
+      ''
+        ${cfg.main} is not a valid monitor in `config.nice.modules.user.display.monitors`!
+
+        To suppress this warning, set `config.nice.modules.user.display.main`
+        to a monitor already set in `config.nice.modules.user.display.monitors`
+      ''
+    ];
   };
 }

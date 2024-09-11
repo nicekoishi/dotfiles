@@ -6,6 +6,8 @@
 }: let
   inherit (lib.attrsets) mapAttrsToList;
   inherit (lib.strings) concatStringsSep;
+  inherit (usr.display) monitors;
+
   usr = osConfig.nice.modules.user;
 in {
   services.hyprpaper = {
@@ -18,11 +20,11 @@ in {
       splash_offset = 2.0;
 
       # would this be bad with a lot of monitors? probably not
-      preload = mapAttrsToList (_: opts: opts.wallpaper) usr.monitors;
+      preload = mapAttrsToList (_: opts: opts.wallpaper) monitors;
 
       wallpaper = mapAttrsToList (name: opts:
         concatStringsSep "," [name opts.wallpaper])
-      usr.monitors;
+      monitors;
     };
   };
 }

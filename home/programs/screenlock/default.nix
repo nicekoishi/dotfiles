@@ -1,14 +1,8 @@
-{
-  osConfig,
-  lib,
-  ...
-}: let
-  inherit (builtins) elemAt;
-  inherit (lib.attrsets) attrValues filterAttrs;
+{osConfig, ...}: let
+  inherit (usr.display) main monitors;
 
   usr = osConfig.nice.modules.user;
-  mainAttr = filterAttrs (_: mon: mon.main) usr.monitors;
-  main = elemAt (attrValues mainAttr) 0;
+  monitor = monitors."${main}";
 in {
   programs.hyprlock = let
     font_family = "Iosevka Nerd Font Propo";
@@ -24,8 +18,8 @@ in {
 
       background = [
         {
-          monitor = "";
-          path = "${main.wallpaper}";
+          monitor = "${main}";
+          path = "${monitor.wallpaper}";
           color = "rgb(30, 30, 46)";
           blur_passes = 3;
           blur_size = 8;
@@ -34,7 +28,7 @@ in {
 
       input-field = [
         {
-          monitor = "";
+          monitor = "${main}";
           size = "300, 50";
           outline_thickness = 2;
 
@@ -51,7 +45,7 @@ in {
 
       label = [
         {
-          monitor = "";
+          monitor = "${main}";
           text = "$TIME";
           inherit font_family;
           font_size = 75;

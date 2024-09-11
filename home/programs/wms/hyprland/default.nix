@@ -5,10 +5,11 @@
   osConfig,
   ...
 }: let
-  inherit (builtins) elem elemAt toString;
-  inherit (lib.attrsets) attrValues filterAttrs mapAttrsToList;
+  inherit (builtins) elem toString;
+  inherit (lib.attrsets) mapAttrsToList;
   inherit (lib.modules) mkIf mkMerge;
   inherit (lib.strings) concatStringsSep;
+  inherit (usr.display) main monitors;
 
   cfg = osConfig.nice.modules;
   usr = cfg.user;
@@ -16,8 +17,7 @@
 
   # FIXME: this function wasn't properly tested at all, but it should work
   mkHyprlandPosition = opts: let
-    main = filterAttrs (_: mon: mon.main) usr.monitors;
-    reference = elemAt (attrValues main) 0;
+    reference = monitors."${main}";
 
     posX =
       if (opts.pos == "right")
@@ -25,17 +25,14 @@
       else if (opts.pos == "left")
       then "${toString (-reference.width)}"
       else "0";
+
     posY =
       if (opts.pos == "top")
       then "${toString (-reference.height)}"
       else if (opts.pos == "bottom")
       then "${toString reference.height}"
       else "0";
-  in
-    # just return a set value if it's main, no need to keep evaluating
-    if opts.main
-    then "0x0"
-    else "${posX}x${posY}";
+  in "${posX}x${posY}";
 in {
   imports = [
     inputs.hyprland.homeManagerModules.default
@@ -62,7 +59,7 @@ in {
             (mkHyprlandPosition opts)
             "${toString opts.scale}"
           ])
-        usr.monitors;
+        monitors;
 
         env = [
           "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
