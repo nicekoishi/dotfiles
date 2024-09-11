@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  inherit (lib.meta) getExe;
+  inherit (lib.meta) getExe getExe';
 in {
   systemd.user.services.cliphist = {
     Unit = {
@@ -13,7 +13,7 @@ in {
     };
     Install.WantedBy = ["graphical-session.target"];
     Service = {
-      ExecStart = "${pkgs.wl-clipboard}/bin/wl-paste --watch ${getExe pkgs.cliphist} store";
+      ExecStart = "${getExe' pkgs.wl-clipboard "wl-paste"} --watch ${getExe pkgs.cliphist} store";
     };
   };
 

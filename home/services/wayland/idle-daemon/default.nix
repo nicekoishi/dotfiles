@@ -4,8 +4,10 @@
   pkgs,
   ...
 }: let
-  inherit (lib.meta) getExe;
-  hyprctl = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl";
+  inherit (lib.meta) getExe getExe';
+
+  hyprctl = "${getExe' config.wayland.windowManager.hyprland.package "hyprctl"}";
+  systemd = exe: "${getExe' pkgs.systemd exe}";
 in {
   services.hypridle = {
     enable = true;
@@ -13,8 +15,8 @@ in {
     settings = {
       general = {
         after_sleep_cmd = "${hyprctl} dispatch dpms on";
-        before_sleep_cmd = "${pkgs.systemd}/bin/loginctl lock-session";
-        lock_cmd = "${pkgs.procps}/bin/pidof hyprlock || ${getExe config.programs.hyprlock.package}";
+        before_sleep_cmd = "${systemd "loginctl"} lock-session";
+        lock_cmd = "${getExe' pkgs.procps "pidof"} hyprlock || ${getExe config.programs.hyprlock.package}";
       };
 
       listener = [
@@ -25,7 +27,7 @@ in {
         }
         {
           timeout = 1800;
-          on-timeout = "${pkgs.systemd}/bin/systemctl suspend";
+          on-timeout = "${systemd "systemctl"} suspend";
         }
       ];
     };
