@@ -2,11 +2,11 @@
   imports = [
     ./args.nix
     ./fmt.nix
+    ./pkgs.nix
     ./shell.nix
 
     ./lib
     ./modules
-    ./pkgs
     ./templates
 
     inputs.treefmt-nix.flakeModule

@@ -1,8 +1,0 @@
-{
-  imports = [
-    ./hypridle
-    ./hyprpaper
-
-    ./hyprlock
-  ];
-}

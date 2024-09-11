@@ -3,9 +3,11 @@
     ./ags
     ./anyrun
     ./clipboard
-    ./hypr
     ./ocr
     ./quickshell
     ./wlogout
+
+    ./idle-daemon
+    ./wallpaper
   ];
 }
