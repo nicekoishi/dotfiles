@@ -1,12 +1,14 @@
 {
   config,
   lib,
+  self',
   ...
 }: let
   inherit (lib.attrsets) hasAttr;
   inherit (lib.lists) optionals;
   inherit (lib.options) mkOption;
   inherit (lib.types) attrsOf either enum int nullOr package str submodule;
+  inherit (self'.packages) wallpapers;
 
   cfg = config.nice.modules.user.display;
 in {
@@ -52,6 +54,10 @@ in {
             };
 
             wallpaper = mkOption {
+              default =
+                if cfg.monitors != {}
+                then "${wallpapers}/share/wallpapers/kayoko.png"
+                else null;
               type = either str package;
             };
           };
