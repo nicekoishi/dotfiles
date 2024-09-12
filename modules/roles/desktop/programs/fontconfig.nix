@@ -1,7 +1,11 @@
 {pkgs, ...}: {
   fonts = {
-    fontDir.enable = true;
     enableDefaultPackages = false;
+
+    fontDir = {
+      enable = true;
+      decompressFonts = true;
+    };
 
     packages = with pkgs; [
       material-symbols
