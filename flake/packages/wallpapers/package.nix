@@ -3,7 +3,7 @@
 {
   stdenvNoCC,
   lib,
-  wallpaper ? null,
+  collection ? null,
   ...
 }:
 stdenvNoCC.mkDerivation (finalAttrs: {
@@ -21,9 +21,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   installPhase = let
     copyCondition =
-      if (wallpaper == null)
+      if (collection == null)
       then "cp -r ./* $out/share/wallpapers"
-      else "cp -r ./${wallpaper}* $out/share/wallpapers";
+      else "cp -r ./${collection}* $out/share/wallpapers";
   in ''
     runHook preInstall
     ${copyCondition}
@@ -32,9 +32,9 @@ stdenvNoCC.mkDerivation (finalAttrs: {
 
   # finalPackage is what we want, this way we can pass each wallpaper
   # directly through this package
-  # ex: package.wallpapers.example would return something like
-  # /nix/store/123ex.../share/wallpapers/example.png
-  passthru.wallpapers = import ./index.nix {inherit lib finalAttrs;};
+  # ex: package.wallpapers.collection.example would return something like
+  # /nix/store/123ex.../share/wallpapers/collection/example.png
+  passthru.wallpapers = import ./index.nix {inherit lib collection finalAttrs;};
 
   meta = {
     description = "Collection of packages for personal use";

@@ -3,6 +3,7 @@
   # an attrset with all available wallpapers.
   # don't want to use wallpkgs though
   inherit (self'.packages.wallpapers) wallpapers;
+  inherit (wallpapers.standard) kayoko;
 in {
   nice.modules.user = {
     environments = ["hyprland"];
@@ -16,7 +17,7 @@ in {
           width = 1920;
           height = 1080;
 
-          wallpaper = wallpapers.kayoko;
+          wallpaper = kayoko;
         };
 
         # testing headless display, it didn't work at all last time:
