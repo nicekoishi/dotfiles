@@ -1,5 +1,5 @@
 {
-  nice.modules.extra = {
+  nice.extra = {
     # NOTE: This isn't safe at all, and will break if you disable kernel module loading
     gpu-pass = {
       enable = true;

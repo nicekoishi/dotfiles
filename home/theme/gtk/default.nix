@@ -6,7 +6,7 @@
 }: let
   inherit (cfg.gtk) iconTheme font theme;
 
-  cfg = osConfig.nice.modules.user.style;
+  cfg = osConfig.nice.user.style;
 in {
   xdg.systemDirs.data = let
     schema = pkgs.gsettings-desktop-schemas;

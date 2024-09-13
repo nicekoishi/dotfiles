@@ -2,7 +2,7 @@
   inherit (lib.options) mkOption;
   inherit (lib.types) enum listOf nullOr;
 in {
-  options.nice.modules.host = {
+  options.nice.host = {
     cpu = mkOption {
       default = null;
       type = nullOr (enum ["amd" "intel"]);

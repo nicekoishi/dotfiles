@@ -5,7 +5,7 @@
 }: let
   inherit (lib.modules) mkDefault mkForce;
 
-  cfg = config.nice.modules;
+  cfg = config.nice;
   host = cfg.host;
 in {
   boot = {

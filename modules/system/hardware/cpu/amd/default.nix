@@ -7,7 +7,7 @@
   inherit (lib.modules) mkIf mkMerge;
   inherit (lib.strings) versionAtLeast versionOlder;
 
-  cfg = config.nice.modules;
+  cfg = config.nice;
   dev = cfg.host;
   kver = config.boot.kernelPackages.kernel.version;
 in {

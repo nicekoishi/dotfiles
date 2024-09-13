@@ -8,7 +8,7 @@
   inherit (lib.strings) concatStringsSep;
   inherit (usr.display) monitors;
 
-  usr = osConfig.nice.modules.user;
+  usr = osConfig.nice.user;
 in {
   services.hyprpaper = {
     enable = true;

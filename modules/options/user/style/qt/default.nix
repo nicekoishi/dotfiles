@@ -8,11 +8,11 @@
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.types) bool package str;
 
-  usr = config.nice.modules.user;
+  usr = config.nice.user;
   check = usr.home-manager.enable && (length usr.environments) > 0;
   style = usr.style.qt;
 in {
-  options.nice.modules.user = {
+  options.nice.user = {
     style.qt = {
       enable = mkEnableOption "QT Style Module" // {default = check;};
 

@@ -7,7 +7,7 @@
   inherit (builtins) elem;
   inherit (lib.attrsets) optionalAttrs;
 
-  cfg = osConfig.nice.modules;
+  cfg = osConfig.nice;
   dev = cfg.host;
   nvidiaGpu = elem "nvidia" dev.gpu;
 in {

@@ -6,7 +6,7 @@
     ./networking.nix
   ];
 
-  nice.modules = {
+  nice = {
     host = {
       cpu = "amd";
       gpu = ["nvidia"];

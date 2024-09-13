@@ -5,7 +5,7 @@
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.nice.modules;
+  cfg = config.nice;
   usr = cfg.user;
 in {
   config = mkIf usr.home-manager.enable {

@@ -10,7 +10,7 @@
   inherit (builtins) elem;
   inherit (lib.strings) makeBinPath optionalString;
 
-  cfg = config.nice.modules;
+  cfg = config.nice;
   usr = cfg.user;
 
   programs = makeBinPath (with pkgs; [

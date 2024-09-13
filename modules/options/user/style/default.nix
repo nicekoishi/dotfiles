@@ -11,7 +11,7 @@ in {
     ./qt
   ];
 
-  options.nice.modules.user = {
+  options.nice.user = {
     style = {
       cursor = {
         name = mkOption {

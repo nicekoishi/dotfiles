@@ -10,9 +10,9 @@
   inherit (lib.types) attrsOf either enum int nullOr package str submodule;
   inherit (self'.packages) wallpapers;
 
-  cfg = config.nice.modules.user.display;
+  cfg = config.nice.user.display;
 in {
-  options.nice.modules.user = {
+  options.nice.user = {
     display = {
       main = mkOption {
         default = null;
@@ -87,10 +87,10 @@ in {
   config = {
     warnings = optionals (!hasAttr cfg.main cfg.monitors) [
       ''
-        ${cfg.main} is not a valid monitor in `config.nice.modules.user.display.monitors`!
+        ${cfg.main} is not a valid monitor in `config.nice.user.display.monitors`!
 
-        To suppress this warning, set `config.nice.modules.user.display.main`
-        to a monitor already set in `config.nice.modules.user.display.monitors`
+        To suppress this warning, set `config.nice.user.display.main`
+        to a monitor already set in `config.nice.user.display.monitors`
       ''
     ];
   };

@@ -1,7 +1,7 @@
 {osConfig, ...}: let
   inherit (usr.display) main monitors;
 
-  usr = osConfig.nice.modules.user;
+  usr = osConfig.nice.user;
   monitor = monitors."${main}";
 in {
   programs.hyprlock = let

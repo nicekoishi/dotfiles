@@ -4,9 +4,11 @@
     pkgs,
     ...
   }: {
-    packages = lib.packagesFromDirectoryRecursive {
-      inherit (pkgs) callPackage;
-      directory = ./.;
-    };
+    packages =
+      lib.packagesFromDirectoryRecursive {
+        inherit (pkgs) callPackage;
+        directory = ./.;
+      }
+      // {default = pkgs.hello;};
   };
 }

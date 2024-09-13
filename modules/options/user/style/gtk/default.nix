@@ -8,11 +8,11 @@
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.types) bool int package str;
 
-  usr = config.nice.modules.user;
+  usr = config.nice.user;
   check = usr.home-manager.enable && (length usr.environments) > 0;
   style = usr.style.gtk;
 in {
-  options.nice.modules.user = {
+  options.nice.user = {
     style.gtk = {
       enable = mkEnableOption "GTK Style Module" // {default = check;};
 
@@ -86,7 +86,7 @@ in {
           ${toString themePath} set by the GTK module does not exist!
 
           To suppress this message, make sure that
-          `config.nice.modules.user.style.gtk.theme.package` contains
+          `config.nice.user.style.gtk.theme.package` contains
           the path `${style.theme.name}`
         '';
       })

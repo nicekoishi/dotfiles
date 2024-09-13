@@ -10,7 +10,7 @@
   inherit (lib.strings) concatStringsSep;
   inherit (cfg.qt) theme kvantum;
 
-  cfg = osConfig.nice.modules.user.style;
+  cfg = osConfig.nice.user.style;
 in {
   xdg.configFile = {
     "Kvantum/kvantum.kvconfig".source = (pkgs.formats.ini {}).generate "kvantum.kvconfig" {

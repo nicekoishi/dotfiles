@@ -5,7 +5,7 @@
   inherit (self'.packages.wallpapers) wallpapers;
   inherit (wallpapers.standard) kayoko;
 in {
-  nice.modules.user = {
+  nice.user = {
     environments = ["hyprland"];
 
     display = {

@@ -11,7 +11,7 @@
   inherit (lib.strings) concatStringsSep;
   inherit (usr.display) main monitors;
 
-  cfg = osConfig.nice.modules;
+  cfg = osConfig.nice;
   usr = cfg.user;
   dev = cfg.host;
 

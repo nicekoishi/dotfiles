@@ -6,7 +6,7 @@
   inherit (lib.options) literalExpression mkOption;
   inherit (lib.types) bool raw;
 in {
-  options.nice.modules.host = {
+  options.nice.host = {
     # https://github.com/NixOS/nixpkgs/blob/1355a0cbfeac61d785b7183c0caaec1f97361b43/nixos/modules/system/boot/kernel.nix#L40
     # defaultText is needed as ndg tries to eval the value, and it obviously fails as it's a kernel
     # I don't know why there's explicit throws there, but eh...

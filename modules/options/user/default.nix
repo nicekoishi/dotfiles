@@ -8,7 +8,7 @@ in {
     ./display.nix
   ];
 
-  options.nice.modules.user = {
+  options.nice.user = {
     environments = mkOption {
       type = nullOr (listOf (enum [
         "hyprland"

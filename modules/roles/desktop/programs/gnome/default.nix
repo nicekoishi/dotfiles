@@ -6,7 +6,7 @@
   inherit (builtins) elem;
   inherit (lib.modules) mkIf;
 
-  cfg = config.nice.modules;
+  cfg = config.nice;
   usr = cfg.user;
 in {
   config = mkIf (elem "gnome" usr.environments) {

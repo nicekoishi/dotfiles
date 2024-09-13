@@ -7,7 +7,7 @@
   inherit (builtins) elem;
   inherit (lib.modules) mkIf;
 
-  cfg = config.nice.modules;
+  cfg = config.nice;
   dev = cfg.host;
 
   nvPackage = config.boot.kernelPackages.nvidiaPackages.mkDriver {

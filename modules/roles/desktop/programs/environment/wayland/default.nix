@@ -5,7 +5,7 @@
 }: let
   inherit (lib.modules) mkIf;
 
-  cfg = config.nice.modules;
+  cfg = config.nice;
   dev = cfg.host;
 in {
   config = mkIf dev.waylandReady {

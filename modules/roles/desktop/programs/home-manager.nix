@@ -9,7 +9,7 @@
   lib = inputs.home-manager.lib // self.lib;
   inherit (lib.modules) mkIf;
 
-  cfg = config.nice.modules;
+  cfg = config.nice;
   usr = cfg.user;
   specialArgs = {inherit lib inputs self inputs' self';};
 in {

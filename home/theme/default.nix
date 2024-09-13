@@ -1,7 +1,7 @@
 {osConfig, ...}: let
   inherit (cfg.cursor) name package size;
 
-  cfg = osConfig.nice.modules.user.style;
+  cfg = osConfig.nice.user.style;
 in {
   imports = [
     ./gtk

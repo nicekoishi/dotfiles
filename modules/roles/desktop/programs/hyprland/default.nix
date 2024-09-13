@@ -10,7 +10,7 @@
   inherit (lib.modules) mkIf;
   inherit (lib.strings) toLower;
 
-  cfg = config.nice.modules;
+  cfg = config.nice;
   usr = cfg.user;
   hyprlandPkg = inputs'.hyprland.packages.hyprland;
 
