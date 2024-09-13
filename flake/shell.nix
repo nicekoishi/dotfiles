@@ -29,7 +29,11 @@
         # also: https://github.com/NixOS/nix/issues/6941#issuecomment-1230136775
         (pkgs.writeShellApplication {
           name = "update";
-          text = ''nix --option commit-lockfile-summary "chore: flake update" flake update --commit-lock-file '';
+          text = ''
+            nix --option commit-lockfile-summary "chore: flake update" flake update --commit-lock-file
+            echo "nix flake check beginning"
+            nix flake check
+          '';
         })
       ];
     };
