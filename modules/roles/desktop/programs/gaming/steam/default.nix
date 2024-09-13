@@ -18,6 +18,10 @@
 
       extraPkgs = pkgs:
         with pkgs; [
+          # ERROR: ld.so: object 'libgamemodeauto.so.0' from LD_PRELOAD cannot be preloaded (cannot open shared object file): ignored.
+          # is there a way to fix this, or can it be ignored?
+          gamemode
+
           keyutils
           libkrb5
           libpng
