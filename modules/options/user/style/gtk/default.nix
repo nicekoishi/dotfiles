@@ -56,17 +56,18 @@ in {
 
       theme = {
         name = mkOption {
-          default = "Colloid-Dark-Compact-Catppuccin";
+          default = "Catppuccin-GTK-Dark-Compact";
           type = str;
           description = "Name of the theme inside the package";
         };
 
         package = mkOption {
-          default = pkgs.colloid-gtk-theme.override {
-            themeVariants = ["default"]; # default: blue
-            colorVariants = ["dark"]; # wait, so this package can build both... should i do it again?
-            sizeVariants = ["compact"];
-            tweaks = ["catppuccin"];
+          default = pkgs.magnetic-catppuccin-gtk.override {
+            # this is important, as it forces both light and dark variants to be built
+            shade = null;
+            size = "compact";
+            accent = ["default"]; # default is blue
+            tweaks = ["float"];
           };
           type = package;
           description = "The package providing the theme";
