@@ -74,6 +74,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    ndg = {
+      url = "github:feel-co/ndg";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+      };
+    };
+
     neovim-flake = {
       url = "github:NotAShelf/neovim-flake";
       inputs.nixpkgs.follows = "nixpkgs";

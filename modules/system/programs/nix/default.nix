@@ -3,16 +3,24 @@
   inputs,
   lib,
   pkgs,
+  self,
   ...
-}: {
+}: let
+  inherit (lib.modules) mkForce;
+in {
   imports = [
     ./nh.nix
     ./overlays.nix
     ./substituters.nix
   ];
 
+  system = {
+    autoUpgrade.enable = mkForce false;
+    configurationRevision = self.shortRev or self.dirtyShortRev;
+  };
+
   # save flake locally on /etc/nixos/dotfiles
-  environment.etc."nixos/dotfiles" = {
+  environment.etc."nicekoishi/dotfiles" = {
     source = inputs.self;
     # https://github.com/NixOS/nixpkgs/issues/200744
     # this won't work if set to any mode that's not symlink
@@ -95,8 +103,8 @@
     info.enable = false;
 
     man = {
-      enable = lib.modules.mkDefault true;
-      generateCaches = lib.modules.mkDefault true;
+      enable = true;
+      generateCaches = true;
     };
   };
 

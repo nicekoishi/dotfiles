@@ -21,8 +21,8 @@ in {
     enable = mkEnableOption "gpu-pass, for gpu passthrough";
 
     devices = mkOption {
-      type = listOf str;
       default = [];
+      type = listOf str;
       example = ["pci_0000_06_00_0" "pci_0000_06_00_1" "pci_0000_06_00_2" "pci_0000_06_00_3"];
       description = ''
         PCI Bus ID of the desired GPUs. You can find them by using lspci -k
@@ -31,8 +31,8 @@ in {
     };
 
     guest = mkOption {
-      type = str;
       default = "win10";
+      type = str;
       example = "Windows";
       description = ''
         Name of your guest. Be sure to match exactly for the hook to work.
@@ -42,8 +42,8 @@ in {
     optimize = {
       enable = mkEnableOption "Dynamically isolate CPUs with systemd";
       host = mkOption {
-        type = str;
         default = "0";
+        type = str;
         example = "0-8";
         description = ''
           Isolate the host to the specified core(s), improving performance on the guest.

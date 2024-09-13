@@ -15,8 +15,11 @@ in {
         "gnome"
       ]));
       default = null;
+      description = ''
+        List containing all desired environments for a specific host.
+      '';
     };
 
-    home-manager.enable = mkEnableOption "Manage a user environment using Nix";
+    home-manager.enable = mkEnableOption "home-manager, to manage a user environment using Nix.";
   };
 }

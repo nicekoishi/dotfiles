@@ -17,40 +17,54 @@ in {
       main = mkOption {
         default = null;
         type = nullOr str;
+        description = ''
+          The main display in the configuration.
+          Will be used as a reference to properly align other monitors.
+        '';
       };
 
       # adapted from vimjoyer's video:
       # https://www.youtube.com/watch?v=EUiXzX7nthY&t=200s
       monitors = mkOption {
         default = {};
+        description = ''
+          Attribute set containing all monitors used in this configuration.
+
+          This will break all kinds of monitor setup if these services
+          are enabled and this option don't have any monitor set up.
+        '';
         type = attrsOf (submodule {
           options = {
             width = mkOption {
               type = int;
               example = 1920;
+              description = "The width of this monitor.";
             };
 
             height = mkOption {
               type = int;
               example = 1080;
+              description = "The height of this monitor.";
             };
 
             refreshRate = mkOption {
               type = int;
               default = 60;
+              description = "The refresh rate of this monitor.";
             };
 
             pos = mkOption {
-              type = nullOr (enum ["top" "right" "bottom" "left"]);
               default = null;
+              type = nullOr (enum ["top" "right" "bottom" "left"]);
               description = ''
                 Used in a multi-monitor setup to properly position them.
               '';
             };
 
             scale = mkOption {
-              type = int;
               default = 1;
+              type = int;
+              description = "The scale of this monitor, usually 1 is enough.";
             };
 
             wallpaper = mkOption {
@@ -59,6 +73,10 @@ in {
                 then "${wallpapers}/share/wallpapers/kayoko.png"
                 else null;
               type = either str package;
+              description = ''
+                Desired wallpaper for this monitor.
+                Will be used by services such as hyprpaper/swww.
+              '';
             };
           };
         });
