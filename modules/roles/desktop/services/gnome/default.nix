@@ -17,7 +17,7 @@
     ];
 
     udev.packages = with pkgs; [
-      gnome.gnome-settings-daemon
+      gnome-settings-daemon
     ];
 
     gvfs.enable = true;
