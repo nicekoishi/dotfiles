@@ -8,7 +8,7 @@
   inherit (lib.types) bool enum listOf nullOr;
 
   cfg = config.nice.user;
-  env = cfg.environments;
+  env = cfg.desktop;
 
   mkCheckFor = desktop:
     if (env.setup == null)
@@ -20,12 +20,12 @@
     type = bool;
     readOnly = true;
     description = ''
-      Whether this desktop environment has a Wayland compositor.
+      Whether this desktop environment is a Wayland compositor.
     '';
   };
 in {
   options.nice.user = {
-    environments = {
+    desktop = {
       setup = mkOption {
         default = null;
         type = nullOr (listOf (enum [
@@ -46,8 +46,8 @@ in {
           description = ''
             Whether to enable the GNOME desktop environment.
 
-            Will be set to true if `config.nice.user.environments.setup` contains
-            "gnome".
+            Will be set to true if `config.nice.user.desktop.setup` contains
+            "GNOME".
           '';
         };
       };
@@ -61,7 +61,7 @@ in {
           description = ''
             Whether to enable the Hyprland wayland compositor
 
-            Will be set to true if `config.nice.user.environments.setup` contains
+            Will be set to true if `config.nice.user.desktop.setup` contains
             "Hyprland".
           '';
         };

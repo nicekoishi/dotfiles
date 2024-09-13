@@ -8,7 +8,7 @@
   inherit (lib.types) bool package str;
 
   usr = config.nice.user;
-  check = usr.home-manager.enable && usr.environments.setup != null;
+  check = usr.home-manager.enable && usr.desktop.setup != null;
   style = usr.style.qt;
 in {
   options.nice.user = {

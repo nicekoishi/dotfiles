@@ -6,7 +6,7 @@
   inherit (lib.modules) mkIf;
 
   cfg = config.nice;
-  env = cfg.user.environments;
+  env = cfg.user.desktop;
 in {
   config = mkIf env.gnome.enable {
     services.xserver = {

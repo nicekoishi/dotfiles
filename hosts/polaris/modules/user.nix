@@ -6,7 +6,7 @@
   inherit (wallpapers.standard) kayoko;
 in {
   nice.user = {
-    environments.setup = ["Hyprland"];
+    desktop.setup = ["Hyprland"];
 
     display = {
       main = "HDMI-A-1";

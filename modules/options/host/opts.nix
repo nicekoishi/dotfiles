@@ -14,7 +14,6 @@ in {
     waylandReady = mkOption {
       default = false;
       type = bool;
-      internal = true;
       description = ''
         Whether the system has all the necessary requirements to
         run a Wayland compositor.
@@ -22,22 +21,26 @@ in {
         This option should be set on your own discretion, as there
         isn't any kind of check to this.
 
-        Severe case of trust me bro.
+        Trust me bro.
       '';
     };
 
     isWayland = mkOption {
       type = bool;
+      readOnly = true;
       default = let
-        environments = removeAttrs usr.environments ["setup"];
+        desktop = removeAttrs usr.desktop ["setup"];
       in
-        (filterAttrs (_: env: env ? wayland && env.wayland) environments) != {};
+        (filterAttrs (_: env: env ? wayland && env.wayland) desktop) != {};
       description = ''
         Whether to enable Wayland exclusive modules.
 
-        This option depends on `config.nice.host.opts.waylandReady`.
-        If a Wayland compositor is enabled on the host, enabling this option
-        without setting `waylandReady` to true will result in an error
+        This option depends on `config.nice.host.opts.waylandReady` and is
+        set automatically if a Wayland compositor is enabled on
+        `config.nice.user.desktop`.
+
+        Enabling a Wayland compositor without enabling `waylandReady` **will**
+        result in an error!
       '';
     };
   };
@@ -47,7 +50,7 @@ in {
       {
         assertion = cfg.isWayland -> cfg.waylandReady;
         message = ''
-          A Wayland compositor was enabled on `config.nice.user.environments`
+          A Wayland compositor was enabled on `config.nice.user.desktop`
           without enabling the required option `config.nice.host.opts.waylandReady`!
         '';
       }

@@ -9,7 +9,7 @@
   inherit (lib.types) bool int package str;
 
   usr = config.nice.user;
-  check = usr.home-manager.enable && usr.environments.setup != null;
+  check = usr.home-manager.enable && usr.desktop.setup != null;
   style = usr.style.gtk;
 in {
   options.nice.user = {

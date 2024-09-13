@@ -10,7 +10,7 @@
   inherit (lib.strings) makeBinPath optionalString;
 
   cfg = config.nice;
-  env = cfg.user.environments;
+  env = cfg.user.desktop;
 
   programs = makeBinPath (with pkgs; [
     inputs'.hyprland.packages.default

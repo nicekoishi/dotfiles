@@ -7,7 +7,7 @@
   inherit (lib.modules) mkIf;
 
   cfg = config.nice;
-  env = cfg.user.environments;
+  env = cfg.user.desktop;
 in {
   xdg.portal = {
     enable = true;
@@ -24,7 +24,7 @@ in {
     };
 
     # xdg-desktop-portal-hyprland doesn't implement a file chooser, so we need this
-    # if it isn't already installed by GNOME in nice.user.environments
+    # if it isn't already installed by GNOME in nice.user.desktop
     extraPortals = mkIf (!env.gnome.enable) [
       pkgs.xdg-desktop-portal-gtk
     ];

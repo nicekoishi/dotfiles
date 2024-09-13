@@ -10,7 +10,7 @@
   inherit (lib.strings) toLower;
 
   cfg = config.nice;
-  env = cfg.user.environments;
+  env = cfg.user.desktop;
   hyprlandPkg = inputs'.hyprland.packages.hyprland;
 
   /*

@@ -2,9 +2,9 @@
   inherit (lib.options) mkEnableOption;
 in {
   imports = [
+    ./desktop
     ./style
 
-    ./desktop.nix
     ./display.nix
   ];
 
