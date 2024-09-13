@@ -7,11 +7,10 @@
   lib,
   ...
 }: let
-  inherit (builtins) elem;
   inherit (lib.strings) makeBinPath optionalString;
 
   cfg = config.nice;
-  usr = cfg.user;
+  env = cfg.user.environments;
 
   programs = makeBinPath (with pkgs; [
     inputs'.hyprland.packages.default
@@ -26,7 +25,7 @@
   startscript = pkgs.writeShellScript "gamemode-start" ''
     export PATH=$PATH:${programs}
 
-    ${optionalString (elem "hyprland" usr.environments) ''
+    ${optionalString env.hyprland.enable ''
       for instance in $(hyprctl instances -j | jq ".[].instance" -r); do
         HYPRLAND_INSTANCE_SIGNATURE="$instance" \
         hyprctl --batch 'keyword decoration:blur:enabled 0 ; keyword animations:enabled 0'
@@ -42,7 +41,7 @@
   endscript = pkgs.writeShellScript "gamemode-end" ''
     export PATH=$PATH:${programs}
 
-    ${optionalString (elem "hyprland" usr.environments) ''
+    ${optionalString env.hyprland.enable ''
       for instance in $(hyprctl instances -j | jq ".[].instance" -r); do
         HYPRLAND_INSTANCE_SIGNATURE="$instance" \
         hyprctl --batch 'keyword decoration:blur:enabled 1 ; keyword animations:enabled 1'

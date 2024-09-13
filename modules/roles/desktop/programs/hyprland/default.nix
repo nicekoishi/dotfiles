@@ -6,12 +6,11 @@
   pkgs,
   ...
 }: let
-  inherit (builtins) elem;
   inherit (lib.modules) mkIf;
   inherit (lib.strings) toLower;
 
   cfg = config.nice;
-  usr = cfg.user;
+  env = cfg.user.environments;
   hyprlandPkg = inputs'.hyprland.packages.hyprland;
 
   /*
@@ -36,7 +35,7 @@ in {
   # doesn't matter, as we're not using it anyway if it's not enabled
   disabledModules = ["programs/hyprland"];
 
-  config = mkIf (elem "hyprland" usr.environments) {
+  config = mkIf env.hyprland.enable {
     # now I can safely do this, as we're enabling all the necessary options manually
 
     # we don't need it, as the session entry can launch it directly

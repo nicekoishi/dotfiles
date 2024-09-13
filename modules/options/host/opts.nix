@@ -1,24 +1,18 @@
 {
+  config,
   lib,
-  pkgs,
   ...
 }: let
-  inherit (lib.options) literalExpression mkOption;
-  inherit (lib.types) bool raw;
-in {
-  options.nice.host = {
-    # https://github.com/NixOS/nixpkgs/blob/1355a0cbfeac61d785b7183c0caaec1f97361b43/nixos/modules/system/boot/kernel.nix#L40
-    # defaultText is needed as ndg tries to eval the value, and it obviously fails as it's a kernel
-    # I don't know why there's explicit throws there, but eh...
-    kernel = mkOption {
-      default = pkgs.linuxPackages_zen;
-      type = raw;
-      defaultText = literalExpression "pkgs.linuxPackages";
-      example = literalExpression "pkgs.linuxPackages_latest";
-      description = "The kernel to be used by the host";
-    };
+  inherit (lib.attrsets) filterAttrs removeAttrs;
+  inherit (lib.options) mkOption;
+  inherit (lib.types) bool;
 
+  cfg = config.nice.host.opts;
+  usr = config.nice.user;
+in {
+  options.nice.host.opts = {
     waylandReady = mkOption {
+      default = false;
       type = bool;
       internal = true;
       description = ''
@@ -31,5 +25,32 @@ in {
         Severe case of trust me bro.
       '';
     };
+
+    isWayland = mkOption {
+      type = bool;
+      default = let
+        environments = removeAttrs usr.environments ["setup"];
+      in
+        (filterAttrs (_: env: env ? wayland && env.wayland) environments) != {};
+      description = ''
+        Whether to enable Wayland exclusive modules.
+
+        This option depends on `config.nice.host.opts.waylandReady`.
+        If a Wayland compositor is enabled on the host, enabling this option
+        without setting `waylandReady` to true will result in an error
+      '';
+    };
+  };
+
+  config = {
+    assertions = [
+      {
+        assertion = cfg.isWayland -> cfg.waylandReady;
+        message = ''
+          A Wayland compositor was enabled on `config.nice.user.environments`
+          without enabling the required option `config.nice.host.opts.waylandReady`!
+        '';
+      }
+    ];
   };
 }

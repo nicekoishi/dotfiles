@@ -4,12 +4,11 @@
   pkgs,
   ...
 }: let
-  inherit (builtins) length;
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.types) bool package str;
 
   usr = config.nice.user;
-  check = usr.home-manager.enable && (length usr.environments) > 0;
+  check = usr.home-manager.enable && usr.environments.setup != null;
   style = usr.style.qt;
 in {
   options.nice.user = {

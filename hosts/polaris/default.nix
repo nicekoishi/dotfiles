@@ -6,14 +6,12 @@
     ./networking.nix
   ];
 
-  nice = {
-    host = {
-      cpu = "amd";
-      gpu = ["nvidia"];
-      waylandReady = true;
+  nice.host = {
+    cpu = "amd";
+    gpu = ["nvidia"];
 
-      kernel = pkgs.linuxPackages_cachyos;
-    };
+    system.kernel = pkgs.linuxPackages_cachyos;
+    opts.waylandReady = true;
   };
 
   environment.systemPackages = [pkgs.scx];

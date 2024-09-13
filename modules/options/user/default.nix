@@ -1,25 +1,14 @@
 {lib, ...}: let
-  inherit (lib.options) mkEnableOption mkOption;
-  inherit (lib.types) enum listOf nullOr;
+  inherit (lib.options) mkEnableOption;
 in {
   imports = [
     ./style
 
+    ./desktop.nix
     ./display.nix
   ];
 
   options.nice.user = {
-    environments = mkOption {
-      type = nullOr (listOf (enum [
-        "hyprland"
-        "gnome"
-      ]));
-      default = null;
-      description = ''
-        List containing all desired environments for a specific host.
-      '';
-    };
-
     home-manager.enable = mkEnableOption "home-manager, to manage a user environment using Nix.";
   };
 }

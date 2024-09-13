@@ -5,8 +5,8 @@
 }: let
   inherit (lib.modules) mkDefault mkForce;
 
-  cfg = config.nice;
-  host = cfg.host;
+  cfg = config.nice.host;
+  sys = cfg.system;
 in {
   boot = {
     consoleLogLevel = 3;
@@ -22,7 +22,7 @@ in {
       timeout = mkForce 2; # see configurationLimit
     };
 
-    kernelPackages = mkDefault host.kernel;
+    kernelPackages = mkDefault sys.kernel;
 
     # https://github.com/NotAShelf/nyx/blob/d407b4d6e5ab7f60350af61a3d73a62a5e9ac660/modules/core/common/system/os/boot/generic.nix#L127
     kernelParams = [
