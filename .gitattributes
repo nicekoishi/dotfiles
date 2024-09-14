@@ -1,5 +1,12 @@
+# https://github.com/NotAShelf/nyx/blob/d407b4d6e5ab7f60350af61a3d73a62a5e9ac660/.gitattributes
+# Always use LF line endings so that if a repo is accessed
+# in Unix via a file share from Windows, the scripts will
+# work as expected.
+*.sh text eol=lf
+
 *.envrc
 *.lock -diff
+*LICENSE -diff
 
 *.age binary
 *.age linguist-detectable=false

@@ -1,6 +1,6 @@
 {pkgs, ...}: let
   keys = [
-    # polaris, cursed gpg to ssh key
+    # polaris, and one second... isn't this already on by default?
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMt/fj0+1c7Ktr9WQCqYHoi3jWSxV8/cwEUaT/92DA7q"
 
     # android phone, just for testing
