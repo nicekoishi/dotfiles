@@ -18,7 +18,7 @@
   wayland = mkOption {
     default = true;
     type = bool;
-    readOnly = true;
+    internal = true;
     description = ''
       Whether this desktop environment is a Wayland compositor.
     '';

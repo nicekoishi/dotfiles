@@ -1,4 +1,7 @@
-{
+{osConfig, ...}: let
+  inherit (osConfig.nice.user) main;
+  inherit (osConfig.users) users;
+in {
   imports = [
     ./editors
     ./programs
@@ -7,8 +10,8 @@
   ];
 
   home = {
-    username = "supeen";
-    homeDirectory = "/home/supeen";
+    username = main;
+    homeDirectory = users."${main}".home;
 
     stateVersion = "23.11";
   };

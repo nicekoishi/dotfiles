@@ -11,6 +11,7 @@
 
   cfg = config.nice;
   usr = cfg.user;
+
   specialArgs = {inherit lib inputs self inputs' self';};
 in {
   home-manager = mkIf usr.home-manager.enable {
@@ -25,7 +26,7 @@ in {
 
     extraSpecialArgs = specialArgs;
 
-    users.supeen = import "${self}/home";
+    users."${usr.main}".imports = ["${self}/home"];
 
     # i actually added this before, but did git reset --hard because of that last commit
     # actually forgot to add again

@@ -10,7 +10,8 @@
 in {
   config = mkIf usr.home-manager.enable {
     services.udisks2.enable = true;
-    home-manager.users.supeen = {
+
+    home-manager.users."${usr.main}" = {
       services.udiskie.enable = true;
     };
   };
