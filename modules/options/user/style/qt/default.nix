@@ -15,6 +15,12 @@ in {
     style.qt = {
       enable = mkEnableOption "QT Style Module" // {default = check;};
 
+      useGtk = mkOption {
+        default = false;
+        type = bool;
+        description = "Whether to force QT applications to use the GTK theme.";
+      };
+
       useKvantum = mkOption {
         default = false;
         type = bool;

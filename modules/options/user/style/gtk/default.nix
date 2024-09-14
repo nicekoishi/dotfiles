@@ -6,7 +6,7 @@
 }: let
   inherit (builtins) pathExists toString;
   inherit (lib.options) mkEnableOption mkOption;
-  inherit (lib.types) bool int package str;
+  inherit (lib.types) int package str;
 
   usr = config.nice.user;
   check = usr.home-manager.enable && usr.desktop.setup != null;
@@ -15,12 +15,6 @@ in {
   options.nice.user = {
     style.gtk = {
       enable = mkEnableOption "GTK Style Module" // {default = check;};
-
-      forceTheme = mkOption {
-        default = false;
-        type = bool;
-        description = "Whether to force QT applications to use the GTK theme.";
-      };
 
       iconTheme = {
         name = mkOption {

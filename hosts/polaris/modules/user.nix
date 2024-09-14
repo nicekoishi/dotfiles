@@ -32,9 +32,9 @@ in {
       };
     };
 
-    style = {
-      gtk.forceTheme = true;
-      qt.useKvantum = true;
+    style.qt = {
+      useGtk = true;
+      useKvantum = true;
     };
 
     # NOTE: shouldn't this be the default for all desktop systems?

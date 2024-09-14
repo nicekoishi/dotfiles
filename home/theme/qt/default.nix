@@ -33,7 +33,7 @@ in {
   qt = {
     enable = true;
     platformTheme = {
-      name = mkIf cfg.gtk.forceTheme "gtk3";
+      name = mkIf cfg.qt.useGtk "gtk3";
       package = [];
     };
 
@@ -64,7 +64,7 @@ in {
           qt6.qtsvg
         ]
 
-        (mkIf cfg.gtk.forceTheme [
+        (mkIf cfg.qt.useGtk [
           libsForQt5.qtstyleplugins
           qt6Packages.qt6gtk2
         ])
