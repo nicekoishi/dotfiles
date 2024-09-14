@@ -1,5 +1,9 @@
-{self', ...}: let
-  inherit (self'.packages) docs;
+{
+  self',
+  lib,
+  ...
+}: let
+  inherit (self'.packages) nicekoishi-dotfiles-docs;
 in {
   imports = [
     ./extra
@@ -7,6 +11,9 @@ in {
     ./user
   ];
   environment.etc."nicekoishi/documentation" = {
-    source = docs.outPath;
+    # keep it local
+    source = nicekoishi-dotfiles-docs.override {
+      optionsDocArgs.transformOptions = lib.id;
+    };
   };
 }

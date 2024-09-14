@@ -9,8 +9,7 @@
     ...
   }: {
     packages = {
-      # i want to shoot myself
-      docs = inputs'.ndg.packages.ndg-builder.override {
+      nicekoishi-dotfiles-docs = inputs'.ndg.packages.ndg-builder.override {
         title = "nicekoishi's options documentation - ${self.shortRev or self.dirtyShortRev}";
         embedResources = true;
 

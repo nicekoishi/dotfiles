@@ -17,7 +17,7 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v14
 
       - run: |
-          nix -vL build .#docs
+          nix -vL build .#nicekoishi-dotfiles-docs
           mkdir -p build
           mv result build/index.html
 
