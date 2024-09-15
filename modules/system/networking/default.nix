@@ -2,8 +2,6 @@
   inherit (lib.modules) mkDefault mkForce;
 in {
   imports = [
-    # TODO: maybe avahi shouldn't be available to all roles?
-    ./avahi
     ./firewall
     ./ssh
     ./tailscale
