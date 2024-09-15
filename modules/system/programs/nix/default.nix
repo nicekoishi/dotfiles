@@ -59,6 +59,7 @@ in {
         "nix-command"
         "flakes"
         "cgroups"
+        "repl-flake"
       ];
 
       flake-registry = "/etc/nix/registry.json";
