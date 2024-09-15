@@ -13,7 +13,7 @@
 
     # NOTE: forgot where I saw it, but if an attrset is explicitly named you can do this
     # this is just to make the functions available under lib.nice instead
-    inherit (importedLibs.builders) mkNixosSystem mkNixosIso mkModulesFor;
+    inherit (importedLibs.builders) mkNixosSystem mkNixosIso mkModuleList;
     inherit (importedLibs.misc) capitalize;
   };
 

@@ -9,18 +9,39 @@
   inherit (lib.lists) concatLists flatten singleton;
   inherit (lib.modules) mkDefault;
 
-  # still think that everything should be in a separate namespace, as to not confuse with
-  # the 'normal' nixpkgs.lib
+  # ... alias
   mkSystem = lib.nixosSystem;
 
-  # since there's a flatten on the main builder already, this shouldn't be a problem
-  mkModulesFor = path: defaults: hostname: modules: [
-    "${path}/${hostname}"
-    modules
-    defaults
-  ];
+  # Generates a list of modules to be import by a host.
+  mkModuleList = path: hostname: {
+    common,
+    roles,
+    extraModules,
+    ...
+  } @ args:
+    flatten (concatLists [
+      # Import the host defined on path. Do note that path is empty by default,
+      # so don't forget to override it
+      # mkModulesFor' = mkModulesFor ./. <...>
+      (singleton "${path}/${hostname}")
 
-  # it's a convenient way to pass system and specialArgs, so why not use it?
+      # Modules that should be common to all hosts.
+      # For example, we have options definitions and secrets.
+      (args.common or [])
+
+      # Relevant roles of this host, check modules/roles
+      (args.roles or [])
+
+      # For things that aren't necessarily roles, but aren't generic enough
+      # to be put into extraModules
+      (args.profiles or [])
+
+      # Any extra module that shouldn't be on roles or profiles, i.e generic:
+      # inputs.home-manager.nixosModules.default
+      (args.extraModules or [])
+    ]);
+
+  # It's a convenient way to pass system and specialArgs, so why not use it?
   # https://flake.parts/module-arguments#withsystem
   mkNixosSystem = {
     hostname,
@@ -40,7 +61,7 @@
         } (args.specialArgs or {});
 
         # NOTE: is there a problem flattening this list here instead of smaller flattens?
-        modules = flatten (concatLists [
+        modules = concatLists [
           (singleton {
             networking.hostName = args.hostname;
             nixpkgs.hostPlatform = mkDefault args.system;
@@ -48,7 +69,7 @@
 
           # NOTE: and here things like chaotic or nur or any module actually
           (args.modules or [])
-        ]);
+        ];
       });
 
   mkNixosIso = args:
@@ -63,5 +84,5 @@
           ];
       });
 in {
-  inherit mkNixosSystem mkNixosIso mkModulesFor;
+  inherit mkNixosSystem mkNixosIso mkModuleList;
 }
