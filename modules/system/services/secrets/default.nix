@@ -8,5 +8,19 @@
       group = "users";
       mode = "400";
     };
+
+    cloudflare-dns = {
+      file = "${self}/secrets/cloudflare.age";
+      owner = "root";
+      group = "root";
+      mode = "400";
+    };
+
+    navidrome-env = {
+      file = "${self}/secrets/navidrome.age";
+      owner = "navidrome";
+      group = "root";
+      mode = "400";
+    };
   };
 }

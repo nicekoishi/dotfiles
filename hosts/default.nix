@@ -30,6 +30,10 @@
   # roles definition, each containing its own set of configs/overrides
   roles = modulePath + "/roles";
   desktop = roles + "/desktop";
+
+  # profiles i.e they don't override or setup enough to be considered a role
+  profiles = modulePath + "/profiles";
+  server = profiles + "/server";
 in {
   flake.nixosConfigurations = {
     polaris = mkNixosSystem {
@@ -39,6 +43,7 @@ in {
 
       modules = mkModuleList' "polaris" {
         roles = [desktop];
+        profiles = [server];
         extraModules = [hm chaotic-nyx];
       };
     };

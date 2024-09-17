@@ -14,6 +14,8 @@ I just had some problems using a .gpg extension, but renaming it to priv.asc fix
 
 Also, here is the link to the repository it future me is feeling lazy (dumbass)
   https://github.com/pinpox/pgp2ssh
+
+Will bgenix finally support ssh-agent?
 */
 let
   # User keys
@@ -24,4 +26,6 @@ let
   polaris = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMt/fj0+1c7Ktr9WQCqYHoi3jWSxV8/cwEUaT/92DA7q";
 in {
   "tailscale.age".publicKeys = [supeen polaris];
+  "cloudflare.age".publicKeys = [supeen polaris];
+  "navidrome.age".publicKeys = [supeen polaris];
 }
