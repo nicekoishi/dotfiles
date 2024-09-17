@@ -10,12 +10,14 @@
   Address = "100.64.146.49"; # FIXME: is this dumb? probably
   Port = "4553";
 
+  cfg = config.nice.host;
+  srv = cfg.services;
   domain = "navi.nicekoishi.com.br";
 in {
   # FIXME: Scrobble to Last.fm is broken at the moment
-  # Relevant error from journal:
+  # Relevant error from journalctl -e SYSLOG_IDENTIFIER=navidrome:
   # dial tcp: lookup ws.audioscrobbler.com: device or resource busy"
-  config = mkIf (config.networking.hostName == "polaris") {
+  config = mkIf srv.navidrome.enable {
     nice.host.services = {
       nginx.enable = true;
     };

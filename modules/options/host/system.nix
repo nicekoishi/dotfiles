@@ -3,7 +3,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib.options) literalExpression mkOption;
+  inherit (lib.options) literalExpression mkEnableOption mkOption;
   inherit (lib.types) raw;
 in {
   options.nice.host.system = {
@@ -17,5 +17,7 @@ in {
       example = literalExpression "pkgs.linuxPackages_latest";
       description = "The kernel to be used by the host";
     };
+
+    gpg.enable = mkEnableOption "gnupg at system level";
   };
 }
