@@ -5,4 +5,6 @@
     ./programs
     ./services
   ];
+
+  system.nixos.tags = ["desktop"];
 }

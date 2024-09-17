@@ -1,9 +1,11 @@
 {
+  osConfig,
   config,
   lib,
   pkgs,
   ...
 }: let
+  inherit (builtins) elem;
   inherit (lib.meta) getExe getExe';
 
   hyprctl = "${getExe' config.wayland.windowManager.hyprland.package "hyprctl"}";
@@ -27,7 +29,10 @@ in {
         }
         {
           timeout = 1800;
-          on-timeout = "${systemd "systemctl"} suspend";
+          on-timeout =
+            if elem "server" osConfig.system.nixos.tags
+            then "${getExe' pkgs.kbd "chvt"} 8"
+            else "${systemd "systemctl"} suspend";
         }
       ];
     };
