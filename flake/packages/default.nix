@@ -3,12 +3,13 @@
     lib,
     pkgs,
     ...
-  }: {
-    packages =
-      lib.packagesFromDirectoryRecursive {
-        inherit (pkgs) callPackage;
-        directory = ./.;
-      }
-      // {default = pkgs.hello;};
+  }: let
+    inherit (lib.attrsets) removeAttrs;
+    inherit (lib.filesystem) packagesFromDirectoryRecursive;
+  in {
+    packages = removeAttrs (packagesFromDirectoryRecursive {
+      inherit (pkgs) callPackage;
+      directory = ./.;
+    }) ["default"];
   };
 }
