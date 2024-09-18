@@ -4,6 +4,7 @@
   ...
 }: let
   inherit (builtins) toString;
+  inherit (lib.attrsets) mapAttrs;
   inherit (lib.modules) mkForce;
   inherit (lib.strings) concatMapStringsSep;
 in {
@@ -13,8 +14,8 @@ in {
       openFirewall = true;
       startWhenNeeded = true;
 
-      settings = {
-        PermitRootLogin = mkForce "no";
+      settings = mapAttrs (_: mkForce) {
+        PermitRootLogin = "no";
 
         # pub key auth
         PasswordAuthentication = false;

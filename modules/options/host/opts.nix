@@ -31,7 +31,7 @@ in {
       default = let
         desktop = removeAttrs usr.desktop ["setup"];
       in
-        (filterAttrs (_: env: env ? wayland && env.wayland) desktop) != {};
+        (filterAttrs (_: env: env ? wayland && env.enable) desktop) != {};
       description = ''
         Whether to enable Wayland exclusive modules.
 

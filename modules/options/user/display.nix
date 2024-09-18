@@ -4,7 +4,6 @@
   self',
   ...
 }: let
-  inherit (lib.attrsets) hasAttr;
   inherit (lib.lists) optionals;
   inherit (lib.options) mkOption;
   inherit (lib.types) attrsOf either enum int nullOr package str submodule;
@@ -85,7 +84,10 @@ in {
   };
 
   config = {
-    warnings = optionals (!hasAttr cfg.main cfg.monitors) [
+    # NOTE: Any Nix magicians can explain me why the hell this won't work
+    # referring to attrset itself, but it does when I interpolate it?
+    # (... && !( cfg.monitors ? cfg.main ))
+    warnings = optionals (cfg.main != null && !(cfg.monitors ? "${cfg.main}")) [
       ''
         ${cfg.main} is not a valid monitor in `config.nice.user.display.monitors`!
 

@@ -5,15 +5,10 @@
 }: let
   inherit (builtins) elem;
   inherit (lib.options) mkOption;
-  inherit (lib.types) bool enum listOf nullOr;
+  inherit (lib.types) bool enum listOf;
 
   cfg = config.nice.user;
   env = cfg.desktop;
-
-  mkCheckFor = desktop:
-    if (env.setup == null)
-    then false
-    else elem desktop env.setup;
 
   wayland = mkOption {
     default = true;
@@ -27,11 +22,14 @@ in {
   options.nice.user = {
     desktop = {
       setup = mkOption {
-        default = null;
-        type = nullOr (listOf (enum [
+        default = ["none"];
+        type = listOf (enum [
           "Hyprland"
           "GNOME"
-        ]));
+
+          # This is the default for headless systems btw
+          "none"
+        ]);
         description = ''
           A list containing all desktop environments to be enabled.
         '';
@@ -41,7 +39,7 @@ in {
         inherit wayland;
 
         enable = mkOption {
-          default = mkCheckFor "GNOME";
+          default = elem "GNOME" env.setup;
           type = bool;
           description = ''
             Whether to enable the GNOME desktop environment.
@@ -56,7 +54,7 @@ in {
         inherit wayland;
 
         enable = mkOption {
-          default = mkCheckFor "Hyprland";
+          default = elem "Hyprland" env.setup;
           type = bool;
           description = ''
             Whether to enable the Hyprland wayland compositor
