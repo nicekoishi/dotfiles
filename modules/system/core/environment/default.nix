@@ -1,6 +1,6 @@
 {
   imports = [
     ./locale.nix
-    ./user.nix
+    ./users.nix
   ];
 }
