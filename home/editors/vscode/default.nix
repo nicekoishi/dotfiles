@@ -22,6 +22,8 @@
         yzhang.markdown-all-in-one
 
         # cpp
+        # this fucker here is only for build, no syntax highlighting
+        # `full-featured` my ass
         ms-vscode.cmake-tools
         ms-vscode.cpptools
         xaver.clang-format
@@ -51,6 +53,12 @@
           publisher = "andreoneti";
           version = "1.3.3";
           sha256 = "1hxn65gy47izls6n0n3gkrfj23zdf54hkhin4ywj98dw7cb7nxyy";
+        }
+        {
+          name = "cmake-highlight";
+          publisher = "zchrissirhcz";
+          version = "0.0.2";
+          sha256 = "0974i66wg75i46a79mz6v6wgqxw4qb24yk5szdl6534cd2pvxln9";
         }
       ];
 
