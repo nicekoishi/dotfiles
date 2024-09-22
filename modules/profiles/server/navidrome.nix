@@ -6,6 +6,7 @@
   inherit (lib.modules) mkIf mkForce;
   inherit (lib.strings) toInt;
 
+  # NOTE: Should these be moved to our module system?
   DataDirectory = "/var/lib/navidrome";
   Address = "127.0.0.1";
   Port = "4553";
@@ -22,17 +23,6 @@ in {
       nginx.enable = true;
 
       ddns.cloudflare = [domain];
-    };
-
-    # keep this here if I forget for some reason
-    # security.acme.defaults.server = "https://acme-staging-v02.api.letsencrypt.org/directory";
-
-    security.acme.certs."${domain}" = {
-      dnsProvider = "cloudflare";
-      dnsResolver = "1.1.1.1:53";
-      dnsPropagationCheck = true;
-
-      environmentFile = config.age.secrets.cloudflare-dns.path;
     };
 
     services = {
@@ -58,7 +48,7 @@ in {
       };
 
       nginx.virtualHosts."${domain}" = {
-        useACMEHost = "${domain}";
+        enableACME = true;
         forceSSL = true;
 
         locations."/" = {

@@ -11,7 +11,19 @@ in {
   config = mkIf srv.nginx.enable {
     security.acme = {
       acceptTerms = true;
-      defaults.email = "domain.koish@gmail.com";
+
+      # This defaults to cloudflare, if a new domain is from another provider...
+      # just override these defaults with `security.acme.certs."${domain}"`
+      defaults = {
+        email = "domain.koish@gmail.com";
+
+        dnsProvider = "cloudflare";
+        dnsPropagationCheck = true;
+        environmentFile = config.age.secrets.cloudflare-dns.path;
+
+        # NOTE: Do not forget to enable this when testing, we don't want to get rate limited again
+        server = "https://acme-staging-v02.api.letsencrypt.org/directory";
+      };
     };
 
     services = {

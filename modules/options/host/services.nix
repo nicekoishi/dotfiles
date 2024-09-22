@@ -8,6 +8,8 @@ in {
 
       navidrome.enable = mkEnableOption "Navidrome, self-hosted music server";
 
+      kanidm.enable = mkEnableOption "Kanidm, simple and secure identity management platform";
+
       ddns = {
         cloudflare = mkOption {
           default = [];
