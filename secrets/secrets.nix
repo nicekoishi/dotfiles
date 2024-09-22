@@ -26,6 +26,6 @@ let
   polaris = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMt/fj0+1c7Ktr9WQCqYHoi3jWSxV8/cwEUaT/92DA7q";
 in {
   "tailscale.age".publicKeys = [supeen polaris];
-  "cloudflare.age".publicKeys = [supeen polaris];
-  "navidrome.age".publicKeys = [supeen polaris];
+  "cloudflare-dns.age".publicKeys = [supeen polaris];
+  "navidrome-env.age".publicKeys = [supeen polaris];
 }

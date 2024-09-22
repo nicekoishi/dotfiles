@@ -10,7 +10,7 @@
     };
 
     cloudflare-dns = {
-      file = "${self}/secrets/cloudflare.age";
+      file = "${self}/secrets/cloudflare-dns.age";
       owner = "root";
       group = "root";
       mode = "400";

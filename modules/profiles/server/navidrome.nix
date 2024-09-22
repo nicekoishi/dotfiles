@@ -7,7 +7,7 @@
   inherit (lib.strings) toInt;
 
   DataDirectory = "/var/lib/navidrome";
-  Address = "100.64.146.49"; # FIXME: is this dumb? probably
+  Address = "127.0.0.1";
   Port = "4553";
 
   cfg = config.nice.host;
@@ -20,16 +20,19 @@ in {
   config = mkIf srv.navidrome.enable {
     nice.host.services = {
       nginx.enable = true;
+
+      ddns.cloudflare = [domain];
     };
 
     # keep this here if I forget for some reason
     # security.acme.defaults.server = "https://acme-staging-v02.api.letsencrypt.org/directory";
 
     security.acme.certs."${domain}" = {
-      credentialsFile = config.age.secrets.cloudflare-dns.path;
       dnsProvider = "cloudflare";
       dnsResolver = "1.1.1.1:53";
       dnsPropagationCheck = true;
+
+      environmentFile = config.age.secrets.cloudflare-dns.path;
     };
 
     services = {
@@ -48,12 +51,9 @@ in {
           DefaultTheme = "Catppuccin Macchiato";
           MaxSidebarPlaylists = "10";
           MusicFolder = "${config.users.users.supeen.home}/Music";
-          ScanSchedule = "0 4 * * 0"; # at every 4 AM on Sunday
-          SessionTimeout = "1h";
+          ScanSchedule = "0 * * * *"; # at every hour
+          SessionTimeout = "1h"; # ignored by most clients, only works on web client
           TranscodingCacheSize = "100MB";
-
-          # This will probably be gone when I set up an identity provider
-          UIWelcomeMessage = "Hello there!";
         };
       };
 
@@ -69,9 +69,6 @@ in {
     };
 
     systemd.services.navidrome = {
-      after = ["network.target" "tailscale-autoconnect.service"];
-      wants = ["network.target" "tailscale-autoconnect.service"];
-
       serviceConfig = {
         EnvironmentFile = config.age.secrets.navidrome-env.path;
         ProtectHome = mkForce "read-only"; # i really don't like this...

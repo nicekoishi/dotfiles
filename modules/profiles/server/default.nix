@@ -1,5 +1,6 @@
 {
   imports = [
+    ./ddns.nix
     ./nginx.nix
     ./navidrome.nix
   ];

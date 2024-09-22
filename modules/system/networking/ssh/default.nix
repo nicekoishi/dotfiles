@@ -12,6 +12,7 @@ in {
     openssh = {
       enable = true;
       openFirewall = true;
+      ports = [144];
       startWhenNeeded = true;
 
       settings = mapAttrs (_: mkForce) {
