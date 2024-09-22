@@ -1,40 +1,52 @@
 # NOTE: this is just the module configuration, for the actual secrets go back
 # ${self}/secrets is for the agenix cli tool only
-{self, ...}: {
+{
+  config,
+  lib,
+  self,
+  ...
+}: let
+  inherit (lib.modules) mkIf;
+
+  mkSecret = cond: {
+    file,
+    owner ? "root",
+    group ? "root",
+    mode ? "400",
+  }:
+    mkIf cond {
+      inherit file owner group mode;
+    };
+
+  cfg = config.nice.host;
+  srv = cfg.services;
+in {
   age.secrets = {
-    tailscale-key = {
+    tailscale-key = mkSecret true {
       file = "${self}/secrets/tailscale.age";
       owner = "supeen";
       group = "users";
-      mode = "400";
     };
 
-    cloudflare-dns = {
+    cloudflare-dns = mkSecret srv.nginx.enable {
       file = "${self}/secrets/cloudflare-dns.age";
-      owner = "root";
-      group = "root";
-      mode = "400";
     };
 
-    kanidm-admin = {
+    kanidm-admin = mkSecret srv.kanidm.enable {
       file = "${self}/secrets/kanidm-admin.age";
       owner = "kanidm";
       group = "kanidm";
-      mode = "400";
     };
 
-    kanidm-idm-admin = {
+    kanidm-idm-admin = mkSecret srv.kanidm.enable {
       file = "${self}/secrets/kanidm-idm-admin.age";
       owner = "kanidm";
       group = "kanidm";
-      mode = "400";
     };
 
-    navidrome-env = {
+    navidrome-env = mkSecret srv.navidrome.enable {
       file = "${self}/secrets/navidrome.age";
       owner = "navidrome";
-      group = "root";
-      mode = "400";
     };
   };
 }
