@@ -25,6 +25,11 @@ in {
       ddns.cloudflare = [domain];
     };
 
+    security.acme.certs."${domain}" = {
+      dnsProvider = "cloudflare";
+      dnsResolver = "1.1.1.1:53";
+    };
+
     services = {
       navidrome = {
         enable = true;
@@ -48,7 +53,7 @@ in {
       };
 
       nginx.virtualHosts."${domain}" = {
-        enableACME = true;
+        useACMEHost = "${domain}";
         forceSSL = true;
 
         locations."/" = {

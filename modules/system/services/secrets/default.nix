@@ -16,6 +16,20 @@
       mode = "400";
     };
 
+    kanidm-admin = {
+      file = "${self}/secrets/kanidm-admin.age";
+      owner = "kanidm";
+      group = "kanidm";
+      mode = "400";
+    };
+
+    kanidm-idm-admin = {
+      file = "${self}/secrets/kanidm-idm-admin.age";
+      owner = "kanidm";
+      group = "kanidm";
+      mode = "400";
+    };
+
     navidrome-env = {
       file = "${self}/secrets/navidrome.age";
       owner = "navidrome";

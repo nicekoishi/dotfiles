@@ -17,12 +17,11 @@ in {
       defaults = {
         email = "domain.koish@gmail.com";
 
-        dnsProvider = "cloudflare";
         dnsPropagationCheck = true;
         environmentFile = config.age.secrets.cloudflare-dns.path;
 
         # NOTE: Do not forget to enable this when testing, we don't want to get rate limited again
-        server = "https://acme-staging-v02.api.letsencrypt.org/directory";
+        # server = "https://acme-staging-v02.api.letsencrypt.org/directory";
       };
     };
 

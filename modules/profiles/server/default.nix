@@ -1,7 +1,7 @@
 {
   imports = [
     ./ddns.nix
-    #    ./idm.nix
+    ./idm.nix
     ./nginx.nix
     ./navidrome.nix
   ];

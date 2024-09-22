@@ -27,5 +27,7 @@ let
 in {
   "tailscale.age".publicKeys = [supeen polaris];
   "cloudflare-dns.age".publicKeys = [supeen polaris];
+  "kanidm-idm-admin.age".publicKeys = [supeen polaris];
+  "kanidm-admin.age".publicKeys = [supeen polaris];
   "navidrome-env.age".publicKeys = [supeen polaris];
 }
