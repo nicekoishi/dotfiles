@@ -10,7 +10,8 @@ in {
     enable = true;
     plugins = with pkgs.obs-studio-plugins; [
       # helps me setup auto replay buffer
-      advanced-scene-switcher
+      # FIXME: Build failure as from 23/09/2024
+      # advanced-scene-switcher
 
       obs-gstreamer
       obs-pipewire-audio-capture

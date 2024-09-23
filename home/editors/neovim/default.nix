@@ -103,7 +103,6 @@
         lsplines.enable = true;
         lspsaga.enable = false;
         nvim-docs-view.enable = true;
-        nvimCodeActionMenu.enable = true;
         trouble.enable = false;
       };
 
@@ -186,6 +185,7 @@
       ui = {
         noice.enable = true;
         illuminate.enable = true;
+        fastaction.enable = true;
 
         borders = {
           enable = true;

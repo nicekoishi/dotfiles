@@ -1,7 +1,7 @@
 {
   programs.kitty = {
     enable = true;
-    theme = "Catppuccin-Mocha";
+    themeFile = "Catppuccin-Mocha";
     settings = {
       confirm_os_window_close = 0;
       background_opacity = "0.71";
