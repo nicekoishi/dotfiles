@@ -65,6 +65,10 @@ in {
 
     systemd.services.navidrome = {
       serviceConfig = {
+        # https://github.com/NixOS/nixpkgs/issues/151550
+        # How is this not fixed on the module already?
+        BindReadOnlyPaths = [config.environment.etc."resolv.conf".source];
+
         EnvironmentFile = config.age.secrets.navidrome-env.path;
         ProtectHome = mkForce "read-only"; # i really don't like this...
       };
