@@ -96,6 +96,7 @@
 
       "workspace 4 silent, initialtitle:^(Spotify( Free| Premium)?)$"
       "workspace 4 silent, initialclass:^(cantata)$"
+      "workspace 4 silent, initialclass:^(feishin)$"
 
       "workspace 5 silent, class:^(lutris*)$"
       "workspace 5 silent, class:^(steam*)$"
