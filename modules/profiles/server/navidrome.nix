@@ -47,7 +47,7 @@ in {
           MaxSidebarPlaylists = "10";
           MusicFolder = "${config.users.users.supeen.home}/Music";
           ScanSchedule = "0 * * * *"; # at every hour
-          SessionTimeout = "1h"; # ignored by most clients, only works on web client
+          SessionTimeout = "72h"; # low values can mess up with some clients... the heck
           TranscodingCacheSize = "100MB";
         };
       };
