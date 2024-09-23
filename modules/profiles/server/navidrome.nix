@@ -42,7 +42,7 @@ in {
           CacheFolder = "${DataDirectory}/cache";
           Port = toInt Port;
 
-          CoverArtPriority = "embedded,cover.*,folder.*,front.*,external";
+          CoverArtPriority = "embedded";
           DefaultTheme = "Catppuccin Macchiato";
           MaxSidebarPlaylists = "10";
           MusicFolder = "${config.users.users.supeen.home}/Music";

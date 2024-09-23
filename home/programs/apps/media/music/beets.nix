@@ -51,7 +51,9 @@
 
       fetchart = {
         auto = true;
-        maxwidth = 1200; # this makes mpd lag when art is too big i.e >1200px
+        # since we're using navidrome, we can afford to be a little greedy
+        high_resolution = true;
+        maxwidth = 3000; # but not too much
       };
 
       acousticbrainz.auto = true;
