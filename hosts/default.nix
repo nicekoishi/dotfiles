@@ -33,6 +33,7 @@
 
   # profiles i.e they don't override or setup enough to be considered a role
   profiles = modulePath + "/profiles";
+  gaming = profiles + "/gaming";
   server = profiles + "/server";
 in {
   flake.nixosConfigurations = {
@@ -43,7 +44,7 @@ in {
 
       modules = mkModuleList' "polaris" {
         roles = [desktop];
-        profiles = [server];
+        profiles = [gaming server];
         extraModules = [hm chaotic-nyx];
       };
     };

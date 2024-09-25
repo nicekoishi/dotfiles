@@ -5,12 +5,34 @@
 }: let
   inherit (lib.attrsets) filterAttrs removeAttrs;
   inherit (lib.options) mkOption;
-  inherit (lib.types) bool;
+  inherit (lib.types) bool enum listOf;
 
   cfg = config.nice.host.opts;
   usr = config.nice.user;
 in {
   options.nice.host.opts = {
+    roles = mkOption {
+      default = [];
+      type = listOf (enum ["desktop" "laptop" "iso"]);
+      description = ''
+        A list of all roles enabled for this host.
+
+        The main purpose of this option is to not polute `system.nixos.tags`,
+        as we may be dealing with way more roles in the future.
+      '';
+    };
+
+    profiles = mkOption {
+      default = [];
+      type = listOf (enum ["gaming" "server"]);
+      description = ''
+        A list of all profiles enabled for this host.
+
+        The main purpose of this option is to not polute `system.nixos.tags`,
+        as we may be dealing with way more profiles in the future.
+      '';
+    };
+
     waylandReady = mkOption {
       default = false;
       type = bool;

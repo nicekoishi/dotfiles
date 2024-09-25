@@ -7,5 +7,7 @@
     ./navidrome.nix
   ];
 
-  system.nixos.tags = ["server"];
+  nice.host.opts = {
+    profiles = ["server"];
+  };
 }
