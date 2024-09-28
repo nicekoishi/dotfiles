@@ -3,6 +3,7 @@
     ./hardware
     ./networking
     ./programs
+    ./security
     ./services
   ];
 
