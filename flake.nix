@@ -62,11 +62,7 @@
       inputs.nixpkgs.follows = "hyprland/nixpkgs";
     };
 
-    hyprland = {
-      type = "git";
-      url = "https://github.com/hyprwm/Hyprland";
-      submodules = true;
-    };
+    hyprland.url = "github:hyprwm/Hyprland";
 
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -91,8 +87,8 @@
       };
     };
 
-    neovim-flake = {
-      url = "github:NotAShelf/neovim-flake";
+    nvf = {
+      url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 

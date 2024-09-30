@@ -7,6 +7,7 @@
 }: let
   inherit (builtins) elem;
   inherit (lib.meta) getExe getExe';
+  inherit (lib.strings) optionalString;
 
   hyprctl = "${getExe' config.wayland.windowManager.hyprland.package "hyprctl"}";
   systemd = exe: "${getExe' pkgs.systemd exe}";
@@ -29,10 +30,7 @@ in {
         }
         {
           timeout = 1800;
-          on-timeout =
-            if elem "server" osConfig.system.nixos.tags
-            then "${getExe' pkgs.kbd "chvt"} 8"
-            else "${systemd "systemctl"} suspend";
+          on-timeout = optionalString (!elem "server" osConfig.nice.host.opts.profiles) "${systemd "systemctl"} suspend";
         }
       ];
     };

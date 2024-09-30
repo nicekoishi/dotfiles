@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  imports = [inputs.neovim-flake.homeManagerModules.default];
+  imports = [inputs.nvf.homeManagerModules.default];
 
   programs.neovim-flake = {
     enable = true;

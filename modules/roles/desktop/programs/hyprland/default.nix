@@ -18,15 +18,17 @@
   error: Package, 'Hyprland', did not specify any session names, as strings, in
   'passthru.providedSessions'. This is required when used as a session package.
   */
-  hyprlandSession =
+  hyprlandSession = let
+    name = "Hyprland";
+  in
     (pkgs.writeTextFile {
-      name = "Hyprland";
-      destination = "/share/wayland-sessions/${toLower hyprlandSession.name}.desktop";
+      inherit name;
+      destination = "/share/wayland-sessions/${toLower name}.desktop";
       text = ''
         [Desktop Entry]
-        Name=${hyprlandSession.name}
+        Name=${name}
         Comment=An intelligent dynamic tiling Wayland compositor
-        Exec=${pkgs.systemd}/bin/systemd-cat --identifier=${hyprlandSession.name} ${hyprlandSession.name}
+        Exec=${pkgs.systemd}/bin/systemd-cat --identifier=${name} ${name}
         Type=Application
       '';
     })

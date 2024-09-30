@@ -103,8 +103,6 @@
       "workspace 5 silent, class:^(steam_app_\d+)$"
 
       "workspace 6 silent, class:^(virt-manager)$"
-
-      "workspace special:thunderbird silent, initialclass:^(thunderbird)$"
     ];
   };
 }
