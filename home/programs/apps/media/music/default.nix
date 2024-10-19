@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ./cantata
+    # ./cantata
     ./spotify
     #./yt-music
 
