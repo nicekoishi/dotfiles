@@ -4,5 +4,5 @@
     gpg.enable = true;
   };
 
-  environment.systemPackages = [pkgs.scx];
+  environment.systemPackages = [pkgs.scx_git.full];
 }

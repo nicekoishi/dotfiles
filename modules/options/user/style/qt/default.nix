@@ -64,8 +64,8 @@ in {
       kvantum = {
         package = mkOption {
           default = pkgs.catppuccin-kvantum.override {
-            accent = "Blue";
-            variant = "Mocha";
+            accent = "blue";
+            variant = "mocha";
           };
           type = package;
           description = "Path to the Kvantum theme package";
