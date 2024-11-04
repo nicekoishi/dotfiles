@@ -32,7 +32,7 @@ in {
         "$mod, F1, exec, ags -t bar"
         "$mod, P, exec, emacsclient -c -a emacs"
 
-        "$mod, E, exec, run-as-service dolphin"
+        "$mod, E, exec, run-as-service thunar"
         "$mod, O, exec, run-as-service ocr"
         "$mod, Q, exec, run-as-service kitty"
         "$mod, R, exec, pkill .anyrun-wrapped || run-as-service anyrun"

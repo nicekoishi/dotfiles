@@ -82,6 +82,9 @@
       "dimaround, class:^(xdg-desktop-portal-.*)$"
       "dimaround, class:^(polkit-gnome-authentication-agent-1)$"
 
+      # headache
+      "float, class:thunar"
+
       # lutris and most games launched through wine create an annoying system tray window
       # go away
       "workspace special silent, title:^(title:Wine System Tray)$"

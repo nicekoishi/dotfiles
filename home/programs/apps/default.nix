@@ -13,6 +13,8 @@
     qbittorrent
 
     kdePackages.ark
+
+    # backup file manager and its 'plugins'
     kdePackages.dolphin
     kdePackages.dolphin-plugins
     kdePackages.kio

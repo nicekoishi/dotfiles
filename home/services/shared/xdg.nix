@@ -7,7 +7,7 @@
   browser = ["firefox"];
   imageViewer = ["viewnior"];
   videoPlayer = ["mpv"];
-  fileManager = ["org.kde.dolphin"];
+  fileManager = ["thunar"];
   fileArchiver = ["org.kde.ark"];
   mail = ["thunderbird"];
 
