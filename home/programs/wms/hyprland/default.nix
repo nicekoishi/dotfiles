@@ -94,24 +94,27 @@ in {
 
         decoration = {
           rounding = 12;
-          drop_shadow = true;
-          shadow_ignore_window = true;
-          shadow_offset = "1 2";
-          shadow_range = 10;
-          shadow_render_power = 3;
-          "col.shadow" = "rgba(292c3cee)";
 
           blur = {
             enabled = true;
-            passes = 3;
-            size = 5;
             brightness = 0.82;
             contrast = 0.71;
             ignore_opacity = true;
             new_optimizations = true;
+            passes = 3;
+            size = 5;
             special = true;
             vibrancy = 0.2;
             xray = true;
+          };
+
+          shadow = {
+            enabled = true;
+            color = "rgba(292c3cee)";
+            ignore_window = true;
+            offset = "1 2";
+            range = 10;
+            render_power = 3;
           };
         };
 
