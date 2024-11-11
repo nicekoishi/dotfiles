@@ -19,12 +19,12 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@v14
 
       - run: |
-          nix -vL build .#nicekoishi-dotfiles-docs -o build/index.html
+          nix -vL build .#nicekoishi-dotfiles-docs
 
       - name: "Upload GitHub Pages artifact"
         uses: actions/upload-pages-artifact@v3.0.1
         with:
-          path: "./build"
+          path: "./result/share/doc"
 
   publish-documentation:
     runs-on: ubuntu-latest
