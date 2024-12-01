@@ -5,7 +5,10 @@
 }: {
   home.packages = with pkgs; [
     mpc_cli
-    cava
+
+    # FIXME: Waiting for this PR to hit unstable
+    # https://github.com/NixOS/nixpkgs/pull/355948
+    # cava
   ];
 
   services = {

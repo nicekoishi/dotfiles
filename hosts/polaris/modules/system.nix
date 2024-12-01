@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   nice.host.system = {
-    kernel = pkgs.linuxPackages_cachyos;
+    kernel = pkgs.linuxPackages_zen;
     gpg.enable = true;
   };
 
-  environment.systemPackages = [pkgs.scx_git.full];
+  # environment.systemPackages = [pkgs.scx_git.full];
 }

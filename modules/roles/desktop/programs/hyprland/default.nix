@@ -8,10 +8,10 @@
 }: let
   inherit (lib.modules) mkIf;
   inherit (lib.strings) toLower;
+  inherit (inputs'.hyprland.packages) hyprland xdg-desktop-portal-hyprland;
 
   cfg = config.nice;
   env = cfg.user.desktop;
-  hyprlandPkg = inputs'.hyprland.packages.hyprland;
 
   /*
   passthru is needed for usage with services.displayManager.sessionPackages or
@@ -43,7 +43,7 @@ in {
     # we don't need it, as the session entry can launch it directly
     # still safe to follow nixpkgs and add to environment.systemPackages
     environment.systemPackages = [
-      hyprlandPkg
+      hyprland
     ];
 
     services.displayManager.sessionPackages = [
@@ -62,11 +62,9 @@ in {
     # portal setup
     xdg.portal = {
       enable = true;
-      configPackages = [hyprlandPkg];
+      configPackages = [hyprland];
       extraPortals = [
-        (inputs'.xdph.packages.xdg-desktop-portal-hyprland.override {
-          hyprland = hyprlandPkg;
-        })
+        xdg-desktop-portal-hyprland
       ];
     };
   };

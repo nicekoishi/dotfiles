@@ -29,7 +29,7 @@
     };
 
     ags = {
-      url = "github:Aylur/ags";
+      url = "github:Aylur/ags/v1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -115,8 +115,6 @@
       url = "github:numtide/treefmt-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    xdph.url = "github:hyprwm/xdg-desktop-portal-hyprland";
   };
 
   nixConfig = {

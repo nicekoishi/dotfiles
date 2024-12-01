@@ -16,6 +16,7 @@ in {
 
       #GDK_BACKEND = "wayland";
       XDG_SESSION_TYPE = "wayland";
+      LIBSEAT_BACKEND = "logind";
     };
 
     programs.xwayland.enable = true;
