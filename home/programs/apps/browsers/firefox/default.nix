@@ -26,11 +26,11 @@ in {
         DisableFormHistory = true;
         DisablePocket = true;
         DisableTelemetry = true;
-        DisplatBookmarksToolbar = "always";
+        DisplayBookmarksToolbar = "always";
         DontCheckDefaultBrowser = true;
         NoDefaultBookmarks = true;
         OfferToSaveLogins = false;
-        PassworkManagerEnabled = false;
+        PasswordManagerEnabled = false;
         PromptForDownloadLocation = true;
 
         Cookies = {
@@ -46,6 +46,8 @@ in {
           Fingerprinting = true;
         };
 
+        # For some reason, ExtensionSettings ends up empty on policies.json
+        # pain
         ExtensionSettings = import ./extensions;
 
         # if ..Pocket is false, why isn't Sponsored.. not false too?
