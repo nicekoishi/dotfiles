@@ -163,13 +163,12 @@ in {
           # for some reason it was set to false
           vfr = true;
         };
-
-        # https://github.com/hyprwm/Hyprland/issues/7230
-        # the default is 2, and it should disable it for nvidia gpu's... but it doesn't
-        # so we have to explicitly disable it - shut up, it's not funny
       }
+
+      # As of 02/12/2024, explicit sync works nice with most apps...
+      # Except firefox. Just like last time
       (mkIf (elem "nvidia" dev.gpu) {
-        cursor.allow_dumb_copy = true;
+        cursor.use_cpu_buffer = true;
         render = {
           explicit_sync = 0;
           explicit_sync_kms = 0;
