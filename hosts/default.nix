@@ -20,7 +20,6 @@
   # flake inputs
   hm = inputs.home-manager.nixosModules.default;
   secrets = inputs.agenix.nixosModules.default;
-  chaotic-nyx = inputs.chaotic.nixosModules.default;
 
   # core modules definition
   modulePath = ../modules;
@@ -45,7 +44,7 @@ in {
       modules = mkModuleList' "polaris" {
         roles = [desktop];
         profiles = [gaming server];
-        extraModules = [hm chaotic-nyx];
+        extraModules = [hm];
       };
     };
   };
