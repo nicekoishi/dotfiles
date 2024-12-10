@@ -6,20 +6,19 @@
     settings.vim = {
       enableEditorconfig = true;
       enableLuaLoader = true;
+      lineNumberMode = "number";
       preventJunkFiles = true;
       spellcheck.enable = true;
       useSystemClipboard = true;
-
       viAlias = true;
       vimAlias = true;
 
-      lineNumberMode = "number";
-
-      autopairs.enable = true;
-
-      autocomplete = {
+      autocomplete.nvim-cmp = {
         enable = true;
-        type = "nvim-cmp";
+      };
+
+      autopairs.nvim-autopairs = {
+        enable = true;
       };
 
       binds = {
@@ -179,7 +178,8 @@
         fold = true;
         context.enable = true;
         # https://github.com/NotAShelf/nvf/issues/368#issuecomment-2316514657
-        addDefaultGrammars = false;
+        # If something breaks, disable this first.
+        addDefaultGrammars = true;
       };
 
       ui = {
@@ -206,22 +206,21 @@
 
       ## pretty boi
       visuals = {
-        enable = true;
-        cellularAutomaton.enable = false;
+        cellular-automaton.enable = false;
+        cinnamon-nvim.enable = true;
         fidget-nvim.enable = true;
         highlight-undo.enable = true;
-        nvimWebDevicons.enable = true;
-        scrollBar.enable = false;
-        smoothScroll.enable = true;
+        nvim-web-devicons.enable = true;
+        nvim-scrollbar.enable = false;
 
-        cursorline = {
-          enable = true;
-          lineTimeout = 0;
-        };
-
-        indentBlankline = {
+        indent-blankline = {
           enable = true;
           setupOpts.scope.enabled = true;
+        };
+
+        nvim-cursorline = {
+          enable = true;
+          setupOpts.line_timeout = 0;
         };
       };
     };
