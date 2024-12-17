@@ -13,6 +13,16 @@ in {
 
       # NOTE: if position is not specified, default is 0x0
       monitors = {
+        # Samsung Odyssey G30
+        # "DP-1" = {
+        #   width = 1920;
+        #   height = 1080;
+        #   rate = 144;
+
+        #   wallpaper = kayoko;
+        # };
+
+        # Old 42' LG TV
         "HDMI-A-1" = {
           width = 1920;
           height = 1080;
