@@ -12,26 +12,5 @@ in {
     source = "${mocha}/themes/mocha.theme.css";
   };
 
-  services.arrpc = {
-    enable = true;
-    package = pkgs.arrpc.overrideAttrs (prev: {
-      pname = "arrpc";
-      version = "3.4.0-uoogh";
-
-      src = pkgs.fetchFromGitHub {
-        owner = "OpenAsar";
-        repo = "arrpc";
-        rev = "3898488be9de93165fe05b3077154e0f0d946894";
-        hash = "sha256-aTDSHgovPMWIwbmKEl0JelEqX8QKDRiMOom04T/vMOk=";
-      };
-
-      # add custom detectables to detectable.json
-      buildPhase =
-        (prev.buildPhase or "")
-        + ''
-          ${pkgs.jq}/bin/jq -c '. += input' src/process/detectable.json ${./custom-games.json} > detectable-custom.json
-          mv detectable-custom.json src/process/detectable.json
-        '';
-    });
-  };
+  services.arrpc.enable = true;
 }
