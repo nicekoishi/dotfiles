@@ -9,26 +9,26 @@ in {
     desktop.setup = ["Hyprland"];
 
     display = {
-      main = "HDMI-A-1";
+      main = "DP-1";
 
       # NOTE: if position is not specified, default is 0x0
       monitors = {
         # Samsung Odyssey G30
-        # "DP-1" = {
-        #   width = 1920;
-        #   height = 1080;
-        #   rate = 144;
-
-        #   wallpaper = kayoko;
-        # };
-
-        # Old 42' LG TV
-        "HDMI-A-1" = {
+        "DP-1" = {
           width = 1920;
           height = 1080;
+          refreshRate = 144;
 
           wallpaper = kayoko;
         };
+
+        # Old 42' LG TV
+        # "HDMI-A-1" = {
+        #   width = 1920;
+        #   height = 1080;
+        #
+        #   wallpaper = kayoko;
+        # };
 
         # testing headless display, it didn't work at all last time:
         # Hyprland, commit 6934e7aa2b300bc4565855a4092fb34de8a9a8d2

@@ -46,7 +46,7 @@ in {
               description = "The height of this monitor.";
             };
 
-            rate = mkOption {
+            refreshRate = mkOption {
               type = int;
               default = 60;
               description = "The refresh rate of this monitor.";
