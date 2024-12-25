@@ -3,36 +3,13 @@
   config,
   inputs',
   lib,
-  pkgs,
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (lib.strings) toLower;
   inherit (inputs'.hyprland.packages) hyprland xdg-desktop-portal-hyprland;
 
   cfg = config.nice;
   env = cfg.user.desktop;
-
-  /*
-  passthru is needed for usage with services.displayManager.sessionPackages or
-  error: Package, 'Hyprland', did not specify any session names, as strings, in
-  'passthru.providedSessions'. This is required when used as a session package.
-  */
-  hyprlandSession = let
-    name = "Hyprland";
-  in
-    (pkgs.writeTextFile {
-      inherit name;
-      destination = "/share/wayland-sessions/${toLower name}.desktop";
-      text = ''
-        [Desktop Entry]
-        Name=${name}
-        Comment=An intelligent dynamic tiling Wayland compositor
-        Exec=${pkgs.systemd}/bin/systemd-cat --identifier=${name} ${name}
-        Type=Application
-      '';
-    })
-    .overrideAttrs (_: {passthru.providedSessions = ["hyprland"];});
 in {
   # doesn't matter, as we're not using it anyway if it's not enabled
   disabledModules = ["programs/hyprland"];
@@ -46,9 +23,13 @@ in {
       hyprland
     ];
 
-    services.displayManager.sessionPackages = [
-      hyprlandSession
-    ];
+    programs.uwsm.waylandCompositors = {
+      hyprland = {
+        prettyName = "Hyprland";
+        comment = "Hyprland compositor managed by UWSM";
+        binPath = "/run/current-system/sw/bin/Hyprland";
+      };
+    };
 
     /*
     Set environment path of systemd to include the current system’s bin directory.

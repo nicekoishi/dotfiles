@@ -77,8 +77,8 @@ in {
   systemd.user.services.ags = {
     Unit = {
       Description = "Aylur's Gtk Shell";
-      PartOf = [
-        "hyprland-session.target"
+      After = [
+        "graphical-session.target"
       ];
     };
     Service = {

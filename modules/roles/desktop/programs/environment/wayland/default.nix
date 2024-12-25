@@ -19,6 +19,9 @@ in {
       LIBSEAT_BACKEND = "logind";
     };
 
-    programs.xwayland.enable = true;
+    programs = {
+      uwsm.enable = true;
+      xwayland.enable = true;
+    };
   };
 }

@@ -39,6 +39,10 @@ in {
     ./config
   ];
 
+  home.sessionVariables = {
+    QT_WAYLAND_DISABLE_WINDOWDECORATION = 1;
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
 
@@ -60,10 +64,6 @@ in {
             "${toString opts.scale}"
           ])
         monitors;
-
-        env = [
-          "QT_WAYLAND_DISABLE_WINDOWDECORATION,1"
-        ];
 
         exec-once = [
           "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"

@@ -30,14 +30,14 @@ in {
       [
         # apps
         "$mod, F1, exec, ags -t bar"
-        "$mod, P, exec, emacsclient -c -a emacs"
+        "$mod, P, exec, uwsm app -- emacsclient -c -a emacs"
 
-        "$mod, E, exec, run-as-service thunar"
-        "$mod, O, exec, run-as-service ocr"
-        "$mod, Q, exec, run-as-service kitty"
-        "$mod, R, exec, pkill .anyrun-wrapped || run-as-service anyrun"
+        "$mod, E, exec, uwsm app -- thunar"
+        "$mod, O, exec, uwsm app -- ocr"
+        "$mod, Q, exec, uwsm app -- kitty"
+        "$mod, R, exec, pkill .anyrun-wrapped || uwsm app -- anyrun"
         "$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
-        "$mod, W, exec, run-as-service firefox"
+        "$mod, W, exec, uwsm app -- firefox"
 
         "ALT, F4, exec, wlogout -p layer-shell"
 
