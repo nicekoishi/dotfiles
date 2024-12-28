@@ -22,7 +22,7 @@ export default (self: any) => {
         // console.log(`${PowerProfiles.active_profile}`);
     };
 
-    /* eslint-disable-next-line max-len */
+
     // https://discord.com/channels/1143610930542944377/1143612651759489054/1275916026768392322
     PowerProfiles.connect("notify::active-profile", check);
 

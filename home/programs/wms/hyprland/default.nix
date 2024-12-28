@@ -65,6 +65,18 @@ in {
           ])
         monitors;
 
+        # TODO: Temporary fix, come back here when we have time
+        workspace =
+          (builtins.genList (x: ''
+              ${toString (x + 1)}, monitor:${main}${
+                if (x + 1) == 1
+                then ", default:true"
+                else ""
+              }
+            '')
+            10)
+          ++ ["name:tv, monitor:HDMI-A-1, persistent:true"];
+
         exec-once = [
           "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
         ];

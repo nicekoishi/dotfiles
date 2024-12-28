@@ -5,6 +5,6 @@ App.config({
     onConfigParsed: () => {
         console.log("config parsed!");
     },
-    windows: [Bar(0), NotificationPopups(0)],
+    windows: [Bar(1), NotificationPopups(1)],
     style: "style.css",
 });
