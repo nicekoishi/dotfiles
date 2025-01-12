@@ -4,7 +4,6 @@
   programs.neovim-flake = {
     enable = true;
     settings.vim = {
-      enableEditorconfig = true;
       enableLuaLoader = true;
       lineNumberMode = "number";
       preventJunkFiles = true;
@@ -67,6 +66,11 @@
         enable = true;
         gitsigns.enable = true;
         gitsigns.codeActions.enable = false;
+      };
+
+      # TODO: There will be more stuff here, probably
+      globals = {
+        editorconfig = true;
       };
 
       # i was under the influence when i made that previous comment

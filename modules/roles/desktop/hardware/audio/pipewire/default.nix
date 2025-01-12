@@ -6,19 +6,17 @@ in {
     ./settings.nix
   ];
 
-  services.pipewire = {
-    enable = true;
+  services = {
+    pulseaudio.enable = mkForce false;
 
-    audio.enable = true;
-    jack.enable = true;
-    pulse.enable = true;
-
-    alsa = {
+    pipewire = {
       enable = true;
-      support32Bit = true;
+
+      audio.enable = true;
+      jack.enable = true;
+      pulse.enable = true;
     };
   };
 
   security.rtkit.enable = true;
-  hardware.pulseaudio.enable = mkForce false;
 }

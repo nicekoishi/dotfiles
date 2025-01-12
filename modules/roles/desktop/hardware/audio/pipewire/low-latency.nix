@@ -8,9 +8,6 @@ let
   rate = toString 48000;
   qr = "${quantum}/${rate}";
 in {
-  # https://github.com/musnix/musnix/blob/b5f3a47fd74193cb98c85cfeb6a25358150bdd90/modules/base.nix#L76
-  boot.kernelParams = ["threadirqs"];
-
   services.pipewire = {
     extraConfig = {
       client."99-low-latency" = {
