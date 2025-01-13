@@ -32,8 +32,12 @@ in {
       ];
     in [
       "-g" # kill all processes within a process group
-      "--avoid '^(${avoid})$'" # it would be funny if it did so
-      "--prefer '^(${prefer})$'" # that guy really hates electron huh, but I kinda do too
+
+      "--avoid"
+      "^(${avoid})$" # it would be funny if it did so
+
+      "--prefer"
+      "^(${prefer})$" # that guy really hates electron huh, but I kinda do too
     ];
 
     killHook = pkgs.writeShellScript "earlyoom-kill-hook" ''
