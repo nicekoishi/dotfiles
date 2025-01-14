@@ -84,6 +84,7 @@
 
       # headache
       "float, class:thunar"
+      "float, class:^(org.gnome.seahorse.Application)"
 
       # lutris and most games launched through wine create an annoying system tray window
       # go away
