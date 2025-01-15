@@ -1,9 +1,10 @@
 {pkgs, ...}: let
   keys = [
-    # polaris, and one second... isn't this already on by default?
-    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMt/fj0+1c7Ktr9WQCqYHoi3jWSxV8/cwEUaT/92DA7q"
+    # User key that I sometimes backup, please don't lose it again.
+    # Also, `config.age.identityPaths` already reads our host keys.
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILS3uO3yGee8JadAAwk9ojmyv0+fX4XG3sqSYxVVigQF"
 
-    # android phone, just for testing
+    # To turn my PC off using SSH. Yes, that's it. Dumb.
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIhD0eTqw4a+9M8Xh2NIo3FGgiprFzRWEsBU5p7k6wc+ u0_a304@localhost"
   ];
 in {

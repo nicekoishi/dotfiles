@@ -43,7 +43,10 @@ in {
 
       modules = mkModuleList' "polaris" {
         roles = [desktop];
-        profiles = [gaming server];
+        profiles = [
+        gaming
+        # server
+        ];
         extraModules = [hm];
       };
     };

@@ -13,7 +13,7 @@ in {
   home.packages = with pkgs; [
     lutris
 
-    nix-gaming.packages.wine-tkg
+#    nix-gaming.packages.wine-tkg
   ];
 
   programs.mangohud = {

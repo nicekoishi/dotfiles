@@ -15,19 +15,23 @@ I just had some problems using a .gpg extension, but renaming it to priv.asc fix
 Also, here is the link to the repository it future me is feeling lazy (dumbass)
   https://github.com/pinpox/pgp2ssh
 
-Will bgenix finally support ssh-agent?
+Let's be honest, using a GPG key as an SSH key wasn't the brightest idea. So we stay with good old
+ssh-keygen and ssh-agent.
+
+By the way, if any of these keys are appearing on `git diff` despite what `.gitattributes` say,
+Try using `git add --renormalize`.
 */
 let
   # User keys
-  supeen = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGe2kpQYXqM0SG7QCiPN1vLeTehGL/l2BGYBrzDz8Ou6";
+  supeen = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILS3uO3yGee8JadAAwk9ojmyv0+fX4XG3sqSYxVVigQF";
 
   # Host keys
-  # agenix, why do I have to put this here if it's already my host key:?
-  polaris = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMt/fj0+1c7Ktr9WQCqYHoi3jWSxV8/cwEUaT/92DA7q";
+  # I'm dumb
+  polaris = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHQkx4TRxbVNK1LZDwzgczATSBu+PmoFUl5lzUDv2oex";
 in {
   "tailscale.age".publicKeys = [supeen polaris];
-  "cloudflare-dns.age".publicKeys = [supeen polaris];
-  "kanidm-idm-admin.age".publicKeys = [supeen polaris];
-  "kanidm-admin.age".publicKeys = [supeen polaris];
-  "navidrome-env.age".publicKeys = [supeen polaris];
+  #"cloudflare-dns.age".publicKeys = [supeen polaris];
+  #"kanidm-idm-admin.age".publicKeys = [supeen polaris];
+  #"kanidm-admin.age".publicKeys = [supeen polaris];
+  #"navidrome-env.age".publicKeys = [supeen polaris];
 }

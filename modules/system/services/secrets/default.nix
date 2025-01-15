@@ -1,7 +1,7 @@
 # NOTE: this is just the module configuration, for the actual secrets go back
 # ${self}/secrets is for the agenix cli tool only
 {
-  config,
+  # config,
   lib,
   self,
   ...
@@ -17,9 +17,8 @@
     mkIf cond {
       inherit file owner group mode;
     };
-
-  cfg = config.nice.host;
-  srv = cfg.services;
+  # cfg = config.nice.host;
+  # srv = cfg.services;
 in {
   age.secrets = {
     tailscale-key = mkSecret true {
@@ -28,25 +27,25 @@ in {
       group = "users";
     };
 
-    cloudflare-dns = mkSecret srv.nginx.enable {
-      file = "${self}/secrets/cloudflare-dns.age";
-    };
+    #cloudflare-dns = mkSecret srv.nginx.enable {
+    #  file = "${self}/secrets/cloudflare-dns.age";
+    #};
 
-    kanidm-admin = mkSecret srv.kanidm.enable {
-      file = "${self}/secrets/kanidm-admin.age";
-      owner = "kanidm";
-      group = "kanidm";
-    };
+    #kanidm-admin = mkSecret srv.kanidm.enable {
+    #  file = "${self}/secrets/kanidm-admin.age";
+    #  owner = "kanidm";
+    #  group = "kanidm";
+    #};
 
-    kanidm-idm-admin = mkSecret srv.kanidm.enable {
-      file = "${self}/secrets/kanidm-idm-admin.age";
-      owner = "kanidm";
-      group = "kanidm";
-    };
+    #kanidm-idm-admin = mkSecret srv.kanidm.enable {
+    #  file = "${self}/secrets/kanidm-idm-admin.age";
+    #  owner = "kanidm";
+    #  group = "kanidm";
+    #};
 
-    navidrome-env = mkSecret srv.navidrome.enable {
-      file = "${self}/secrets/navidrome.age";
-      owner = "navidrome";
-    };
+    #navidrome-env = mkSecret srv.navidrome.enable {
+    #  file = "${self}/secrets/navidrome.age";
+    #  owner = "navidrome";
+    #};
   };
 }
