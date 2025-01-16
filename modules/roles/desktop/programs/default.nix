@@ -6,6 +6,7 @@
 
     ./home-manager.nix
     ./fontconfig.nix
+    ./piper.nix
     ./thunar.nix
   ];
 }
