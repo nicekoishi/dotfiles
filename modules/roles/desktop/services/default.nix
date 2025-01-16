@@ -10,5 +10,6 @@
     ./geoclue.nix
     ./systemd.nix
     ./xdg-desktop-portal.nix
+    ./zswap.nix
   ];
 }
