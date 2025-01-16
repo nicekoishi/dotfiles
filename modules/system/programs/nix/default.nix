@@ -35,7 +35,7 @@ in {
     nixPath = lib.mapAttrsToList (key: _: "${key}=flake:${key}") config.nix.registry;
 
     # nix for lesbians
-    package = pkgs.lix;
+    package = pkgs.nix;
 
     daemonIOSchedClass = "idle";
     daemonCPUSchedPolicy = "batch";
@@ -59,7 +59,6 @@ in {
         "nix-command"
         "flakes"
         "cgroups"
-        "repl-flake"
       ];
 
       flake-registry = "/etc/nix/registry.json";
