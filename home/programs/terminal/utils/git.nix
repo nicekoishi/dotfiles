@@ -9,7 +9,7 @@
     ignores = ["*~" "node_modules" "target"];
     signing = {
       signByDefault = true;
-      key = "FDD4A13AE926A114";
+      key = "FA522AB41F9C2374";
     };
 
     difftastic = {

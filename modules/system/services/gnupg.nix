@@ -10,10 +10,9 @@
 in {
   config = mkIf sys.gpg.enable {
     programs = {
-      ssh.startAgent = false;
       gnupg.agent = {
         enable = true;
-        enableSSHSupport = true;
+        enableSSHSupport = false;
       };
     };
   };

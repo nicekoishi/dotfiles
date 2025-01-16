@@ -52,4 +52,6 @@ in {
       };
     };
   };
+
+  programs.ssh.startAgent = true;
 }

@@ -13,7 +13,7 @@ in {
 
   services.gpg-agent = {
     enable = true;
-    enableSshSupport = true;
+    enableSshSupport = false;
     enableExtraSocket = true;
 
     pinentryPackage = pkgs.pinentry-gnome3;
