@@ -1,15 +1,16 @@
-{inputs, ...}: {
+{
   imports = [
     ./args.nix
     ./docs.nix
-    ./fmt.nix
+
+    # TODO: Start using pre-commit
+    # ./fmt.nix
+
     ./shell.nix
 
     ./lib
     ./modules
     ./packages
     ./templates
-
-    inputs.treefmt-nix.flakeModule
   ];
 }

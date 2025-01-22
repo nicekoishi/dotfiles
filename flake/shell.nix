@@ -1,6 +1,5 @@
 {
   perSystem = {
-    config,
     inputs',
     pkgs,
     ...
@@ -12,10 +11,7 @@
       # funny enoug, this doesn't work alone for me. I had to set the variable globally. skill issue
       DIRENV_LOG_FORMAT = "";
 
-      inputsFrom = [config.treefmt.build.devShell];
-
       packages = with pkgs; [
-        config.treefmt.build.wrapper
         inputs'.agenix.packages.default
 
         # nix
