@@ -12,8 +12,11 @@ in {
 
     config = {
       plugins = with anyrun.packages; [
-        applications
-        #randr # broken as of 07/05/2024
+        uwsm_app
+
+        # Monitor options on the fly, will not use it for now
+        # randr # broken as of 07/05/2024
+
         rink
         shell
         stdin
@@ -34,11 +37,10 @@ in {
     };
 
     extraConfigFiles = {
-      "applications.ron".text = ''
+      "uwsm_app.ron".text = ''
         Config(
           desktop_actions: true,
           max_entries: 10,
-          terminal: Some("footclient"),
         )
       '';
       "randr.ron".text = ''

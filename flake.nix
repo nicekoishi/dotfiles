@@ -33,7 +33,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    anyrun.url = "github:Kirottu/anyrun";
+    anyrun.url = "github:fufexan/anyrun/launch-prefix";
 
     anyrun-nixos-options = {
       url = "github:n3oney/anyrun-nixos-options";
