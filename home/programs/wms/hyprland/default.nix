@@ -2,6 +2,7 @@
   config,
   inputs,
   lib,
+  inputs',
   osConfig,
   ...
 }: let
@@ -10,6 +11,7 @@
   inherit (lib.modules) mkIf mkMerge;
   inherit (lib.strings) concatStringsSep;
   inherit (usr.display) main monitors;
+  inherit (inputs'.hyprland.packages) hyprland;
 
   cfg = osConfig.nice;
   usr = cfg.user;
@@ -45,6 +47,7 @@ in {
 
   wayland.windowManager.hyprland = {
     enable = true;
+    package = hyprland;
 
     systemd = {
       enable = true;
