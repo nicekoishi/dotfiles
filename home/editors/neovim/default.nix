@@ -88,10 +88,11 @@
         python.enable = true;
         ts.enable = true;
 
-        dart = {
-          enable = true;
-          flutter-tools.enable = true;
-        };
+        # dart = {
+        # enable = true;
+        # flutter-tools.enable = true;
+        # };
+
         rust = {
           enable = true;
           crates.enable = true;

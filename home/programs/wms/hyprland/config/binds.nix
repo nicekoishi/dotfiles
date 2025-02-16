@@ -66,7 +66,7 @@ in {
         "$mod, T, togglespecialworkspace, thunderbird"
 
         # screenshot
-        "ALT, Print, exec, grimblast --cursor --notify copysave area"
+        "ALT, Print, exec, grimblast --notify copysave area"
         ", Print, exec, grimblast --notify copysave screen"
 
         # obs
