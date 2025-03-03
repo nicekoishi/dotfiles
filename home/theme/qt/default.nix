@@ -50,7 +50,8 @@ in {
           # what if
           qt6Packages.qt6ct
           libsForQt5.qt5ct
-          breeze-icons
+          # kdePackages.breeze-icons
+          # libsForQt5.breeze-icons
           theme.package
 
           # fix qt platform plugin not found

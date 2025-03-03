@@ -4,7 +4,9 @@
     ./spotify
     #./yt-music
 
-    ./beets.nix # music tagging app, nice utility to be paired with kid3
+    # music tagging app, nice utility to be paired with kid3
+    # as of 02/03/2025, build failure
+    # ./beets.nix
   ];
 
   home.packages = [
