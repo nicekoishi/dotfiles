@@ -143,6 +143,26 @@
         "type": "github"
       }
     },
+    "catppuccin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1752828704,
+        "narHash": "sha256-I8cCVFZIFcIy+7KBnjCuS/ISTJYeR8mkah1oxA6qBVk=",
+        "owner": "catppuccin",
+        "repo": "nix",
+        "rev": "f5d22072074b0bc3c47a3a96a00e4fad263014ff",
+        "type": "github"
+      },
+      "original": {
+        "owner": "catppuccin",
+        "repo": "nix",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -1041,6 +1061,7 @@
         "ags": "ags",
         "anyrun": "anyrun",
         "anyrun-nixos-options": "anyrun-nixos-options",
+        "catppuccin": "catppuccin",
         "emacs-overlay": "emacs-overlay",
         "flake-parts": "flake-parts_2",
         "home-manager": "home-manager",

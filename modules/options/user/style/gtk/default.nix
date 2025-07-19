@@ -1,4 +1,5 @@
 {
+  inputs',
   config,
   lib,
   pkgs,
@@ -7,6 +8,7 @@
   inherit (builtins) pathExists toString;
   inherit (lib.options) mkEnableOption mkOption;
   inherit (lib.types) int package str;
+  inherit (inputs') catppuccin;
 
   usr = config.nice.user;
   check = usr.home-manager.enable && usr.desktop.setup != null;
@@ -50,18 +52,16 @@ in {
 
       theme = {
         name = mkOption {
-          default = "Catppuccin-GTK-Dark-Compact";
+          default = "catppuccin-mocha-blue-standard+default";
           type = str;
           description = "Name of the theme inside the package";
         };
 
         package = mkOption {
-          default = pkgs.magnetic-catppuccin-gtk.override {
-            # this is important, as it forces both light and dark variants to be built
-            shade = null;
-            size = "compact";
-            accent = ["default"]; # default is blue
-            tweaks = ["float"];
+          default = catppuccin.packages.gtk.override {
+            accents = ["blue"];
+            flavor = "mocha";
+            size = "standard";
           };
           type = package;
           description = "The package providing the theme";

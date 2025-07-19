@@ -40,6 +40,12 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
+    # Only using the packages, not the modules
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     emacs-overlay = {
       url = "github:nix-community/emacs-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
