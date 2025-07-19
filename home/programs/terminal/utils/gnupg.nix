@@ -16,7 +16,7 @@ in {
     enableSshSupport = false;
     enableExtraSocket = true;
 
-    pinentryPackage = pkgs.pinentry-gnome3;
+    pinentry.package = pkgs.pinentry-gnome3;
   };
 
   systemd.user.services.gpg-agent.Unit.RefuseManualStart = mkForce false;

@@ -60,7 +60,7 @@
       inputs.nixpkgs.follows = "hyprland/nixpkgs";
     };
 
-    hyprland.url = "github:hyprwm/Hyprland/0bd541f2fd902dbfa04c3ea2ccf679395e316887";
+    hyprland.url = "github:hyprwm/Hyprland/fb7548c";
 
     hyprland-plugins = {
       url = "github:hyprwm/hyprland-plugins";
@@ -68,7 +68,7 @@
     };
 
     hyprpaper = {
-      url = "github:hyprwm/hyprpaper";
+      url = "github:hyprwm/hyprpaper/99213a1";
       inputs = {
         hyprutils.follows = "hyprland/hyprutils";
         hyprwayland-scanner.follows = "hyprland/hyprwayland-scanner";

@@ -23,13 +23,13 @@ in {
         };
 
         # Old 42' LG TV
-        "HDMI-A-1" = {
-          width = 1920;
-          height = 1080;
-          pos = "top";
+        # "HDMI-A-1" = {
+        #  width = 1920;
+        #  height = 1080;
+        #  pos = "top";
 
-          wallpaper = kayoko;
-        };
+        #  wallpaper = kayoko;
+        # };
 
         # testing headless display, it didn't work at all last time:
         # Hyprland, commit 6934e7aa2b300bc4565855a4092fb34de8a9a8d2

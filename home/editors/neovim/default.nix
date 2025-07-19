@@ -8,7 +8,6 @@
       lineNumberMode = "number";
       preventJunkFiles = true;
       spellcheck.enable = true;
-      useSystemClipboard = true;
       viAlias = true;
       vimAlias = true;
 
@@ -77,7 +76,6 @@
       languages = {
         enableExtraDiagnostics = true;
         enableFormat = true;
-        enableLSP = true;
         enableTreesitter = true;
 
         bash.enable = true;
@@ -100,11 +98,11 @@
       };
 
       lsp = {
+        enable = true;
         formatOnSave = true;
         lightbulb.enable = true;
         lspSignature.enable = true;
         lspkind.enable = true;
-        lsplines.enable = true;
         lspsaga.enable = false;
         nvim-docs-view.enable = true;
         trouble.enable = false;

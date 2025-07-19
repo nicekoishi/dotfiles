@@ -20,7 +20,7 @@
       path = "${config.xdg.dataHome}/zsh_history";
     };
 
-    initExtra = ''
+    initContent = ''
       # C-right / C-left for word skips
       bindkey "^[[1;5C" forward-word
       bindkey "^[[1;5D" backward-word

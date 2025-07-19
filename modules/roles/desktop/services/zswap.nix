@@ -1,11 +1,11 @@
 {
   boot = {
-    initrd.kernelModules = ["lz4" "z3fold"];
+    initrd.kernelModules = ["lz4" "zsmalloc"];
 
     kernelParams = [
       "zswap.enabled=1"
       "zswap.compressor=lz4"
-      "zswap.zpool=z3fold"
+      "zswap.zpool=zmalloc"
     ];
   };
 }

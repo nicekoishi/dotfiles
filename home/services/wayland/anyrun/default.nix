@@ -1,12 +1,10 @@
 {
-  inputs,
   inputs',
   osConfig,
   ...
 }: let
   inherit (inputs') anyrun anyrun-nixos-options;
 in {
-  imports = [inputs.anyrun.homeManagerModules.default];
   programs.anyrun = {
     enable = true;
 

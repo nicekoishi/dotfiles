@@ -21,19 +21,19 @@
 
     windowrule = [
       # make apps floaty
-      "float, Viewnior"
-      "float, anyrun"
-      "float, com.saivert.pwvucontrol"
-      "float, confirm"
-      "float, confirmreset"
-      "float, dialog"
-      "float, download"
-      "float, error"
-      "float, file_progress"
-      "float, notification"
-      "float, org.kde.ark"
-      "float, org.kde.dolphin"
-      "float, splash"
+      "float, title:Viewnior"
+      "float, title:anyrun"
+      "float, title:com.saivert.pwvucontrol"
+      "float, title:confirm"
+      "float, title:confirmreset"
+      "float, title:dialog"
+      "float, title:download"
+      "float, title:error"
+      "float, title:file_progress"
+      "float, title:notification"
+      "float, title:org.kde.ark"
+      "float, title:org.kde.dolphin"
+      "float, title:splash"
       "float, title:DevTools"
       "float, title:Open File"
       "float, title:Save File"
@@ -42,10 +42,7 @@
       "float, title:^(Volume Control)$"
       "float, title:branchdialog"
       "float, title:wlogout"
-      "float, viewnior"
-    ];
 
-    windowrulev2 = [
       # fix xwayland apps
       "center, class:^(.*jetbrains.*)$, title:^(Confirm Exit|Open Project|win424|win201|splash)$"
       "rounding 0, xwayland:1"

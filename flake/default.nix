@@ -1,7 +1,7 @@
 {
   imports = [
     ./args.nix
-    ./docs.nix
+    #    ./docs.nix
 
     # TODO: Start using pre-commit
     # ./fmt.nix
