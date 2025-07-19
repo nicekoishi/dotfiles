@@ -44,7 +44,6 @@ in {
     };
 
     style.qt = {
-      useGtk = true;
       useKvantum = true;
     };
 
