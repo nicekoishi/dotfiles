@@ -13,7 +13,6 @@
 
       packages = with pkgs; [
         #inputs'.agenix.packages.default
-        inputs'.nvf.packages.default
 
         # nix
         alejandra

@@ -1,5 +1,6 @@
 {osConfig, ...}: {
   imports = [
+    ./editors
     ./programs
     ./services
     ./theme
