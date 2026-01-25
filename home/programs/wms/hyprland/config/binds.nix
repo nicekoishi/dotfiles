@@ -1,4 +1,9 @@
-{inputs', ...}: let
+{
+  inputs',
+  lib,
+  config,
+  ...
+}: let
   #inherit (inputs') anyrun;
   # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
   # fufexan/dotfiles
@@ -40,6 +45,7 @@ in {
         "$mod, W, exec, uwsm app -- firefox"
 
         "ALT, F4, exec, wlogout -p layer-shell"
+        "$mod, L, exec, ${lib.getExe config.programs.hyprlock.package}"
 
         # commands
         "$mod, C, killactive"

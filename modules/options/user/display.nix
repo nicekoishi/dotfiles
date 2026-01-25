@@ -4,9 +4,10 @@
   self',
   ...
 }: let
+  inherit (builtins) toString;
   inherit (lib.lists) optionals;
   inherit (lib.options) mkOption;
-  inherit (lib.types) attrsOf either enum int nullOr package str submodule;
+  inherit (lib.types) attrsOf either enum int nullOr package str submodule path;
   inherit (self'.packages) wallpapers;
 
   cfg = config.nice.user.display;
@@ -38,18 +39,29 @@ in {
               type = int;
               example = 1920;
               description = "The width of this monitor.";
+              apply = toString;
             };
 
             height = mkOption {
               type = int;
               example = 1080;
               description = "The height of this monitor.";
+              apply = toString;
             };
 
             refreshRate = mkOption {
               type = int;
               default = 60;
               description = "The refresh rate of this monitor.";
+              apply = toString;
+            };
+
+            description = mkOption {
+              type = str;
+              default = "000";
+              description = ''
+                The description of this monitor. Only used in Hyprland setups.
+              '';
             };
 
             pos = mkOption {
@@ -64,14 +76,18 @@ in {
               default = 1;
               type = int;
               description = "The scale of this monitor, usually 1 is enough.";
+              apply = toString;
             };
 
             wallpaper = mkOption {
               default =
                 if cfg.monitors != {}
-                then "${wallpapers}/share/wallpapers/kayoko.png"
+                then ""
+                /*
+                "${wallpapers}/share/wallpapers/kayoko.png"
+                */
                 else null;
-              type = either str package;
+              type = either path package;
               description = ''
                 Desired wallpaper for this monitor.
                 Will be used by services such as hyprpaper/swww.
@@ -87,6 +103,7 @@ in {
     # NOTE: Any Nix magicians can explain me why the hell this won't work
     # referring to attrset itself, but it does when I interpolate it?
     # (... && !( cfg.monitors ? cfg.main ))
+    # NOTE: I'm dumb
     warnings = optionals (cfg.main != null && !(cfg.monitors ? "${cfg.main}")) [
       ''
         ${cfg.main} is not a valid monitor in `config.nice.user.display.monitors`!

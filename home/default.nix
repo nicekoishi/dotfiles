@@ -1,14 +1,7 @@
-{
-  osConfig,
-  inputs,
-  self,
-  inputs',
-  self',
-  ...
-}: {
+{osConfig, ...}: {
   imports = [
     ./programs
-    #    ./services
+    ./services
   ];
 
   home = {

@@ -12,7 +12,9 @@
           height = 1080;
           refreshRate = 144;
 
-          # wallpaper = kayoko;
+          description = "Samsung Electric Company Odyssey G30B HX5XA03495";
+
+          wallpaper = ./plana.jpg;
         };
       };
     };

@@ -5,10 +5,9 @@
   osConfig,
   ...
 }: let
-  inherit (builtins) toString;
-  inherit (lib.attrsets) mapAttrsToList;
+  inherit (builtins) toString length genList elemAt;
+  inherit (lib.attrsets) attrNames mapAttrsToList;
   inherit (lib.modules) mkMerge;
-  inherit (lib.strings) concatStringsSep;
   inherit (usr.display) main monitors;
   inherit (inputs'.hyprland.packages) hyprland;
 
@@ -55,16 +54,19 @@ in {
     settings = mkMerge [
       {
         # monitor = ["HDMI-A-1, 1920x1080, 0x0, 1"];
-        # TODO: do we really need that many toString 's?
-        # what the heck is this ugly thing
-        monitor = mapAttrsToList (name: opts:
-          concatStringsSep "," [
-            name
-            "${toString opts.width}x${toString opts.height}@${toString opts.refreshRate}"
-            (mkHyprlandPosition opts)
-            "${toString opts.scale}"
-          ])
-        monitors;
+        # finally, monitor v2
+
+        # NOTE: if it works, it works
+        monitorv2 = genList (x:
+          elemAt (mapAttrsToList (_: value: {
+              output = "desc:${value.description}";
+              mode = "${value.width}x${value.height}@${value.refreshRate}";
+              position = "${mkHyprlandPosition value}";
+              scale = "${value.scale}";
+              transform = 0;
+            })
+            monitors)
+          x) (length (attrNames monitors));
 
         # TODO: Temporary fix, come back here when we have time
         workspace =
