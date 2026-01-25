@@ -34,6 +34,7 @@ in {
         gnome-online-accounts.enable = true;
         gnome-keyring.enable = true;
         gnome-remote-desktop.enable = lib.mkForce false;
+        gcr-ssh-agent.enable = lib.mkForce false;
       };
     };
   };

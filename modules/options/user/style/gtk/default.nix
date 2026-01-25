@@ -52,15 +52,15 @@ in {
 
       theme = {
         name = mkOption {
-          default = "catppuccin-mocha-blue-standard-hdpi";
+          default = "Catppuccin-GTK-Dark";
           type = str;
           description = "Name of the theme inside the package";
         };
 
         package = mkOption {
-          default = pkgs.catppuccin-gtk.override {
-            accents = ["blue"];
-            variant = "mocha";
+          default = pkgs.magnetic-catppuccin-gtk.override {
+            accent = ["default"];
+            #tweaks = ["mocha"];
             size = "standard";
           };
           type = package;

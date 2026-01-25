@@ -2,12 +2,13 @@
   imports = [
     ./programs
     ./services
+    ./theme
   ];
 
   home = {
     username = "supeen";
     homeDirectory = osConfig.users.users.supeen.home;
-    stateVersion = "25.11";
+    stateVersion = "26.05";
   };
 
   manual = {

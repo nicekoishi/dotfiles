@@ -3,6 +3,8 @@
     ./cpu
     ./gpu
     ./audio
+
+    ./bluetooth.nix
   ];
 
   # it would be funny, they said

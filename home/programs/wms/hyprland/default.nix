@@ -1,4 +1,5 @@
 {
+  config,
   inputs,
   lib,
   inputs',
@@ -81,7 +82,7 @@ in {
           ++ ["name:tv, monitor:HDMI-A-1, persistent:true"];
 
         exec-once = [
-          #"hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
+          "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
         ];
 
         animations = {

@@ -31,6 +31,11 @@
 
     hyprland.url = "github:hyprwm/Hyprland/ab1d80f";
 
+    hyprqt6engine = {
+      url = "github:hyprwm/hyprqt6engine";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nvf = {
       url = "github:NotAShelf/nvf";
       inputs.nixpkgs.follows = "nixpkgs";

@@ -8,7 +8,7 @@
   inherit (config.nice.host.opts) roles;
 in {
   config = mkIf (builtins.elem "desktop" roles) {
-    programs.adb.enable = true;
+    environment.systemPackages = [pkgs.android-tools];
 
     services.udev = {
       # above already does it, but let's be explicit about it

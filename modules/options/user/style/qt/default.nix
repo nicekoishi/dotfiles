@@ -44,7 +44,7 @@ in {
         };
 
         path = mkOption {
-          default = "${style.theme.package}/share/qt5ct/colors";
+          default = "${style.theme.package}/share/qt6ct/colors";
 
           type = str;
           description = "Path to the qtct color schemes";
