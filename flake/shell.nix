@@ -13,6 +13,7 @@
 
       packages = with pkgs; [
         #inputs'.agenix.packages.default
+        inputs'.quickshell.packages.default
 
         # nix
         alejandra
