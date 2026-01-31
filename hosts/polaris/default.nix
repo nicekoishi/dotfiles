@@ -7,7 +7,7 @@
 
   nice.host = {
     cpu = "amd";
-    gpu = ["nvidia"];
+    gpu = ["amd-hybrid" "nv-hybrid"];
 
     opts.waylandReady = true;
   };

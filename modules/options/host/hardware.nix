@@ -1,6 +1,6 @@
 {lib, ...}: let
   inherit (lib.options) mkOption;
-  inherit (lib.types) enum listOf nullOr;
+  inherit (lib.types) enum str listOf nullOr;
 in {
   options.nice.host = {
     cpu = mkOption {
@@ -10,7 +10,8 @@ in {
     };
     gpu = mkOption {
       default = null;
-      type = nullOr (listOf (enum ["amd" "nvidia"]));
+      #["amd" "nvidia" "amd-hybrid" "nv-hybrid"])
+      type = nullOr (listOf str);
       description = ''
         The manufacturer of the host's GPU.
         Will be used to load the necessary drivers for optimal functionality.

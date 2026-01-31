@@ -4,11 +4,14 @@
   lib,
   ...
 }: let
-  inherit (builtins) elem;
+  inherit (builtins) any elem;
   inherit (lib.modules) mkIf;
+  inherit (lib.strings) hasPrefix;
 
   cfg = config.nice;
   dev = cfg.host;
+
+  isHybrid = elem "nv-hybrid" dev.gpu;
 
   # NOTE: This is here because I can't be bothered to check if the driver works
   # after every update, so we update the rest of the system first and then this driver.
@@ -21,7 +24,7 @@
     persistencedSha256 = "sha256-wsNeuw7IaY6Qc/i/AzT/4N82lPjkwfrhxidKWUtcwW8=";
   };
 in {
-  config = mkIf (elem "nvidia" dev.gpu) {
+  config = mkIf (any (hasPrefix "nv") dev.gpu) {
     boot = {
       blacklistedKernelModules = [
         # USB-C driver, my 1660 doesn't need it.
@@ -42,7 +45,6 @@ in {
       };
 
       systemPackages = with pkgs; [
-        nvtopPackages.nvidia
         mesa
 
         # vulkan
@@ -60,17 +62,19 @@ in {
     hardware = {
       nvidia = {
         package = nvPackage;
-
         modesetting.enable = true;
-
         open = true;
+        nvidiaPersistenced = true;
 
         powerManagement = {
           enable = true;
           finegrained = false;
         };
 
-        nvidiaPersistenced = true;
+        prime.offload = {
+          enable = isHybrid;
+          enableOffloadCmd = isHybrid;
+        };
 
         # useless
         nvidiaSettings = false;

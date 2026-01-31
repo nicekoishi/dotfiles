@@ -1,6 +1,7 @@
-{
+{pkgs, ...}: {
   imports = [
     ./nvidia
+    ./amd
   ];
 
   hardware.graphics = {
@@ -9,4 +10,6 @@
     # dumb moment
     enable32Bit = true;
   };
+
+  environment.systemPackages = [pkgs.nvtopPackages.full];
 }
