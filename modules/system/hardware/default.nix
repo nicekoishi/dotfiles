@@ -1,10 +1,8 @@
 {lib, ...}: {
   imports = [
     ./cpu
-    ./gpu
+    ./video
     ./audio
-
-    ./bluetooth.nix
   ];
 
   # it would be funny, they said

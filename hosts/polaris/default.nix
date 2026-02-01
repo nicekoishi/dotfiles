@@ -9,6 +9,11 @@
     cpu = "amd";
     gpu = ["amd-hybrid" "nv-hybrid"];
 
-    opts.waylandReady = true;
+    opts = {
+      capabilities = {
+        audio = true;
+        waylandReady = true;
+      };
+    };
   };
 }

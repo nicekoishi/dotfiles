@@ -4,9 +4,7 @@
   pkgs,
   ...
 }: let
-  inherit (lib.modules) mkIf;
   inherit (lib.strings) concatStringsSep;
-  inherit (config.nice.host.opts) roles;
 
   sessionData = config.services.displayManager.sessionData.desktops;
   sessionPaths = concatStringsSep ":" [
@@ -39,7 +37,7 @@
     ];
   };
 in {
-  config = mkIf (builtins.elem "desktop" roles) {
+  config = {
     # TODO: multiple configurations for other greeters
     services.greetd.settings = {
       default_session = tuigreet;

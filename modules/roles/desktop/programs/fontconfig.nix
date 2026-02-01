@@ -1,13 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
-  inherit (lib.modules) mkIf;
-  inherit (config.nice.host.opts) roles;
-in {
-  fonts = mkIf (builtins.elem "desktop" roles) {
+{pkgs, ...}: {
+  fonts = {
     enableDefaultPackages = false;
 
     fontDir = {

@@ -4,13 +4,9 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (cfg.host) opts;
-
-  isDesktop = builtins.elem "desktop" opts.roles;
-
-  cfg = config.nice;
+  inherit (config.nice.host) opts;
 in {
-  config = mkIf (isDesktop && opts.isWayland) {
+  config = mkIf opts.state.isWayland {
     environment.variables = {
       NIXOS_OZONE_WL = "1";
       _JAVA_AWT_WM_NONEREPARENTING = "1";

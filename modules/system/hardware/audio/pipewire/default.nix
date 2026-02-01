@@ -3,26 +3,27 @@
   lib,
   ...
 }: let
-  inherit (builtins) elem;
   inherit (lib.modules) mkIf mkForce;
-  inherit (config.nice.host.opts) roles;
+  inherit (config.nice.host) opts;
 in {
   imports = [
     ./low-latency.nix
     ./settings.nix
   ];
 
-  services = mkIf (elem "desktop" roles) {
-    pulseaudio.enable = mkForce false;
+  config = mkIf opts.capabilities.audio {
+    services = {
+      pulseaudio.enable = mkForce false;
 
-    pipewire = {
-      enable = true;
+      pipewire = {
+        enable = true;
 
-      audio.enable = true;
-      jack.enable = true;
-      pulse.enable = true;
+        audio.enable = true;
+        jack.enable = true;
+        pulse.enable = true;
+      };
     };
-  };
 
-  security.rtkit.enable = elem "desktop" roles;
+    security.rtkit.enable = true;
+  };
 }

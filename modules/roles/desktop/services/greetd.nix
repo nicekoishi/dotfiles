@@ -1,12 +1,7 @@
-{
-  config,
-  lib,
-  ...
-}: let
-  inherit (lib.modules) mkIf mkForce;
-  inherit (config.nice.host.opts) roles;
+{lib, ...}: let
+  inherit (lib.modules) mkForce;
 in {
-  config = mkIf (builtins.elem "desktop" roles) {
+  config = {
     services.greetd = {
       enable = true;
       settings = {

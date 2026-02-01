@@ -5,9 +5,9 @@
   ...
 }: let
   inherit (lib.modules) mkIf;
-  inherit (config.nice.host.opts) roles;
-in
-  mkIf (builtins.elem "desktop" roles) {
+  inherit (config.nice.host) opts;
+in {
+  config = mkIf opts.capabilities.audio {
     users.groups.audio = {};
 
     security.pam.loginLimits = [
@@ -51,4 +51,5 @@ in
       KERNEL=="hpet", GROUP="audio"
 
     '';
-  }
+  };
+}

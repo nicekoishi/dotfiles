@@ -4,7 +4,6 @@ in {
   imports = [
     ./firewall
     ./ssh
-    ./printing
     #./tailscale
   ];
 

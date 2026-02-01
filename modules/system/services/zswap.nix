@@ -1,12 +1,5 @@
 {
-  config,
-  lib,
-  ...
-}: let
-  inherit (lib.modules) mkIf;
-  inherit (config.nice.host.opts) roles;
-in {
-  config = mkIf (builtins.elem "desktop" roles) {
+  config = {
     boot = {
       initrd.kernelModules = ["lz4" "zsmalloc"];
 

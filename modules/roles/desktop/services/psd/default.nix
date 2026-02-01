@@ -1,13 +1,5 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
-  inherit (lib.modules) mkIf;
-  inherit (config.nice.host.opts) roles;
-in {
-  config = mkIf (builtins.elem "desktop" roles) {
+{pkgs, ...}: {
+  config = {
     services.psd = {
       enable = true;
       resyncTimer = "30m";

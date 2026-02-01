@@ -9,7 +9,7 @@
   cfg = config.nice;
   env = cfg.user.desktop;
 in {
-  config = mkIf (builtins.elem "desktop" cfg.host.opts.roles) {
+  config = {
     xdg.portal = {
       enable = true;
       xdgOpenUsePortal = false;
