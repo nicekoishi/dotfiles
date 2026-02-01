@@ -10,7 +10,7 @@
       code = "$HOME/Documents/code";
       dl = "$HOME/Downloads";
       docs = "$HOME/Documents";
-      dots = "$HOME/Documents/code/dots";
+      dots = "$HOME/dots";
       dev = "$HOME/Documents/dev";
       xvids = "$HOME/Videos";
     };

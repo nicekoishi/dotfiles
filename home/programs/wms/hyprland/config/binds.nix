@@ -4,7 +4,6 @@
   config,
   ...
 }: let
-  #inherit (inputs') anyrun;
   # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
   # fufexan/dotfiles
   workspaces = builtins.concatLists (builtins.genList (
@@ -40,7 +39,7 @@ in {
         "$mod, E, exec, uwsm app -- thunar"
         "$mod, O, exec, uwsm app -- ocr"
         "$mod, Q, exec, uwsm app -- kitty"
-        "$mod, R, exec, pkill .anyrun-wrapped || uwsm app -- anyrun"
+        "$mod, R, exec, uwsm app -- walker"
         #"$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
         "$mod, W, exec, uwsm app -- firefox"
 
