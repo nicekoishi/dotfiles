@@ -46,7 +46,7 @@ in {
       };
 
       video = mkOption {
-        default = cfg.gpu == [];
+        default = cfg.gpu != [];
         type = bool;
         description = ''
           Whether the system requires a video driver for graphics or other applications.

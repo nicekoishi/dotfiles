@@ -12,6 +12,7 @@ in {
     ./desktop
     ./style
 
+    ./apps.nix
     ./display.nix
   ];
 
