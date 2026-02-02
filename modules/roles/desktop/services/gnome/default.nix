@@ -11,6 +11,9 @@
     };
 
     services = {
+      gvfs.enable = true;
+      udisks2.enable = true;
+
       dbus.packages = with pkgs; [
         dconf
         gcr
@@ -20,8 +23,6 @@
       udev.packages = with pkgs; [
         gnome-settings-daemon
       ];
-
-      gvfs.enable = true;
 
       # stupid, thats why gnome calendar wasn't working properly
       gnome = {
