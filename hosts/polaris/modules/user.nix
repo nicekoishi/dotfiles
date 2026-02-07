@@ -21,6 +21,7 @@
 
     apps = {
       gaming = true;
+      media = true;
     };
   };
 }
