@@ -1,12 +1,14 @@
 import QtQuick
+import "../services"
+import "../options"
 
 Text {
     text: Time.time
-    color: Options.colors.text
+    color: QsOptions.colors.text
     anchors.centerIn: parent
 
     font {
-        family: Options.fonts.family
-        pixelSize: Options.fonts.size
+        family: QsOptions.fonts.family
+        pixelSize: QsOptions.fonts.size
     }
 }

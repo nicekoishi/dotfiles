@@ -1,6 +1,13 @@
 import Quickshell
+import QtQuick
 import "components"
+import "services"
 
-Scope {
-    Bar {}
+ShellRoot {
+    id: root
+
+    Loader {
+        id: barLoader
+        source: "components/bar/Bar.qml"
+    }
 }

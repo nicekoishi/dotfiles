@@ -2,6 +2,7 @@ import Quickshell.Hyprland
 import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
+import "../options"
 
 ColumnLayout {
     spacing: 8
@@ -20,7 +21,7 @@ ColumnLayout {
             onClicked: ws.activate()
             background: Rectangle {
                 id: workspaceBtn
-                color: isActive ? Options.colors.accent : Options.colors.surface1
+                color: isActive ? QsOptions.colors.accent : QsOptions.colors.surface0
                 radius: workspaces.radius
                 implicitWidth: workspaces.width
             }
@@ -42,7 +43,7 @@ ColumnLayout {
                 ColorAnimation {
                     target: workspaceBtn
                     property: "color"
-                    to: Options.colors.surface1
+                    to: QsOptions.colors.surface0
                     duration: 500
                 }
             }

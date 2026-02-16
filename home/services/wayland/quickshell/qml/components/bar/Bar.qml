@@ -1,6 +1,8 @@
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
+import ".."
+import "../../options"
 
 Scope {
     Variants {
@@ -29,6 +31,8 @@ Scope {
                 right: 8
             }
 
+            //Component.onCompleted: console.log(JSON.stringify(QsOptions))
+
             // i'm only doing these comments bcause they're easier to see, maybe my eyes are jsut tired
             ColumnLayout {
                 width: root.width
@@ -37,7 +41,7 @@ Scope {
 
                 Rectangle {
                     id: barRect
-                    color: Options.colors.base
+                    color: QsOptions.colors.crust
                     radius: 12
                     Layout.fillWidth: true
                     Layout.fillHeight: true
@@ -65,7 +69,7 @@ Scope {
                     // Clock widget
                     Rectangle {
                         id: clock
-                        color: Options.colors.surface1
+                        color: QsOptions.colors.surface0
                         width: parent.width - 15
                         height: 50
                         radius: 8
