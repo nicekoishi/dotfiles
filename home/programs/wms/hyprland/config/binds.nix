@@ -21,6 +21,7 @@
 in {
   # TODO: generate a svg image for all binds, like a cheatsheet
   # wouldn't it be cool?
+  # Man, this is kinda possible with quickshell...
   wayland.windowManager.hyprland.settings = {
     "$mod" = "SUPER";
 
@@ -33,17 +34,17 @@ in {
     bind =
       [
         # apps
-        "$mod, F1, exec, ags -t bar"
-        "$mod, P, exec, uwsm app -- emacsclient -c -a emacs"
+        #"$mod, F1, exec, ags -t bar"
+        #"$mod, P, exec, uwsm app -- emacsclient -c -a emacs"
 
         "$mod, E, exec, uwsm app -- thunar"
-        "$mod, O, exec, uwsm app -- ocr"
+        #"$mod, O, exec, uwsm app -- ocr"
         "$mod, Q, exec, uwsm app -- kitty"
         "$mod, R, exec, uwsm app -- walker"
         #"$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
         "$mod, W, exec, uwsm app -- firefox"
 
-        "ALT, F4, exec, wlogout -p layer-shell"
+        #"ALT, F4, exec, wlogout -p layer-shell"
         "$mod, L, exec, ${lib.getExe config.programs.hyprlock.package}"
 
         # commands

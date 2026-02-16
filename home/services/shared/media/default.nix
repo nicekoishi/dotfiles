@@ -5,7 +5,7 @@
   ...
 }: let
   inherit (osConfig.nice) user;
-  inherit (lib.modules) mkIf;
+  inherit (lib.modules) mkIf mkMerge;
 in {
   config = mkIf user.apps.media {
     services = {
@@ -13,11 +13,16 @@ in {
       udiskie.enable = true;
     };
 
-    home.packages = with pkgs; [
-      playerctl
-      viewnior
-      ffmpeg-full
-      yt-dlp
-    ];
+    home.packages = with pkgs;
+      mkMerge [
+        [
+          playerctl
+          viewnior
+          ffmpeg-full
+          yt-dlp
+        ]
+
+        (mkIf user.desktop.hyprland.enable [grimblast])
+      ];
   };
 }
