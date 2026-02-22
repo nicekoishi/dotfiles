@@ -21,7 +21,7 @@
 
     windowrule = [
       # make apps floaty
-      "float on, match:title Viewnior"
+      "float on, match:class Viewnior"
       "float on, match:title anyrun"
       "float on, match:title com.saivert.pwvucontrol"
       "float on, match:title confirm"
@@ -99,11 +99,11 @@
       "workspace 4 silent, match:initial_class (cantata)$"
       "workspace 4 silent, match:initial_class (feishin)$"
 
-      "workspace 5 silent, match:class (lutris*)$"
-      "workspace 5 silent, match:class (steam*)$"
+      "workspace 5 silent, match:class (.*lutris.*)$"
+      "workspace 5 silent, match:class (.*steam.*)$"
       "workspace 5 silent, match:class (steam_app_\d+)$"
 
-      "workspace 6 silent, match:class ^(virt-manager)$"
+      "workspace 6 silent, match:class ^(.*virt-manager.*)$"
     ];
   };
 }

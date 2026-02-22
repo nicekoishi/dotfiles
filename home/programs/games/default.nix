@@ -1,6 +1,7 @@
 {
   osConfig,
   lib,
+  pkgs,
   ...
 }: let
   inherit (osConfig.nice) user;
@@ -31,5 +32,11 @@ in {
         toggle_fps_limit = "Shift_R+F1";
       };
     };
+
+    home.packages = with pkgs; [
+      wineWowPackages.stable
+      winetricks
+      lutris
+    ];
   };
 }

@@ -40,7 +40,7 @@ in {
         "$mod, E, exec, uwsm app -- thunar"
         #"$mod, O, exec, uwsm app -- ocr"
         "$mod, Q, exec, uwsm app -- kitty"
-        "$mod, R, exec, uwsm app -- walker"
+        "$mod, R, exec, uwsm app -- anyrun"
         #"$mod, V, exec, cliphist list | anyrun --plugins ${anyrun.packages.stdin}/lib/libstdin.so | cliphist decode | wl-copy"
         "$mod, W, exec, uwsm app -- firefox"
 
