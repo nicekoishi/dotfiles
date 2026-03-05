@@ -7,7 +7,7 @@
 
   nice.host = {
     cpu = "amd";
-    gpu = ["amd-hybrid" "nv-hybrid"];
+    gpu = ["amd"];
 
     opts = {
       capabilities = {
