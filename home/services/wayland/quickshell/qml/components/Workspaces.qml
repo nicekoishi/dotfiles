@@ -27,7 +27,12 @@ ColumnLayout {
             }
 
             // all of this just to flash red when workspace has an urgent window
-            onIsUrgentChanged: urgentFlash.start()
+            onIsUrgentChanged: {
+                if (isUrgent && !isActive)
+                    urgentFlash.start();
+                else
+                    urgentFlash.stop();
+            }
 
             SequentialAnimation {
                 id: urgentFlash
@@ -43,7 +48,7 @@ ColumnLayout {
                 ColorAnimation {
                     target: workspaceBtn
                     property: "color"
-                    to: QsOptions.colors.surface0
+                    to: isActive ? QsOptions.colors.accent : QsOptions.colors.surface0
                     duration: 500
                 }
             }

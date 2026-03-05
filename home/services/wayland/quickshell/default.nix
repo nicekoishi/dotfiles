@@ -1,5 +1,6 @@
 {
   osConfig,
+  config,
   inputs',
   lib,
   ...
@@ -8,6 +9,11 @@
   inherit (lib.modules) mkIf;
 in {
   config = mkIf desktop.hyprland.enable {
+    xdg.configFile."quickshell" = {
+      source = ./qml;
+      recursive = true;
+    };
+
     systemd.user.services.quickshell = {
       Unit = {
         Description = "Quickshell";
@@ -16,7 +22,7 @@ in {
       };
 
       Service = {
-        ExecStart = "${lib.getExe inputs'.quickshell.packages.default} --path ${./qml}";
+        ExecStart = "${lib.getExe inputs'.quickshell.packages.default} --path ${config.xdg.configHome}/quickshell";
         Restart = "on-failure";
       };
 
