@@ -3,7 +3,7 @@
     ./browsers
     ./discord
     ./office
-    ./obs.nix
+    ./media
   ];
 
   home.packages = with pkgs; [
