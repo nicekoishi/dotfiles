@@ -1,5 +1,5 @@
 {
-  description = "Cursed flake 2.0";
+  description = "not as cursed still quite crappy flake 2.1";
 
   outputs = inputs:
     inputs.flake-parts.lib.mkFlake {inherit inputs;} {

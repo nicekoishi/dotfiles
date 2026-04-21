@@ -82,7 +82,6 @@
         css.enable = true;
         html.enable = true;
         markdown.enable = true;
-        nix.enable = true;
         python.enable = true;
         ts.enable = true;
         qml.enable = true;
@@ -91,6 +90,11 @@
         # enable = true;
         # flutter-tools.enable = true;
         # };
+
+        nix = {
+          enable = true;
+          lsp.servers = ["nixd"];
+        };
 
         rust = {
           enable = true;
@@ -179,7 +183,7 @@
       };
 
       treesitter = {
-        fold = true;
+        fold = false;
         context.enable = true;
         # https://github.com/NotAShelf/nvf/issues/368#issuecomment-2316514657
         # If something breaks, disable this first.
