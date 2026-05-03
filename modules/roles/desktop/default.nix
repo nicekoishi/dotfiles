@@ -9,7 +9,7 @@
 
   system.nixos.tags = ["desktop"];
 
-  nice.host.opts = {
-    roles = ["desktop"];
-  };
+  #  nice.host.opts = {
+  #    roles = ["desktop"];
+  #  };
 }
