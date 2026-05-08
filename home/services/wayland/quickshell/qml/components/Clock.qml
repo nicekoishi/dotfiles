@@ -1,9 +1,14 @@
+import Quickshell
 import QtQuick
-import "../services"
 import "../options"
 
 Text {
-    text: Time.time
+    SystemClock {
+        id: clock
+        precision: SystemClock.Minutes
+    }
+
+    text: Qt.formatDateTime(clock.date, "hh\nmm\n")
     color: QsOptions.colors.text
     anchors.centerIn: parent
 

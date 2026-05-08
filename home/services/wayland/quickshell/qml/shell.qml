@@ -1,7 +1,8 @@
 import Quickshell
 import QtQuick
 import "components"
-import "services"
+
+//import "services/notifications"
 
 ShellRoot {
     id: root
