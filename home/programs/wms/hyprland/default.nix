@@ -128,7 +128,6 @@ in {
           shadow = {
             enabled = true;
             color = "rgba(292c3cee)";
-            ignore_window = true;
             offset = "1 2";
             range = 10;
             render_power = 3;
@@ -157,7 +156,6 @@ in {
         };
 
         dwindle = {
-          pseudotile = true;
           preserve_split = true;
           smart_split = true;
         };
@@ -172,9 +170,6 @@ in {
 
           enable_swallow = true;
           swallow_regex = "kitty|footclient|Alacritty";
-
-          # for some reason it was set to false
-          vfr = true;
         };
       }
     ];

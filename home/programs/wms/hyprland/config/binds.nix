@@ -50,7 +50,7 @@ in {
         # commands
         "$mod, C, killactive"
         "$mod, F, togglefloating"
-        "$mod, G, togglesplit"
+        #"$mod, G, togglesplit"
         "$mod, B, pseudo"
 
         # move focus
