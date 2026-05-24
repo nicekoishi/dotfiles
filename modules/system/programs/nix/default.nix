@@ -16,7 +16,7 @@ in {
 
   system = {
     autoUpgrade.enable = mkForce false;
-    #configurationRevision = self.shortRev or /*self.dirtyShortRev*/;
+    configurationRevision = self.shortRev or self.dirtyShortRev;
   };
 
   # save flake locally on /etc/nixos/dotfiles
@@ -104,7 +104,7 @@ in {
 
     man = {
       enable = true;
-      generateCaches = true;
+      cache.enable = true;
     };
   };
 

@@ -31,7 +31,7 @@ in {
         # https://github.com/NixOS/nixpkgs/issues/353405#issuecomment-2455229831
         extraLibraries = pkgs:
           with pkgs; [
-            xorg.libxcb
+            libxcb
           ];
 
         extraPkgs = pkgs:
@@ -48,10 +48,10 @@ in {
             libpulseaudio
             libvorbis
             stdenv.cc.cc.lib
-            xorg.libXcursor
-            xorg.libXi
-            xorg.libXinerama
-            xorg.libXScrnSaver
+            libxcursor
+            libXi
+            libxinerama
+            libxscrnsaver
           ];
       };
     };

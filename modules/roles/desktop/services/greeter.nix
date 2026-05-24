@@ -27,7 +27,7 @@
   tuigreet = {
     user = "greeter";
     command = concatStringsSep " " [
-      (lib.getExe pkgs.greetd.tuigreet)
+      (lib.getExe pkgs.tuigreet)
       "--time"
       "--remember"
       "--remember-user-session"

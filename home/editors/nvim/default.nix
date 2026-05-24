@@ -83,7 +83,7 @@
         html.enable = true;
         markdown.enable = true;
         python.enable = true;
-        ts.enable = true;
+        typescript.enable = true;
         qml.enable = true;
 
         # dart = {
