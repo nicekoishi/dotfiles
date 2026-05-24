@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       add_newline = false;
-      scan_timeout = 2;
+      scan_timeout = 30;
       command_timeout = 2000;
       line_break.disabled = false;
 
