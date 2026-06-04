@@ -29,6 +29,9 @@
 
     # Java 21
     openjdk21
+
+    # Java 25
+    openjdk25
   ];
 in {
   config = mkIf user.apps.gaming {
