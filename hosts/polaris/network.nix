@@ -3,7 +3,7 @@
     useDHCP = lib.mkDefault true;
 
     firewall.allowedTCPPorts = [2234];
-    networkmanager.unmanaged = ["type:wifi"];
+    #    networkmanager.unmanaged = ["type:wifi"];
   };
 
   systemd.network = {
