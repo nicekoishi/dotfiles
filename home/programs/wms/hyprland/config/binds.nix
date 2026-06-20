@@ -4,6 +4,11 @@
   config,
   ...
 }: let
+  inherit (lib.generators) mkLuaInline;
+  inherit (lib.lists) mkMerge;
+
+  mkHyprlandBind = list: {_args = list;};
+
   # binds $mod + [shift +] {1..10} to [move to] workspace {1..10}
   # fufexan/dotfiles
   workspaces = builtins.concatLists (builtins.genList (
@@ -23,7 +28,22 @@ in {
   # wouldn't it be cool?
   # Man, this is kinda possible with quickshell...
   wayland.windowManager.hyprland.settings = {
-    "$mod" = "SUPER";
+    mod = {_var = "SUPER";};
+
+    newbind = let
+      mod = key: mkLuaInline "mod .. \" + ${key}\"";
+      exec = cmd: mkLuaInline "hl.dsp.exec_cmd(${cmd})";
+    in [
+      (mkHyprlandBind [(mod "E") (exec "uwsm app -- thunar")])
+      (mkHyprlandBind [(mod "Q") (exec "uwsm app -- kitty")])
+      (mkHyprlandBind [(mod "R") (exec "uwsm app -- anyrun")])
+      (mkHyprlandBind [(mod "W") (exec "uwsm app -- firefox")])
+      (mkHyprlandBind [(mod "L") (exec "${lib.getExe config.programs.hyprlock.package}")])
+
+      (mkHyprlandBind [(mod "C") (mkLuaInline "hl.dsp.window.close()")])
+      (mkHyprlandBind [(mod "F") (exec "")])
+      (mkHyprlandBind [(mod "B") (exec "")])
+    ];
 
     # mouse movements
     bindm = [

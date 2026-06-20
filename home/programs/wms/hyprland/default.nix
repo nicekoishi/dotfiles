@@ -6,9 +6,10 @@
   osConfig,
   ...
 }: let
-  inherit (builtins) toString length genList elemAt;
-  inherit (lib.attrsets) attrNames mapAttrsToList;
+  inherit (builtins) length genList elemAt;
+  inherit (lib.generators) mkLuaInline;
   inherit (lib.modules) mkMerge;
+  inherit (lib.attrsets) attrNames mapAttrsToList;
   inherit (usr.display) main monitors;
   inherit (inputs'.hyprland.packages) hyprland;
 
@@ -54,11 +55,22 @@ in {
 
     settings = mkMerge [
       {
-        # monitor = ["HDMI-A-1, 1920x1080, 0x0, 1"];
-        # finally, monitor v2
+        on = [
+          {
+            _args = let
+              command = "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}";
+            in [
+              "hyprland.start"
+              (mkLuaInline ''
+                function()
+                  hl.exec_cmd("${command}")
+                end'')
+            ];
+          }
+        ];
 
-        # NOTE: if it works, it works
-        monitorv2 = genList (x:
+        # how tf this survived the lua migration
+        monitor = genList (x:
           elemAt (mapAttrsToList (_: value: {
               output = "desc:${value.description}";
               mode = "${value.width}x${value.height}@${value.refreshRate}";
@@ -69,108 +81,169 @@ in {
             monitors)
           x) (length (attrNames monitors));
 
-        # TODO: Temporary fix, come back here when we have time
-        workspace =
-          (builtins.genList (x: ''
-              ${toString (x + 1)}, monitor:desc:${monitors."${main}".description}${
-                if (x + 1) == 1
-                then ", default:true"
-                else ""
+        device = [
+          {
+            _args = [
+              {
+                name = "wacom-one-by-wacom-s-pen";
+                accel_profile = "flat";
+                left_handed = true;
               }
-            '')
-            10)
-          ++ ["name:tv, monitor:HDMI-A-1, persistent:true"];
-
-        exec-once = [
-          "hyprctl setcursor ${config.home.pointerCursor.name} ${toString config.home.pointerCursor.size}"
+            ];
+          }
         ];
 
-        animations = {
-          enabled = true;
+        config = mkMerge [
+          {
+            animations = {
+              enabled = true;
+              workspace_wraparound = false;
+            };
 
-          bezier = [
-            "overshot, 0.05, 0.9, 0.1, 1.05"
-            "smoothOut, 0.36, 0, 0.66, -0.56"
-            "smoothIn, 0.25, 1, 0.5, 1"
-          ];
+            general = {
+              layout = "dwindle";
+              gaps_in = 4;
+              gaps_out = 8;
+              border_size = 0;
+            };
 
-          animation = [
-            "windows, 1, 5, overshot, slide"
-            "windowsOut, 1, 4, smoothOut, slide"
-            "windowsMove, 1, 4, default"
+            decoration = {
+              rounding = 12;
 
-            "border, 1, 10, default"
-            "borderangle, 1, 8, default"
+              blur = {
+                enabled = true;
+                brightness = 0.82;
+                contrast = 0.71;
+                ignore_opacity = true;
+                new_optimizations = true;
+                passes = 3;
+                size = 5;
+                special = true;
+                vibrancy = 0.2;
+                popups = true;
+                xray = true;
+              };
 
-            "fade, 1, 10, smoothIn"
-            "fadeDim, 1, 10, smoothIn"
-            "workspaces, 1, 4, overshot, slidevert"
-          ];
-        };
+              shadow = {
+                enabled = true;
+                color = "rgba(292c3cee)";
+                offset = "1 2";
+                range = 10;
+                render_power = 3;
+              };
+            };
 
-        decoration = {
-          rounding = 12;
+            input = {
+              kb_layout = "br";
 
-          blur = {
+              accel_profile = "flat";
+              follow_mouse = 1;
+
+              numlock_by_default = true;
+            };
+
+            dwindle = {
+              preserve_split = true;
+              smart_split = true;
+            };
+
+            misc = {
+              disable_autoreload = true;
+              disable_hyprland_logo = true;
+              disable_splash_rendering = true;
+
+              mouse_move_enables_dpms = true;
+              key_press_enables_dpms = true;
+
+              enable_swallow = true;
+              swallow_regex = "kitty|footclient|Alacritty";
+            };
+          }
+        ];
+
+        animation = [
+          {
             enabled = true;
-            brightness = 0.82;
-            contrast = 0.71;
-            ignore_opacity = true;
-            new_optimizations = true;
-            passes = 3;
-            size = 5;
-            special = true;
-            vibrancy = 0.2;
-            popups = true;
-            xray = true;
-          };
-
-          shadow = {
+            leaf = "windows";
+            speed = 5;
+            bezier = "overshot";
+            style = "slide";
+          }
+          {
             enabled = true;
-            color = "rgba(292c3cee)";
-            offset = "1 2";
-            range = 10;
-            render_power = 3;
-          };
-        };
+            leaf = "windowsOut";
+            speed = 4;
+            bezier = "smoothOut";
+            style = "slide";
+          }
+          {
+            enabled = true;
+            leaf = "windowsMove";
+            speed = 4;
+            style = "default";
+          }
+          {
+            enabled = true;
+            leaf = "border";
+            speed = 10;
+            style = "default";
+          }
+          {
+            enabled = true;
+            leaf = "borderangle";
+            speed = 8;
+            style = "default";
+          }
+          {
+            enabled = true;
+            leaf = "fade";
+            speed = 10;
+            bezier = "smoothIn";
+          }
+          {
+            enabled = true;
+            leaf = "fadeDim";
+            speed = 10;
+            bezier = "smoothIn";
+          }
+          {
+            enabled = true;
+            leaf = "workspaces";
+            speed = 4;
+            bezier = "overshot";
+            style = "slidevert";
+          }
+        ];
 
-        device = {
-          name = "wacom-one-by-wacom-s-pen";
-          accel_profile = "flat";
-          left_handed = true;
-        };
-
-        general = {
-          gaps_in = 4;
-          gaps_out = 8;
-          border_size = 0;
-        };
-
-        input = {
-          kb_layout = "br";
-
-          accel_profile = "flat";
-          follow_mouse = 1;
-
-          numlock_by_default = true;
-        };
-
-        dwindle = {
-          preserve_split = true;
-          smart_split = true;
-        };
-
-        misc = {
-          disable_autoreload = true;
-          disable_hyprland_logo = true;
-          disable_splash_rendering = true;
-
-          mouse_move_enables_dpms = true;
-          key_press_enables_dpms = true;
-
-          enable_swallow = true;
-          swallow_regex = "kitty|footclient|Alacritty";
-        };
+        curve = [
+          {
+            _args = [
+              "overshot"
+              {
+                type = "bezier";
+                points = ["0.05, 0.09" "0.1, 1.05"];
+              }
+            ];
+          }
+          {
+            _args = [
+              "smoothOut"
+              {
+                type = "bezier";
+                points = ["0.36, 0" "0.66, -0.56"];
+              }
+            ];
+          }
+          {
+            _args = [
+              "smoothIn"
+              {
+                type = "bezier";
+                points = ["0.25, 1" "0.5, 1"];
+              }
+            ];
+          }
+        ];
       }
     ];
   };
